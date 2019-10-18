@@ -1,0 +1,19 @@
+{
+  "name": "rn-shadow-component",
+  "version": "1.0.0",
+  "description": "A reusabale component library for react-native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamshadmirza/rn-shadow-component.git"
+  },
+  "author": "Shad Mirza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamshadmirza/rn-shadow-component/issues"
+  },
+  "homepage": "https://github.com/iamshadmirza/rn-shadow-component#readme"
+}
