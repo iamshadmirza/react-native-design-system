@@ -15,14 +15,25 @@
   </a>
 </p>
 
-> A reusabale component library for react-native.
+> A reusabale cross-plateform component library for react-native.
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/rn-shadow-component#readme)
 
 ## Install
 
 ```sh
-npm install
+npm install rn-shadow-component
+```
+
+## Usage
+
+```javascript
+import { SolidButton } from 'rn-shadow-component';
+
+<SolidButton>
+  PRESS ME
+</SolidButton>
+
 ```
 
 ## Run tests
@@ -31,12 +42,44 @@ npm install
 npm run test
 ```
 
+## Components included:
+
+- [] [Avatar]()
+- [x] [ActionButton]()
+- [] [Badge]()
+- [x] [SolidButton]()
+- [x] [RoundedButton]()
+- [x] [OutlineButton]()
+- [] [ButtonGroup]()
+- [] [Card]()
+- [] [CardItem]()
+- [] [LeftAlign]()
+- [] [RightAlign]()
+- [] [CheckBox]()
+- [] [Divider]()
+- [] [Header]()
+- [] [HTML style headings]()
+- [] [Icon]()
+- [] [Image]()
+- [] [Input]()
+- [] [ListItem]()
+- [] [Overlay]()
+- [] [Pricing]()
+- [] [Rating]()
+- [] [SearchBar]()
+- [] [Slider]()
+- [] [Social Icons / Social Icon Buttons]()
+- [] [Tile]()
+- [] [Tooltip]()
+
 ## Author
 
 👤 **Shad Mirza**
 
 * Twitter: [@iamshadmirza](https://twitter.com/iamshadmirza)
 * Github: [@iamshadmirza](https://github.com/iamshadmirza)
+* Medium: [@iamshadmirza](https://medium.com/@iamshadmirza)
+* Dev: [@iamshadmirza](https://dev.to/iamshadmirza)
 
 ## 🤝 Contributing
 
