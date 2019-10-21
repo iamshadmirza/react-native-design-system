@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import colors from '../util/colors';
 
-const RoundedButton = (props) => {
+const RoundButton = (props) => {
   const buttonColor = props.color ? { backgroundColor: props.color } : {};
   const disableStyle = props.disabled ? styles.disableStyle : {};
   const buttonSize = props.size ? { fontSize: props.size, marginHorizontal: props.size * 1.5, marginVertical: props.size / 4 } : {};
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RoundedButton;
+export default RoundButton;

@@ -48,7 +48,7 @@ npm run test
 - [x] [ActionButton]()
 - [ ] [Badge]()
 - [x] [SolidButton]()
-- [x] [RoundedButton]()
+- [x] [RoundButton]()
 - [x] [OutlineButton]()
 - [ ] [ButtonGroup]()
 - [x] [Card]()
