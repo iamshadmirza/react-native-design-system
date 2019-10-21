@@ -1,5 +1,5 @@
 import SolidButton from './SolidButton';
 import OutlineButton from './OutlineButton';
-import RoundedButton from './RoundedButton';
+import RoundButton from './RoundButton';
 
-export { SolidButton, OutlineButton, RoundedButton };
+export { SolidButton, OutlineButton, RoundButton };

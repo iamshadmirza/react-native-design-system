@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/iamshadmirza/rn-shadow-component/issues"
   },
-  "homepage": "https://github.com/iamshadmirza/rn-shadow-component#readme"
+  "homepage": "https://github.com/iamshadmirza/rn-shadow-component#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
 }
