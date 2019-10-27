@@ -2,9 +2,8 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 const RightAlign = (props) => {
-  const rowStyle = props.row ? styles.alignRow : {};
   return (
-    <View style={[styles.container, rowStyle]}>
+    <View style={[styles.container, props.style]}>
       {props.children}
     </View>
   );
@@ -13,12 +12,11 @@ const RightAlign = (props) => {
 const styles = StyleSheet.create({
   container: {
     elevation: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     paddingHorizontal: 5,
     paddingVertical: 5,
     alignSelf: 'flex-end',
-  },
-  alignRow: {
-    flexDirection: 'row',
   },
 });
 

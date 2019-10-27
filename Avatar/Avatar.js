@@ -33,6 +33,10 @@ const Avatar = (props) => {
           color={props.editIconColor || '#fff'}
         />
       </View> : null}
+      {props.badge ?
+        <View style={StyleSheet.flatten([styles.badgeView, props.badgeStyle, editViewSize])}>
+          {props.badge}
+        </View> : null}
     </TouchableOpacity>
   );
 };
@@ -70,6 +74,16 @@ const styles = StyleSheet.create({
     elevation: 3,
     right: 0,
     bottom: 0,
+    width: DEFAULT_SIZE * 1.5,
+    aspectRatio: 1,
+    borderRadius: DEFAULT_SIZE * 1.5 / 2,
+  },
+  badgeView: {
+    position: 'absolute',
+    right: -5,
+    top: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
     width: DEFAULT_SIZE * 1.5,
     aspectRatio: 1,
     borderRadius: DEFAULT_SIZE * 1.5 / 2,

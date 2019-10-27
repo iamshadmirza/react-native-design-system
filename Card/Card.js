@@ -3,9 +3,8 @@ import { View, StyleSheet } from 'react-native';
 
 const Card = (props) => {
   const rowStyle = props.row ? styles.alignRow : {};
-  const spaceBetween = props.spaceBetween ? styles.spaceBetween : {};
   return (
-    <View style={[styles.container, rowStyle, spaceBetween]}>
+    <View style={[styles.container, rowStyle, props.style]}>
       {props.children}
     </View>
   );
@@ -20,9 +19,6 @@ const styles = StyleSheet.create({
   alignRow: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  spaceBetween: {
-    justifyContent: 'space-between',
   },
 });
 

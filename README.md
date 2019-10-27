@@ -44,15 +44,13 @@ npm run test
 
 ## Components included:
 
-- [ ] [Avatar]()
+- [x] [Avatar]()
 - [x] [ActionButton]()
-- [ ] [Badge]()
+- [x] [Badge]()
 - [x] [SolidButton]()
 - [x] [RoundButton]()
 - [x] [OutlineButton]()
-- [ ] [ButtonGroup]()
 - [x] [Card]()
-- [x] [CardItem]()
 - [x] [LeftAlign]()
 - [x] [RightAlign]()
 - [ ] [CheckBox]()
