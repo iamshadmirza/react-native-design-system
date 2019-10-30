@@ -61,7 +61,7 @@ npm run test
 - [x] [Overlay](Overlay/Overlay.js)
 - [ ] [Pricing]()
 - [ ] [Rating]()
-- [ ] [SearchBar]()
+- [x] [SearchBar](SearchBar/SearchBar.js)
 - [ ] [Slider]()
 - [ ] [Social Icons / Social Icon Buttons]()
 - [ ] [Tile]()

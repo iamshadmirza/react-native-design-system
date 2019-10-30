@@ -8,5 +8,6 @@ export * from './Header';
 export * from './Input';
 export * from './ListItem';
 export * from './Overlay';
+export * from './SearchBar';
 import colors from './util/colors';
 export { colors };
