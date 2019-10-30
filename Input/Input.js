@@ -4,7 +4,7 @@ import colors from '../util/colors';
 const DEFAULT_SIZE = 14;
 
 const Input = (props) => {
-  const labelSize = props.size ? { fontSize: props.size * 0.7 } : {};
+  const labelSize = props.size ? { fontSize: props.size * 0.8 } : {};
   const inputSize = props.size ?
     { fontSize: props.size, paddingVertical: props.size < 11 ? 0 : 5 } :
     {};
@@ -12,21 +12,22 @@ const Input = (props) => {
     { display: 'none' } :
   {};
   const colorStyle = props.color ? { borderBottomColor: props.color } : {};
+  const roundStyle = props.round ? styles.roundStyle : {};
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={props.containerStyle}>
       {props.label ?
         <Text style={StyleSheet.flatten([styles.label, props.labelStyle, floatingStyle, labelSize])}>
           {props.label}
         </Text> :
       null}
-      <View style={[styles.inputContainer, colorStyle]}>
+      <View style={[styles.inputContainer, props.style]}>
         {props.leftIcon ?
           <View style={styles.icon}>{props.leftIcon}</View> :
         null}
         <TextInput
-          {...props}
-          style={StyleSheet.flatten([styles.input, inputSize])}
           editable={!props.disabled}
+          {...props}
+          style={StyleSheet.flatten([styles.input, colorStyle, roundStyle, inputSize])}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
         {props.rightIcon ?
@@ -38,32 +39,36 @@ const Input = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 5,
-  },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: colors.grey[400],
   },
   input: {
     flex: 1,
     padding: 5,
     borderRadius: 3,
-    paddingVertical: 0,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.grey[400],
     fontSize: DEFAULT_SIZE,
     color: '#333333',
   },
   label: {
-    fontSize: DEFAULT_SIZE * 0.7,
-    paddingHorizontal: 5,
+    fontSize: DEFAULT_SIZE * 0.8,
+    paddingHorizontal: 10,
     color: '#666666',
   },
   icon: {
     padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  roundStyle: {
+    backgroundColor: colors.grey[300],
+    borderBottomWidth: 0,
+    borderRadius: 50,
+    paddingHorizontal: 15,
   },
 });
 
