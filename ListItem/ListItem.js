@@ -22,6 +22,9 @@ const ListItem = (props) => {
           {props.subtitle}
         </Text>}
       </View>
+      {props.rightIcon && <View style={[styles.iconStyle, props.iconStyle]}>
+        {props.rightIcon}
+      </View>}
       {props.chevron && <View style={[styles.iconStyle, props.iconStyle]}>
         <Feather name="chevron-right" size={26} color={colors.grey[400]}  />
       </View>}
@@ -57,6 +60,8 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
