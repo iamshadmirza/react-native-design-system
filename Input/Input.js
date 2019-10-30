@@ -7,10 +7,10 @@ const Input = (props) => {
   const labelSize = props.size ? { fontSize: props.size * 0.8 } : {};
   const inputSize = props.size ?
     { fontSize: props.size, paddingVertical: props.size < 11 ? 0 : 5 } :
-  {};
+    {};
   const floatingStyle = props.floatingLabel && props.value.length === 0 ?
     { display: 'none' } :
-  {};
+    {};
   const colorStyle = props.color ? { borderBottomColor: props.color } : {};
   const roundStyle = props.round ? styles.roundStyle : {};
 
@@ -20,13 +20,13 @@ const Input = (props) => {
         <Text style={StyleSheet.flatten([styles.label, props.labelStyle, floatingStyle, labelSize])}>
           {props.label}
         </Text>}
-      <View style={[styles.inputContainer, roundStyle, props.style]}>
+      <View style={[styles.inputContainer, roundStyle, colorStyle, props.style]}>
         {props.leftIcon &&
           <View style={styles.leftIcon}>{props.leftIcon}</View>}
         <TextInput
           editable={!props.disabled}
           {...props}
-          style={StyleSheet.flatten([styles.input, colorStyle, inputSize])}
+          style={StyleSheet.flatten([styles.input, inputSize])}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
         {props.rightIcon &&
