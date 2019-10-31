@@ -9,5 +9,6 @@ export * from './Input';
 export * from './ListItem';
 export * from './Overlay';
 export * from './SearchBar';
+export * from './Text';
 import colors from './util/colors';
 export { colors };

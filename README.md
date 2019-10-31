@@ -64,7 +64,7 @@ npm run test
 - [x] [SearchBar](SearchBar/SearchBar.js)
 - [ ] [Slider]()
 - [ ] [Social Icons / Social Icon Buttons]()
-- [ ] [Tile]()
+- [x] [Text](Text/Text.js)
 - [ ] [Tooltip]()
 
 ## Author
