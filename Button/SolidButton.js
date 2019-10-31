@@ -1,6 +1,12 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import colors from '../util/colors';
+
+const renderIndicator = (props) => {
+  if (props.loading) {
+    return <ActivityIndicator color={props.indicatorColor || '#fff'} style={styles.indicator} />;
+  }
+};
 
 const SolidButton = (props) => {
   const buttonColor = props.color ? { backgroundColor: props.color } : {};
@@ -9,9 +15,10 @@ const SolidButton = (props) => {
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      disabled={props.disabled}
+      disabled={props.disabled === true || props.loading === true}
       style={StyleSheet.flatten([styles.container, buttonColor, props.style, disableStyle])}
       activeOpacity={0.8}>
+      {renderIndicator(props)}
       <Text style={StyleSheet.flatten([styles.textStyle, props.textStyle, buttonSize])}>
         {props.children}
       </Text>
@@ -26,6 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     borderRadius: 2,
     elevation: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -33,11 +41,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 16,
-    marginHorizontal: 16 * 1.5,
     marginVertical: 16 / 4,
     fontWeight: '500',
     elevation: 3,
     paddingVertical: 10,
+  },
+  indicator: {
+    paddingRight: 10,
   },
   disableStyle: {
     backgroundColor: colors.grey[400],

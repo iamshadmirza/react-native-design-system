@@ -10,7 +10,8 @@ const withOutlineStyle = Component => (props) => {
     <Component
       {...props}
       style={[styles.outlineStyle, props.style, disabledStyle]}
-      textStyle={[styles.textStyle, props.textStyle, disabledTextStyle]}>
+      textStyle={[styles.textStyle, props.textStyle, disabledTextStyle]}
+      indicatorColor={props.indicatorColor || '#000'}>
       {props.children}
     </Component>
   );
