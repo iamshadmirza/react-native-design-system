@@ -58,6 +58,7 @@ npm run test
 - [ ] [Image]()
 - [x] [Input](Input/Input.js)
 - [x] [ListItem](ListItem/ListItem.js)
+- [x] [FullScreenLoader](FullScreenLoader/FullScreenLoader.js)
 - [x] [Overlay](Overlay/Overlay.js)
 - [ ] [Pricing]()
 - [ ] [Rating]()
