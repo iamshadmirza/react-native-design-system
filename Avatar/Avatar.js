@@ -15,24 +15,24 @@ const Avatar = (props) => {
     <TouchableOpacity
       disabled={!props.editable}
       {...props}
-      style={StyleSheet.flatten([styles.container, props.style, containerSize])}
+      style={StyleSheet.flatten([styles.container, containerSize])}
     >
-      <View style={StyleSheet.flatten([styles.roundView, roundSize, squareView])}>
+      <View style={StyleSheet.flatten([styles.roundView, roundSize, squareView, props.style])}>
         {props.source ?
           <Image source={props.source || shad} resizeMode="contain" style={styles.image} /> :
-          <Text style={StyleSheet.flatten([styles.title, textSize])}>
+          <Text style={StyleSheet.flatten([styles.title, textSize, props.textStyle])}>
             {props.title || 'MD'}
           </Text>
         }
       </View>
       {props.editable ?
-      <View style={StyleSheet.flatten([styles.editView, props.editIconStyle, editViewSize])}>
-        <Feather
-          name="edit-2"
-          size={(props.size || DEFAULT_SIZE) * 0.8}
-          color={props.editIconColor || '#fff'}
-        />
-      </View> : null}
+        <View style={StyleSheet.flatten([styles.editView, props.editIconStyle, editViewSize])}>
+          <Feather
+            name="edit-2"
+            size={(props.size || DEFAULT_SIZE) * 0.8}
+            color={props.editIconColor || '#fff'}
+          />
+        </View> : null}
       {props.badge ?
         <View style={StyleSheet.flatten([styles.badgeView, props.badgeStyle, editViewSize])}>
           {props.badge}
