@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
+    minWidth: 150,
     backgroundColor: '#000',
     borderRadius: 2,
     elevation: 1,
