@@ -1,2 +1,3 @@
 import ListItem from './ListItem';
-export { ListItem };
+import SlidingListItem from './SlidingListItem';
+export { ListItem, SlidingListItem };
