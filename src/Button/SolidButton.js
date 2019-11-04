@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import colors from '../util/colors';
 
 const renderIndicator = (props) => {
@@ -19,6 +19,8 @@ const SolidButton = (props) => {
       style={StyleSheet.flatten([styles.container, buttonColor, props.style, disableStyle])}
       activeOpacity={0.8}>
       {renderIndicator(props)}
+      {props.icon &&
+        <View style={styles.iconStyle}>{props.icon}</View>}
       <Text style={StyleSheet.flatten([styles.textStyle, props.textStyle, buttonSize])}>
         {props.children}
       </Text>
@@ -51,6 +53,9 @@ const styles = StyleSheet.create({
   },
   disableStyle: {
     backgroundColor: colors.grey[400],
+  },
+  iconStyle: {
+    paddingRight: 10,
   },
 });
 
