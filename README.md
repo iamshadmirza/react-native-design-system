@@ -55,6 +55,7 @@ npm run test
 - [x] [Card](src/Card/Card.js)
 - [x] [LeftAlign](src/Card/LeftAlign.js)
 - [x] [RightAlign](src/Card/RightAlign.js)
+- [x] [CenterAlign](src/Card/CenterAlign.js)
 - [x] [CheckBox](src/CheckBox/CheckBox.js)
 - [x] [Header](src/Header/Header.js)
 - [ ] [Image](src/)
