@@ -1,19 +1,4 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
 import SolidButton from './SolidButton';
-
-const withRoundStyle = Component => (props) => {
-  return (
-    <Component {...props} style={[styles.roundStyle, props.style]}>
-      {props.children}
-    </Component>
-  );
-};
-
-const styles = StyleSheet.create({
-  roundStyle: {
-    borderRadius: 75,
-  },
-});
+import withRoundStyle from '../HOC/withRoundStyle';
 
 export default withRoundStyle(SolidButton);
