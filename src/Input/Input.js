@@ -13,14 +13,14 @@ const Input = (props) => {
     {};
   const colorStyle = props.color ? { borderBottomColor: props.color } : {};
   const roundStyle = props.round ? styles.roundStyle : {};
-
+  const outlineStyle = props.outline ? styles.outlineStyle : {};
   return (
     <View style={props.containerStyle}>
       {props.label &&
         <Text style={StyleSheet.flatten([styles.label, props.labelStyle, floatingStyle, labelSize])}>
           {props.label}
         </Text>}
-      <View style={[styles.inputContainer, roundStyle, colorStyle, props.style]}>
+      <View style={[styles.inputContainer, roundStyle, outlineStyle, colorStyle, props.style]}>
         {props.leftIcon &&
           <View style={styles.leftIcon}>{props.leftIcon}</View>}
         <TextInput
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    margin: 5,
     borderBottomWidth: 1,
     borderBottomColor: colors.grey[400],
   },
@@ -71,6 +72,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey[300],
     borderBottomWidth: 0,
     borderRadius: 50,
+  },
+  outlineStyle: {
+    borderWidth: 1,
+    borderColor: colors.grey[400],
+    borderRadius: 3,
   },
 });
 
