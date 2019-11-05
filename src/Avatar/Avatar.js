@@ -3,7 +3,6 @@ import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import colors from '../util/colors';
 const DEFAULT_SIZE = 16;
-import shad from '../util/shad.jpg';
 
 const Avatar = (props) => {
   const containerSize = props.size ? { width: props.size * 4 } : {};
@@ -19,7 +18,11 @@ const Avatar = (props) => {
     >
       <View style={StyleSheet.flatten([styles.roundView, roundSize, squareView, props.style])}>
         {props.source ?
-          <Image source={props.source || shad} resizeMode="contain" style={styles.image} /> :
+          <Image
+            source={props.source || { uri: 'https://github.com/iamshadmirza.png' }}
+            resizeMode="contain"
+            style={styles.image}
+          /> :
           <Text style={StyleSheet.flatten([styles.title, textSize, props.textStyle])}>
             {props.title || 'MD'}
           </Text>
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    backgroundColor: colors.grey[300],
+    backgroundColor: colors.grey[400],
     borderRadius: DEFAULT_SIZE * 2,
     justifyContent: 'center',
     alignItems: 'center',
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
   },
   editView: {
     position: 'absolute',
-    backgroundColor: colors.grey[500],
+    backgroundColor: colors.grey[600],
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 3,

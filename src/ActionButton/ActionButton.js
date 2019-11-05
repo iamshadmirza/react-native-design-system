@@ -7,10 +7,10 @@ const ActionButton = (props) => {
   const buttonSize = props.size || 26;
   return (
     <TouchableOpacity
-      style={StyleSheet.flatten([ styles.container, buttonColor, props.style ])}
+      style={StyleSheet.flatten([styles.container, buttonColor, props.style])}
       onPress={props.onPress}
     >
-      <Feather name="plus" size={buttonSize} color="#fff" />
+      <Feather name="plus" size={buttonSize} color={props.iconColor || '#fff'} />
     </TouchableOpacity>
   );
 };
