@@ -7,6 +7,7 @@ import {
   I18nManager,
 } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import PropTypes from 'prop-types';
 
 // Visit https://github.com/kmagiera/react-native-gesture-handler to learn how to use this component
 
@@ -87,6 +88,27 @@ const withSwipeableStyle = (Component) => {
       );
     }
   };
+};
+
+withSwipeableStyle.propTypes = {
+  friction: PropTypes.number,
+  leftThreshold: PropTypes.number,
+  rightThreshold: PropTypes.number,
+  overshootLeft: PropTypes.bool,
+  overshootRight: PropTypes.bool,
+  overshootFriction: PropTypes.number,
+  onSwipeableLeftOpen: PropTypes.func,
+  onSwipeableLeftWillOpen: PropTypes.func,
+  onSwipeableRightOpen: PropTypes.func,
+  onSwipeableRightWillOpen: PropTypes.func,
+  onSwipeableOpen: PropTypes.func,
+  onSwipeableWillOpen: PropTypes.func,
+  onSwipeableClose: PropTypes.func,
+  onSwipeableWillClose: PropTypes.func,
+  renderLeftActions: PropTypes.element,
+  renderRightAction: PropTypes.element,
+  containerStyle: PropTypes.object,
+  childrenContainerStyle: PropTypes.object,
 };
 
 

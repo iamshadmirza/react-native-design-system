@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
   const rowStyle = props.row ? styles.alignRow : {};
@@ -8,6 +9,12 @@ const Card = (props) => {
       {props.children}
     </View>
   );
+};
+
+Card.propTypes = {
+  row: PropTypes.bool,
+  style: PropTypes.object,
+  children: PropTypes.element.isRequired,
 };
 
 const styles = StyleSheet.create({

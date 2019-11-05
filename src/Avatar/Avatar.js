@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import colors from '../util/colors';
 const DEFAULT_SIZE = 16;
@@ -19,12 +20,12 @@ const Avatar = (props) => {
       <View style={StyleSheet.flatten([styles.roundView, roundSize, squareView, props.style])}>
         {props.source ?
           <Image
-            source={props.source || { uri: 'https://github.com/iamshadmirza.png' }}
+            source={props.source}
             resizeMode="contain"
             style={styles.image}
           /> :
           <Text style={StyleSheet.flatten([styles.title, textSize, props.textStyle])}>
-            {props.title || 'MD'}
+            {props.title}
           </Text>
         }
       </View>
@@ -42,6 +43,26 @@ const Avatar = (props) => {
         </View> : null}
     </TouchableOpacity>
   );
+};
+
+Avatar.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  title: PropTypes.string,
+  source: PropTypes.object,
+  editable: PropTypes.bool,
+  onPress: PropTypes.func,
+  size: PropTypes.number,
+  square: PropTypes.bool,
+  editIconStyle: PropTypes.object,
+  editIconColor: PropTypes.string,
+  badge: PropTypes.elementType,
+  badgeStyle: PropTypes.object,
+};
+
+Avatar.defaultProps = {
+  title: 'MD',
+  editable: false,
 };
 
 const styles = StyleSheet.create({

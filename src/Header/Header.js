@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, TouchableOpacity,Text, StyleSheet, Platform } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
+import PropTypes from 'prop-types';
 
 const Header = (props) => {
   const textPlacement = props.textAlign ? { textAlign: props.textAlign } : {};
@@ -8,24 +9,44 @@ const Header = (props) => {
   return (
     <View style={StyleSheet.flatten([styles.container, heightStyle, colorStyle, props.style])}>
       {props.leftIcon &&
-      <TouchableOpacity style={[styles.iconStyle, props.iconStyle]}>
-        {props.leftIcon}
-      </TouchableOpacity>}
+        <TouchableOpacity onPress={props.onLeftIconPress} style={[styles.iconStyle, props.iconStyle]}>
+          {props.leftIcon}
+        </TouchableOpacity>}
       <Text style={StyleSheet.flatten([styles.text, textPlacement, props.textStyle])}>
         {props.children}
       </Text>
       {props.rightIcon &&
-      <TouchableOpacity style={[styles.iconStyle, props.iconStyle]}>
-        {props.rightIcon}
-      </TouchableOpacity>}
+        <TouchableOpacity onPress={props.onRightIconPress} style={[styles.iconStyle, props.iconStyle]}>
+          {props.rightIcon}
+        </TouchableOpacity>}
     </View>
   );
 };
 
+Header.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
+  children: PropTypes.string,
+  color: PropTypes.string,
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  leftIcon: PropTypes.element,
+  onleftIconPress: PropTypes.func,
+  rightIcon: PropTypes.element,
+  onRightIconPress: PropTypes.func,
+  iconStyle: PropTypes.object,
+};
+
+Header.defaultProps = {
+  children: 'Home',
+  textAlign: Platform.OS === 'android' ? 'left' : 'center',
+};
+
 const styles = StyleSheet.create({
   container: {
-    elevation: 1,
-    backgroundColor: '#000',
+    elevation: 3,
+    backgroundColor: '#333',
+    width: '100%',
     height: Platform.OS === 'android' ? 56 : 64,
     flexDirection: 'row',
     alignItems: 'center',
@@ -33,7 +54,7 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: 'bold',
     color: '#fff',
     paddingHorizontal: 10,
   },

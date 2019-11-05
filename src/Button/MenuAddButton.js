@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 import colors from '../util/colors';
 
 const MenuAddButton = (props) => {
@@ -24,7 +25,7 @@ const MenuAddButton = (props) => {
             activeOpacity={0.5}
             onPress={props.onDecrement}
             style={styles.icon}>
-            {props.minusIcon || <MaterialIcons name="remove" color={props.iconColor || 'black'} size={16} />}
+            {props.minusIcon || <MaterialIcons name="remove" color={props.iconColor} size={16} />}
           </TouchableOpacity>
           <View style={styles.countView}>
             <Text style={[styles.text, colorStyle, props.textStyle]}>
@@ -35,13 +36,32 @@ const MenuAddButton = (props) => {
             activeOpacity={0.5}
             onPress={props.onIncrement}
             style={styles.icon}>
-            {props.plusIcon || <MaterialIcons name="add" color={props.iconColor || 'black'} size={16} />}
+            {props.plusIcon || <MaterialIcons name="add" color={props.iconColor} size={16} />}
           </TouchableOpacity>
         </View>
       }
 
     </View>
   );
+};
+
+MenuAddButton.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  count: PropTypes.number.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+  onDecrement: PropTypes.func.isRequired,
+  plusIcon: PropTypes.element,
+  minusIcon: PropTypes.element,
+  color: PropTypes.string,
+  iconColor: PropTypes.string,
+  disabled: PropTypes.bool,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
+
+MenuAddButton.defaultProps = {
+  iconColor: '#333',
+  count: 0,
 };
 
 const styles = StyleSheet.create({

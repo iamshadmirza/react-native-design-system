@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Modal } from 'react-native';
+import PropTypes from 'prop-types';
 
 const Overlay = (props) => {
   return (
@@ -11,6 +12,12 @@ const Overlay = (props) => {
       </View>
     </Modal>
   );
+};
+
+Overlay.propTypes = {
+  style: PropTypes.object,
+  overlayStyle: PropTypes.object,
+  children: PropTypes.element.isRequired,
 };
 
 const styles = StyleSheet.create({

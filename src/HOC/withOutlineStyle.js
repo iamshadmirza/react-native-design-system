@@ -8,8 +8,8 @@ const withOutlineStyle = Component => (props) => {
   return (
     <Component
       {...props}
-      style={[styles.outlineStyle, props.style, disabledStyle]}
-      textStyle={[styles.textStyle, props.textStyle, disabledTextStyle]}
+      style={StyleSheet.flatten([styles.outlineStyle, props.style, disabledStyle])}
+      textStyle={StyleSheet.flatten([styles.textStyle, props.textStyle, disabledTextStyle])}
       indicatorColor={props.indicatorColor || '#000'}>
       {props.children}
     </Component>

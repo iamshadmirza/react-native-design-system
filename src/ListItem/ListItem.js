@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import PropTypes from 'prop-types';
 import colors from '../util/colors';
 
 const ListItem = (props) => {
@@ -18,18 +19,41 @@ const ListItem = (props) => {
           {props.children}
         </Text>
         {props.subtitle &&
-        <Text style={StyleSheet.flatten([styles.subtitle, textPlacement, props.subtitleStyle])}>
-          {props.subtitle}
-        </Text>}
+          <Text style={StyleSheet.flatten([styles.subtitle, textPlacement, props.subtitleStyle])}>
+            {props.subtitle}
+          </Text>}
       </View>
       {props.rightIcon && <View style={[styles.iconStyle, props.iconStyle]}>
         {props.rightIcon}
       </View>}
       {props.chevron && <View style={[styles.iconStyle, props.iconStyle]}>
-        <Feather name="chevron-right" size={26} color={colors.grey[400]}  />
+        <Feather name="chevron-right" size={26} color={props.chevronColor} />
       </View>}
     </TouchableOpacity>
   );
+};
+
+ListItem.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  subtitleStyle: PropTypes.object,
+  textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
+  children: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  color: PropTypes.string,
+  size: PropTypes.number,
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  onPress: PropTypes.func.isRequired,
+  leftIcon: PropTypes.elementType,
+  rightIcon: PropTypes.elementType,
+  iconStyle: PropTypes.object,
+  chevron: PropTypes.bool,
+  chevronColor: PropTypes.string,
+};
+
+ListItem.defaultProps = {
+  children: 'List Item',
+  chevronColor: colors.grey[400],
 };
 
 const styles = StyleSheet.create({

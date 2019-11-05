@@ -1,27 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const renderIcon = (props) => {
-  if (props.checked){
-    return (
-      props.checkedIcon ||
-      <MaterialIcons
-        name="check-box"
-        size={props.size * 1.5 || 24}
-        color={props.color || '#000'}
-      />
-    );
-  } else {
-    return (
-      props.uncheckedIcon ||
-      <MaterialIcons
-        name="check-box-outline-blank"
-        size={props.size * 1.5 || 24}
-        color={props.color || '#000'}
-      />
-    );
-  }
+const renderIcon = ({ style, ...props }) => {
+  return (
+    <TouchableOpacity {...props}>
+      {props.checked ? (
+        props.checkedIcon ||
+        <MaterialIcons
+          name="check-box"
+          size={props.size * 1.2}
+          color={props.color}
+        />
+      ) : (
+          props.uncheckedIcon ||
+          <MaterialIcons
+            name="check-box-outline-blank"
+            size={props.size * 1.2}
+            color={props.color}
+          />
+        )}
+    </TouchableOpacity>
+  );
 };
 
 const CheckBox = (props) => {
@@ -37,16 +38,33 @@ const CheckBox = (props) => {
   );
 };
 
+CheckBox.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  children: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
+  iconRight: PropTypes.bool,
+  color: PropTypes.string,
+  size: PropTypes.number,
+  onPress: PropTypes.func.isRequired,
+  checkedIcon: PropTypes.elementType,
+  uncheckedIcon: PropTypes.elementType,
+};
+
+CheckBox.defaultProps = {
+  children: 'Pass text as children',
+  size: 16,
+  color: '#333',
+};
+
 const styles = StyleSheet.create({
   container: {
-    elevation: 1,
     flexDirection: 'row',
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    padding: 5,
     alignItems: 'center',
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     paddingHorizontal: 5,
     color: '#333',
   },

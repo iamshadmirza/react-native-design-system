@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const LeftAlign = (props) => {
   return (
@@ -7,6 +8,11 @@ const LeftAlign = (props) => {
       {props.children}
     </View>
   );
+};
+
+LeftAlign.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.element.isRequired,
 };
 
 const styles = StyleSheet.create({

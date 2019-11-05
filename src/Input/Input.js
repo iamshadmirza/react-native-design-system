@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import colors from '../util/colors';
 const DEFAULT_SIZE = 14;
+import PropTypes from 'prop-types';
 
 const Input = React.forwardRef((props, ref) => {
   const labelSize = props.size ? { fontSize: props.size * 0.8 } : {};
@@ -37,6 +38,28 @@ const Input = React.forwardRef((props, ref) => {
   );
 });
 
+Input.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  value: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  floatingLabel: PropTypes.bool,
+  label: PropTypes.string,
+  color: PropTypes.string,
+  round: PropTypes.bool,
+  outline: PropTypes.bool,
+  size: PropTypes.number,
+  disabled: PropTypes.bool,
+  leftIcon: PropTypes.element,
+  rightIcon: PropTypes.element,
+  labelStyle: PropTypes.object,
+};
+
+Input.defaultProps = {
+  placeholder: 'Type here',
+};
+
 const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
@@ -70,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   roundStyle: {
-    backgroundColor: colors.grey[300],
+    backgroundColor: colors.grey[200],
     borderBottomWidth: 0,
     borderRadius: 50,
   },

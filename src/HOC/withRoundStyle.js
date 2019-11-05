@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 const withRoundStyle = Component => (props) => {
   return (
-    <Component {...props} style={[styles.roundStyle, props.style]}>
+    <Component {...props} style={StyleSheet.flatten([styles.roundStyle, props.style])}>
       {props.children}
     </Component>
   );

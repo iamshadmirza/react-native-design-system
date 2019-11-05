@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const TextElement = (props) => {
   const sizeStyle = props.size ? { fontSize: props.size } : {};
@@ -9,6 +10,13 @@ const TextElement = (props) => {
       {props.children}
     </Text>
   );
+};
+
+TextElement.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.string.isRequired,
+  size: PropTypes.number,
+  color: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

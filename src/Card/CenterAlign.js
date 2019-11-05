@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const CenterAlign = (props) => {
   return (
@@ -7,6 +8,11 @@ const CenterAlign = (props) => {
       {props.children}
     </View>
   );
+};
+
+CenterAlign.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.element.isRequired,
 };
 
 const styles = StyleSheet.create({
