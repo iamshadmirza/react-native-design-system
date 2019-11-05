@@ -3,7 +3,7 @@ import { View, TextInput, Text, StyleSheet } from 'react-native';
 import colors from '../util/colors';
 const DEFAULT_SIZE = 14;
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
   const labelSize = props.size ? { fontSize: props.size * 0.8 } : {};
   const inputSize = props.size ?
     { fontSize: props.size, paddingVertical: props.size < 11 ? 0 : 5 } :
@@ -26,6 +26,7 @@ const Input = (props) => {
         <TextInput
           editable={!props.disabled}
           {...props}
+          ref={ref}
           style={StyleSheet.flatten([styles.input, inputSize])}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
@@ -34,7 +35,7 @@ const Input = (props) => {
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -75,6 +76,7 @@ const styles = StyleSheet.create({
   },
   outlineStyle: {
     borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: colors.grey[400],
     borderRadius: 3,
   },
