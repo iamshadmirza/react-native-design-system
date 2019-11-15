@@ -4,6 +4,7 @@ export * from './src/Badge';
 export * from './src/Button';
 export * from './src/Card';
 export * from './src/CheckBox';
+export * from './src/CircularProgressBar';
 export * from './src/FullScreenLoader';
 export * from './src/Header';
 export * from './src/Input';

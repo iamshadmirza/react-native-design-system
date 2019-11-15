@@ -57,6 +57,7 @@ npm run test
 - [x] [RightAlign](src/Card/RightAlign.js)
 - [x] [CenterAlign](src/Card/CenterAlign.js)
 - [x] [CheckBox](src/CheckBox/CheckBox.js)
+- [x] [CircularProgressBar](src/CircularProgressBar/CircularProgressBar.js)
 - [x] [Header](src/Header/Header.js)
 - [ ] [Image](src/)
 - [x] [Input](src/Input/Input.js)
