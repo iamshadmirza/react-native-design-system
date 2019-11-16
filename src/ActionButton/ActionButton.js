@@ -2,44 +2,53 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
+import withTheme from '../util/withTheme';
+
+const getContainerStyle = ({ theme, size }) => {
+  return {
+    ...styles.container,
+    backgroundColor: theme.brandColor.primary,
+    padding: theme.size[size],
+    borderRadius: theme.size[size] * 2,
+  };
+};
 
 const ActionButton = (props) => {
-  const buttonColor = props.color ? { backgroundColor: props.color } : {};
-  const buttonSize = props.size;
   return (
     <TouchableOpacity
-      style={StyleSheet.flatten([styles.container, buttonColor, props.style])}
+      style={StyleSheet.flatten([getContainerStyle(props), props.style])}
       onPress={props.onPress}
     >
-      <Feather name="plus" size={buttonSize} color={props.iconColor} />
+      {props.icon ||
+        <Feather
+          name="plus"
+          size={props.theme.iconSize[props.size]}
+          color={props.iconColor || props.theme.brandColor.white} />
+      }
     </TouchableOpacity>
   );
 };
 
 ActionButton.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.number,
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   onPress: PropTypes.func.isRequired,
   iconColor: PropTypes.string,
+  icon: PropTypes.element,
   style: PropTypes.object,
 };
 
 ActionButton.defaultProps = {
-  iconColor: '#fff',
-  size: 26,
+  size: 'medium',
 };
 
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     elevation: 3,
-    padding: 15,
     aspectRatio: 1,
-    backgroundColor: 'orange',
-    borderRadius: 75,
     bottom: 25,
     right: 25,
   },
 });
 
-export default ActionButton;
+export default withTheme(ActionButton);
