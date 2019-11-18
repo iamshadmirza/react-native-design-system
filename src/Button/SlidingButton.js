@@ -1,4 +1,4 @@
-import SolidButton from './SolidButton';
+import Button from './Button';
 import withSwipeableStyle from '../HOC/withSwipeableStyle';
 
-export default withSwipeableStyle(SolidButton);
+export default withSwipeableStyle(Button);

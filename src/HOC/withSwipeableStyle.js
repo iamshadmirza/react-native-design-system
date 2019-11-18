@@ -115,7 +115,7 @@ withSwipeableStyle.propTypes = {
 const styles = StyleSheet.create({
   leftAction: {
     flex: 1,
-    backgroundColor: '#497AFC',
+    backgroundColor: '#00bfa5',
     justifyContent: 'center',
   },
   actionText: {

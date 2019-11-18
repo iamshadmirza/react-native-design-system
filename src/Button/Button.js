@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
+    minWidth: 150,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

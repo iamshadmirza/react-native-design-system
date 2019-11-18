@@ -1,12 +1,16 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import withTheme from '../util/withTheme';
 
 const TextElement = (props) => {
-  const sizeStyle = props.size ? { fontSize: props.size } : {};
-  const colorStyle = props.color ? { color: props.color } : {};
+  const themeStyle = {
+    color: props.theme.textColor[props.color],
+    fontSize: props.theme.fontSize[props.size],
+  };
+
   return (
-    <Text style={StyleSheet.flatten([styles.text, sizeStyle, colorStyle, props.style])}>
+    <Text style={StyleSheet.flatten([themeStyle, props.style])}>
       {props.children}
     </Text>
   );
@@ -15,15 +19,13 @@ const TextElement = (props) => {
 TextElement.propTypes = {
   style: PropTypes.object,
   children: PropTypes.string.isRequired,
-  size: PropTypes.number,
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   color: PropTypes.string,
 };
 
-const styles = StyleSheet.create({
-  container: {
-    fontSize: 16,
-    color: '#333',
-  },
-});
+TextElement.defaultStyle = {
+  color: 'default',
+  size: 'medium',
+};
 
-export default TextElement;
+export default withTheme(TextElement);
