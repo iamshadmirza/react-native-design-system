@@ -29,13 +29,13 @@ const theme = {
     'xxlarge': 36,
   },
   avatarSize: {
-    'xxsmall': 14,
-    'xsmall': 16,
-    'small': 18,
-    'medium': 20,
-    'large': 24,
-    'xlarge': 28,
-    'xxlarge': 32,
+    'xxsmall': 60,
+    'xsmall': 70,
+    'small': 80,
+    'medium': 90,
+    'large': 110,
+    'xlarge': 120,
+    'xxlarge': 140,
   },
   space: {
     'xxsmall': 2,
@@ -56,8 +56,10 @@ const theme = {
   brandColor: {
     'primary': colors.blue[600],
     'secondary': colors.blue[100],
+    'tertiary': colors.yellow.A200,
     'disabled': colors.bluegrey[100],
     'white': colors.blue[50],
+    'clearWhite': colors.bluegrey[50],
   },
 };
 
