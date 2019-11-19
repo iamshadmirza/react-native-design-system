@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity, TouchableNativeFeedback, Platform, View, Text, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import withTheme from '../util/withTheme';
@@ -48,24 +48,24 @@ const getTitleStyle = ({ theme, size }) => {
 };
 
 const Avatar = (props) => {
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <View style={StyleSheet.flatten([styles.propView, { width: props.theme.avatarSize[props.size] }])}>
-      <TouchableOpacity
-        disabled={!props.editable}
-        {...props}
-        style={StyleSheet.flatten([getContainerStyle(props), props.style])}
-      >
-        {props.source ?
-          <Image
-            source={props.source}
-            resizeMode="cover"
-            style={styles.image}
-          /> :
-          <Text style={StyleSheet.flatten([getTitleStyle(props), props.textStyle])}>
-            {props.title}
-          </Text>
-        }
-      </TouchableOpacity>
+      <TouchableElement disabled={!props.editable} {...props}>
+        <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+          {props.source ?
+            <Image
+              source={props.source}
+              resizeMode="cover"
+              style={styles.image}
+            /> :
+            <Text style={StyleSheet.flatten([getTitleStyle(props), props.textStyle])}>
+              {props.title}
+            </Text>
+          }
+        </View>
+      </TouchableElement>
       {props.editable &&
         <View style={StyleSheet.flatten([getEditIconStyle(props), props.editIconStyle])}>
           <Feather
