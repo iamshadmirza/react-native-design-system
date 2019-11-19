@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const renderIcon = ({ style, ...props }) => {
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableOpacity {...props}>
+    <TouchableElement {...props}>
       {props.checked ? (
         props.checkedIcon ||
         <MaterialIcons
@@ -21,7 +23,7 @@ const renderIcon = ({ style, ...props }) => {
             color={props.color}
           />
         )}
-    </TouchableOpacity>
+    </TouchableElement>
   );
 };
 

@@ -15,7 +15,7 @@
   </a>
 </p>
 
-> A reusabale cross-plateform component library for react-native.
+> A reusable cross platform component library for react-native.
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/react-native-design-system#readme)
 
@@ -60,6 +60,9 @@ npm run test
 - [x] [SlidingListItem](src/SlidingListItem/SlidingListItem.js)
 - [x] [FullScreenLoader](src/FullScreenLoader/FullScreenLoader.js)
 - [x] [Overlay](src/Overlay/Overlay.js)
+- [x] [Box](src/Box/Box.js)
+- [x] [Stack](src/Stack/Stack.js)
+- [x] [Inline](src/Inline/Inline.js)
 - [ ] [Pricing](src/)
 - [ ] [Rating](src/)
 - [x] [SearchBar](src/SearchBar/SearchBar.js)

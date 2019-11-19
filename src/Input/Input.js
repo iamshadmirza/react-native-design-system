@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 5,
     borderBottomWidth: 1,
     borderBottomColor: colors.grey[400],
   },
