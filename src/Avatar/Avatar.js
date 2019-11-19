@@ -5,14 +5,29 @@ import Feather from 'react-native-vector-icons/Feather';
 import withTheme from '../util/withTheme';
 
 const getContainerStyle = ({ theme, source, square, rounded, size }) => {
-  return {
-    ...styles.container,
+  const avatarStyle = [styles.container];
+  avatarStyle.push({
     backgroundColor: theme.brandColor.clearWhite,
-    padding: source ? 0 : theme.size[size],
+    padding: theme.size[size],
     width: theme.avatarSize[size],
-    borderRadius: square ? 0 :
-      rounded ? 10 : theme.avatarSize[size] * 2,
-  };
+    borderRadius: theme.avatarSize[size] * 2,
+  });
+  if (source) {
+    avatarStyle.push({
+      padding: 0,
+    });
+  }
+  if (square) {
+    avatarStyle.push({
+      borderRadius: 0,
+    });
+  }
+  if (rounded) {
+    avatarStyle.push({
+      borderRadius: 10,
+    });
+  }
+  return avatarStyle;
 };
 
 const getEditIconStyle = ({ theme, size }) => {

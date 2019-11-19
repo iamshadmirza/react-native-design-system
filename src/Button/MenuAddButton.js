@@ -1,46 +1,80 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableNativeFeedback, TouchableOpacity, Platform, Text, StyleSheet } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 import colors from '../util/colors';
+import withTheme from '../util/withTheme';
+
+const getContainerStyle = ({ theme, size, disabled }) => {
+  const buttonStyle = [styles.container];
+  buttonStyle.push({
+    width: theme.buttonWidth[size],
+  });
+  if (disabled) {
+    buttonStyle.push({
+      backgroundColor: theme.brandColor.disabled,
+      elevation: 0,
+    });
+  }
+  return buttonStyle;
+};
+
+const getTextStyle = ({ theme, size, disabled }) => {
+  const textStyle = [{
+    fontSize: theme.fontSize[size],
+    color: theme.textColor.default,
+  }];
+  if (disabled) {
+    textStyle.push({
+      color: theme.textColor.disabled,
+    });
+  }
+  return textStyle;
+};
 
 const MenuAddButton = (props) => {
-  const widthStyle = props.width ? { width: props.width } : {};
-  const disabledStyle = props.disabled ? styles.inactive : {};
-  const colorStyle = props.color ? { color: props.color } : {};
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={[styles.container, widthStyle, props.style, disabledStyle]}>
+    <View style={[getContainerStyle(props), props.style]}>
       {props.count === 0 || props.disabled ?
-        <TouchableOpacity
-          activeOpacity={0.5}
+        <TouchableElement
           disabled={props.disabled}
-          style={styles.primaryButton}
           onPress={props.onIncrement}>
-          <Text style={[styles.text, colorStyle, props.textStyle]}>
-            ADD
-          </Text>
-        </TouchableOpacity> :
+          <View style={styles.primaryButton}>
+            <Text style={[getTextStyle(props), props.textStyle]}>
+              ADD
+              </Text>
+          </View>
+        </TouchableElement> :
         <View style={styles.secondaryButton}>
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={props.onDecrement}
-            style={styles.icon}>
-            {props.minusIcon || <MaterialIcons name="remove" color={props.iconColor} size={16} />}
-          </TouchableOpacity>
+          <TouchableElement onPress={props.onDecrement}>
+            <View style={styles.icon}>
+              {props.minusIcon ||
+                <MaterialIcons
+                  name="remove"
+                  color={props.iconColor}
+                  size={props.theme.iconSize[props.size]}
+                />}
+            </View>
+          </TouchableElement>
           <View style={styles.countView}>
-            <Text style={[styles.text, colorStyle, props.textStyle]}>
+            <Text style={[getTextStyle(props), props.textStyle]}>
               {props.count}
             </Text>
           </View>
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={props.onIncrement}
-            style={styles.icon}>
-            {props.plusIcon || <MaterialIcons name="add" color={props.iconColor} size={16} />}
-          </TouchableOpacity>
+          <TouchableElement onPress={props.onIncrement}>
+            <View style={styles.icon}>
+              {props.plusIcon ||
+                <MaterialIcons
+                  name="add"
+                  color={props.iconColor}
+                  size={props.theme.iconSize[props.size]}
+                />}
+            </View>
+          </TouchableElement>
         </View>
       }
-
     </View>
   );
 };
@@ -53,34 +87,24 @@ MenuAddButton.propTypes = {
   onDecrement: PropTypes.func.isRequired,
   plusIcon: PropTypes.element,
   minusIcon: PropTypes.element,
-  color: PropTypes.string,
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
 };
 
 MenuAddButton.defaultProps = {
   iconColor: '#333',
   count: 0,
+  size: 'small',
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    elevation: 2,
-    width: 100,
+    elevation: 1,
     aspectRatio: 5 / 2,
     overflow: 'hidden',
-  },
-  inactive: {
-    backgroundColor: '#e0e0e0',
-    elevation: 0,
-  },
-  inactiveText: {
-    color: '#939393',
-    fontSize: 13,
-    fontStyle: 'italic',
   },
   primaryButton: {
     flex: 1,
@@ -97,16 +121,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    color: 'green',
-    fontSize: 14,
-  },
   countView: {
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.grey[300],
+    backgroundColor: colors.bluegrey[100],
   },
 });
 
-export default MenuAddButton;
+export default withTheme(MenuAddButton);
