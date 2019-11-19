@@ -19,6 +19,15 @@ const theme = {
     'xlarge': 20,
     'xxlarge': 22,
   },
+  buttonWidth: {
+    'xxsmall': 90,
+    'xsmall': 100,
+    'small': 120,
+    'medium': 140,
+    'large': 150,
+    'xlarge': 160,
+    'xxlarge': 180,
+  },
   iconSize: {
     'xxsmall': 16,
     'xsmall': 18,
@@ -60,7 +69,7 @@ const theme = {
     'background': '#f8f8f8',
     'disabled': colors.bluegrey[100],
     'white': colors.blue[50],
-    'clearWhite': colors.bluegrey[50],
+    'clearWhite': '#fff',
   },
 };
 
