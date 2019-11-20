@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import withTheme from '../util/withTheme';
 
-const getContainerStyle = ({ theme, size }) => {
+const getContainerStyle = ({ theme, size, color }) => {
   return {
     ...styles.container,
-    backgroundColor: theme.brandColor.primary,
-    padding: theme.size[size],
-    borderRadius: theme.size[size] * 2,
+    backgroundColor: theme.brandColor[color],
+    padding: theme.actionButtonSize[size],
+    borderRadius: theme.actionButtonSize[size] * 2,
   };
 };
 
@@ -33,12 +33,14 @@ ActionButton.propTypes = {
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   onPress: PropTypes.func.isRequired,
   iconColor: PropTypes.string,
+  color: PropTypes.string,
   icon: PropTypes.element,
   style: PropTypes.object,
 };
 
 ActionButton.defaultProps = {
   size: 'medium',
+  color: 'primary',
 };
 
 const styles = StyleSheet.create({

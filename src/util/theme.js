@@ -19,6 +19,15 @@ const theme = {
     'xlarge': 20,
     'xxlarge': 22,
   },
+  actionButtonSize: {
+    'xxsmall': 10,
+    'xsmall': 12,
+    'small': 14,
+    'medium': 16,
+    'large': 18,
+    'xlarge': 20,
+    'xxlarge': 22,
+  },
   buttonSize: {
     'xxsmall': 8,
     'xsmall': 10,
