@@ -1,23 +1,49 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-const DEFAULT_SIZE = 30;
+import withTheme from '../util/withTheme';
 
-const Badge = (props) => {
-  const colorStyle = props.color ? { backgroundColor: props.color } : {};
-  const miniStyle = props.mini ? { minWidth: 15, height: 15 } : {};
+const getContainerStyle = ({ theme, size, mini, color }) => {
+  const badgeStyle = [styles.container];
+  if (color) {
+    badgeStyle.push({
+      backgroundColor: theme.brandColor[color],
+    });
+  }
+  if (mini) {
+    badgeStyle.push({
+      aspectRatio: 1,
+      height: theme.miniBadgeSize[size],
+    });
+  }
+  return badgeStyle;
+};
+
+const getTextStyle = ({ theme, size }) => {
+  return {
+    color: '#fff',
+    fontSize: theme.badgeSize[size],
+    marginVertical: 5,
+    marginHorizontal: 10,
+  };
+}
+
+const Badge = ({ children, onPress, style, textStyle, ...props }) => {
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableOpacity
+    <TouchableElement
       {...props}
-      onPress={props.onPress}
-      style={StyleSheet.flatten([styles.container, props.style, miniStyle, colorStyle])}
-      disabled={props.onPress}
+      onPress={onPress}
+      disabled={!onPress}
     >
-      {props.mini ? null :
-        <Text style={StyleSheet.flatten([styles.text, props.textStyle])}>
-          {props.children}
-        </Text>}
-    </TouchableOpacity>
+      <View style={StyleSheet.flatten(StyleSheet.flatten([getContainerStyle(props), style]))}>
+        {props.mini ? null :
+          <Text style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+            {children}
+          </Text>}
+      </View>
+    </TouchableElement>
   );
 };
 
@@ -25,29 +51,24 @@ Badge.propTypes = {
   style: PropTypes.object,
   textStyle: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   mini: PropTypes.bool,
   onPress: PropTypes.func,
 };
 
 Badge.defaultProps = {
   children: 0,
+  color: 'primary',
+  size: 'small',
 };
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    backgroundColor: '#333',
-    minWidth: DEFAULT_SIZE,
-    height: DEFAULT_SIZE,
-    borderRadius: DEFAULT_SIZE / 2,
+    alignSelf: 'flex-start',
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    fontSize: 12,
-    paddingHorizontal: DEFAULT_SIZE / 4,
-    color: '#fff',
-  },
 });
 
-export default Badge;
+export default withTheme(Badge);
