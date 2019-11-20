@@ -3,15 +3,21 @@ import { View, Text, TouchableOpacity, TouchableNativeFeedback, Platform, StyleS
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
-const getTextStyle = ({ size, outline, disabled, theme }) => {
+const getTextStyle = ({ size, outline, loading, disabled, secondaryColor, theme, color }) => {
   const textStyle = [{
-    fontWeight: Platform.OS === 'android' ? '500' : '400',
+    fontWeight: Platform.OS === 'android' ? 'bold' : '400',
     fontSize: theme.fontSize[size],
+    margin: theme.buttonSize[size],
     color: theme.textColor.white,
   }];
   if (outline) {
     textStyle.push({
-      color: theme.brandColor.primary,
+      color: theme.brandColor[color],
+    });
+  }
+  if (loading && outline) {
+    textStyle.push({
+      color: theme.brandColor[secondaryColor],
     });
   }
   if (disabled) {
@@ -22,33 +28,40 @@ const getTextStyle = ({ size, outline, disabled, theme }) => {
   return textStyle;
 };
 
-const getContainerStyle = ({ outline, width, round, disabled, loading, size, type, theme }) => {
+const getContainerStyle = (props) => {
+  const { outline, width, round, disabled, loading, size, type, theme, color, secondaryColor } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
-    backgroundColor: theme.brandColor.primary,
-    padding: theme.size[size],
+    backgroundColor: theme.brandColor[color],
   });
   if (type === 'short') {
     buttonStyles.push({
-      width: width,
+      width: theme.buttonWidth[width],
     });
   }
   if (round) {
     buttonStyles.push({
-      borderRadius: theme.size[size] * 2,
+      borderRadius: theme.buttonSize[size] * 2,
     });
   }
   if (outline) {
     buttonStyles.push({
       borderWidth: 1,
       backgroundColor: theme.brandColor.white,
-      borderColor: theme.brandColor.primary,
+      borderColor: theme.brandColor[color],
     });
   }
   if (loading) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor.secondary,
+      borderWidth: 0,
+      backgroundColor: theme.brandColor[secondaryColor],
       elevation: 0,
+    });
+  }
+  if (loading && outline) {
+    buttonStyles.push({
+      backgroundColor: theme.brandColor.white,
+      borderWidth: StyleSheet.hairlineWidth,
     });
   }
   if (disabled) {
@@ -68,7 +81,7 @@ const renderChildren = (props) => {
       {props.loading &&
         <ActivityIndicator
           style={styles.iconStyle}
-          color={props.indicatorColor || props.theme.brandColor.white} />}
+          color={props.indicatorColor || props.theme.brandColor[props.color]} />}
       {props.icon &&
         <View style={styles.iconStyle}>
           {props.icon}
@@ -101,28 +114,31 @@ Button.propTypes = {
   children: PropTypes.string,
   indicatorColor: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  width: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   onPress: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
-  loading: PropTypes.bool,
+  color: PropTypes.string,
+  secondaryColor: PropTypes.string,
   round: PropTypes.bool,
   outline: PropTypes.bool,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
   icon: PropTypes.element,
   type: PropTypes.oneOf(['long', 'short']),
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Button.defaultProps = {
   children: 'Submit',
   size: 'medium',
   type: 'long',
-  width: 160,
+  width: 'medium',
+  color: 'primary',
+  secondaryColor: 'secondary',
 };
 
 const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
-    minWidth: 150,
     borderRadius: 2,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -130,7 +146,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   iconStyle: {
-    paddingRight: 10,
+    paddingRight: 5,
   },
 });
 

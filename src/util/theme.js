@@ -2,13 +2,13 @@ import colors from './colors';
 
 const theme = {
   fontSize: {
-    'xxsmall': 12,
-    'xsmall': 14,
-    'small': 16,
-    'medium': 18,
-    'large': 20,
-    'xlarge': 22,
-    'xxlarge': 24,
+    'xxsmall': 11,
+    'xsmall': 12.5,
+    'small': 14,
+    'medium': 16,
+    'large': 18,
+    'xlarge': 20,
+    'xxlarge': 22,
   },
   size: {
     'xxsmall': 10,
@@ -19,14 +19,23 @@ const theme = {
     'xlarge': 20,
     'xxlarge': 22,
   },
+  buttonSize: {
+    'xxsmall': 8,
+    'xsmall': 10,
+    'small': 12,
+    'medium': 14,
+    'large': 16,
+    'xlarge': 18,
+    'xxlarge': 20,
+  },
   buttonWidth: {
     'xxsmall': 90,
     'xsmall': 100,
     'small': 120,
     'medium': 140,
-    'large': 150,
-    'xlarge': 160,
-    'xxlarge': 180,
+    'large': 170,
+    'xlarge': 200,
+    'xxlarge': 220,
   },
   iconSize: {
     'xxsmall': 16,
