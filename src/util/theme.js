@@ -75,9 +75,9 @@ const theme = {
   },
   space: {
     'none': 0,
-    'xxsmall': 2,
+    'xxsmall': 2.5,
     'xsmall': 4,
-    'small': 5,
+    'small': 6,
     'medium': 7.5,
     'large': 10,
     'xlarge': 15,

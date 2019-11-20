@@ -3,42 +3,33 @@ import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
-const getChildrenStyle = ({ theme, space }) => {
-  const childStyle = [{
-    margin: theme.space[space],
-  }];
-  return childStyle;
+const getContainerStyle = ({ theme, space, background }) => {
+  return {
+    padding: theme.space[space],
+    background: theme.brandColor[background],
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
 };
 
 const Box = (props) => {
   return (
-    <View style={StyleSheet.flatten([styles.container, props.style])}>
-      {React.Children.toArray(props.children).map((item, index) => (
-        <View style={getChildrenStyle(props)} key={index}>
-          {item}
-        </View>
-      ))}
+    <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+      {props.children}
     </View>
   );
 };
 
 Box.propTypes = {
   style: PropTypes.object,
-  space: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  background: PropTypes.background,
+  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
 };
 
 Box.defaultProps = {
-  space: 'small',
+  space: 'medium',
+  background: 'clearWhite',
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexGrow: 1,
-    flexWrap: 'wrap',
-  },
-});
 
 export default withTheme(Box);

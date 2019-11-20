@@ -3,10 +3,15 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
-const getChildrenStyle = ({ theme, space }) => {
+const getChildrenStyle = ({ theme, space }, index) => {
   const childStyle = [{
-    margin: theme.space[space],
+    marginBottom: theme.space[space],
   }];
+  if (index === 0) {
+    childStyle.push({
+      marginTop: theme.space[space],
+    });
+  }
   return childStyle;
 };
 
@@ -14,7 +19,7 @@ const Stack = (props) => {
   return (
     <View style={props.style}>
       {React.Children.toArray(props.children).map((item, index) => (
-        <View style={getChildrenStyle(props)} key={index}>
+        <View style={getChildrenStyle(props, index)} key={index}>
           {item}
         </View>
       ))}
@@ -24,7 +29,7 @@ const Stack = (props) => {
 
 Stack.propTypes = {
   style: PropTypes.object,
-  space: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
 };
 

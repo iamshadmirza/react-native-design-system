@@ -57,7 +57,7 @@ const Card = (props) => {
 Card.propTypes = {
   row: PropTypes.bool,
   style: PropTypes.object,
-  space: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
   horizontal: PropTypes.bool,
   vertical: PropTypes.bool,
