@@ -106,6 +106,7 @@ const theme = {
     'background': '#f8f8f8',
     'disabled': colors.bluegrey[100],
     'white': colors.blue[50],
+    'semitransparent': 'rgba(0, 0, 0, 0.3)',
     'clearWhite': '#fff',
   },
 };
