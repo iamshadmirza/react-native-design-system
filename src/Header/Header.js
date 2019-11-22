@@ -3,7 +3,6 @@ import { View, TouchableOpacity, TouchableNativeFeedback, Text, StyleSheet, Plat
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
-
 const getContainerStyle = ({ theme, color }) => {
   const headerStyle = [styles.container];
   headerStyle.push({

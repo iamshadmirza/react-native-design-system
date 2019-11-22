@@ -1,38 +1,86 @@
 import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import colors from '../util/colors';
-const DEFAULT_SIZE = 14;
 import PropTypes from 'prop-types';
+import withTheme from '../util/withTheme';
+
+const getContainerStyle = ({ theme, round, color, outline, background }) => {
+  const inputContainerStyle = [styles.container];
+  inputContainerStyle.push({
+    borderBottomColor: theme.brandColor[color],
+  });
+  if (outline) {
+    inputContainerStyle.push({
+      borderWidth: 1,
+      borderColor: theme.brandColor[color],
+      borderRadius: 5,
+    });
+  }
+  if (round) {
+    inputContainerStyle.push({
+      backgroundColor: theme.brandColor[background],
+      borderBottomWidth: 0,
+      borderRadius: 50,
+    });
+  }
+  if (outline && round) {
+    inputContainerStyle.push({
+      borderWidth: 1,
+      borderBottomWidth: 1,
+    });
+  }
+  return inputContainerStyle;
+};
+
+const getInputStyle = ({ theme, size, textColor }) => {
+  const inputStyle = [styles.input];
+  inputStyle.push({
+    fontSize: theme.fontSize[size],
+    marginVertical: 0,
+    color: theme.textColor[textColor],
+  });
+  return inputStyle;
+};
+
+const getLabelStyle = ({ theme, size, labelColor, value }) => {
+  const labelStyle = [{
+    fontSize: theme.fontSize[size] * 0.8,
+    paddingHorizontal: 10,
+    color: theme.textColor[labelColor],
+  }];
+  if (value.length === 0) {
+    labelStyle.push({
+      display: 'none',
+    });
+  }
+  return labelStyle;
+};
 
 const Input = React.forwardRef((props, ref) => {
-  const labelSize = props.size ? { fontSize: props.size * 0.8 } : {};
-  const inputSize = props.size ?
-    { fontSize: props.size, paddingVertical: props.size < 11 ? 0 : 5 } :
-    {};
-  const floatingStyle = props.floatingLabel && props.value.length === 0 ?
-    { display: 'none' } :
-    {};
-  const colorStyle = props.color ? { borderBottomColor: props.color } : {};
-  const roundStyle = props.round ? styles.roundStyle : {};
-  const outlineStyle = props.outline ? styles.outlineStyle : {};
   return (
     <View style={props.containerStyle}>
       {props.label &&
-        <Text style={StyleSheet.flatten([styles.label, props.labelStyle, floatingStyle, labelSize])}>
+        <Text style={StyleSheet.flatten([getLabelStyle(props), props.labelStyle])}>
           {props.label}
         </Text>}
-      <View style={[styles.inputContainer, roundStyle, outlineStyle, colorStyle, props.style]}>
+      <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
         {props.leftIcon &&
-          <View style={styles.leftIcon}>{props.leftIcon}</View>}
+          <View style={styles.leftIcon}>
+            {props.leftIcon}
+          </View>
+        }
         <TextInput
           editable={!props.disabled}
           {...props}
           ref={ref}
-          style={StyleSheet.flatten([styles.input, inputSize])}
+          style={getInputStyle(props)}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
         {props.rightIcon &&
-          <View style={styles.rightIcon}>{props.rightIcon}</View>}
+          <View style={styles.rightIcon}>
+            {props.rightIcon}
+          </View>
+        }
       </View>
     </View>
   );
@@ -41,45 +89,44 @@ const Input = React.forwardRef((props, ref) => {
 Input.propTypes = {
   style: PropTypes.object,
   textStyle: PropTypes.object,
+  textColor: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   floatingLabel: PropTypes.bool,
+  labelStyle: PropTypes.object,
+  labelColor: PropTypes.string,
   label: PropTypes.string,
   color: PropTypes.string,
   round: PropTypes.bool,
   outline: PropTypes.bool,
-  size: PropTypes.number,
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   disabled: PropTypes.bool,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
-  labelStyle: PropTypes.object,
+  background: PropTypes.string,
 };
 
 Input.defaultProps = {
   placeholder: 'Type here',
+  textColor: 'default',
+  color: 'outline',
+  size: 'medium',
+  labelColor: 'subtle',
+  background: 'grey',
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {
+  container: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: colors.grey[400],
+    borderBottomWidth: 0.5,
   },
   input: {
     flex: 1,
     padding: 5,
-    borderRadius: 3,
     paddingVertical: 7.5,
     paddingHorizontal: 15,
-    fontSize: DEFAULT_SIZE,
-    color: '#333333',
-  },
-  label: {
-    fontSize: DEFAULT_SIZE * 0.8,
-    paddingHorizontal: 10,
-    color: '#666666',
   },
   leftIcon: {
     paddingLeft: 10,
@@ -91,17 +138,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  roundStyle: {
-    backgroundColor: colors.grey[200],
-    borderBottomWidth: 0,
-    borderRadius: 50,
-  },
-  outlineStyle: {
-    borderWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: colors.grey[400],
-    borderRadius: 3,
-  },
 });
 
-export default Input;
+export default withTheme(Input);
