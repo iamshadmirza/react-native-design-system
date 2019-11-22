@@ -7,6 +7,8 @@ const TextElement = (props) => {
   const themeStyle = {
     color: props.theme.textColor[props.color],
     fontSize: props.theme.fontSize[props.size],
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   };
 
   return (
@@ -23,7 +25,7 @@ TextElement.propTypes = {
   color: PropTypes.string,
 };
 
-TextElement.defaultStyle = {
+TextElement.defaultProps = {
   color: 'default',
   size: 'medium',
 };

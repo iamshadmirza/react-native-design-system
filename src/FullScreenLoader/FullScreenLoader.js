@@ -9,6 +9,7 @@ const FullScreenLoader = (props) => {
     return (
       <View style={StyleSheet.flatten([styles.container, background, props.style])}>
         <ActivityIndicator color={props.theme.brandColor[props.indicatorColor]} size={props.size} />
+        {props.children}
       </View>
     );
   } else {
@@ -19,6 +20,7 @@ const FullScreenLoader = (props) => {
 FullScreenLoader.propTypes = {
   loading: PropTypes.bool.isRequired,
   style: PropTypes.object,
+  children: PropTypes.element,
   indicatorColor: PropTypes.string,
   background: PropTypes.string,
   size: PropTypes.oneOf(['small', 'large']),

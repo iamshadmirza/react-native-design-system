@@ -16,6 +16,14 @@
     "url": "https://github.com/iamshadmirza/react-native-design-system/issues"
   },
   "homepage": "https://github.com/iamshadmirza/react-native-design-system#readme",
+  "keywords": [
+    "react-native",
+    "design-system",
+    "ui",
+    "ui-library",
+    "cross-platform",
+    "reusable"
+  ],
   "dependencies": {
     "prop-types": "^15.7.2"
   },
