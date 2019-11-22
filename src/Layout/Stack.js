@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
-const getChildrenStyle = ({ theme, space }, index) => {
+const getChildrenStyle = ({ theme, space, horizontalSpace }, index) => {
   const childStyle = [{
     marginBottom: theme.space[space],
   }];
@@ -11,6 +11,12 @@ const getChildrenStyle = ({ theme, space }, index) => {
     childStyle.push({
       marginTop: theme.space[space],
     });
+  }
+  if (horizontalSpace) {
+    childStyle.push({
+      marginHorizontal: theme.space[horizontalSpace],
+
+    })
   }
   return childStyle;
 };
@@ -30,11 +36,13 @@ const Stack = (props) => {
 Stack.propTypes = {
   style: PropTypes.object,
   space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  horizontalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
 };
 
 Stack.defaultProps = {
   space: 'medium',
+  horizontalSpace: 'none',
 };
 
 export default withTheme(Stack);
