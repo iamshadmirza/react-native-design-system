@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
-import colors from '../util/colors';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
@@ -12,6 +11,7 @@ const getContainerStyle = ({ theme, round, color, outline, background }) => {
   if (outline) {
     inputContainerStyle.push({
       borderWidth: 1,
+      borderBottomWidth: 1,
       borderColor: theme.brandColor[color],
       borderRadius: 5,
     });

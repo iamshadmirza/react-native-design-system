@@ -3,16 +3,18 @@ import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
-const TextElement = (props) => {
-  const themeStyle = {
-    color: props.theme.textColor[props.color],
-    fontSize: props.theme.fontSize[props.size],
+const getTextStyle = ({ theme, color, size }) => {
+  return {
+    color: theme.textColor[color],
+    fontSize: theme.fontSize[size],
     includeFontPadding: false,
     textAlignVertical: 'center',
   };
+};
 
+const TextElement = (props) => {
   return (
-    <Text style={StyleSheet.flatten([themeStyle, props.style])}>
+    <Text style={StyleSheet.flatten([getTextStyle(props), props.style])}>
       {props.children}
     </Text>
   );

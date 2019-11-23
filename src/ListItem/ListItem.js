@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import Avatar from '../Avatar/Avatar';
+import { Avatar } from '../Avatar';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
