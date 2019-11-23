@@ -3,12 +3,12 @@ id: avatar
 title: Avatar
 ---
 # Avatar
-Avatar serves as an identity for different users. It can container Image or text as name initials.
+Avatar serves as an identity for different users. It can be a container Image or text as name initials.
 
 ## Usage
 
 ```javascript
-import { Avatar } from 'rn-shadow-component';
+import { Avatar } from 'react-native-design-system';
 
 <Avatar
   onPress={() => {}}
@@ -49,7 +49,7 @@ import { Avatar } from 'rn-shadow-component';
 - [`editIconStyle`](#editIconStyle)
 - [`onPress`](#onpress)
 - [`square`](#square)
-- [`badge`](#badge)
+- [`rounded`](#rounded)
 
 ## Reference
 
@@ -69,7 +69,7 @@ style prop for title
 style of Avatar
 |  Type  | Default | Required |
 | :----: | :-----: | :-----: |
-| Number | 16 | No |
+| string | 'medium | No
 
 ### editIconColor
 color for edit icon
@@ -113,9 +113,9 @@ makes the Avatar square
 | :----: | :-----: | :-----: |
 | Boolean | false | No |
 
-### badge
-Pass <Badge /> to show at top right. Helpful to show online status or message count
+### rounded
+adds rounded borders
 |  Type  | Default | Required |
 | :----: | :-----: | :-----: |
-| <Badge /> | null | No |
+| Boolean | false | No |
 

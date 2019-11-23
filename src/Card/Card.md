@@ -8,35 +8,35 @@ Cards are wrapper component with a small padding. It included center, left and r
 ## Usage
 
 ```javascript
-import { Card, LeftAlign, RightAlign, CenterAlign SolidButton } from 'rn-shadow-component';
+import { Card, Button } from 'react-native-design-system';
 
 //default card
 <Card>
-  <SolidButton>
+  <Button>
     CLICK
-  </SolidButton>
+  </Button>
 </Card>
 
 //aligns children to left
-<LeftAlign>
-  <SolidButton>
+<Card left>
+  <Button>
     CLICK
-  </SolidButton>
-</LeftAlign>
+  </Button>
+</Card>
 
 //aligns children to right
-<RightAlign>
-  <SolidButton>
+<Card right>
+  <Button>
     CLICK
-  </SolidButton>
-</RightAlign>
+  </Button>
+</Card>
 
 //aligns children to center
-<CenterAlign>
-  <SolidButton>
+<Card center>
+  <Button>
     CLICK
-  </SolidButton>
-</CenterAlign>
+  </Button>
+</Card>
 
 ```
 
@@ -46,7 +46,13 @@ import { Card, LeftAlign, RightAlign, CenterAlign SolidButton } from 'rn-shadow-
 ## Props
 
 - [`style`](#style)
+- [`space`](#space)
 - [`row`](#row)
+- [`center`](#center)
+- [`left`](#left)
+- [`right`](#right)
+- [`horizontal`](#horizontal)
+- [`vertical`](#vertical)
 
 ## Reference
 
@@ -56,8 +62,14 @@ style prop for container
 | :----: | :-----: |
 | object (style) |  No |
 
+### space
+padding for Card view
+|  Type  | Required | Options |
+| :----: | :-----: | :-----: |
+| sring |  No | ['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']|
+
 ### row
-makes `flexDirection: 'row'`
+aligns childrens in row
 |  Type  | Required |
 | :----: | :-----: |
 | object (style) |  No |
@@ -68,16 +80,34 @@ Text to render inside badge
 | :----: | :-----: | :-----: |
 | Text | null | Yes |
 
-### mini
-enable mini badge, helps in showing online status
+### center
+center aligns children
 |  Type  | Default | Required |
 | :----: | :-----: | :-----: |
 | Boolean | `false` | No |
 
-### onPress
-function to call when presses (only works if editable is set to `true`)
+### left
+left aligns children
 |  Type  | Default | Required |
 | :----: | :-----: | :-----: |
-| function | none | No |
+| Boolean | `false` | No |
+
+### right
+right aligns children
+|  Type  | Default | Required |
+| :----: | :-----: | :-----: |
+| Boolean | `false` | No |
+
+### horizontal
+horizontal keps horizontal padding only
+|  Type  | Default | Required |
+| :----: | :-----: | :-----: |
+| Boolean | `false` | No |
+
+### vertical
+vertical keeps vertical padding only
+|  Type  | Default | Required |
+| :----: | :-----: | :-----: |
+| Boolean | `false` | No |
 
 

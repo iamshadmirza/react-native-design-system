@@ -8,11 +8,11 @@ Badges are small components typically used to communicate a numerical value or i
 ## Usage
 
 ```javascript
-import { Badge } from 'rn-shadow-component';
+import { Badge } from 'react-native-design-system';
 
 <Badge>12</Badge>
-<Badge color="red">15000</Badge>
-<Badge mini color="green" />
+<Badge color="tertiary">15000</Badge>
+<Badge mini color="primary" />
 
 ```
 
