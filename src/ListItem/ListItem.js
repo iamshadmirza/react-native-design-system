@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import Avatar from '../Avatar/Avatar';
 import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
@@ -33,16 +34,50 @@ const getSubtitleStyle = ({ theme, size, subtitleColor, textAlign }) => {
   };
 };
 
+const renderLeftChild = ({ avatarSource, leftIcon, iconStyle }) => {
+  if (avatarSource) {
+    return (
+      <Avatar source={avatarSource} size="xxsmall" />
+    );
+  }
+  if (leftIcon) {
+    return (
+      <View style={StyleSheet.flatten([styles.iconStyle, iconStyle])}>
+        {leftIcon}
+      </View>
+    );
+  }
+  return null;
+};
+
+const renderRightChild = ({ chevron, rightIcon, iconStyle, theme, size, chevronColor }) => {
+  return (
+    <>
+      {rightIcon &&
+        <View style={StyleSheet.flatten([styles.iconStyle, iconStyle])}>
+          {rightIcon}
+        </View>
+      }
+      {chevron &&
+        <View style={StyleSheet.flatten([styles.iconStyle, iconStyle])}>
+          <Feather
+            name="chevron-right"
+            size={theme.iconSize[size]}
+            color={theme.brandColor[chevronColor]}
+          />
+        </View>
+      }
+    </>
+  );
+};
+
+
 const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
       <View style={StyleSheet.flatten([getContainerStyle(props), style])}>
-        {props.leftIcon &&
-          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
-            {props.leftIcon}
-          </View>
-        }
+        {renderLeftChild(props)}
         <View style={styles.textView}>
           <Text style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
             {props.children}
@@ -53,20 +88,7 @@ const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
             </Text>
           }
         </View>
-        {props.rightIcon &&
-          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
-            {props.rightIcon}
-          </View>
-        }
-        {props.chevron &&
-          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
-            <Feather
-              name="chevron-right"
-              size={props.theme.iconSize[props.size]}
-              color={props.theme.brandColor[props.chevronColor]}
-            />
-          </View>
-        }
+        {renderRightChild(props)}
       </View>
     </TouchableElement>
   );
@@ -87,6 +109,7 @@ ListItem.propTypes = {
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   space: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   onPress: PropTypes.func.isRequired,
+  avatarSource: PropTypes.object,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
   chevron: PropTypes.bool,

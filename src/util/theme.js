@@ -56,8 +56,8 @@ const theme = {
     'xxlarge': 36,
   },
   avatarSize: {
-    'xxsmall': 60,
-    'xsmall': 70,
+    'xxsmall': 40,
+    'xsmall': 60,
     'small': 80,
     'medium': 90,
     'large': 110,
