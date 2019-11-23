@@ -82,6 +82,15 @@ const theme = {
     'xlarge': 19,
     'xxlarge': 21,
   },
+  listItemSpace: {
+    'xxsmall': 5,
+    'xsmall': 7.5,
+    'small': 10,
+    'medium': 12,
+    'large': 14,
+    'xlarge': 16,
+    'xxlarge': 18,
+  },
   space: {
     'none': 0,
     'xxsmall': 2.5,
@@ -96,6 +105,7 @@ const theme = {
     'default': colors.black[300],
     'heading': colors.black[800],
     'subtle': colors.black[100],
+    'grey': colors.grey[600],
     'disabled': colors.bluegrey[400],
     'white': colors.blue[50],
   },

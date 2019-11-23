@@ -1,35 +1,74 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
+import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import PropTypes from 'prop-types';
-import colors from '../util/colors';
+import withTheme from '../util/withTheme';
 
-const ListItem = (props) => {
-  const textPlacement = props.textAlign ? { textAlign: props.textAlign } : {};
-  const colorStyle = props.color ? { backgroundColor: props.color } : {};
-  const heightStyle = props.height ? { height: props.height } : {};
+const getContainerStyle = ({ theme, space, background }) => {
+  const itemStyle = [styles.container];
+  itemStyle.push({
+    borderColor: theme.brandColor.outline,
+    backgroundColor: theme.brandColor[background],
+    padding: theme.listItemSpace[space],
+  });
+  return itemStyle;
+};
+
+const getTextStyle = ({ theme, size, textColor, textAlign }) => {
+  return {
+    fontSize: theme.fontSize[size],
+    fontWeight: '500',
+    color: theme.textColor[textColor],
+    textAlign: textAlign,
+  };
+};
+
+const getSubtitleStyle = ({ theme, size, subtitleColor, textAlign }) => {
+  return {
+    fontSize: theme.fontSize[size] * 0.7,
+    fontWeight: '400',
+    color: theme.textColor[subtitleColor],
+    textAlign: textAlign,
+    marginTop: 3,
+  };
+};
+
+const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
+  const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableOpacity activeOpacity={0.8} {...props} style={StyleSheet.flatten([styles.container, heightStyle, colorStyle, props.style])}>
-      {props.leftIcon &&
-        <View style={[styles.iconStyle, props.iconStyle]}>
-          {props.leftIcon}
-        </View>}
-      <View style={styles.textView}>
-        <Text style={StyleSheet.flatten([styles.text, textPlacement, props.textStyle])}>
-          {props.children}
-        </Text>
-        {props.subtitle &&
-          <Text style={StyleSheet.flatten([styles.subtitle, textPlacement, props.subtitleStyle])}>
-            {props.subtitle}
-          </Text>}
+    <TouchableElement onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
+      <View style={StyleSheet.flatten([getContainerStyle(props), style])}>
+        {props.leftIcon &&
+          <View style={[styles.iconStyle, props.iconStyle]}>
+            {props.leftIcon}
+          </View>
+        }
+        <View style={styles.textView}>
+          <Text style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+            {props.children}
+          </Text>
+          {props.subtitle &&
+            <Text style={StyleSheet.flatten([getSubtitleStyle(props), subtitleStyle])}>
+              {props.subtitle}
+            </Text>
+          }
+        </View>
+        {props.rightIcon &&
+          <View style={[styles.iconStyle, props.iconStyle]}>
+            {props.rightIcon}
+          </View>
+        }
+        {props.chevron &&
+          <View style={[styles.iconStyle, props.iconStyle]}>
+            <Feather
+              name="chevron-right"
+              size={props.theme.iconSize[props.size]}
+              color={props.theme.brandColor[props.chevronColor]}
+            />
+          </View>
+        }
       </View>
-      {props.rightIcon && <View style={[styles.iconStyle, props.iconStyle]}>
-        {props.rightIcon}
-      </View>}
-      {props.chevron && <View style={[styles.iconStyle, props.iconStyle]}>
-        <Feather name="chevron-right" size={26} color={props.chevronColor} />
-      </View>}
-    </TouchableOpacity>
+    </TouchableElement>
   );
 };
 
@@ -37,32 +76,38 @@ ListItem.propTypes = {
   style: PropTypes.object,
   textStyle: PropTypes.object,
   subtitleStyle: PropTypes.object,
+  iconStyle: PropTypes.object,
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
   children: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  onPress: PropTypes.func.isRequired,
-  leftIcon: PropTypes.elementType,
-  rightIcon: PropTypes.elementType,
-  iconStyle: PropTypes.object,
-  chevron: PropTypes.bool,
+  background: PropTypes.string,
+  textColor: PropTypes.string,
+  subtitleColor: PropTypes.string,
   chevronColor: PropTypes.string,
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  space: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  onPress: PropTypes.func.isRequired,
+  leftIcon: PropTypes.element,
+  rightIcon: PropTypes.element,
+  chevron: PropTypes.bool,
+  disabled: PropTypes.bool,
+  activeOpacity: PropTypes.number,
 };
 
 ListItem.defaultProps = {
-  children: 'List Item',
-  chevronColor: colors.grey[400],
+  children: 'Pass children to render',
+  background: 'clearWhite',
+  textColor: 'subtle',
+  subtitleColor: 'grey',
+  chevronColor: 'outline',
+  textAlign: 'left',
+  space: 'medium',
+  size: 'medium',
 };
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 1,
-    backgroundColor: '#fff',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: colors.grey[400],
-    height: Platform.OS === 'android' ? 56 : 64,
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
@@ -72,21 +117,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
   },
-  text: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#333',
-  },
-  subtitle: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: colors.grey[500],
-  },
   iconStyle: {
-    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
 });
 
-export default ListItem;
+export default withTheme(ListItem);
