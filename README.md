@@ -1,8 +1,8 @@
 <h1 align="center">Welcome to react-native-design-system 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.3-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/iamshadmirza/react-native-design-system#readme">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-no-brightgreen.svg" target="_blank" />
   </a>
   <a href="https://github.com/iamshadmirza/react-native-design-system/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
@@ -15,7 +15,7 @@
   </a>
 </p>
 
-> A reusable cross platform component library for react-native.
+> A reusable cross-platform component library and a design language system for react-native.
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/react-native-design-system#readme)
 
@@ -28,12 +28,60 @@ npm install react-native-design-system
 ## Usage
 
 ```javascript
-import { SolidButton } from 'react-native-design-system';
+import { Button } from 'react-native-design-system';
 
-<SolidButton>
+<Button>
   PRESS ME
-</SolidButton>
+</Button>
 
+```
+
+## Customization
+
+1. Create a file `theme.config.js` in your root folder
+2. Import `theme` from `react-native-design-system` in this file. Here you can override the current values or add new values. 
+```js
+import theme from './react-native-design-system/src/util/theme';
+
+theme.brandColor.primary = '#ff1744';
+theme.brandColor.secondary = '#ff5252';
+
+export default theme;
+```  
+3. Import it in your root component like this:  
+```js
+import theme from './theme.config'; 
+
+const App = () => {
+  return (
+    <ThemeProvider value={theme}>
+      //root component
+    </ThemeProvider>
+  );
+}
+
+export default App;
+
+```
+4. Alternate shorthand:  
+```javascript
+//skip default export in theme.config.js
+import theme from './react-native-design-system/src/util/theme';
+
+theme.brandColor.primary = '#ff1744';
+theme.brandColor.secondary = '#ff5252';
+```
+```js
+//dynamic import at top of your root component
+import('./theme.config');
+
+const App = () => {
+  return (
+    <ThemeProvider value={theme}>
+      //root component
+    </ThemeProvider>
+  );
+}
 ```
 
 ## Run tests
@@ -64,10 +112,9 @@ npm run test
 - [x] [Stack](src/Stack/Stack.js)
 - [x] [Inline](src/Inline/Inline.js)
 - [ ] [Pricing](src/)
-- [ ] [Rating](src/)
 - [x] [SearchBar](src/SearchBar/SearchBar.js)
-- [ ] [Slider](src/)
 - [ ] [Social Icons / Social Icon Buttons](src/)
+- [ ] [Deck](src/)
 - [x] [Text](src/Text/Text.js)
 - [ ] [Tooltip](src/)
 
@@ -77,8 +124,7 @@ npm run test
 
 * Twitter: [@iamshadmirza](https://twitter.com/iamshadmirza)
 * Github: [@iamshadmirza](https://github.com/iamshadmirza)
-* Medium: [@iamshadmirza](https://medium.com/@iamshadmirza)
-* Dev: [@iamshadmirza](https://dev.to/iamshadmirza)
+* Blogs: [@iamshadmirza](https://iamshadmirza.hashnode.dev)
 
 ## 🤝 Contributing
 
