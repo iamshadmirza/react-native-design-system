@@ -39,7 +39,7 @@ const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
     <TouchableElement onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
       <View style={StyleSheet.flatten([getContainerStyle(props), style])}>
         {props.leftIcon &&
-          <View style={[styles.iconStyle, props.iconStyle]}>
+          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
             {props.leftIcon}
           </View>
         }
@@ -54,12 +54,12 @@ const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
           }
         </View>
         {props.rightIcon &&
-          <View style={[styles.iconStyle, props.iconStyle]}>
+          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
             {props.rightIcon}
           </View>
         }
         {props.chevron &&
-          <View style={[styles.iconStyle, props.iconStyle]}>
+          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
             <Feather
               name="chevron-right"
               size={props.theme.iconSize[props.size]}
