@@ -12,5 +12,6 @@ export * from './src/ListItem';
 export * from './src/Overlay';
 export * from './src/SearchBar';
 export * from './src/Text';
-import colors from './src/util/colors';
-export { colors };
+export { default as colors } from './src/util/colors';
+export { default as ThemeProvider } from './src/util/ThemeProvider';
+export { default as theme } from './src/util/theme';

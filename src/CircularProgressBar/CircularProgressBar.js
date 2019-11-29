@@ -23,7 +23,7 @@ const CircularProgressBar = (props) => {
   const firstCircleColor = activeColor;
   const secondCircleColor = percent >= 50 ? activeColor : passiveColor;
 
-  const firstAnimation = () => {
+  const secondAnimation = () => {
     firstCircleAnimatedValue.setValue(initialValueHalfCircle);
     Animated.parallel([
       Animated.timing(firstCircleAnimatedValue, {
@@ -48,7 +48,7 @@ const CircularProgressBar = (props) => {
     ]).start();
   };
 
-  const secondAnimation = () => {
+  const firstAnimation = () => {
     Animated.timing(secondCircleAnimatedValue, {
       toValue: 180 + percent * 3.6,
       duration: percent * 3.6 * timePerDegree,
@@ -58,10 +58,10 @@ const CircularProgressBar = (props) => {
   };
 
   useEffect(() => {
-    if (percent >= 50) {
+    if (percent < 50) {
       firstAnimation();
     } else {
-      secondAnimation();
+      secondAnimation()
     }
   });
 
