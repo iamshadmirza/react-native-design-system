@@ -1,0 +1,18 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions';
+import {ActionButton} from './index';
+
+<Meta title="MDX|ActionButton" component={ActionButton} />
+
+# ActionButton
+ActionButton is the buttons you use on your landing pages to guide users towards your goal conversion. It's the part of the landing page that the user needs to click to take the action you want them to take.
+
+<Preview>
+  <Story name="sizes">
+    <form>
+      <ActionButton size="xxsmall" onPress={action('pressed')} />
+      <ActionButton size="medium" onPress={action('pressed')} />
+      <ActionButton size="large" onPress={action('pressed')} />
+    </form>
+  </Story>
+</Preview>
