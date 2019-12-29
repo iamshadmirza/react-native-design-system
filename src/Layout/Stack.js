@@ -16,7 +16,7 @@ const getChildrenStyle = ({ theme, space, horizontalSpace }, index) => {
     childStyle.push({
       marginHorizontal: theme.space[horizontalSpace],
 
-    })
+    });
   }
   return childStyle;
 };
