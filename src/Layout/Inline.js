@@ -34,7 +34,7 @@ Inline.propTypes = {
 };
 
 Inline.defaultProps = {
-  space: 'small',
+  space: 'medium',
 };
 
 const styles = StyleSheet.create({
