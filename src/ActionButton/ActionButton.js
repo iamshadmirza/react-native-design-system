@@ -1,31 +1,37 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, TouchableNativeFeedback, View, Platform, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import Feather from 'react-native-vector-icons/Feather';
-import withTheme from '../util/withTheme';
+import Feather from 'react-native-vector-icons/dist/Feather';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, size, color }) => {
   return {
     ...styles.container,
     backgroundColor: theme.brandColor[color],
-    padding: theme.actionButtonSize[size],
-    borderRadius: theme.actionButtonSize[size] * 2,
+    width: theme.actionButtonSize[size],
+    height: theme.actionButtonSize[size],
+    borderRadius: theme.actionButtonSize[size] / 2,
   };
 };
 
 const ActionButton = (props) => {
+  const theme = useThemeContext();
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableOpacity
-      style={StyleSheet.flatten([getContainerStyle(props), props.style])}
+    <TouchableElement
+      style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}
       onPress={props.onPress}
     >
-      {props.icon ||
-        <Feather
-          name="plus"
-          size={props.theme.iconSize[props.size]}
-          color={props.iconColor || props.theme.brandColor.white} />
-      }
-    </TouchableOpacity>
+      <View style={styles.centerView}>
+        {props.icon ||
+          <Feather
+            name="plus"
+            size={theme.iconSize[props.size]}
+            color={props.iconColor || theme.brandColor.white} />
+        }
+      </View>
+    </TouchableElement>
   );
 };
 
@@ -51,6 +57,11 @@ const styles = StyleSheet.create({
     bottom: 25,
     right: 25,
   },
+  centerView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
-export default withTheme(ActionButton);
+export default ActionButton;
