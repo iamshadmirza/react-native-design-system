@@ -15,33 +15,21 @@ A Button is a clickable view to carry out actions such as clearing user input or
 
 <Props of={Button} />
 
-# Default
-
+# Type
+There are three types of button mainly: `default`, `round` and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.
 <Preview>
-  <Story name="default">
-    <Button onPress={action('pressed')}>
-      Press Me
-    </Button>
-  </Story>
-</Preview>
-
-# Round
-
-<Preview>
-  <Story name="round">
-    <Button round onPress={action('pressed')}>
-      Press Me
-    </Button>
-  </Story>
-</Preview>
-
-# Outline
-
-<Preview>
-  <Story name="outline">
-    <Button outline onPress={action('pressed')}>
-      Press Me
-    </Button>
+  <Story name="type">
+    <Stack>
+      <Button onPress={action('pressed')}>
+        Press Me
+      </Button>
+      <Button round onPress={action('pressed')}>
+        Press Me
+      </Button>
+      <Button outline onPress={action('pressed')}>
+        Press Me
+      </Button>
+    </Stack>
   </Story>
 </Preview>
 
@@ -98,13 +86,13 @@ There are three different `brandColor` available. `primary`, `secondary` and `te
   </Story>
 </Preview>
 
-# Icons
+# Icon
 
 You can directly pass any icon via icon props.
 > Icon size and color should be defined by developers manually according to button size.
 
 <Preview>
-  <Story name="icons">
+  <Story name="icon">
     <Button 
       icon={<Feather
           name="user"

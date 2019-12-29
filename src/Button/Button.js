@@ -110,19 +110,33 @@ const Button = (props) => {
 };
 
 Button.propTypes = {
+  /**  To override default style */
   style: PropTypes.object,
+  /**  To override default text style */
   textStyle: PropTypes.object,
+  /**  Pass button text as children as children */
   children: PropTypes.string,
+  /**  Change indicator color */
   indicatorColor: PropTypes.string,
+  /**  To change button size */
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  /**  To change button width */
   width: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  /**  callback function to be called when pressed */
   onPress: PropTypes.func.isRequired,
+  /**  Pass the brand color */
   color: PropTypes.string,
+  /**  Boolean value for round button */
   round: PropTypes.bool,
+  /**  Boolean value for outline button */
   outline: PropTypes.bool,
+  /**  Boolean value for disabled button */
   disabled: PropTypes.bool,
+  /**  Boolean value for loading button */
   loading: PropTypes.bool,
+  /**  To pass custom icon */
   icon: PropTypes.element,
+  /**  To make button short or long */
   length: PropTypes.oneOf(['long', 'short']),
 };
 
