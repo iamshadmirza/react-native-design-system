@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, TouchableNativeFeedback, View, Platform, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import Feather from 'react-native-vector-icons/dist/Feather';
+import Feather from 'react-native-vector-icons/Feather';
 import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, size, color }) => {
