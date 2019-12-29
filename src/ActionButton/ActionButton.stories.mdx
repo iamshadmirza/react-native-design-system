@@ -1,48 +1,66 @@
-import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs } from "@storybook/addon-knobs";
+import { select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { View } from 'react-native';
+import Feather from 'react-native-vector-icons/dist/Feather';
+import ActionButton from './ActionButton';
 
-<Meta title="Example|ActionButton" />
+<Meta title="Design System|ActionButton" component={ActionButton} />
 
 # ActionButton
-ActionButton is the buttons you use on your landing pages to guide users towards your goal conversion. It's the part of the landing page that the user needs to click to take the action you want them to take.
+ActionButton is the buttons you use on your landing screen to guide users towards your goal action. It's the part of the landing screen that the user needs to click to take the action you want them to take.
 
-## XXSMALL
+# Props
 
-<Preview>
-  <Story  id="stories-actionbutton--xxsmall" />
-</Preview>
+<Props of={ActionButton} />
 
-## XSMALL
+# Sizes
 
 <Preview>
-  <Story  id="stories-actionbutton--xsmall" />
+  <Story name="sizes">
+    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+    <ActionButton size="xxlarge" onPress={action('pressed')} />
+    <ActionButton size="xlarge" onPress={action('pressed')} />
+    <ActionButton size="large" onPress={action('pressed')} />
+    <ActionButton size="medium" onPress={action('pressed')} />
+    <ActionButton size="small" onPress={action('pressed')} />
+    <ActionButton size="xsmall" onPress={action('pressed')} />
+    <ActionButton size="xxsmall" onPress={action('pressed')} />
+  </View>
+  </Story>
 </Preview>
 
-## SMALL
+# Color
 
 <Preview>
-  <Story  id="stories-actionbutton--small" />
+  <Story name="color">
+    <ActionButton color="tertiary" size="medium" onPress={action('pressed')} />
+  </Story>
 </Preview>
 
-## MEDIUM
+# Icon
 
 <Preview>
-  <Story  id="stories-actionbutton--medium" />
+  <Story name="icon">
+    <ActionButton
+      icon={<Feather
+            name="chevron-up"
+            size={26}
+            color="white" />}
+      size="medium"
+      onPress={action('pressed')}
+    />
+  </Story>
 </Preview>
 
-## LARGE
+# Playground
 
-<Preview>
-  <Story  id="stories-actionbutton--large" />
-</Preview>
+Experiment with this story with Knobs addon in Canvas mode.
 
-## XLARGE
-
-<Preview>
-  <Story  id="stories-actionbutton--xlarge" />
-</Preview>
-
-## XXLARGE
-
-<Preview>
-  <Story  id="stories-actionbutton--xxlarge" />
-</Preview>
+<Story name="knobs" parameters={{ decorators: [withKnobs] }}>
+  <ActionButton
+    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    onPress={action('pressed')}
+  />
+</Story>
