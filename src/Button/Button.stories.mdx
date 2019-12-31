@@ -16,7 +16,7 @@ A Button is a clickable view to carry out actions such as clearing user input or
 <Props of={Button} />
 
 # Type
-There are three types of button mainly: `default`, `round` and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.
+There are three types of button mainly: `default`, `round`, `outline` and `transparent`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button, `transparent={true}` for transparent button and nothing for default solid button.
 <Preview>
   <Story name="type">
     <Stack>
@@ -27,6 +27,9 @@ There are three types of button mainly: `default`, `round` and `outline`. You ca
         Press Me
       </Button>
       <Button outline onPress={action('pressed')}>
+        Press Me
+      </Button>
+       <Button transparent onPress={action('pressed')}>
         Press Me
       </Button>
     </Stack>

@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity, TouchableNativeFeedback, Platform, StyleS
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getTextStyle = ({ size, outline, loading, disabled, theme, color }) => {
+const getTextStyle = ({ size, outline, transparent, loading, disabled, theme, color }) => {
   const textStyle = [{
     fontWeight: Platform.OS === 'android' ? 'bold' : '400',
     fontSize: theme.fontSize[size],
     margin: theme.buttonSize[size],
     color: theme.textColor.white,
   }];
-  if (outline) {
+  if (outline || transparent) {
     textStyle.push({
       color: theme.brandColor[color],
     });
@@ -29,7 +29,7 @@ const getTextStyle = ({ size, outline, loading, disabled, theme, color }) => {
 };
 
 const getContainerStyle = (props) => {
-  const { outline, width, round, disabled, loading, size, length, theme, color } = props;
+  const { outline, width, round, transparent, disabled, loading, size, length, theme, color } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
     backgroundColor: theme.brandColor[color],
@@ -55,6 +55,13 @@ const getContainerStyle = (props) => {
     buttonStyles.push({
       borderWidth: 0,
       backgroundColor: theme.brandColor[color] + '50',
+      elevation: 0,
+    });
+  }
+  if (transparent) {
+    buttonStyles.push({
+      borderWidth: 0,
+      backgroundColor: 'transparent',
       elevation: 0,
     });
   }
@@ -131,6 +138,8 @@ Button.propTypes = {
   /**  Boolean value for outline button */
   outline: PropTypes.bool,
   /**  Boolean value for disabled button */
+  transparent: PropTypes.bool,
+  /**  Boolean value for transparent button */
   disabled: PropTypes.bool,
   /**  Boolean value for loading button */
   loading: PropTypes.bool,
