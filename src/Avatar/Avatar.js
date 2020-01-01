@@ -2,14 +2,15 @@ import React from 'react';
 import { TouchableOpacity, TouchableNativeFeedback, Platform, View, Text, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, source, square, rounded, size }) => {
   const avatarStyle = [styles.container];
   avatarStyle.push({
-    backgroundColor: theme.brandColor.clearWhite,
+    backgroundColor: '#f4f4f4',
     padding: theme.size[size],
     width: theme.avatarSize[size],
+    height: theme.avatarSize[size],
     borderRadius: theme.avatarSize[size] * 2,
   });
   if (source) {
@@ -31,47 +32,49 @@ const getContainerStyle = ({ theme, source, square, rounded, size }) => {
 };
 
 const getEditIconStyle = ({ theme, size }) => {
-  return {
-    ...styles.editView,
+  const iconStyle = [styles.editView, {
     width: theme.avatarSize[size] / 4,
+    height: theme.avatarSize[size] / 4,
     borderRadius: theme.avatarSize[size] / 8,
     backgroundColor: theme.brandColor.disabled,
-  };
+  }];
+  return iconStyle;
 };
 
 const getTitleStyle = ({ theme, size }) => {
   return {
-    ...styles.title,
+    fontWeight: '600',
     fontSize: theme.avatarSize[size] / 4,
     color: theme.textColor.disabled,
   };
 };
 
 const Avatar = (props) => {
+  const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={StyleSheet.flatten([styles.propView, { width: props.theme.avatarSize[props.size] }])}>
+    <View style={StyleSheet.flatten([styles.propView, { width: theme.avatarSize[props.size] }])}>
       <TouchableElement disabled={!props.editable} {...props}>
-        <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+        <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
           {props.source ?
             <Image
               source={props.source}
               resizeMode="cover"
               style={styles.image}
             /> :
-            <Text style={StyleSheet.flatten([getTitleStyle(props), props.textStyle])}>
+            <Text style={StyleSheet.flatten([getTitleStyle({ ...props, theme }), props.textStyle])}>
               {props.title}
             </Text>
           }
         </View>
       </TouchableElement>
       {props.editable &&
-        <View style={StyleSheet.flatten([getEditIconStyle(props), props.editIconStyle])}>
+        <View style={StyleSheet.flatten([getEditIconStyle({ ...props, theme }), props.editIconStyle])}>
           <Feather
             name="edit-2"
-            size={props.theme.avatarSize[props.size] / 8}
-            color={props.editIconColor || props.theme.textColor.disabled}
+            size={theme.avatarSize[props.size] / 8}
+            color={props.editIconColor || theme.textColor.disabled}
           />
         </View>}
     </View>
@@ -100,7 +103,6 @@ Avatar.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    aspectRatio: 1,
     overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',
@@ -108,10 +110,6 @@ const styles = StyleSheet.create({
   },
   propView: {
     backgroundColor: 'transparent',
-    aspectRatio: 1,
-  },
-  title: {
-    fontWeight: 'bold',
   },
   image: {
     width: '100%',
@@ -119,13 +117,12 @@ const styles = StyleSheet.create({
   },
   editView: {
     position: 'absolute',
+    right: 0,
+    bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 1,
-    right: 0,
-    bottom: 0,
-    aspectRatio: 1,
   },
 });
 
-export default withTheme(Avatar);
+export default Avatar;

@@ -1,0 +1,132 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, text, boolean, color } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import Inline from '../Layout/Inline';
+import Feather from 'react-native-vector-icons/Feather';
+import Avatar from './Avatar';
+
+<Meta title="Design System|Avatar" component={Avatar} />
+
+# Avatar
+Avatars are used to represent a user and can contain photos or text.
+
+# Props
+
+<Props of={Avatar} />
+
+# Sizes
+
+<Preview>
+  <Story name="sizes">
+    <Inline>
+      <Avatar
+        size="xxlarge"
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        size="xlarge"
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        size="large"
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        size="medium"
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        size="small"
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        size="xsmall"
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        size="xxsmall"
+        onPress={action('pressed')}
+      />
+  </Inline>
+  </Story>
+</Preview>
+
+# Types
+
+<Preview>
+  <Story name="types">
+    <Inline>
+      <Avatar
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        sqaure
+        title="MD"
+        onPress={action('pressed')}
+      />
+      <Avatar
+        rounded
+        title="MD"
+        onPress={action('pressed')}
+      />
+  </Inline>
+  </Story>
+</Preview>
+
+# Title
+
+<Preview>
+  <Story name="title">
+    <Avatar title="MD" />
+  </Story>
+</Preview>
+
+# Source
+
+<Preview>
+  <Story name="source">
+    <Avatar
+      source={{ uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# Editable
+
+<Preview>
+  <Story name="editable">
+    <Inline>
+      <Avatar
+      title="MD"
+      editable={true}
+      onPress={action("pressed")}
+      />
+      <Avatar
+        source={{ uri: 'https://www.github.com/iamshadmirza.png'}}
+        editable={true}
+        onPress={action("pressed")}
+      />
+    </Inline>
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Avatar in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+  <Avatar
+    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    title={text('title', 'MD')}
+    editable={boolean('editable', true)}
+    onPress={action('pressed')}
+    editIconColor={color('editIconColor', '#78909c')}
+  />
+</Story>
