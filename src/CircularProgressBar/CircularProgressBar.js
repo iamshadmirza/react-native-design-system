@@ -25,6 +25,8 @@ const CircularProgressBar = (props) => {
 
   const secondAnimation = () => {
     firstCircleAnimatedValue.setValue(initialValueHalfCircle);
+    secondCircleAnimatedValue.setValue(initialValueHalfCircle);
+    thirdCircleAnimatedValue.setValue(initialValueHalfCircle);
     Animated.parallel([
       Animated.timing(firstCircleAnimatedValue, {
         toValue: 180,
@@ -61,7 +63,7 @@ const CircularProgressBar = (props) => {
     if (percent < 50) {
       firstAnimation();
     } else {
-      secondAnimation()
+      secondAnimation();
     }
   });
 
@@ -130,7 +132,7 @@ const CircularProgressBar = (props) => {
         {renderHalf(firstCircleColor, [{ rotate: rotate1 }])}
         {renderHalf(secondCircleColor, [{ rotate: rotate2 }])}
         {renderHalf(passiveColor, [{ rotate: rotate3 }], {
-          elevation: elevation3,
+          elevation: elevation3, zIndex: elevation3,
         })}
         <View style={innerCircleStyle}>
           {children}
@@ -140,14 +142,15 @@ const CircularProgressBar = (props) => {
   );
 };
 
-CircularProgressBar.protoTypes = {
-  activeColor: PropTypes.string,
-  passiveColor: PropTypes.string,
-  baseColor: PropTypes.string,
-  width: PropTypes.number,
-  radius: PropTypes.number,
-  percent: PropTypes.number,
-  duration: PropTypes.number,
+CircularProgressBar.propTypes = {
+  activeColor: PropTypes.string.isRequired,
+  passiveColor: PropTypes.string.isRequired,
+  baseColor: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  radius: PropTypes.number.isRequired,
+  percent: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 const styles = StyleSheet.create({

@@ -1,0 +1,33 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, boolean, color, number } from "@storybook/addon-knobs";
+import { Text } from "react-native";
+import { action } from '@storybook/addon-actions';
+import Stack from '../Layout/Stack';
+import CircularProgressBar from './CircularProgressBar';
+
+<Meta title="Design System|CircularProgressBar" component={CircularProgressBar} />
+
+# CircularProgressBar
+Animated circular progress bar for cross plateform.
+
+# Props
+
+<Props of={CircularProgressBar} />
+
+# Playground
+
+This component is fully customizable. Go on, play with CircularProgressBar inside Canvas.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+  <CircularProgressBar
+    activeColor={color("activeColor","darkviolet")}
+    passiveColor={color("passiveColor","darkgrey")}
+    baseColor={color("baseColor","white")}
+    width={number('width', 50)}
+    percent={number('percent', 35)}
+    radius={number('radius', 100)}
+    duration={number('duration', 1200)}
+  >
+    <Text>Wow!</Text>
+  </CircularProgressBar>
+</Story>
