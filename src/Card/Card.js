@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ row, horizontal, center, left, right, vertical, theme, space }) => {
+const getContainerStyle = ({ row, horizontal, align, vertical, theme, space }) => {
   const cardStyle = [{
     elevation: 1,
     padding: theme.space[space],
@@ -18,17 +18,17 @@ const getContainerStyle = ({ row, horizontal, center, left, right, vertical, the
       flexWrap: 'wrap',
     });
   }
-  if (center) {
+  if (align === 'center') {
     cardStyle.push({
       alignSelf: 'center',
     });
   }
-  if (left) {
+  if (align === 'left') {
     cardStyle.push({
       alignSelf: 'flex-start',
     });
   }
-  if (right) {
+  if (align === 'right') {
     cardStyle.push({
       alignSelf: 'flex-end',
     });
@@ -47,8 +47,9 @@ const getContainerStyle = ({ row, horizontal, center, left, right, vertical, the
 };
 
 const Card = (props) => {
+  const theme = useThemeContext();
   return (
-    <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
       {props.children}
     </View>
   );
@@ -61,13 +62,11 @@ Card.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
   horizontal: PropTypes.bool,
   vertical: PropTypes.bool,
-  center: PropTypes.bool,
-  left: PropTypes.bool,
-  right: PropTypes.bool,
+  align: PropTypes.oneOf(['center', 'left', 'right']),
 };
 
 Card.defaultProps = {
   space: 'medium',
 };
 
-export default withTheme(Card);
+export default Card;

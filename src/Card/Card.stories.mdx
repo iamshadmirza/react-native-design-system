@@ -1,0 +1,161 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, boolean } from "@storybook/addon-knobs";
+import { View } from 'react-native';
+import { action } from '@storybook/addon-actions';
+import Stack from '../Layout/Stack';
+import Feather from 'react-native-vector-icons/Feather';
+import Card from './Card';
+import Button from '../Button/Button';
+
+<Meta title="Design System|Card" component={Card} />
+
+# Card
+Card is a wrapper component with a small padding. It included center, left and right aligned card to auto align childrens.
+
+# Props
+
+<Props of={Card} />
+
+# Space
+
+Just like `size` in each component, Card receives 7 available `space` values with an additional `none` value.
+
+<Preview>
+  <Story name="space">
+    <Stack>
+      <Card space="none">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="xxsmall">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="xsmall">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="small">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="medium">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="large">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="xlarge">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card space="xxlarge">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+    </Stack>
+  </Story>
+</Preview>
+
+
+# Type
+
+There are 3 types of alignment for children: `left`, `center` and `right`. You just have to pass `align` prop which accepts a string from three choices.
+
+<Preview>
+  <Story name="type">
+    <Stack>
+      <Card align="left">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card align="center">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+      <Card align="right">
+        <Button onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+    </Stack>
+  </Story>
+</Preview>
+
+# Padding
+
+Padding can be applied horizontally and vertically only. Background has been made slighly gray to show the padding. 
+* First button is getting `horizontal` prop which makes vertical padding `0`.
+* Second button is getting `vertical` prop which makes horizontal padding `0`.
+
+<Preview>
+  <Story name="padding">
+    <View style={{ backgroundColor:"#cdcdcd"}}>
+      <Stack>
+        <Card horizontal>
+          <Button onPress={action('pressed')}>
+            Press Me
+          </Button>
+        </Card>
+        <Card vertical>
+          <Button onPress={action('pressed')}>
+            Press Me
+          </Button>
+        </Card>
+      </Stack>
+    </View>
+  </Story>
+</Preview>
+
+# Row
+Default alignment of childrens is `column` which can be changed to `row` by passing `row` prop. It's a boolean value. This is totally a personal use-case and you can always customize the view with `style` prop.
+
+<Preview>
+  <Story name="row">
+    <Stack>
+      <Card row>
+        <Button length="short" onPress={action('pressed')}>
+          Press Me
+        </Button>
+        <Button length="short" onPress={action('pressed')}>
+          Press Me
+        </Button>
+        <Button length="short" onPress={action('pressed')}>
+          Press Me
+        </Button>
+      </Card>
+    </Stack>
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Button in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+  <View style={{ width: '100%'}}>
+    <Card
+      space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+      row={boolean('row', false)}
+      align={select('center',['left', 'center', 'right'], 'left')}
+    >
+    <Button
+      length="short"
+      onPress={action('pressed')}>
+      Press Me
+    </Button>
+    </Card>
+  </View>
+</Story>
