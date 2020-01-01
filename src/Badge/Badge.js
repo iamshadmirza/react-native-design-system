@@ -1,18 +1,23 @@
 import React from 'react';
 import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, size, mini, color }) => {
+const getContainerStyle = ({ theme, size, mini, color, square }) => {
   const badgeStyle = [styles.container];
   if (color) {
     badgeStyle.push({
       backgroundColor: theme.brandColor[color],
     });
   }
+  if (square) {
+    badgeStyle.push({
+      borderRadius: 3,
+    });
+  }
   if (mini) {
     badgeStyle.push({
-      aspectRatio: 1,
+      width: theme.miniBadgeSize[size],
       height: theme.miniBadgeSize[size],
     });
   }
@@ -29,6 +34,7 @@ const getTextStyle = ({ theme, size }) => {
 }
 
 const Badge = ({ children, onPress, style, textStyle, ...props }) => {
+  const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
@@ -37,9 +43,9 @@ const Badge = ({ children, onPress, style, textStyle, ...props }) => {
       onPress={onPress}
       disabled={!onPress}
     >
-      <View style={StyleSheet.flatten(StyleSheet.flatten([getContainerStyle(props), style]))}>
+      <View style={StyleSheet.flatten(StyleSheet.flatten([getContainerStyle({ ...props, theme }), style]))}>
         {props.mini ? null :
-          <Text style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+          <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
             {children}
           </Text>}
       </View>
@@ -54,6 +60,7 @@ Badge.propTypes = {
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   mini: PropTypes.bool,
   onPress: PropTypes.func,
+  square: PropTypes.bool,
 };
 
 Badge.defaultProps = {
@@ -71,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Badge);
+export default Badge;
