@@ -63,7 +63,7 @@ const Avatar = (props) => {
               resizeMode="cover"
               style={styles.image}
             /> :
-            <Text style={StyleSheet.flatten([getTitleStyle({ ...props, theme }), props.textStyle])}>
+            <Text numberOfLines={1} style={StyleSheet.flatten([getTitleStyle({ ...props, theme }), props.textStyle])}>
               {props.title}
             </Text>
           }

@@ -31,7 +31,7 @@ const getTextStyle = ({ theme, size }) => {
     marginVertical: 5,
     marginHorizontal: 10,
   };
-}
+};
 
 const Badge = ({ children, onPress, style, textStyle, ...props }) => {
   const theme = useThemeContext();

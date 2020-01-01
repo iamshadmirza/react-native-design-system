@@ -15,7 +15,7 @@ Avatars are used to represent a user and can contain photos or text.
 <Props of={Avatar} />
 
 # Sizes
-
+As usual, 7 sizes are available.
 <Preview>
   <Story name="sizes">
     <Inline>
@@ -58,7 +58,7 @@ Avatars are used to represent a user and can contain photos or text.
 </Preview>
 
 # Types
-
+There are mainly three types og Avatar: `default`, `square` and `rounded`. All props accept `boolean` value.
 <Preview>
   <Story name="types">
     <Inline>
@@ -67,7 +67,7 @@ Avatars are used to represent a user and can contain photos or text.
         onPress={action('pressed')}
       />
       <Avatar
-        sqaure
+        square
         title="MD"
         onPress={action('pressed')}
       />
@@ -81,6 +81,7 @@ Avatars are used to represent a user and can contain photos or text.
 </Preview>
 
 # Title
+`title` accepts a string. Passing upto 3 character (maximum) is recommended. 
 
 <Preview>
   <Story name="title">
@@ -89,7 +90,7 @@ Avatars are used to represent a user and can contain photos or text.
 </Preview>
 
 # Source
-
+`source` is same as Image component. You can pass a `required` image or a `uri` object.
 <Preview>
   <Story name="source">
     <Avatar
@@ -99,7 +100,7 @@ Avatars are used to represent a user and can contain photos or text.
 </Preview>
 
 # Editable
-
+`editable` is a boolean value which adds an edit button to the bottom. You just have to pass one `onPress` function and the `Avatar` is clickable.
 <Preview>
   <Story name="editable">
     <Inline>
