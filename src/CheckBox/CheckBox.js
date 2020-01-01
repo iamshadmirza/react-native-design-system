@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getTextStyle = ({ theme, size, textColor, iconRight }) => {
   const textStyle = [{
@@ -44,13 +44,15 @@ const renderIcon = ({ style, theme, size, color, ...props }) => {
 };
 
 const CheckBox = (props) => {
+  const theme = useThemeContext();
+  const propsWithTheme = { ...props, theme };
   return (
     <View style={StyleSheet.flatten([styles.container, props.style])}>
-      {!props.iconRight && renderIcon(props)}
-      <Text style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
+      {!props.iconRight && renderIcon(propsWithTheme)}
+      <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), props.textStyle])}>
         {props.children}
       </Text>
-      {props.iconRight && renderIcon(props)}
+      {props.iconRight && renderIcon(propsWithTheme)}
     </View>
   );
 };
@@ -65,12 +67,11 @@ CheckBox.propTypes = {
   textColor: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   onPress: PropTypes.func.isRequired,
-  checkedIcon: PropTypes.elementType,
-  uncheckedIcon: PropTypes.elementType,
+  checkedIcon: PropTypes.element,
+  uncheckedIcon: PropTypes.element,
 };
 
 CheckBox.defaultProps = {
-  children: 'Pass text as child',
   size: 'medium',
   color: 'primary',
   textColor: 'default',
@@ -83,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(CheckBox);
+export default CheckBox;
