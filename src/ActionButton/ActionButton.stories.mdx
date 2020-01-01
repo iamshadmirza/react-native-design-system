@@ -1,6 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs } from "@storybook/addon-knobs";
-import { select } from '@storybook/addon-knobs';
+import { withKnobs, select } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import Inline from '../Layout/Inline';
 import Feather from 'react-native-vector-icons/Feather';
@@ -60,9 +59,9 @@ ActionButton is the buttons you use on your landing screen to guide users toward
 
 # Playground
 
-Experiment with this story in Canvas mode.
+Play with ActionButton in Canvas mode.
 
-<Story name="knobs" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <ActionButton
     size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
     color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}

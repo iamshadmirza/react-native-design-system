@@ -13,7 +13,7 @@ const getContainerStyle = ({ theme, size, count, disabled }) => {
     flexDirection: 'row',
     justifyContent: 'center',
   });
-  if (count === 0) {
+  if (count < 1) {
     buttonStyle.push({
       backgroundColor: colors.bluegrey[200],
       elevation: 0,
@@ -46,7 +46,7 @@ const MenuAddButton = (props) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  if (props.count === 0 || props.disabled) {
+  if (props.count < 1 || props.disabled) {
     return (
       <TouchableElement
         disabled={props.disabled}
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: '#f8f8f8',
-    borderRadius: 1,
+    borderRadius: 2,
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: {
