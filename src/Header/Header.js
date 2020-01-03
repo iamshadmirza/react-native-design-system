@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, TouchableNativeFeedback, Text, StyleSheet, Platform, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, color }) => {
   const headerStyle = [styles.container];
@@ -26,12 +26,13 @@ const getTextStyle = ({ theme, color, textAlign, fontSize }) => {
 };
 
 const Header = (props) => {
+  const theme = useThemeContext();
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
       <StatusBar
         barStyle={props.barStyle}
-        backgroundColor={props.theme.brandColor[props.barColor]}
+        backgroundColor={theme.brandColor[props.barColor]}
       />
       {props.leftIcon &&
         <TouchableElement onPress={props.onLeftIconPress}>
@@ -40,7 +41,7 @@ const Header = (props) => {
           </View>
         </TouchableElement>
       }
-      <Text style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
+      <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), props.textStyle])}>
         {props.children}
       </Text>
       {props.rightIcon &&
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
     height: Platform.select({
       android: 56,
       ios: 64,
+      web: 64,
     }),
     flexDirection: 'row',
     alignItems: 'center',
@@ -99,12 +101,14 @@ const styles = StyleSheet.create({
     textAlign: Platform.select({
       android: 'left',
       ios: 'center',
+      web: 'center',
     }),
     color: '#fff',
+    paddingHorizontal: 10,
   },
   iconStyle: {
     padding: 5,
   },
 });
 
-export default withTheme(Header);
+export default Header;
