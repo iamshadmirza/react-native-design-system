@@ -3,7 +3,7 @@ import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleS
 import Feather from 'react-native-vector-icons/Feather';
 import { Avatar } from '../Avatar';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, space, background }) => {
   const itemStyle = [styles.container];
@@ -73,22 +73,24 @@ const renderRightChild = ({ chevron, rightIcon, iconStyle, theme, size, chevronC
 
 
 const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
+  const theme = useThemeContext();
+  const propsWithTheme = { ...props, theme };
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
-      <View style={StyleSheet.flatten([getContainerStyle(props), style])}>
-        {renderLeftChild(props)}
+      <View style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
+        {renderLeftChild(propsWithTheme)}
         <View style={styles.textView}>
-          <Text style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+          <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), textStyle])}>
             {props.children}
           </Text>
           {props.subtitle &&
-            <Text style={StyleSheet.flatten([getSubtitleStyle(props), subtitleStyle])}>
+            <Text style={StyleSheet.flatten([getSubtitleStyle(propsWithTheme), subtitleStyle])}>
               {props.subtitle}
             </Text>
           }
         </View>
-        {renderRightChild(props)}
+        {renderRightChild(propsWithTheme)}
       </View>
     </TouchableElement>
   );
@@ -130,10 +132,27 @@ ListItem.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
     alignItems: 'center',
-    overflow: 'hidden',
+    borderRadius: 1,
+    ...Platform.select({
+      android: {
+        elevation: 1,
+      },
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+      },
+      web: {
+        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
+        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
+      },
+    }),
   },
   textView: {
     flex: 1,
@@ -146,4 +165,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(ListItem);
+export default ListItem;
