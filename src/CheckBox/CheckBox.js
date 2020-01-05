@@ -20,40 +20,42 @@ const getTextStyle = ({ theme, size, textColor, iconRight }) => {
 };
 
 const renderIcon = ({ style, theme, size, color, ...props }) => {
-  const TouchableElement =
-    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  return (
-    <TouchableElement {...props}>
-      {props.checked ? (
-        props.checkedIcon ||
-        <MaterialIcons
-          name="check-box"
-          size={theme.fontSize[size] * 1.5}
-          color={theme.brandColor[color]}
-        />
-      ) : (
-          props.uncheckedIcon ||
-          <MaterialIcons
-            name="check-box-outline-blank"
-            size={theme.fontSize[size] * 1.5}
-            color={theme.brandColor[color]}
-          />
-        )}
-    </TouchableElement>
-  );
+  if (props.checked) {
+    return (
+      props.checkedIcon ||
+      <MaterialIcons
+        name="check-box"
+        size={theme.fontSize[size] * 1.5}
+        color={theme.brandColor[color]}
+      />
+    );
+  } else {
+    return (
+      props.uncheckedIcon ||
+      <MaterialIcons
+        name="check-box-outline-blank"
+        size={theme.fontSize[size] * 1.5}
+        color={theme.brandColor[color]}
+      />
+    );
+  }
 };
 
 const CheckBox = (props) => {
   const theme = useThemeContext();
   const propsWithTheme = { ...props, theme };
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={StyleSheet.flatten([styles.container, props.style])}>
-      {!props.iconRight && renderIcon(propsWithTheme)}
-      <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), props.textStyle])}>
-        {props.children}
-      </Text>
-      {props.iconRight && renderIcon(propsWithTheme)}
-    </View>
+    <TouchableElement disabled={props.disabled} onPress={props.onPress}>
+      <View style={StyleSheet.flatten([styles.container, props.style])}>
+        {!props.iconRight && renderIcon(propsWithTheme)}
+        <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), props.textStyle])}>
+          {props.children}
+        </Text>
+        {props.iconRight && renderIcon(propsWithTheme)}
+      </View>
+    </TouchableElement>
   );
 };
 
