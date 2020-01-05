@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ row, horizontal, align, vertical, theme, space }) => {
-  const cardStyle = [{
-    elevation: 1,
-    padding: theme.space[space],
-    alignItems: 'stretch',
-    justifyContent: 'center',
+const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, shadow }) => {
+  const cardStyle = [styles.container, {
+    padding: theme.layoutSpace[space],
   }];
+  if (shadow) {
+    cardStyle.push(styles.shadow);
+  }
   if (row) {
     cardStyle.push({
       flexDirection: 'row',
@@ -20,17 +20,17 @@ const getContainerStyle = ({ row, horizontal, align, vertical, theme, space }) =
   }
   if (align === 'center') {
     cardStyle.push({
-      alignSelf: 'center',
+      alignItems: 'center',
     });
   }
   if (align === 'left') {
     cardStyle.push({
-      alignSelf: 'flex-start',
+      alignItems: 'flex-start',
     });
   }
   if (align === 'right') {
     cardStyle.push({
-      alignSelf: 'flex-end',
+      alignItems: 'flex-end',
     });
   }
   if (horizontal) {
@@ -63,10 +63,41 @@ Card.propTypes = {
   horizontal: PropTypes.bool,
   vertical: PropTypes.bool,
   align: PropTypes.oneOf(['center', 'left', 'right']),
+  shadow: PropTypes.bool,
 };
 
 Card.defaultProps = {
   space: 'medium',
+  shadow: true,
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+  shadow: {
+    ...Platform.select({
+      android: {
+        elevation: 1,
+      },
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+      },
+      web: {
+        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
+        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
+      },
+    }),
+  },
+});
+
 
 export default Card;
