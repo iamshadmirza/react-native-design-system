@@ -101,6 +101,16 @@ const theme = {
     'xlarge': 15,
     'xxlarge': 20,
   },
+  layoutSpace: {
+    'none': 0,
+    'xxsmall': 5,
+    'xsmall': 10,
+    'small': 12,
+    'medium': 16,
+    'large': 20,
+    'xlarge': 24,
+    'xxlarge': 32,
+  },
   textColor: {
     'default': colors.black[300],
     'heading': colors.black[800],

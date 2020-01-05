@@ -1,0 +1,102 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+import Stack from './Stack';
+
+<Meta title="Design System|Stack" component={Stack} />
+
+# Stack
+Stack is a layout container which alligns it's children vertrically (stack) and provide constant margin around theme.
+
+# Props
+
+<Props of={Stack} />
+
+# Space
+Customize spacing of each child from one another. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge` and provide constant spacing between each children.
+
+<Preview>
+  <Story name="space">
+      <Stack space="large">
+        <Input
+          placeholder="Enter Username"
+          value=""
+          outline
+          onChangeText={text => action('pressed')}
+        />
+        <Input
+          placeholder="Enter Email"
+          value=""
+          outline
+          onChangeText={text => action('pressed')}
+        />
+        <Input
+          placeholder="Enter Password"
+          value=""
+          outline
+          onChangeText={text => action('pressed')}
+        />
+      </Stack>
+  </Story>
+</Preview>
+
+# Horizontal Space
+`horizontalSpace` prop adds horizontal spacing. Default is `none` but you can any of the 8 spacing values provided.
+
+<Preview>
+  <Story name="horizontalSpace">
+      <Stack space="large" horizontalSpace="xxlarge">
+        <Input
+          placeholder="Enter Username"
+          value=""
+          outline
+          onChangeText={text => action('pressed')}
+        />
+        <Input
+          placeholder="Enter Email"
+          value=""
+          outline
+          onChangeText={text => action('pressed')}
+        />
+        <Input
+          placeholder="Enter Password"
+          value=""
+          outline
+          onChangeText={text => action('pressed')}
+        />
+      </Stack>
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Stack in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+ <Stack
+  space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}>
+    <Input
+      placeholder="Enter Username"
+      value=""
+      outline
+      onChangeText={text => action('pressed')}
+    />
+    <Input
+      placeholder="Enter Email"
+      value=""
+      outline
+      onChangeText={text => action('pressed')}
+    />
+    <Input
+      placeholder="Enter Password"
+      value=""
+      outline
+      onChangeText={text => action('pressed')}
+    />
+    <Button>
+      Sign up
+    </Button>
+  </Stack>
+</Story>

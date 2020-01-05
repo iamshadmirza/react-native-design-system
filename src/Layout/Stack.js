@@ -1,20 +1,20 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getChildrenStyle = ({ theme, space, horizontalSpace }, index) => {
   const childStyle = [{
-    marginBottom: theme.space[space],
+    marginBottom: theme.layoutSpace[space],
   }];
   if (index === 0) {
     childStyle.push({
-      marginTop: theme.space[space],
+      marginTop: theme.layoutSpace[space],
     });
   }
   if (horizontalSpace) {
     childStyle.push({
-      marginHorizontal: theme.space[horizontalSpace],
+      marginHorizontal: theme.layoutSpace[horizontalSpace],
 
     });
   }
@@ -22,10 +22,11 @@ const getChildrenStyle = ({ theme, space, horizontalSpace }, index) => {
 };
 
 const Stack = (props) => {
+  const theme = useThemeContext();
   return (
     <View style={props.style}>
       {React.Children.toArray(props.children).map((item, index) => (
-        <View style={getChildrenStyle(props, index)} key={index}>
+        <View style={getChildrenStyle({ ...props, theme }, index)} key={index}>
           {item}
         </View>
       ))}
@@ -45,4 +46,4 @@ Stack.defaultProps = {
   horizontalSpace: 'none',
 };
 
-export default withTheme(Stack);
+export default Stack;

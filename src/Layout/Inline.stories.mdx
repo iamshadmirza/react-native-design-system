@@ -1,0 +1,89 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import Badge from '../Badge/Badge';
+import Inline from './Inline';
+import Stack from './Stack';
+
+<Meta title="Design System|Inline" component={Inline} />
+
+# Inline
+Inline is a layout container which alligns it's children horizontally (inline) and provide constant margin around theme.
+
+# Props
+
+<Props of={Inline} />
+
+# Space
+Customize spacing of each child from one another. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge` and provide constant spacing between each children.
+
+<Preview>
+  <Story name="space">
+    <Stack>
+      <Inline space="none">
+        <Badge onPress={action('pressed')}>
+          10
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          50
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          677
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          9999
+        </Badge>
+      </Inline>
+      <Inline space="medium">
+        <Badge onPress={action('pressed')}>
+          10
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          50
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          677
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          9999
+        </Badge>
+      </Inline>
+      <Inline space="xxlarge">
+        <Badge onPress={action('pressed')}>
+          10
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          50
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          677
+        </Badge>
+        <Badge onPress={action('pressed')}>
+          9999
+        </Badge>
+      </Inline>
+    </Stack>
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Inline in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+ <Inline
+  space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}>
+    <Badge onPress={action('pressed')}>
+      10
+    </Badge>
+    <Badge onPress={action('pressed')}>
+      50
+    </Badge>
+    <Badge onPress={action('pressed')}>
+      677
+    </Badge>
+    <Badge onPress={action('pressed')}>
+      9999
+    </Badge> 
+  </Inline>
+</Story>

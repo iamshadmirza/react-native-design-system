@@ -1,0 +1,54 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import Button from '../Button/Button';
+import Box from './Box';
+
+<Meta title="Design System|Box" component={Box} />
+
+# Box
+Box is a simple layout container which accepts a child and provide padding around it. The child is centered by default.
+
+# Props
+
+<Props of={Box} />
+
+# Space
+Customize padding for the child. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`
+
+<Preview>
+  <Story name="space">
+    <Box space="large">
+      <Button>
+        Press Me
+      </Button>    
+    </Box>
+  </Story>
+</Preview>
+
+# Background
+You can also pass a `background` color. Color string should be present inside `brandColor` of theme.
+
+<Preview>
+  <Story name="background">
+    <Box background="disabled">
+      <Button>
+        Press Me
+      </Button>    
+    </Box>
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Box in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+ <Box
+  space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+  background={select('background', ['background', 'clearWhite', 'disabled', 'semitransparent', 'grey', 'white', 'outline'], 'background')}>
+    <Button>
+      Press Me
+    </Button>    
+  </Box>
+</Story>

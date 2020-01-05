@@ -1,25 +1,26 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getChildrenStyle = ({ theme, space }, index) => {
   const childStyle = [{
-    marginRight: theme.space[space],
+    marginRight: theme.layoutSpace[space],
   }];
   if (index === 0) {
     childStyle.push({
-      marginLeft: theme.space[space],
+      marginLeft: theme.layoutSpace[space],
     });
   }
   return childStyle;
 };
 
 const Inline = (props) => {
+  const theme = useThemeContext();
   return (
     <View style={StyleSheet.flatten([styles.container, props.style])}>
       {React.Children.toArray(props.children).map((item, index) => (
-        <View style={getChildrenStyle(props, index)} key={index}>
+        <View style={getChildrenStyle({ ...props, theme }, index)} key={index}>
           {item}
         </View>
       ))}
@@ -46,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Inline);
+export default Inline;

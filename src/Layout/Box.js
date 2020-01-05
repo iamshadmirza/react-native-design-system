@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, space, background }) => {
   return {
-    padding: theme.space[space],
+    padding: theme.layoutSpace[space],
     background: theme.brandColor[background],
     alignItems: 'center',
     justifyContent: 'center',
@@ -13,8 +13,9 @@ const getContainerStyle = ({ theme, space, background }) => {
 };
 
 const Box = (props) => {
+  const theme = useThemeContext();
   return (
-    <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
       {props.children}
     </View>
   );
@@ -32,4 +33,4 @@ Box.defaultProps = {
   background: 'clearWhite',
 };
 
-export default withTheme(Box);
+export default Box;
