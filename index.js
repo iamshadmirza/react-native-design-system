@@ -10,6 +10,7 @@ export * from './src/Header';
 export * from './src/Input';
 export * from './src/ListItem';
 export * from './src/Overlay';
+export * from './src/RadioButton';
 export * from './src/SearchBar';
 export * from './src/Text';
 export { default as colors } from './src/util/colors';
