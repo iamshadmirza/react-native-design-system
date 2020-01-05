@@ -1,20 +1,23 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
+import { resizeFont } from '../util/resizeFont';
 
-const getTextStyle = ({ theme, color, size }) => {
+const getTextStyle = ({ theme, color, size, scale, fontWeight }) => {
   return {
     color: theme.textColor[color],
-    fontSize: theme.fontSize[size],
+    fontSize: scale ? theme.fontSize[size] : resizeFont(theme.fontSize[size]),
     includeFontPadding: false,
     textAlignVertical: 'center',
+    fontWeight: fontWeight,
   };
 };
 
 const TextElement = (props) => {
+  const theme = useThemeContext();
   return (
-    <Text style={StyleSheet.flatten([getTextStyle(props), props.style])}>
+    <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), props.style])}>
       {props.children}
     </Text>
   );
@@ -25,11 +28,15 @@ TextElement.propTypes = {
   children: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   color: PropTypes.string,
+  scale: PropTypes.bool,
+  fontWeight: PropTypes.string,
 };
 
 TextElement.defaultProps = {
   color: 'default',
   size: 'medium',
+  scale: true,
+  fontWeight: '500',
 };
 
-export default withTheme(TextElement);
+export default TextElement;

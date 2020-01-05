@@ -2,13 +2,13 @@ import colors from './colors';
 
 const theme = {
   fontSize: {
-    'xxsmall': 11,
-    'xsmall': 12.5,
+    'xxsmall': 10,
+    'xsmall': 12,
     'small': 14,
     'medium': 16,
-    'large': 18,
-    'xlarge': 20,
-    'xxlarge': 22,
+    'large': 20,
+    'xlarge': 26,
+    'xxlarge': 32,
   },
   size: {
     'xxsmall': 10,
