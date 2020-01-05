@@ -1,0 +1,209 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, boolean, text } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import Stack from '../Layout/Stack';
+import Feather from 'react-native-vector-icons/Feather';
+import Input, { InputForStory } from './Input';
+
+<Meta title="Design System|Input" component={Input} />
+
+# Input
+A Input is a wrapper around `TextInput` with commonly used styles and easy to make customization.
+
+# Props
+<!-- This is just a workaround to pass proptypes to storybook as it is not supported with forwardRef -->
+<Props of={InputForStory} />
+
+# Type
+There are three types of button mainly: `default`, `round`, and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.
+<Preview>
+  <Story name="type">
+    <Stack>
+      <Input
+        placeholder="Start typing"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        round
+        placeholder="Start typing"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        placeholder="Start typing"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        round
+        placeholder="Start typing"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+    </Stack>
+  </Story>
+</Preview>
+
+# Label
+Pass `label` to render a label string above input. You can customise label using `labelColor` and `labelStyle` props.
+
+<Preview>
+  <Story name="label">
+    <Input
+        outline
+        label="Username"
+        placeholder="Enter Username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+  </Story>
+</Preview>
+
+# Error and Error Caption
+Pass `error={true}` when you want to show error and pass `errorCaption` string to render the string below input to notify user about the error.
+
+<Preview>
+  <Story name="error">
+    <Input
+        outline
+        error={true}
+        placeholder="Enter username"
+        value=""
+        errorCaption="Please check the username again"
+        onChangeText={text => action('pressed')}
+      />
+  </Story>
+</Preview>
+
+# Color
+Pass `color` from brandColor to change outline color of input. Background is managed by `background` property inside theme. You can also directly pass a `background` prop with one of the colors in `brandColor`.
+
+<Preview>
+  <Story name="color">
+    <Input
+        outline
+        color="secondary"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+  </Story>
+</Preview>
+
+# Disabled
+`disabled={true}` property restrict any kind of action on input.
+<Preview>
+  <Story name="disabled">
+    <Input
+      outline
+      disabled
+      placeholder="Enter username"
+      value=""
+      onChangeText={text => action('pressed')}
+    />
+  </Story>
+</Preview>
+
+# Size 
+As usual, 7 available sized.
+
+<Preview>
+  <Story name="size">
+    <Stack>
+      <Input
+        outline
+        size="xxsmall"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        size="xsmall"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        size="small"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        size="medium"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        size="large"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        size="xlarge"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+      <Input
+        outline
+        size="xxlarge"
+        placeholder="Enter username"
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+    </Stack>
+  </Story>
+</Preview>
+
+# Icon
+
+You can pass any icon via `leftIcon` and `rightIcon` props.
+> Icon size and color should be defined by developers manually according to button size.
+
+<Preview>
+  <Story name="icon">
+    <Input
+        outline
+        placeholder="Enter username"
+        leftIcon={
+          <Feather
+            name="user"
+            size={22}
+            color="grey" 
+          />
+        }
+        value=""
+        onChangeText={text => action('pressed')}
+      />
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Button in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+  <Input
+    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    outline={boolean('outline', true)}
+    round={boolean('round', false)}
+    label={text('label', 'Username')}
+    labelColor={select('labelColor', ['default', 'heading', 'subtle', 'grey'], 'grey')}
+    placeholder={text('label', 'Enter Username')}
+    error={boolean('error', false)}
+    errorCaption={text('errorCaption', 'Please enter the correct username')}
+    value=""
+    onChangeText={text => action('pressed')}
+  />
+</Story>

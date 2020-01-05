@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, round, color, outline, background }) => {
+const getContainerStyle = ({ theme, round, color, outline, error }) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
     borderBottomColor: theme.brandColor[color],
@@ -13,20 +13,29 @@ const getContainerStyle = ({ theme, round, color, outline, background }) => {
       borderWidth: 1,
       borderBottomWidth: 1,
       borderColor: theme.brandColor[color],
+      backgroundColor: theme.brandColor.background,
       borderRadius: 5,
     });
   }
   if (round) {
     inputContainerStyle.push({
-      backgroundColor: theme.brandColor[background],
       borderBottomWidth: 0,
       borderRadius: 50,
+      backgroundColor: theme.brandColor.background,
     });
   }
   if (outline && round) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
+      backgroundColor: theme.brandColor.background,
+    });
+  }
+  if (error) {
+    inputContainerStyle.push({
+      borderColor: '#ff000080',
+      borderBottomColor: '#ff000080',
+      backgroundColor: '#ff000005',
     });
   }
   return inputContainerStyle;
@@ -42,28 +51,37 @@ const getInputStyle = ({ theme, size, textColor }) => {
   return inputStyle;
 };
 
-const getLabelStyle = ({ theme, size, labelColor, value }) => {
+const getLabelStyle = ({ theme, size, labelColor }) => {
   const labelStyle = [{
     fontSize: theme.fontSize[size] * 0.8,
-    paddingHorizontal: 10,
+    fontWeight: 'bold',
+    paddingLeft: 5,
+    paddingBottom: 5,
     color: theme.textColor[labelColor],
   }];
-  if (value.length === 0) {
-    labelStyle.push({
-      display: 'none',
-    });
-  }
   return labelStyle;
 };
 
+const getCaptionStyle = ({ theme, size, labelColor, value }) => {
+  const caption = [{
+    fontSize: theme.fontSize[size] * 0.8,
+    fontWeight: '600',
+    paddingLeft: 5,
+    paddingTop: 5,
+    color: '#ff000080',
+  }];
+  return caption;
+};
+
 const Input = React.forwardRef((props, ref) => {
+  const theme = useThemeContext();
   return (
     <View style={props.containerStyle}>
       {props.label &&
-        <Text style={StyleSheet.flatten([getLabelStyle(props), props.labelStyle])}>
+        <Text style={StyleSheet.flatten([getLabelStyle({ ...props, theme }), props.labelStyle])}>
           {props.label}
         </Text>}
-      <View style={StyleSheet.flatten([getContainerStyle(props), props.style])}>
+      <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
         {props.leftIcon &&
           <View style={styles.leftIcon}>
             {props.leftIcon}
@@ -73,7 +91,7 @@ const Input = React.forwardRef((props, ref) => {
           editable={!props.disabled}
           {...props}
           ref={ref}
-          style={getInputStyle(props)}
+          style={getInputStyle({ ...props, theme })}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
         {props.rightIcon &&
@@ -82,6 +100,10 @@ const Input = React.forwardRef((props, ref) => {
           </View>
         }
       </View>
+      {(props.error && props.errorCaption) ?
+        <Text style={StyleSheet.flatten([getCaptionStyle({ ...props, theme }), props.labelStyle])}>
+          {props.errorCaption}
+        </Text> : null}
     </View>
   );
 });
@@ -100,6 +122,8 @@ Input.propTypes = {
   color: PropTypes.string,
   round: PropTypes.bool,
   outline: PropTypes.bool,
+  error: PropTypes.bool,
+  errorCaption: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   disabled: PropTypes.bool,
   leftIcon: PropTypes.element,
@@ -108,6 +132,43 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  placeholder: 'Type here',
+  textColor: 'default',
+  color: 'outline',
+  size: 'medium',
+  labelColor: 'grey',
+  background: 'grey',
+};
+
+//This is just a workaround to pass proptypes to storybook as it is not supported with forwardRef
+export const InputForStory = () => {
+  return null;
+};
+
+InputForStory.propTypes = {
+  style: PropTypes.object,
+  textStyle: PropTypes.object,
+  textColor: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  floatingLabel: PropTypes.bool,
+  labelStyle: PropTypes.object,
+  labelColor: PropTypes.string,
+  label: PropTypes.string,
+  color: PropTypes.string,
+  round: PropTypes.bool,
+  outline: PropTypes.bool,
+  error: PropTypes.bool,
+  errorCaption: PropTypes.string,
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  disabled: PropTypes.bool,
+  leftIcon: PropTypes.element,
+  rightIcon: PropTypes.element,
+  background: PropTypes.string,
+};
+
+InputForStory.defaultProps = {
   placeholder: 'Type here',
   textColor: 'default',
   color: 'outline',
@@ -140,4 +201,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Input);
+export default Input;
