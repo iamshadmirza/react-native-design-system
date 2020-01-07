@@ -6,9 +6,14 @@ import PropTypes from 'prop-types';
 import withTheme from '../util/withTheme';
 
 const renderIndicator = (props) => {
+  const scale = {
+    transform: [
+      { scale: props.theme.indicatorSize[props.size] },
+    ],
+  };
   return (
     <View style={styles.rightIcons}>
-      <View style={styles.indicator}>
+      <View style={[styles.indicator, scale]}>
         <ActivityIndicator animating={props.loading === true} color={props.indicatorColor} />
       </View>
       {props.onCancel && props.value.length !== 0 &&
@@ -53,7 +58,6 @@ SearchBar.propTypes = {
 SearchBar.defaultProps = {
   iconColor: 'outline',
   value: '',
-  round: true,
   placeholder: 'Search here',
 };
 
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   indicator: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
   },
 });
 

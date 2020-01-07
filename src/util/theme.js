@@ -111,6 +111,15 @@ const theme = {
     'xlarge': 24,
     'xxlarge': 32,
   },
+  indicatorSize: {
+    'xxsmall': 0.8,
+    'xsmall': 0.9,
+    'small': 1,
+    'medium': 1.1,
+    'large': 1.25,
+    'xlarge': 1.5,
+    'xxlarge': 1.7,
+  },
   textColor: {
     'default': colors.black[300],
     'heading': colors.black[800],
