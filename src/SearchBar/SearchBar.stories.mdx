@@ -3,7 +3,7 @@ import { withKnobs, select, boolean, text } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
-import SearchBar from './SearchBar';
+import SearchBar, { SearchBarForStory } from './SearchBar';
 
 <Meta title="Design System|SearchBar" component={SearchBar} />
 
@@ -12,7 +12,7 @@ A SearchBar is a wrapper around `TextInput` with commonly used styles and easy t
 
 # Props
 <!-- This is just a workaround to pass proptypes to storybook as it is not supported with forwardRef -->
-<Props of={SearchBar} />
+<Props of={SearchBarForStory} />
 
 # Type
 There are three types of button mainly: `default`, `round`, and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.

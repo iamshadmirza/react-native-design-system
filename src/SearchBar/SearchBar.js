@@ -3,7 +3,8 @@ import { View, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-nat
 import Feather from 'react-native-vector-icons/Feather';
 import { Input } from '../Input';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
+import { InputForStory } from '../Input/Input';
 
 const renderIndicator = (props) => {
   const scale = {
@@ -31,21 +32,24 @@ const renderIndicator = (props) => {
 };
 
 const SearchBar = React.forwardRef((props, ref) => {
+  const theme = useThemeContext();
   return (
     <Input
       leftIcon={
         <Feather
           name="search"
           size={20}
-          color={props.theme.brandColor[props.iconColor]}
+          color={theme.brandColor[props.iconColor]}
         />
       }
       {...props}
       ref={ref}
-      rightIcon={renderIndicator(props)}
+      rightIcon={renderIndicator({ ...props, theme })}
     />
   );
 });
+
+export const SearchBarForStory = () => { };
 
 SearchBar.propTypes = {
   indicatorColor: PropTypes.string,
@@ -53,12 +57,29 @@ SearchBar.propTypes = {
   iconColor: PropTypes.string,
   onCancel: PropTypes.func,
   rightIcon: PropTypes.element,
+  ...InputForStory.propTypes,
 };
 
 SearchBar.defaultProps = {
   iconColor: 'outline',
   value: '',
   placeholder: 'Search here',
+  ...InputForStory.defaultTypes,
+};
+
+SearchBarForStory.propTypes = {
+  indicatorColor: PropTypes.string,
+  loading: PropTypes.bool,
+  iconColor: PropTypes.string,
+  onCancel: PropTypes.func,
+  ...InputForStory.propTypes,
+};
+
+SearchBarForStory.defaultProps = {
+  iconColor: 'outline',
+  value: '',
+  placeholder: 'Search here',
+  ...InputForStory.defaultProps,
 };
 
 const styles = StyleSheet.create({
@@ -70,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(SearchBar);
+export default SearchBar;
