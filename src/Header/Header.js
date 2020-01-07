@@ -81,7 +81,6 @@ Header.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 3,
     width: '100%',
     height: Platform.select({
       android: 56,
@@ -91,6 +90,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
+    ...Platform.select({
+      android: {
+        elevation: 1,
+      },
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+      },
+      web: {
+        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
+        boxShadow: '0 5px 5px rgba(0,0,0,0.10), 1px 5px 5px rgba(0,0,0,0.10)',
+      },
+    }),
   },
   text: {
     flex: 1,
