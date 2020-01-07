@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Modal } from 'react-native';
 import PropTypes from 'prop-types';
-import withTheme from '../util/withTheme';
+import { useThemeContext } from '../util/ThemeProvider';
 
 const getContainerStyle = ({ theme, background, style }) => {
-  const containerStyle = [{
-    ...styles.container,
+  const containerStyle = [styles.container, {
     backgroundColor: theme.brandColor[background],
   }];
   if (style) {
@@ -29,10 +28,11 @@ const getOverlayStyle = ({ theme, overlayBackground, overlayStyle, borderRadius,
 };
 
 const Overlay = (props) => {
+  const theme = useThemeContext();
   return (
     <Modal {...props}>
-      <View style={getContainerStyle(props)}>
-        <View style={getOverlayStyle(props)}>
+      <View style={getContainerStyle({ ...props, theme })}>
+        <View style={getOverlayStyle({ ...props, theme })}>
           {props.children}
         </View>
       </View>
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Overlay);
+export default Overlay;
