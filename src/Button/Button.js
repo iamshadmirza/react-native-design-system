@@ -47,7 +47,7 @@ const getContainerStyle = (props) => {
   if (outline) {
     buttonStyles.push({
       borderWidth: 1,
-      backgroundColor: theme.brandColor[color] + '20',
+      backgroundColor: theme.brandColor[color] + '10',
       borderColor: theme.brandColor[color],
     });
   }
@@ -55,14 +55,12 @@ const getContainerStyle = (props) => {
     buttonStyles.push({
       borderWidth: 0,
       backgroundColor: theme.brandColor[color] + '50',
-      elevation: 0,
     });
   }
   if (transparent) {
     buttonStyles.push({
       borderWidth: 0,
       backgroundColor: 'transparent',
-      elevation: 0,
     });
   }
   if (loading && outline) {
@@ -165,7 +163,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 1,
   },
   iconStyle: {
     paddingRight: 5,

@@ -56,6 +56,24 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     bottom: 25,
     right: 25,
+    ...Platform.select({
+      android: {
+        elevation: 3,
+      },
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+      },
+      web: {
+        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
+        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
+      },
+    }),
   },
   centerView: {
     flex: 1,

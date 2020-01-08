@@ -1,8 +1,8 @@
 <h1 align="center">Welcome to react-native-design-system 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.3-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.4-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/iamshadmirza/react-native-design-system#readme">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-no-brightgreen.svg" target="_blank" />
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
   <a href="https://github.com/iamshadmirza/react-native-design-system/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
@@ -15,79 +15,111 @@
   </a>
 </p>
 
-> A reusable cross-platform component library and a design language system for react-native.
+`React Native Design System` is a set of design rules and component library that let's you prototype  faster with easy to use cross-platform components. Let's get started!
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/react-native-design-system#readme)
+### 📄 [Documentation](https://iamshadmirza.github.io/rnds_docs)
 
-## Install
-
+# Install
+Simply go to command line and run this command.
 ```sh
-npm install react-native-design-system
+yarn add react-native-design-system
 ```
 
-## Usage
+This library needs `react-native-vector-icons` so go on and install that too to get all the cool icons. Check out [Install guide](https://github.com/oblador/react-native-vector-icons#installation).
 
-```javascript
+# Usage
+React Native Design System uses a centralized theme to provide consistency across all the component.
+
+### Step 1. Import ThemeProvider and theme then wrap your root component.
+This step is important. We are passing `theme` as context value that each component will access.
+
+```js
+//your root component
+import { ThemeProvider, theme } from 'react-native-design-system';
+
+function App(){
+  return (
+    <ThemeProvider value={theme}>
+      <Root />
+    </ThemeProvider>
+  );
+}
+```
+
+### Step 2. Use component.
+
+```js
+//inside any file
 import { Button } from 'react-native-design-system';
 
-<Button>
-  PRESS ME
-</Button>
-
+function HomeScreen(){
+  return (
+    <Button>
+      Press Me
+    </Button>
+  );
+}
 ```
 
-## Customization
+That's pretty much it. `theme` file contains configuration for all the components. Don't worry, you can easily customize it. Let me show how:
 
-1. Create a file `theme.config.js` in your root folder
-2. Import `theme` from `react-native-design-system` in this file. Here you can override the current values or add new values. 
+# Customize
+You just need to import `theme`, reassign the value you want to change and pass it to `ThemeProvider`. Example:  
+Default primary color is blue but you like orange so you can simply do:
+
 ```js
-import theme from './react-native-design-system/src/util/theme';
+import { ThemeProvider, theme } from 'react-native-design-system';
 
-theme.brandColor.primary = '#ff1744';
-theme.brandColor.secondary = '#ff5252';
+theme.brandColor.primary = "orange";
+
+function App(){
+  return (
+    <ThemeProvider value={theme}>
+      <Root />
+    </ThemeProvider>
+  );
+}
+```
+
+And we are done!
+> You can see all the configuration available in theme page.
+
+# If you have a lot of customizations
+This is just a personal approach, you can do as you prefer. What I usually do is create a `theme.config.js` file and add all my customizations there.
+
+```js
+//theme.config.js at root
+import { theme } from 'react-native-design-system';
+
+theme.textColor = {
+    'default': '#000',
+    'heading': '#999',
+    'subtle': '#333',
+    'grey': '#757575',
+    'disabled': '#78909c',
+    'white': '#f8f8f8',
+};
 
 export default theme;
-```  
-3. Import it in your root component like this:  
-```js
-import theme from './theme.config'; 
+```
 
-const App = () => {
+Now, I will just import `theme` from here and pass it to my `ThemeProvider`.
+
+```js
+import { ThemeProvider } from 'react-native-design-system';
+import theme from './theme.config.js';
+
+function App(){
   return (
     <ThemeProvider value={theme}>
-      //root component
-    </ThemeProvider>
-  );
-}
-
-export default App;
-
-```
-4. Alternate shorthand:  
-```javascript
-//skip default export in theme.config.js
-import theme from './react-native-design-system/src/util/theme';
-
-theme.brandColor.primary = '#ff1744';
-theme.brandColor.secondary = '#ff5252';
-```
-```js
-//dynamic import at top of your root component
-import('./theme.config');
-
-const App = () => {
-  return (
-    <ThemeProvider value={theme}>
-      //root component
+      <Root />
     </ThemeProvider>
   );
 }
 ```
 
-## Run tests
-
-```sh
-npm run test
+> Please make sure to pass all the keys while reassigning any object inside theme.
 ```
 
 ## Components included:

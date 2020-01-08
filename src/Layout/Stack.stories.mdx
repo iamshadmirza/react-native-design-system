@@ -76,27 +76,38 @@ Play with Stack in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
  <Stack
-  space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}>
+  space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+  horizontalSpace={select('horizontalSpace', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+  >
     <Input
-      placeholder="Enter Username"
+      placeholder="Enter username"
       value=""
       outline
+      label="Username"
       onChangeText={text => action('pressed')}
     />
     <Input
-      placeholder="Enter Email"
+      placeholder="Enter email"
       value=""
       outline
+      label="Email"
       onChangeText={text => action('pressed')}
     />
     <Input
-      placeholder="Enter Password"
+      placeholder="Enter password"
       value=""
       outline
+      label="Password"
       onChangeText={text => action('pressed')}
     />
     <Button>
-      Sign up
+      LOG IN
+    </Button>
+    <Button outline>
+      SIGN UP
+    </Button>
+    <Button transparent>
+      forget password?
     </Button>
   </Stack>
 </Story>

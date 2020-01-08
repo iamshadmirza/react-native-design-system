@@ -75,7 +75,7 @@ Header.defaultProps = {
   children: 'Home',
   color: 'primary',
   barColor: 'primary',
-  barStyle: 'default',
+  barStyle: 'light-content',
   fontSize: 'medium',
 };
 
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: {
           width: 0,
-          height: 2,
+          height: 3,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3,
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     }),
     color: '#fff',
     paddingHorizontal: 10,
+    marginTop: Platform.OS === 'ios' ? 8 : 0,
   },
   iconStyle: {
     padding: 5,

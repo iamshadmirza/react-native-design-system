@@ -55,7 +55,7 @@ const getLabelStyle = ({ theme, size, labelColor }) => {
   const labelStyle = [{
     fontSize: theme.fontSize[size] * 0.8,
     fontWeight: 'bold',
-    paddingLeft: 5,
+    paddingLeft: 2.5,
     paddingBottom: 5,
     color: theme.textColor[labelColor],
   }];
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     padding: 5,
-    paddingVertical: 7.5,
+    paddingVertical: 10,
     paddingHorizontal: 15,
   },
   leftIcon: {

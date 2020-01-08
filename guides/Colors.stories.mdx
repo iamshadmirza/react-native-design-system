@@ -1,0 +1,43 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { View, Text, FlatList } from 'react-native';
+import color from '../src/util/colors';
+const colorBarStyle = {
+  height: 75,
+  borderRadius: 5,
+  marginVertical: 5,
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+const textStyle = {
+  color: '#4c4c4c',
+  fontSize: 20,
+  fontWeight: 'bold',
+};
+
+<Meta title="Guide|Colors" />
+
+# Colors
+These are all the colors that you can use.
+
+```js
+//usage
+import { colors } from 'react-native-design-system';
+
+theme.brandColor.primary = color.lime['A700'];
+```
+
+<Preview>
+  <Story name="colors">
+    <>
+    {Object.keys(color).map(colorGroup => (
+      Object.keys(color[colorGroup]).map(hex => (
+        <View style={[colorBarStyle, { backgroundColor: color[colorGroup][hex] }]}>
+            <Text style={textStyle}>
+              {`${colorGroup}['${hex}'] ${color[colorGroup][hex]}`}
+            </Text>
+        </View>
+      ))
+    ))}
+    </>
+  </Story>
+</Preview>

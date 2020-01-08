@@ -138,11 +138,11 @@ Default alignment of childrens is `column` which can be changed to `row` by pass
 </Preview>
 
 # Shadow
-Pass `shadow={false}` to opt-out of default shadow that comes with card. It is `true` by default.
+Pass `shadow` to render a shadow around card. It is `false` by default.
 
 <Preview>
   <Story name="shadow">
-    <Card row shadow={false}>
+    <Card row shadow={true}>
       <Button length="short" onPress={action('pressed')}>
         Press Me
       </Button>

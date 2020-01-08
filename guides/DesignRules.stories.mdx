@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guide|Design Rules" />
+
+# Design Rules
+These are some of the design rules that this library follows.
+
+# Low surface area
+Most of the props are common across all components or they are same as their parent React Native component. This makes sure that you do not have to learn a whole set of extra props or just use what you already know.  
+For example, 
+* Each component receives a `size` prop whole value can be one of these: `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` & `xxlarge`. You just have to pass `size` prop with one of these value and you're done.
+* Other example could be `color` prop. You can pass one of the color to any component.
+* If it's a layout based component like `Box`, `Stack`, `Inline` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xxsmall` and `xxlarge` and provide appropriate spacing between components.
+* Each component receives a `style` and a `textStyle` prop (if there is a text involved). This is for some rare cases when you have to override the default styling. It's preferable to tweak the `theme` instead to maintain consistency and avoid adding that `style` again and again.
+
+These props are common to all the components. Other component specific props are pretty straight forward too. 
+
+# Speed 
+For most of the cases, default styles like `size={medium}` or `space={medium}` will be enough. In other cases, it's just two to three props max to acheive any desired result. This makes it faster to prototype. The layout components makes it easier to acheive the desired screen layout with one or two props. See the login form in `Stack` docs.
+
+One of key aspects of pixel perfect design is spacing between elements. This design system proposes two things:
+1. Every UI component has 0 margin.
+2. Spacing of any component will be determind by it's parent Layout component.
+
+The seperation of concerns makes the job easy.  Layout component should take care of `space` only and UI component should worry about UI only i.e., `color` or `size`.
+
+# Consitency
+The correct balance of freedom and consistency is hard to acheive. 
+1. For freedom, you get straight forward props like `color` and `size`. 
+2. For consistency, you need to define these configuration inside theme file.
+It helps in maintaining consistency across all the usage. It also allows you to have a number of choices and use it as needed. Check out theme section of this guide for default configuration.
+
+# Connection
+// I forgot what I thought on this.
