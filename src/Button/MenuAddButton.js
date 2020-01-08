@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import colors from '../util/colors';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, size, count, disabled }) => {
+const getContainerStyle = ({ theme, size, children, disabled }) => {
   const buttonStyle = [styles.container];
   buttonStyle.push({
     width: theme.buttonWidth[size],
@@ -13,7 +13,7 @@ const getContainerStyle = ({ theme, size, count, disabled }) => {
     flexDirection: 'row',
     justifyContent: 'center',
   });
-  if (count < 1) {
+  if (children < 1) {
     buttonStyle.push({
       backgroundColor: colors.bluegrey[200],
       elevation: 0,
@@ -46,7 +46,7 @@ const MenuAddButton = (props) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  if (props.count < 1 || props.disabled) {
+  if (props.children < 1 || props.disabled) {
     return (
       <TouchableElement
         disabled={props.disabled}
@@ -73,7 +73,7 @@ const MenuAddButton = (props) => {
       </TouchableElement>
       <View style={styles.countView}>
         <Text style={[getTextStyle({ ...props, theme }), props.textStyle]}>
-          {props.count}
+          {props.children}
         </Text>
       </View>
       <TouchableElement onPress={props.onIncrement}>
@@ -93,7 +93,7 @@ const MenuAddButton = (props) => {
 MenuAddButton.propTypes = {
   style: PropTypes.object,
   textStyle: PropTypes.object,
-  count: PropTypes.number.isRequired,
+  children: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
   plusIcon: PropTypes.element,
@@ -105,7 +105,7 @@ MenuAddButton.propTypes = {
 
 MenuAddButton.defaultProps = {
   iconColor: '#333',
-  count: 0,
+  children: 0,
   size: 'medium',
 };
 

@@ -8,20 +8,25 @@ import FullScreenLoader from './FullScreenLoader';
 # FullScreenLoader
 FullScreenLoader is a loading screen component which sits on top of all the view. It shows an Activity Indicator and restrict touches while spinner is rotating.
 
-# Props
+# Usage
+```js
+import { FullScreenLoader } from 'react-native-design-system';
 
+<FullScreenLoader 
+  loading={this.state.loading}
+>
+```
+
+# Props
 <Props of={FullScreenLoader} />
 
 # Loading
-
 Passing `loading={true}` makes the loading screen visible. View will be unmounted when `loading` changes to `false`.
 
 # Indicator Color
-
 Pass any theme color in `indicatorColor` prop for desired result. Passed color should be present in `brandColor` of `theme`.
 
 # Background
-
 Pass any theme color in `background` prop for set desired Background. Passed color should be present in `brandColor` of `theme`.
 
 # Size

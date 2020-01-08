@@ -10,8 +10,18 @@ import Badge from './Badge';
 # Badge
 Badges are small components typically used to communicate a number value or indicate the status of an item to the user.
 
-# Props
+# Usage
+```js
+import { Badge } from 'react-native-design-system';
 
+<Badge
+  onPress={() => this.handlePress())}
+>
+  10000
+</Badge>
+```
+
+# Props
 <Props of={Badge} />
 
 # Sizes
@@ -22,42 +32,36 @@ As usual, there are 7 sizes available.
     <Inline>
       <Badge
         size="xxlarge"
-        title="MD"
         onPress={action('pressed')}
       >
       10000
       </Badge>
       <Badge
         size="xlarge"
-        title="MD"
         onPress={action('pressed')}
       >
       1000
       </Badge>
       <Badge
         size="large"
-        title="MD"
         onPress={action('pressed')}
       >
       100
       </Badge>
       <Badge
         size="medium"
-        title="MD"
         onPress={action('pressed')}
       >
       50
       </Badge>
       <Badge
         size="small"
-        title="MD"
         onPress={action('pressed')}
       >
       0
       </Badge>
       <Badge
         size="xsmall"
-        title="MD"
         onPress={action('pressed')}
       >
       -10
@@ -93,7 +97,6 @@ There are 3 types of Badges mainly: `default` which is round, `sqaure` and `mini
 </Preview>
 
 # Playground
-
 Play with Badge in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>

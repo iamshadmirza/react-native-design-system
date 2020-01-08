@@ -10,8 +10,27 @@ import Stack from './Stack';
 # Inline
 Inline is a layout container which alligns it's children horizontally (inline) and provide constant margin around them.
 
-# Props
+# Usage
+```js
+import { Box, Badge } from 'react-native-design-system';
 
+<Inline space="xxlarge">
+  <Badge onPress={() => this.handlePress(id)}>
+    10
+  </Badge>
+  <Badge onPress={() => this.handlePress(id)}>
+    50
+  </Badge>
+  <Badge onPress={() => this.handlePress(id)}>
+    677
+  </Badge>
+  <Badge onPress={() => this.handlePress(id)}>
+    9999
+  </Badge>
+</Inline>
+```
+
+# Props
 <Props of={Inline} />
 
 # Space
@@ -67,7 +86,6 @@ Customize spacing of each child from one another. `space` prop accepts one of th
 </Preview>
 
 # Playground
-
 Play with Inline in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>

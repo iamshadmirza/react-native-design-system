@@ -10,8 +10,16 @@ import Button from './Button';
 # Button
 A Button is a clickable view to carry out actions such as clearing user input or submitting the form.
 
-# Props
+# Usage
+```js
+import { Button } from 'react-native-design-system';
 
+<Button onPress={() => this.handleChange())}>
+  Press Me
+</Button>
+```
+
+# Props
 <Props of={Button} />
 
 # Type
@@ -89,7 +97,6 @@ There are three different `brandColor` available. `primary`, `secondary` and `te
 </Preview>
 
 # Icon
-
 You can directly pass any icon via icon props.
 > Icon size and color should be defined by developers manually according to button size.
 
@@ -107,7 +114,6 @@ You can directly pass any icon via icon props.
 </Preview>
 
 # Size
-
 There are 7 different size of buttons.
 
 <Preview>
@@ -153,7 +159,6 @@ There are 7 different size of buttons.
 </Preview>
 
 # Width
-
 Must be used with `type="short"`.
 
 <Preview>
@@ -207,7 +212,6 @@ Must be used with `type="short"`.
 
 
 # Playground
-
 Play with Button in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>

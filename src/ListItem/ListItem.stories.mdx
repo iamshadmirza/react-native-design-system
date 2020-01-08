@@ -11,11 +11,21 @@ import ListItem from './ListItem';
 # ListItem
 A ListItem is a wrapper around `TextInput` with commonly used styles and easy to make customization.
 
+# Usage
+```js
+import { ListItem } from 'react-native-design-system';
+
+<ListItem chevron>
+  This is a ListItem
+</ListItem>
+```
+
 # Props
 <Props of={ListItem} />
 
 # Type
 There are three types of button mainly: `default`, `round`, and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.
+
 <Preview>
   <Story name="type">
     <Stack>
@@ -98,6 +108,7 @@ You can `leftIcon` and `rightIcon` that goes to left and right on the `ListItem`
 
 # Disabled
 `disabled={true}` property restrict any kind of action on ListItem.
+
 <Preview>
   <Story name="disabled">
     <ListItem chevron disabled subtitle="a generic subtitle">
@@ -108,6 +119,7 @@ You can `leftIcon` and `rightIcon` that goes to left and right on the `ListItem`
 
 # Text Color
 You can pass any of the color present inside `textColor` in theme. Same property applies to `subtitleColor`.
+
 <Preview>
   <Story name="textColor">
     <ListItem chevron textColor="grey" subtitle="a generic subtitle">
@@ -168,6 +180,7 @@ As usual, 7 available sized.
 
 # Space 
 You can customize just the padding too by passing `space` props with one of the 7 values (`xxsmall` to `xxlarge`).
+
 <Preview>
   <Story name="space">
     <Stack>
@@ -197,8 +210,7 @@ You can customize just the padding too by passing `space` props with one of the 
 </Preview>
 
 # Playground
-
-Play with Button in Canvas mode.
+Play with ListItem in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <ListItem

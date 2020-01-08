@@ -8,8 +8,16 @@ import Text from './Text';
 # Text
 Simple `Text` element that gives you different sizes and colors.
 
-# Props
+# Usage
+```js
+import { Text } from 'react-native-design-system';
 
+<Text>
+  Hello Design System
+</Text>
+```
+
+# Props
 <Props of={Text} />
 
 # Sizes
@@ -69,8 +77,7 @@ Uses color defined in `textColor` in theme.
 Pass `scale={false}` if you don't want text to scale when device default font size changes. Default is `true` and text will scale accrording to default font size.
 
 # Playground
-
-Play with ActionButton in Canvas mode.
+Play with Text in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <Text

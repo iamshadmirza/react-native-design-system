@@ -10,6 +10,17 @@ import Input, { InputForStory } from './Input';
 # Input
 A Input is a wrapper around `TextInput` with commonly used styles and easy to make customization.
 
+# Usage
+```js
+import { Input } from 'react-native-design-system';
+
+ <Input
+  placeholder="Start typing here"
+  value=""
+  onChangeText={text => handleChange(text)}
+/>
+```
+
 # Props
 <!-- This is just a workaround to pass proptypes to storybook as it is not supported with forwardRef -->
 <Props of={InputForStory} />
@@ -167,7 +178,6 @@ As usual, 7 available sized.
 </Preview>
 
 # Icon
-
 You can pass any icon via `leftIcon` and `rightIcon` props.
 > Icon size and color should be defined by developers manually according to button size.
 
@@ -190,8 +200,7 @@ You can pass any icon via `leftIcon` and `rightIcon` props.
 </Preview>
 
 # Playground
-
-Play with Button in Canvas mode.
+Play with Input in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <Input

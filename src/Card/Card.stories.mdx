@@ -11,12 +11,21 @@ import Button from '../Button/Button';
 # Card
 Card is a wrapper component with a small padding. It included center, left and right aligned card to auto align childrens. Use `Box`, `Stack` or `Inline` when making a layout.
 
-# Props
+# Usage
+```js
+import { Card, Button } from 'react-native-design-system';
 
+<Card>
+  <Button onPress={() => this.handleChange())}>
+    Press Me
+  </Button>
+</Card>
+```
+
+# Props
 <Props of={Card} />
 
 # Space
-
 Just like `size` in each component, Card receives 7 available `space` values with an additional `none` value.
 
 <Preview>
@@ -68,7 +77,6 @@ Just like `size` in each component, Card receives 7 available `space` values wit
 
 
 # Type
-
 There are 3 types of alignment for children: `left`, `center` and `right`. You just have to pass `align` prop which accepts a string from three choices.
 
 <Preview>
@@ -94,7 +102,6 @@ There are 3 types of alignment for children: `left`, `center` and `right`. You j
 </Preview>
 
 # Padding
-
 Padding can be applied horizontally and vertically only.
 * First button is getting `horizontal` prop which makes vertical padding `0`.
 * Second button is getting `vertical` prop which makes horizontal padding `0`.
@@ -151,8 +158,7 @@ Pass `shadow` to render a shadow around card. It is `false` by default.
 </Preview>
 
 # Playground
-
-Play with Button in Canvas mode.
+Play with Card in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
     <Card

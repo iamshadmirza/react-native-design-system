@@ -12,12 +12,19 @@ import Stack from '../Layout/Stack';
 # Header
 Header is just a fixed Header bar that sits on top of screen.
 
-# Props
+# Usage
+```js
+import { Header } from 'react-native-design-system';
 
+<Header>
+  Home
+</Header>
+```
+
+# Props
 <Props of={Header} />
 
 # Text Align
-
 You can align Header title position by passing `auto`,`left`, `center`, `right` or `justify` as `textAlign` property.
 
 <Preview>
@@ -104,11 +111,9 @@ You can pass `leftIcon` and `rightIcon` with `onLeftIconPress` and `onRightIconP
 You can pass StatusBar **backgroundColor** as `barColor` and **barStyle** for StatusBar `barColor`
 
 # Icon Styles
-
 You can pass `iconStyle` to pass custom styling for left and right. This is handy when you have to provide some extra padding to the icons.
 
 # Playground
-
 Play with Header in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>

@@ -10,8 +10,33 @@ import Stack from './Stack';
 # Stack
 Stack is a layout container which alligns it's children vertrically (stack) and provide constant margin around them.
 
-# Props
+# Usage
+```js
+import { Stack, Input } from 'react-native-design-system';
 
+<Stack space="large">
+  <Input
+    placeholder="Enter Username"
+    value=""
+    outline
+    onChangeText={text => handleUsernameChange(text)}
+  />
+  <Input
+    placeholder="Enter Email"
+    value=""
+    outline
+    onChangeText={text => handleEmailChange(text)}
+  />
+  <Input
+    placeholder="Enter Password"
+    value=""
+    outline
+    onChangeText={text => handlePasswordChange(text)}
+  />
+</Stack>
+```
+
+# Props
 <Props of={Stack} />
 
 # Space
@@ -71,7 +96,6 @@ Customize spacing of each child from one another. `space` prop accepts one of th
 </Preview>
 
 # Playground
-
 Play with Stack in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>

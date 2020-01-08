@@ -11,12 +11,27 @@ import Stack from '../Layout/Stack';
 # RadioButton
 A RadioButton is a graphical control element that allows the user to choose only one of a predefined set of mutually exclusive options.
 
-# Props
+# Usage
+```js
+import { RadioButton, RadioItem } from 'react-native-design-system';
 
+<RadioButton activeId={activeId} selectItem={(id) => selectItemHandler(id)}>
+    <RadioItem id="a">
+      Option A
+    </RadioItem>
+    <RadioItem id="b">
+      Option B
+    </RadioItem>
+    <RadioItem id="c">
+      Option C
+    </RadioItem>
+</RadioButton>
+```
+
+# Props
 <Props of={RadioButton} />
 
 # RadioButton and RadioItem
-
 `RadioButton` and `RadioItem` are used together as compound component.
 
 ```jsx
@@ -52,7 +67,6 @@ import RadioButton, { RadioItem } from 'react-native-design-system';
 </Preview>
 
 # Size
-
 There are 7 sizes available bases on fontSize. Pass `size` prop to parent `RadioButton` component to size all `RadioItem`s.
 
 <Preview>
@@ -220,8 +234,7 @@ Pass custom icons via  `checkedIcon` and `uncheckedIcon` prop. Size and color wi
 </Preview>
 
 # Playground
-
-Play with CheckBox in Canvas mode.
+Play with RadioButton in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <RadioButton

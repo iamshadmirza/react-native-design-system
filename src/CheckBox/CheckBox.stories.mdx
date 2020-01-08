@@ -10,12 +10,19 @@ import CheckBox from './CheckBox';
 # CheckBox
 Use `CheckBox` when looking for yes or no answers.
 
-# Props
+# Usage
+```js
+import { CheckBox } from 'react-native-design-system';
 
+<CheckBox checked={this.state.checked} onPress={() => this.setState({ checked: !this.state.checked })}>
+    Hello CheckBox
+</CheckBox>
+```
+
+# Props
 <Props of={CheckBox} />
 
 # Size
-
 There are 7 sizes available bases on fontSize.
 
 <Preview>

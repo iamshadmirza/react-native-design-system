@@ -8,20 +8,27 @@ import Overlay from './Overlay';
 # Overlay
 Overlay covers the view and adds a transparent layer on top of it. Any view can be passed as a children. Used generally as a prompt or notify user about something.
 
-# Props
+# Usage
+```js
+import { Overlay } from 'react-native-design-system';
 
+<Overlay visible={this.state.visible} onRequestClose={() => this.setState({ visible: false })}>
+  <View>
+    <Text>Hey there!</Text>
+  </View>
+</Overlay>
+```
+
+# Props
 <Props of={Overlay} />
 
 # Modal Props
-
 Accepts all the modal props like `visible={true}` and `onRequestClose`, etc.
 
 # Styles
-
 The container receives an `style` props and overlay can be customized with `overlayStyle` which is the inside content on transparent layer.
 
 # Dimensions
-
 Overlay has a default width and height of `80%` and `70%`. It can be customized by passing `width` and `height` props.
 
 # Border Radius

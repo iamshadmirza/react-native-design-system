@@ -10,6 +10,17 @@ import SearchBar, { SearchBarForStory } from './SearchBar';
 # SearchBar
 A SearchBar is a wrapper around `TextInput` with commonly used styles and easy to make customization. Receives all the props of `Input` component.
 
+# Usage
+```js
+import { SearchBar } from 'react-native-design-system';
+
+<SearchBar
+  round
+  value={this.state.text}
+  onChangeText={text => handleChange(text)}
+/>
+```
+
 # Props
 <!-- This is just a workaround to pass proptypes to storybook as it is not supported with forwardRef -->
 <Props of={SearchBarForStory} />
@@ -198,7 +209,6 @@ As usual, 7 available sized.
 </Preview>
 
 # Icon
-
 You can pass any icon via `leftIcon` and `rightIcon` props.
 > Icon size and color should be defined by developers manually according to button size.
 
@@ -221,8 +231,7 @@ You can pass any icon via `leftIcon` and `rightIcon` props.
 </Preview>
 
 # Playground
-
-Play with Button in Canvas mode.
+Play with SearchBar in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <SearchBar
