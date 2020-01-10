@@ -83,7 +83,7 @@ const getContainerStyle = (props) => {
 const renderChildren = (props) => {
   return (
     <>
-      {props.loading &&
+      {props.loading && !props.disabled &&
         <ActivityIndicator
           style={styles.iconStyle}
           color={props.indicatorColor || props.theme.brandColor[props.color]} />}
