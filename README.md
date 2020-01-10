@@ -120,7 +120,6 @@ function App(){
 ```
 
 > Please make sure to pass all the keys while reassigning any object inside theme.
-```
 
 ## Components included:
 
