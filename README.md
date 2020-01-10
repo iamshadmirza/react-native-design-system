@@ -15,7 +15,7 @@
   </a>
 </p>
 
-`React Native Design System` is a set of design rules and component library that let's you prototype  faster with easy to use cross-platform components. Let's get started!
+`React Native Design System` is a set of design rules and component library that lets you prototype  faster with easy to use cross-platform components. Let's get started!
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/react-native-design-system#readme)
 ### 📄 [Documentation](https://iamshadmirza.github.io/rnds_docs)
