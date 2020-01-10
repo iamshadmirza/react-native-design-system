@@ -20,6 +20,14 @@ import { Header } from 'react-native-design-system';
   Home
 </Header>
 ```
+> If you're using `Expo` then you have to provide top margin for StatusBar:
+
+```js
+import { Constants } from 'expo'
+
+...
+headerStyle: { marginTop: Constants.statusBarHeight },
+```
 
 # Props
 <Props of={Header} />
