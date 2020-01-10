@@ -24,11 +24,30 @@ One of key aspects of pixel perfect design is spacing between elements. This des
 
 The seperation of concerns makes the job easy.  Layout component should take care of `space` only and UI component should worry about UI only i.e., `color` or `size`.
 
-# Consitency
-The correct balance of freedom and consistency is hard to acheive. 
+# Consistency
+The correct balance of freedom and consistency is hard to acheive.  
+
 1. For freedom, you get straight forward props like `color` and `size`. 
-2. For consistency, you need to define these configuration inside theme file.
+2. For consistency, you need to define these configuration inside theme file i.e **Single source of truth**.
+
 It helps in maintaining consistency across all the usage. It also allows you to have a number of choices and use it as needed. Check out theme section of this guide for default configuration.
 
 # Connection
-// I forgot what I thought on this.
+Big problems are always more manageable when broken into smaller pieces. Design language of the system is broken down into color, typography, size and space. These API is followed by each component.
+
+## Color
+There are basically two types of colors:
+* brandColor: "primary", "secondary", "tertiary"
+* textColor: default "heading", "grey", "subtle", "disabled"
+
+## Typography
+To keep things simple and consistent. There are two choices for fonts to use: 
+* heading 
+* text 
+
+## Size
+Size is easy customization over any component. The available sizes you can use is `"xxsmall"`, `"xsmall"`, `"small"`, `"medium"`, `"large"`, `"xlarge"` and `"xxlarge"`. The default is `"medium"` and it will be applied if are not passing anything.
+
+## Space
+Space also shares similar API as size but with one addition. You can also pass `"none"` with the range of `"xxsmall"` to `"xxlarge"`. Space is a dedicated prop for layout components like `Stack`, `Inline`, `Box` and `Card`.
+
