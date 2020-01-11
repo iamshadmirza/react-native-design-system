@@ -68,18 +68,11 @@ SearchBar.defaultProps = {
 };
 
 SearchBarForStory.propTypes = {
-  indicatorColor: PropTypes.string,
-  loading: PropTypes.bool,
-  iconColor: PropTypes.string,
-  onCancel: PropTypes.func,
-  ...InputForStory.propTypes,
+  ...SearchBar.propTypes,
 };
 
 SearchBarForStory.defaultProps = {
-  iconColor: 'outline',
-  value: '',
-  placeholder: 'Search here',
-  ...InputForStory.defaultProps,
+  ...SearchBar.defaultProps,
 };
 
 const styles = StyleSheet.create({

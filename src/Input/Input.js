@@ -146,35 +146,11 @@ export const InputForStory = () => {
 };
 
 InputForStory.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
-  textColor: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChangeText: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  floatingLabel: PropTypes.bool,
-  labelStyle: PropTypes.object,
-  labelColor: PropTypes.string,
-  label: PropTypes.string,
-  color: PropTypes.string,
-  round: PropTypes.bool,
-  outline: PropTypes.bool,
-  error: PropTypes.bool,
-  errorCaption: PropTypes.string,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  disabled: PropTypes.bool,
-  leftIcon: PropTypes.element,
-  rightIcon: PropTypes.element,
-  background: PropTypes.string,
+  ...Input.propTypes,
 };
 
 InputForStory.defaultProps = {
-  placeholder: 'Type here',
-  textColor: 'default',
-  color: 'outline',
-  size: 'medium',
-  labelColor: 'subtle',
-  background: 'grey',
+  ...Input.defaultProps,
 };
 
 const styles = StyleSheet.create({
