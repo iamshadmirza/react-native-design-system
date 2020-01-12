@@ -1,3 +1,5 @@
-guides/
+guides
 .storybook
+.cache-loader
+docs
 *.stories.mdx
