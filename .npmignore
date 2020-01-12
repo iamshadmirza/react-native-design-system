@@ -1,2 +1,3 @@
 guides/
+.storybook
 *.stories.mdx

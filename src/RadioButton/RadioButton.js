@@ -2,9 +2,9 @@ import React, { useContext, createContext } from 'react';
 import { Text, View, StyleSheet, TouchableNativeFeedback, TouchableOpacity, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useThemeContext } from '../util/ThemeProvider';
 const Context = createContext();
 const { Provider } = Context;
-import { useThemeContext } from '../util/ThemeProvider';
 
 const getTextStyle = ({ theme, size, textColor, iconRight }) => {
   const textStyle = [{

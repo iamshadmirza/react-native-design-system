@@ -23,7 +23,7 @@ const Box = (props) => {
 
 Box.propTypes = {
   style: PropTypes.object,
-  background: PropTypes.background,
+  background: PropTypes.string,
   space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
 };
