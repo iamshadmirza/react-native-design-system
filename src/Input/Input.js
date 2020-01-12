@@ -140,19 +140,6 @@ Input.defaultProps = {
   background: 'grey',
 };
 
-//This is just a workaround to pass proptypes to storybook as it is not supported with forwardRef
-export const InputForStory = () => {
-  return null;
-};
-
-InputForStory.propTypes = {
-  ...Input.propTypes,
-};
-
-InputForStory.defaultProps = {
-  ...Input.defaultProps,
-};
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',

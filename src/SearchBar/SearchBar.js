@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import { Input } from '../Input';
+import Input from '../Input/Input';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
-import { InputForStory } from '../Input/Input';
 
 const renderIndicator = (props) => {
   const scale = {
@@ -49,30 +48,18 @@ const SearchBar = React.forwardRef((props, ref) => {
   );
 });
 
-export const SearchBarForStory = () => { };
-
 SearchBar.propTypes = {
   indicatorColor: PropTypes.string,
   loading: PropTypes.bool,
   iconColor: PropTypes.string,
   onCancel: PropTypes.func,
   rightIcon: PropTypes.element,
-  ...InputForStory.propTypes,
 };
 
 SearchBar.defaultProps = {
   iconColor: 'outline',
   value: '',
   placeholder: 'Search here',
-  ...InputForStory.defaultTypes,
-};
-
-SearchBarForStory.propTypes = {
-  ...SearchBar.propTypes,
-};
-
-SearchBarForStory.defaultProps = {
-  ...SearchBar.defaultProps,
 };
 
 const styles = StyleSheet.create({
