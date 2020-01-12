@@ -160,7 +160,7 @@ function App(){
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/iamshadmirza/react-native-design-system/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/iamshadmirza/react-native-design-system/issues) and contribution [guidelines](CONTRIBUTING.md).
 
 ## Show your support
 
