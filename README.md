@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="https://rnds.netlify.com/">
-    <img alt="react-native-react-system" src="https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/rnds_logo.png" width="200">
+    <img alt="react-native-react-system" src="https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/rnds_logo.png" width="250">
   </a>
 </p>
 
