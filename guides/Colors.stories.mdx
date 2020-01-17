@@ -9,10 +9,22 @@ const colorBarStyle = {
   alignItems: 'center',
 };
 const textStyle = {
-  color: '#4c4c4c',
   fontSize: 20,
   fontWeight: 'bold',
 };
+const getColor = (color) => {
+  let c = color.substring(1);      // strip #
+  let rgb = parseInt(c, 16);   // convert rrggbb to decimal
+  let r = (rgb >> 16) & 0xff;  // extract red
+  let g = (rgb >>  8) & 0xff;  // extract green
+  let b = (rgb >>  0) & 0xff;  // extract blue
+  let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+  if (luma < 186) {
+    return '#fff';
+  } else {
+    return '#333';
+  }
+}
 
 <Meta title="Guide|Colors" />
 
@@ -28,16 +40,22 @@ theme.brandColor.primary = color.lime['A700'];
 
 <Preview>
   <Story name="colors">
-    <>
-    {Object.keys(color).map(colorGroup => (
-      Object.keys(color[colorGroup]).map(hex => (
-        <View style={[colorBarStyle, { backgroundColor: color[colorGroup][hex] }]}>
-            <Text style={textStyle}>
-              {`${colorGroup}['${hex}'] ${color[colorGroup][hex]}`}
-            </Text>
-        </View>
-      ))
-    ))}
-    </>
+    <FlatList
+      data={Object.keys(color)}
+      keyExtractor={(colorGroup, index) => index.toString()}
+      renderItem={({ item: colorGroup }) => (
+        <FlatList
+          data={Object.keys(color[colorGroup])}
+          keyExtractor={hex => hex}
+          renderItem={({ item: hex }) => (
+            <View style={[colorBarStyle, { backgroundColor: color[colorGroup][hex] }]}>
+              <Text style={[textStyle, { color: getColor(color[colorGroup][hex])}]}>
+                {`${colorGroup}['${hex}'] ${color[colorGroup][hex]}`}
+              </Text>
+            </View>
+          )}
+        />
+      )}
+    />
   </Story>
 </Preview>
