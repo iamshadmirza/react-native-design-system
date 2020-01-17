@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to react-native-design-system 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.4-blue.svg?cacheSeconds=2592000" />
+  <a href="https://www.npmjs.com/package/react-native-design-system"><img src="https://img.shields.io/npm/v/react-native-design-system.svg?style=flat-square"></a>
   <a href="https://github.com/iamshadmirza/react-native-design-system#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
@@ -15,13 +15,19 @@
   </a>
 </p>
 
-`React Native Design System` is a set of design rules and component library that lets you prototype  faster with easy to use cross-platform components. Let's get started!
+<p align="center">
+  <a href="https://rnds.netlify.com/">
+    <img alt="react-native-react-system" src="https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/rnds_logo.png" width="200">
+  </a>
+</p>
+
+`React Native Design System` is a set of design rules and component library that lets you prototype faster with easy to use cross-platform components. Let's get started!
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/react-native-design-system#readme)
-### 📄 [Documentation](https://iamshadmirza.github.io/rnds_docs)
+### 📄 [Documentation](https://rnds.netlify.com)
 
 # Install
-Simply go to command line and run this command.
+Simply go to the command line and run this command.
 ```sh
 yarn add react-native-design-system
 ```
@@ -29,7 +35,7 @@ yarn add react-native-design-system
 This library needs `react-native-vector-icons` so go on and install that too to get all the cool icons. Check out [Install guide](https://github.com/oblador/react-native-vector-icons#installation).
 
 # Usage
-React Native Design System uses a centralized theme to provide consistency across all the component.
+React Native Design System uses a centralized theme to provide consistency across all the components.
 
 ### Step 1. Import ThemeProvider and theme then wrap your root component.
 This step is important. We are passing `theme` as context value that each component will access.
@@ -83,7 +89,7 @@ function App(){
 ```
 
 And we are done!
-> You can see all the configuration available in theme page.
+> You can see all the configurations available on the theme page.
 
 # If you have a lot of customizations
 This is just a personal approach, you can do as you prefer. What I usually do is create a `theme.config.js` file and add all my customizations there.
@@ -119,7 +125,7 @@ function App(){
 }
 ```
 
-> Please make sure to pass all the keys while reassigning any object inside theme.
+> Please make sure to pass all the keys while reassigning any object inside the theme.
 
 ## Components included:
 
