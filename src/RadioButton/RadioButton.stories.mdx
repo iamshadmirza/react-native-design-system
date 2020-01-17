@@ -1,10 +1,11 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean } from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 import { View } from 'react-native';
 import { action } from '@storybook/addon-actions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import RadioButton, { RadioItem } from './RadioButton';
 import Stack from '../Layout/Stack';
+import ExampleRadioButton from './ExampleRadioButton';
 
 <Meta title="Design System|RadioButton" component={RadioButton} />
 
@@ -237,22 +238,5 @@ Pass custom icons via  `checkedIcon` and `uncheckedIcon` prop. Size and color wi
 Play with RadioButton in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
-  <RadioButton
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-    activeId={select('activeId', ['a', 'b', 'c'], 'a')}
-    iconRight={boolean('iconRight', false)}
-    color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}
-    textColor={select('textColor', ['heading', 'default', 'subtle', 'grey'], 'default')}
-    selectItem={action('pressed')} 
-  >
-    <RadioItem id="a">
-      Option A
-    </RadioItem>
-    <RadioItem id="b">
-      Option B
-    </RadioItem>
-    <RadioItem id="c">
-      Option C
-    </RadioItem>
-  </RadioButton>
+  <ExampleRadioButton />
 </Story>

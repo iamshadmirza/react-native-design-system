@@ -1,9 +1,11 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean, number, color } from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
+import {useState} from 'react'
 import { action } from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MenuAddButton from './MenuAddButton';
+import ExampleMenuButton from './ExampleMenuButton';
 
 <Meta title="Design System|MenuAddButton" component={MenuAddButton} />
 
@@ -16,40 +18,40 @@ import { MenuAddButton } from 'react-native-design-system';
 
 <MenuAddButton
   onIncrement={() => handleIncrement())}
-  onDecrement={() => handleDecrement())}>
-  {this.state.count}
-</MenuAddButton>
+  onDecrement={() => handleDecrement())}
+  count={this.state.count}
+/>
 ```
 
 # Props
 <Props of={MenuAddButton} />
 
-# children
-Pass an `Integer` value in `children` prop as number of items.
+# Count
+Pass an `Integer` value in `count` prop as number of items.
 
 <Preview>
-  <Story name="children">
+  <Story name="count">
     <Stack>
       <MenuAddButton
         onIncrement={action('pressed')}
-        onDecrement={action('pressed')}>
-        0
-      </MenuAddButton>
+        onDecrement={action('pressed')}
+        count={0}
+      />
       <MenuAddButton
         onIncrement={action('pressed')}
-        onDecrement={action('pressed')}>
-        5
-      </MenuAddButton>
+        onDecrement={action('pressed')}
+        count={5}
+      />
       <MenuAddButton
         onIncrement={action('pressed')}
-        onDecrement={action('pressed')}>
-        15
-      </MenuAddButton>
+        onDecrement={action('pressed')}
+        count={25}
+      />
       <MenuAddButton
         onIncrement={action('pressed')}
-        onDecrement={action('pressed')}>
-        100
-      </MenuAddButton>
+        onDecrement={action('pressed')}
+        count={100}
+      />
     </Stack>
   </Story>
 </Preview>
@@ -62,9 +64,9 @@ Pass an `Integer` value in `children` prop as number of items.
     <MenuAddButton
       disabled
       onIncrement={action('pressed')}
-      onDecrement={action('pressed')}>
-      0
-    </MenuAddButton>
+      onDecrement={action('pressed')}
+      count={0} 
+    />
   </Story>
 </Preview>
 
@@ -77,45 +79,38 @@ There are 7 different size available. You may not need all of them but it doesn'
       <MenuAddButton size="xxsmall"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
-      >
-        0
-      </MenuAddButton>
+        count={0}
+      />
       <MenuAddButton size="xsmall"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
-      >
-        2
-      </MenuAddButton>
+        count={2}
+      />
       <MenuAddButton size="small"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
-      >
-        10
-      </MenuAddButton>
+        count={10}
+      />
       <MenuAddButton size="medium"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
-      >
-        50
-      </MenuAddButton>
+        count={50}
+      />
       <MenuAddButton size="large"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
-      >
-        100
-      </MenuAddButton>
+        count={100}
+      />
       <MenuAddButton size="xlarge"
         onIncrement={action('pressed')}
-        onDecrement={action('pressed')}
-      >
-        500
-      </MenuAddButton>
+       onDecrement={action('pressed')}
+        count={500}
+      />
       <MenuAddButton size="xxlarge"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
-      >
-        1000
-      </MenuAddButton>
+        count={2020}
+      />
     </Stack>
   </Story>
 </Preview>
@@ -142,9 +137,8 @@ Pass custom icon as `plusIcon` and `minusIcon` of your choice.
           color="black"
         />
       }
-    >
-      10
-    </MenuAddButton>
+      count={10}
+    />
   </Story>
 </Preview>
 
@@ -152,13 +146,5 @@ Pass custom icon as `plusIcon` and `minusIcon` of your choice.
 Play with MenuAddButton in Canvas mode.
 
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
-  <MenuAddButton
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-    disabled={boolean('disabled', false)}
-    onIncrement={action('pressed')}
-    onDecrement={action('pressed')}
-    iconColor={color('iconColor', '#333')}
-  >
-  {number('children', 10)}
-  </MenuAddButton>
+  <ExampleMenuButton />
 </Story>

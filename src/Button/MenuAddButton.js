@@ -24,6 +24,9 @@ const getContainerStyle = ({ theme, size, children, disabled }) => {
   if (disabled) {
     buttonStyle.push({
       backgroundColor: theme.brandColor.disabled,
+      elevation: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
     });
   }
   return buttonStyle;
@@ -73,7 +76,7 @@ const MenuAddButton = (props) => {
       </TouchableElement>
       <View style={styles.countView}>
         <Text style={[getTextStyle({ ...props, theme }), props.textStyle]}>
-          {props.children}
+          {props.count}
         </Text>
       </View>
       <TouchableElement onPress={props.onIncrement}>
@@ -93,7 +96,7 @@ const MenuAddButton = (props) => {
 MenuAddButton.propTypes = {
   style: PropTypes.object,
   textStyle: PropTypes.object,
-  children: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
   plusIcon: PropTypes.element,
@@ -105,7 +108,7 @@ MenuAddButton.propTypes = {
 
 MenuAddButton.defaultProps = {
   iconColor: '#333',
-  children: 0,
+  count: 0,
   size: 'medium',
 };
 
