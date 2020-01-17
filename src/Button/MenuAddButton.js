@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import colors from '../util/colors';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, size, children, disabled }) => {
+const getContainerStyle = ({ theme, size, count, disabled }) => {
   const buttonStyle = [styles.container];
   buttonStyle.push({
     width: theme.buttonWidth[size],
@@ -13,7 +13,7 @@ const getContainerStyle = ({ theme, size, children, disabled }) => {
     flexDirection: 'row',
     justifyContent: 'center',
   });
-  if (children < 1) {
+  if (count < 1) {
     buttonStyle.push({
       backgroundColor: colors.bluegrey[200],
       elevation: 0,
@@ -49,7 +49,7 @@ const MenuAddButton = (props) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  if (props.children < 1 || props.disabled) {
+  if (props.count < 1 || props.disabled) {
     return (
       <TouchableElement
         disabled={props.disabled}
