@@ -23,5 +23,5 @@ export default function ExampleRadioButton() {
         Option C
       </RadioItem>
     </RadioButton>
-  )
+  );
 }
