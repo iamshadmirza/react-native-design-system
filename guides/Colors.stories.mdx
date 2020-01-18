@@ -13,27 +13,22 @@ import { colors } from 'react-native-design-system';
 
 theme.brandColor.primary = color.lime['A700'];
 ```
-
-<Preview>
-  <Story name="colors">
-    <ColorPalette>
+<ColorPalette>
+  <FlatList
+    data={Object.keys(color)}
+    keyExtractor={(colorGroup, index) => index.toString()}
+    renderItem={({ item: colorGroup }) => (
       <FlatList
-        data={Object.keys(color)}
-        keyExtractor={(colorGroup, index) => index.toString()}
-        renderItem={({ item: colorGroup }) => (
-          <FlatList
-            data={Object.keys(color[colorGroup])}
-            keyExtractor={hex => hex}
-            renderItem={({ item: hex }) => (
-              <ColorItem
-                title={`colors.${colorGroup}['${hex}']`}
-                subtitle={colorGroup.toUpperCase()}
-                colors={[color[colorGroup][hex]]}
-              />
-            )}
+        data={Object.keys(color[colorGroup])}
+        keyExtractor={hex => hex}
+        renderItem={({ item: hex }) => (
+          <ColorItem
+            title={`colors.${colorGroup}['${hex}']`}
+            subtitle={colorGroup.toUpperCase()}
+            colors={[color[colorGroup][hex]]}
           />
         )}
       />
-    </ColorPalette>
-  </Story>
-</Preview>
+    )}
+  />
+</ColorPalette>
