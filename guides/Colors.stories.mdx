@@ -1,30 +1,6 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
-import { View, Text, FlatList } from 'react-native';
+import { Meta, Preview, Story, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { FlatList } from 'react-native';
 import color from '../src/util/colors';
-const colorBarStyle = {
-  height: 75,
-  borderRadius: 5,
-  marginVertical: 5,
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-const textStyle = {
-  fontSize: 20,
-  fontWeight: 'bold',
-};
-const getColor = (color) => {
-  let c = color.substring(1);      // strip #
-  let rgb = parseInt(c, 16);   // convert rrggbb to decimal
-  let r = (rgb >> 16) & 0xff;  // extract red
-  let g = (rgb >>  8) & 0xff;  // extract green
-  let b = (rgb >>  0) & 0xff;  // extract blue
-  let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
-  if (luma < 186) {
-    return '#fff';
-  } else {
-    return '#333';
-  }
-}
 
 <Meta title="Guide|Colors" />
 
@@ -40,22 +16,24 @@ theme.brandColor.primary = color.lime['A700'];
 
 <Preview>
   <Story name="colors">
-    <FlatList
-      data={Object.keys(color)}
-      keyExtractor={(colorGroup, index) => index.toString()}
-      renderItem={({ item: colorGroup }) => (
-        <FlatList
-          data={Object.keys(color[colorGroup])}
-          keyExtractor={hex => hex}
-          renderItem={({ item: hex }) => (
-            <View style={[colorBarStyle, { backgroundColor: color[colorGroup][hex] }]}>
-              <Text style={[textStyle, { color: getColor(color[colorGroup][hex])}]}>
-                {`${colorGroup}['${hex}'] ${color[colorGroup][hex]}`}
-              </Text>
-            </View>
-          )}
-        />
-      )}
-    />
+    <ColorPalette>
+      <FlatList
+        data={Object.keys(color)}
+        keyExtractor={(colorGroup, index) => index.toString()}
+        renderItem={({ item: colorGroup }) => (
+          <FlatList
+            data={Object.keys(color[colorGroup])}
+            keyExtractor={hex => hex}
+            renderItem={({ item: hex }) => (
+              <ColorItem
+                title={`colors.${colorGroup}['${hex}']`}
+                subtitle={colorGroup.toUpperCase()}
+                colors={[color[colorGroup][hex]]}
+              />
+            )}
+          />
+        )}
+      />
+    </ColorPalette>
   </Story>
 </Preview>
