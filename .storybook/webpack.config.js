@@ -1,5 +1,4 @@
 const path = require("path");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const jsWorkerCommonOptions = {
   workers: 2,
@@ -13,7 +12,6 @@ const babelWorkerOptions = {
 };
 
 module.exports = ({ config, mode }) => {
-  config.plugins.push(new BundleAnalyzerPlugin());
   config.module.rules.push({
     test: /\.(jsx|js)?$/,
     include: [

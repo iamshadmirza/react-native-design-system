@@ -37,10 +37,10 @@
     "react-native-vector-icons": ">6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.7.6",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/runtime": "^7.8.3",
     "@react-native-community/eslint-config": "^0.0.5",
     "@storybook/addon-actions": "^5.3.6",
     "@storybook/addon-docs": "^5.3.6",
@@ -49,9 +49,8 @@
     "@storybook/theming": "^5.3.6",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
-    "cache-loader": "^2.0.1",
+    "cache-loader": "^4.1.0",
     "eslint": "^6.7.2",
-    "file-loader": "^5.0.2",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.57.0",
     "react": "16.9.0",
@@ -61,7 +60,6 @@
     "react-scripts": "^3.2.0",
     "react-test-renderer": "16.9.0",
     "thread-loader": "^2.1.2",
-    "url-loader": "^3.0.0",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "url-loader": "^3.0.0"
   }
 }
