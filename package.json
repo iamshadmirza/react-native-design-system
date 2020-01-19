@@ -29,7 +29,6 @@
     "reusable"
   ],
   "dependencies": {
-    "cache-loader": "^4.1.0",
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
@@ -50,6 +49,7 @@
     "@storybook/theming": "^5.3.6",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "cache-loader": "^4.1.0",
     "eslint": "^6.7.2",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.57.0",
@@ -60,7 +60,6 @@
     "react-scripts": "^3.2.0",
     "react-test-renderer": "16.9.0",
     "thread-loader": "^2.1.2",
-    "url-loader": "^3.0.0",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "url-loader": "^3.0.0"
   }
 }
