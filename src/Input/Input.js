@@ -62,7 +62,7 @@ const getLabelStyle = ({ theme, size, labelColor }) => {
   return labelStyle;
 };
 
-const getCaptionStyle = ({ theme, size, labelColor, value }) => {
+const getCaptionStyle = ({ theme, size }) => {
   const caption = [{
     fontSize: theme.fontSize[size] * 0.8,
     fontWeight: '600',
@@ -75,12 +75,13 @@ const getCaptionStyle = ({ theme, size, labelColor, value }) => {
 
 const Input = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
+  const showLabel = props.floatingLabel ? props.value.length > 0 : props.label;
   return (
     <View style={props.containerStyle}>
-      {props.label &&
+      {showLabel ?
         <Text style={StyleSheet.flatten([getLabelStyle({ ...props, theme }), props.labelStyle])}>
           {props.label}
-        </Text>}
+        </Text> : null}
       <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
         {props.leftIcon &&
           <View style={styles.leftIcon}>
@@ -138,6 +139,7 @@ Input.defaultProps = {
   size: 'medium',
   labelColor: 'grey',
   background: 'grey',
+  floatingLabel: false,
 };
 
 const styles = StyleSheet.create({

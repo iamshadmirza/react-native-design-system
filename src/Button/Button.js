@@ -29,7 +29,7 @@ const getTextStyle = ({ size, outline, transparent, loading, disabled, theme, co
 };
 
 const getContainerStyle = (props) => {
-  const { outline, width, round, transparent, disabled, loading, size, length, theme, color } = props;
+  const { outline, width, round, transparent, disabled, loading, size, length, theme, color, tint } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
     backgroundColor: theme.brandColor[color],
@@ -48,7 +48,7 @@ const getContainerStyle = (props) => {
   }
   if (outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + '10',
+      backgroundColor: theme.brandColor[color] + (tint ? '10' : '00'),
     });
   }
   if (loading) {
@@ -145,6 +145,8 @@ Button.propTypes = {
   icon: PropTypes.element,
   /**  To make button short or long */
   length: PropTypes.oneOf(['long', 'short']),
+  /**  To enable outline button tint */
+  tint: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -153,6 +155,7 @@ Button.defaultProps = {
   length: 'long',
   width: 'medium',
   color: 'primary',
+  tint: true,
 };
 
 const styles = StyleSheet.create({

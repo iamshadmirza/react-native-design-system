@@ -210,6 +210,19 @@ Must be used with `type="short"`.
   </Story>
 </Preview>
 
+# Tint
+Tint is a boolean property which allows you to enable or disable transpent tint of outline button. Pass `tint={false}` to make the background of outline button totally transparent.
+
+<Preview>
+  <Story name="tint">
+    <Button 
+      outline
+      tint={false}
+      onPress={action('pressed')}>
+      Login
+    </Button>
+  </Story>
+</Preview>
 
 # Playground
 Play with Button in Canvas mode.
@@ -225,6 +238,7 @@ Play with Button in Canvas mode.
     transparent={boolean('transparent', false)}
     loading={boolean('loading', false)}
     disabled={boolean('disabled', false)}
+    tint={boolean('tint', true)}
     onPress={action('pressed')}
   >
   Press Me
