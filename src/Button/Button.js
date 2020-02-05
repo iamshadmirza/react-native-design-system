@@ -33,6 +33,8 @@ const getContainerStyle = (props) => {
   const buttonStyles = [styles.container];
   buttonStyles.push({
     backgroundColor: theme.brandColor[color],
+    borderWidth: 1,
+    borderColor: theme.brandColor[color],
   });
   if (length === 'short') {
     buttonStyles.push({
@@ -46,9 +48,7 @@ const getContainerStyle = (props) => {
   }
   if (outline) {
     buttonStyles.push({
-      borderWidth: 1,
       backgroundColor: theme.brandColor[color] + '10',
-      borderColor: theme.brandColor[color],
     });
   }
   if (loading) {
