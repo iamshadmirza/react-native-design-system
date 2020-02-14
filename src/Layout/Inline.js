@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getChildrenStyle = ({ theme, space }, index) => {
+const getChildrenStyle = ({ theme, space, verticalSpace, cropEndSpace, children }, index) => {
   const childStyle = [{
     marginRight: theme.layoutSpace[space],
   }];
@@ -11,6 +11,23 @@ const getChildrenStyle = ({ theme, space }, index) => {
     childStyle.push({
       marginLeft: theme.layoutSpace[space],
     });
+  }
+  if (verticalSpace) {
+    childStyle.push({
+      marginVertical: theme.layoutSpace[verticalSpace],
+    });
+  }
+  if (cropEndSpace) {
+    if (index === 0) {
+      childStyle.push({
+        marginLeft: 0,
+      });
+    }
+    if (index === React.Children.count(children) - 1) {
+      childStyle.push({
+        marginRight: 0,
+      });
+    }
   }
   return childStyle;
 };
@@ -31,11 +48,15 @@ const Inline = (props) => {
 Inline.propTypes = {
   style: PropTypes.object,
   space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  verticalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
+  cropEndSpace: PropTypes.bool,
 };
 
 Inline.defaultProps = {
   space: 'medium',
+  verticalSpace: 'none',
+  cropEndSpace: true,
 };
 
 const styles = StyleSheet.create({
