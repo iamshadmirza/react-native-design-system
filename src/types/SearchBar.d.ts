@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -10,10 +10,8 @@ interface SearchBarProps {
   indicatorColor?: string,
   loading?: boolean,
   iconColor?: string,
-  onCancel?: ()=>void,
-  rightIcon?:IconNode,
+  onCancel?: () => void,
+  rightIcon?: IconNode,
 }
 
-
-
-export const SearchBar:React.FC<SearchBarProps>;
+export const SearchBar: React.FC<SearchBarProps>;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -9,9 +9,8 @@ import { TextAlignType } from './text-align-type';
 import { ListSpaceType } from './space-type';
 
 interface ListItemProps {
-     style?: StyleProp<ViewStyle>,
+  style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
- 
   subtitleStyle?: StyleProp<TextStyle>,
   iconStyle?: StyleProp<ViewStyle>,
   textAlign?: TextAlignType,
@@ -23,7 +22,7 @@ interface ListItemProps {
   chevronColor?: string,
   size?: SizeType,
   space?: ListSpaceType,
-  onPress: ()=>void,
+  onPress: () => void,
   avatarSource?: object,
   leftIcon?: IconNode,
   rightIcon?: IconNode,
@@ -32,6 +31,4 @@ interface ListItemProps {
   activeOpacity?: number,
 }
 
-
-
-export const ListItem:React.FC<ListItemProps>;
+export const ListItem: React.FC<ListItemProps>;

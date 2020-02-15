@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -7,11 +7,11 @@ import { LengthType } from './length-type';
 import { IconNode } from './icon-type';
 
 interface InputProps {
-     style?: StyleProp<ViewStyle>,
+  style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
   textColor?: string,
   value: string,
-  onChangeText: ()=>void,
+  onChangeText: () => void,
   placeholder?: string,
   floatingLabel?: boolean,
   labelStyle?: StyleProp<TextStyle>,
@@ -31,4 +31,4 @@ interface InputProps {
 
 
 
-export const Input:React.FC<InputProps>;
+export const Input: React.FC<InputProps>;

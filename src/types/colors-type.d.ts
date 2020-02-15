@@ -1,4 +1,4 @@
-export interface colorsType  {
+export interface colorsType {
   'red': {
     '50': string,
     '100': string,

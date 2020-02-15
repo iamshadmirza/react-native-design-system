@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -10,7 +10,7 @@ import { AlignType } from './align-type';
 import { LayoutChildrenType } from './layout-children-type';
 
 interface CardProps {
-   row?: boolean,
+  row?: boolean,
   style?: StyleProp<ViewStyle>,
   space?: SpaceType,
   children: LayoutChildrenType,
@@ -20,4 +20,4 @@ interface CardProps {
   shadow?: boolean,
 }
 
-export const Card:React.FC<CardProps>;
+export const Card: React.FC<CardProps>;

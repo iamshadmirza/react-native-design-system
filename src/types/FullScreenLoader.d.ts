@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -12,9 +12,7 @@ interface FullScreenLoaderProps {
   children?: React.ReactElement,
   indicatorColor?: string,
   background?: string,
-  size?: 'small'| 'large',
+  size?: 'small' | 'large',
 }
 
-
-
-export const FullScreenLoader:React.FC<FullScreenLoaderProps>;
+export const FullScreenLoader: React.FC<FullScreenLoaderProps>;

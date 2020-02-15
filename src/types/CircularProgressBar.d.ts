@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -18,4 +18,4 @@ interface CircularProgressBarProps {
   children: React.ReactElement,
 }
 
-export const CircularProgressBar:React.FC<CircularProgressBarProps>;
+export const CircularProgressBar: React.FC<CircularProgressBarProps>;

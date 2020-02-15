@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -14,6 +14,4 @@ interface InlineProps {
   children: LayoutChildrenType
 }
 
-
-
-export const Inline:React.FC<InlineProps>;
+export const Inline: React.FC<InlineProps>;

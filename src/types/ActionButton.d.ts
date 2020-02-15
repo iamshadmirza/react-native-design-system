@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle,TextStyle,StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -8,12 +8,12 @@ import { IconNode } from './icon-type';
 
 
 interface ActionButtonProps {
-     size?: SizeType,
-  onPress: ()=>void,
+  size?: SizeType,
+  onPress: () => void,
   iconColor?: string,
   color?: string,
   icon?: IconNode,
   style?: StyleProp<ViewStyle>,
 }
 
-export const ActionButton:React.FC<ActionButtonProps>;
+export const ActionButton: React.FC<ActionButtonProps>;
