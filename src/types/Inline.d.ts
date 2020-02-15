@@ -13,7 +13,7 @@ interface InlineProps {
   space?: SpaceType,
   children: LayoutChildrenType,
   verticalSpace?: VerticalSpaceType,
-  cropEndSpace: boolean,
+  cropEndSpace?: boolean,
 }
 
 export const Inline: React.FC<InlineProps>;

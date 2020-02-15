@@ -13,7 +13,7 @@ interface StackProps {
   space?: SpaceType,
   horizontalSpace?: HorizontalSpaceType,
   children: LayoutChildrenType,
-  cropEndSpace: boolean,
+  cropEndSpace?: boolean,
 }
 
 export const Stack: React.FC<StackProps>;
