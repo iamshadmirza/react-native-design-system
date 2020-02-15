@@ -16,6 +16,4 @@ interface BadgeProps {
   square?: boolean,
 }
 
-
-
 export const Badge: React.FC<BadgeProps>;
