@@ -9,7 +9,7 @@ import { IconNode } from './icon-type';
 interface CheckBoxProps {
   style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
-  children: 'string',
+  children: string,
   checked?: boolean,
   iconRight?: boolean,
   color?: string,

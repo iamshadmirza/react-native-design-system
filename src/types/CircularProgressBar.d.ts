@@ -15,7 +15,6 @@ interface CircularProgressBarProps {
   radius: number,
   percent: number,
   duration: number,
-  children: React.ReactElement,
 }
 
 export const CircularProgressBar: React.FC<CircularProgressBarProps>;

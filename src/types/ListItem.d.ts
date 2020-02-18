@@ -22,7 +22,7 @@ interface ListItemProps {
   chevronColor?: string,
   size?: SizeType,
   space?: ListSpaceType,
-  onPress: () => void,
+  onPress?: () => void,
   avatarSource?: object,
   leftIcon?: IconNode,
   rightIcon?: IconNode,
