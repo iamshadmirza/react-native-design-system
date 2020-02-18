@@ -77,7 +77,7 @@ Card.propTypes = {
 Card.defaultProps = {
   space: 'medium',
   shadow: true,
-  outline: true,
+  outline: false,
 };
 
 const styles = StyleSheet.create({
