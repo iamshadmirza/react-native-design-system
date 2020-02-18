@@ -77,7 +77,7 @@ const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
   const propsWithTheme = { ...props, theme };
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
+    <TouchableElement {...props} onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
       <View style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
         {renderLeftChild(propsWithTheme)}
         <View style={styles.textView}>

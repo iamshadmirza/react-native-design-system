@@ -14,10 +14,10 @@ const getTextStyle = ({ theme, color, size, scale, fontWeight }) => {
   };
 };
 
-const TextElement = (props) => {
+const TextElement = ({ style, ...props }) => {
   const theme = useThemeContext();
   return (
-    <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), props.style])}>
+    <Text {...props} style={StyleSheet.flatten([getTextStyle({ ...props, theme }), style])}>
       {props.children}
     </Text>
   );

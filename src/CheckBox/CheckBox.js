@@ -41,16 +41,16 @@ const renderIcon = ({ style, theme, size, color, ...props }) => {
   }
 };
 
-const CheckBox = (props) => {
+const CheckBox = ({ style, textStyle, ...props }) => {
   const theme = useThemeContext();
   const propsWithTheme = { ...props, theme };
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement disabled={props.disabled} onPress={props.onPress}>
-      <View style={StyleSheet.flatten([styles.container, props.style])}>
+    <TouchableElement {...props} disabled={props.disabled} onPress={props.onPress}>
+      <View style={StyleSheet.flatten([styles.container, style])}>
         {!props.iconRight && renderIcon(propsWithTheme)}
-        <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), props.textStyle])}>
+        <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), textStyle])}>
           {props.children}
         </Text>
         {props.iconRight && renderIcon(propsWithTheme)}

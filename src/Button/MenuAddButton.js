@@ -45,26 +45,27 @@ const getTextStyle = ({ theme, size, disabled }) => {
   return textStyle;
 };
 
-const MenuAddButton = (props) => {
+const MenuAddButton = ({ style, textStyle, ...props }) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   if (props.count < 1 || props.disabled) {
     return (
       <TouchableElement
+        {...props}
         disabled={props.disabled}
         onPress={props.onIncrement}>
-        <View style={[getContainerStyle({ ...props, theme }), props.style]}>
-          <Text style={[getTextStyle({ ...props, theme }), props.textStyle]}>
+        <View style={[getContainerStyle({ ...props, theme }), style]}>
+          <Text style={[getTextStyle({ ...props, theme }), textStyle]}>
             ADD
-            </Text>
+          </Text>
         </View>
       </TouchableElement>
     );
   }
   return (
-    <View style={[getContainerStyle({ ...props, theme }), props.style]}>
-      <TouchableElement onPress={props.onDecrement}>
+    <View style={[getContainerStyle({ ...props, theme }), style]}>
+      <TouchableElement {...props} onPress={props.onDecrement}>
         <View style={styles.icon}>
           {props.minusIcon ||
             <MaterialIcons
@@ -79,7 +80,7 @@ const MenuAddButton = (props) => {
           {props.count}
         </Text>
       </View>
-      <TouchableElement onPress={props.onIncrement}>
+      <TouchableElement {...props} onPress={props.onIncrement}>
         <View style={styles.icon}>
           {props.plusIcon ||
             <MaterialIcons

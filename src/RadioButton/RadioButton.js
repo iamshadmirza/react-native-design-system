@@ -45,12 +45,12 @@ const renderIcon = ({ theme, size, color, id, activeId, ...props }) => {
 };
 
 export const RadioItem = ({ children, id }) => {
-  const { selectItem, ...props } = useContext(Context);
+  const { selectItem, style, ...props } = useContext(Context);
   const propsToPass = { ...props, id };
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement onPress={() => selectItem(id)}>
-      <View style={styles.itemContainer}>
+    <TouchableElement {...props} onPress={() => selectItem(id)}>
+      <View style={[styles.itemContainer, style]}>
         {!props.iconRight && renderIcon(propsToPass)}
         <Text style={StyleSheet.flatten([getTextStyle(propsToPass), props.textStyle])}>
           {children}

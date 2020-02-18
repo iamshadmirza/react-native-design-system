@@ -3,7 +3,7 @@ import { View, StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, shadow }) => {
+const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, shadow, outline }) => {
   const cardStyle = [styles.container, {
     padding: theme.layoutSpace[space],
   }];
@@ -16,6 +16,13 @@ const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, sha
       justifyContent: 'flex-start',
       alignItems: 'center',
       flexWrap: 'wrap',
+    });
+  }
+  if (outline) {
+    cardStyle.push({
+      elevation: 0,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: '#333',
     });
   }
   if (align === 'center') {
@@ -49,7 +56,7 @@ const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, sha
 const Card = (props) => {
   const theme = useThemeContext();
   return (
-    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
+    <View {...props} style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
       {props.children}
     </View>
   );
@@ -64,11 +71,13 @@ Card.propTypes = {
   vertical: PropTypes.bool,
   align: PropTypes.oneOf(['center', 'left', 'right']),
   shadow: PropTypes.bool,
+  outline: PropTypes.bool,
 };
 
 Card.defaultProps = {
   space: 'medium',
-  shadow: false,
+  shadow: true,
+  outline: true,
 };
 
 const styles = StyleSheet.create({
@@ -76,6 +85,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'stretch',
     justifyContent: 'center',
+    borderRadius: 3,
   },
   shadow: {
     ...Platform.select({

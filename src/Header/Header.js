@@ -25,27 +25,27 @@ const getTextStyle = ({ theme, color, textAlign, fontSize }) => {
   return textStyle;
 };
 
-const Header = (props) => {
+const Header = ({ style, textStyle, ...props }) => {
   const theme = useThemeContext();
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
+    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), style])}>
       <StatusBar
         barStyle={props.barStyle}
         backgroundColor={theme.brandColor[props.barColor]}
       />
       {props.leftIcon &&
-        <TouchableElement onPress={props.onLeftIconPress}>
+        <TouchableElement {...props} onPress={props.onLeftIconPress}>
           <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
             {props.leftIcon}
           </View>
         </TouchableElement>
       }
-      <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), props.textStyle])}>
+      <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
         {props.children}
       </Text>
       {props.rightIcon &&
-        <TouchableElement onPress={props.onRightIconPress}>
+        <TouchableElement {...props} onPress={props.onRightIconPress}>
           <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
             {props.rightIcon}
           </View>

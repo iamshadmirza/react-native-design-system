@@ -104,6 +104,7 @@ const Button = (props) => {
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement
+      {...props}
       onPress={props.onPress}
       disabled={props.disabled || props.loading}
     >

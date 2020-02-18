@@ -20,6 +20,7 @@ const ActionButton = (props) => {
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement
+      {...props}
       style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}
       onPress={props.onPress}
     >
