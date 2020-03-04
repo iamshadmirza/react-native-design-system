@@ -72,12 +72,12 @@ const renderRightChild = ({ chevron, rightIcon, iconStyle, theme, size, chevronC
 };
 
 
-const ListItem = ({ style, textStyle, subtitleStyle, ...props }) => {
+const ListItem = ({ style, textStyle, subtitleStyle, background, ...props }) => {
   const theme = useThemeContext();
-  const propsWithTheme = { ...props, theme };
+  const propsWithTheme = { ...props, background, theme };
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement {...props} onPress={props.onPress} disabled={props.disabled} activeOpacity={props.activeOpacity}>
+    <TouchableElement {...props}>
       <View style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
         {renderLeftChild(propsWithTheme)}
         <View style={styles.textView}>
