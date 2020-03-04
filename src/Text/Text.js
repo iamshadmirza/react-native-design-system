@@ -25,7 +25,7 @@ const TextElement = ({ style, ...props }) => {
 
 TextElement.propTypes = {
   style: PropTypes.object,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   color: PropTypes.string,
   scale: PropTypes.bool,
