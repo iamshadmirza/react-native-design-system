@@ -1,2 +1,2 @@
-import FullScreenLoader from "./FullScreenLoader";
+import FullScreenLoader from './FullScreenLoader';
 export { FullScreenLoader };

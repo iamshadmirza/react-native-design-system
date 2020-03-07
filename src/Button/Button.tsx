@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -6,9 +6,9 @@ import {
   TouchableNativeFeedback,
   Platform,
   StyleSheet,
-  ActivityIndicator
-} from "react-native";
-import { useThemeContext } from "../util/ThemeProvider";
+  ActivityIndicator,
+} from 'react-native';
+import { useThemeContext } from '../util/ThemeProvider';
 const getTextStyle = ({
   size,
   outline,
@@ -16,29 +16,29 @@ const getTextStyle = ({
   loading,
   disabled,
   theme,
-  color
+  color,
 }) => {
   const textStyle = [
     {
-      fontWeight: Platform.OS === "android" ? "bold" : "400",
+      fontWeight: Platform.OS === 'android' ? 'bold' : '400',
       fontSize: theme.fontSize[size],
       margin: theme.buttonSize[size],
-      color: theme.textColor.white
-    }
+      color: theme.textColor.white,
+    },
   ];
   if (outline || transparent) {
     textStyle.push({
-      color: theme.brandColor[color]
+      color: theme.brandColor[color],
     });
   }
   if (loading && outline) {
     textStyle.push({
-      color: theme.brandColor[color] + "50"
+      color: theme.brandColor[color] + '50',
     });
   }
   if (disabled) {
     textStyle.push({
-      color: theme.textColor.disabled
+      color: theme.textColor.disabled,
     });
   }
   return textStyle;
@@ -55,52 +55,52 @@ const getContainerStyle = props => {
     length,
     theme,
     color,
-    tint
+    tint,
   } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
     backgroundColor: theme.brandColor[color],
     borderWidth: 1,
-    borderColor: theme.brandColor[color]
+    borderColor: theme.brandColor[color],
   });
-  if (length === "short") {
+  if (length === 'short') {
     buttonStyles.push({
-      width: theme.buttonWidth[width]
+      width: theme.buttonWidth[width],
     });
   }
   if (round) {
     buttonStyles.push({
-      borderRadius: theme.buttonSize[size] * 2
+      borderRadius: theme.buttonSize[size] * 2,
     });
   }
   if (outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + (tint ? "10" : "00")
+      backgroundColor: theme.brandColor[color] + (tint ? '10' : '00'),
     });
   }
   if (loading) {
     buttonStyles.push({
       borderWidth: 0,
-      backgroundColor: theme.brandColor[color] + "50"
+      backgroundColor: theme.brandColor[color] + '50',
     });
   }
   if (transparent) {
     buttonStyles.push({
       borderWidth: 0,
-      backgroundColor: "transparent"
+      backgroundColor: 'transparent',
     });
   }
   if (loading && outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + "20",
+      backgroundColor: theme.brandColor[color] + '20',
       borderWidth: StyleSheet.hairlineWidth,
-      borderColor: theme.brandColor[color] + "30"
+      borderColor: theme.brandColor[color] + '30',
     });
   }
   if (disabled) {
     buttonStyles.push({
       backgroundColor: theme.brandColor.disabled,
-      borderColor: theme.textColor.disabled
+      borderColor: theme.textColor.disabled,
     });
   }
   return buttonStyles;
@@ -126,21 +126,21 @@ type ButtonProps = {
   textStyle?: object,
   indicatorColor?: string,
   size?:
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge",
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge',
   width?:
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge",
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge',
   onPress: (...args: any[]) => any,
   color?: string,
   round?: boolean,
@@ -149,13 +149,13 @@ type ButtonProps = {
   disabled?: boolean,
   loading?: boolean,
   icon?: JSX.Element,
-  length?: "long" | "short",
+  length?: 'long' | 'short',
   tint?: boolean
 };
 const Button: React.SFC<ButtonProps> = props => {
   const theme = useThemeContext();
   const TouchableElement =
-    Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement
       {...props}
@@ -165,7 +165,7 @@ const Button: React.SFC<ButtonProps> = props => {
       <View
         style={StyleSheet.flatten([
           getContainerStyle({ ...props, theme }),
-          props.style
+          props.style,
         ])}
       >
         {renderChildren({ ...props, theme })}
@@ -174,24 +174,24 @@ const Button: React.SFC<ButtonProps> = props => {
   );
 };
 Button.defaultProps = {
-  children: "Submit",
-  size: "medium",
-  length: "long",
-  width: "medium",
-  color: "primary",
-  tint: true
+  children: 'Submit',
+  size: 'medium',
+  length: 'long',
+  width: 'medium',
+  color: 'primary',
+  tint: true,
 };
 const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
     borderRadius: 2,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconStyle: {
-    paddingRight: 5
-  }
+    paddingRight: 5,
+  },
 });
 export default Button;

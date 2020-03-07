@@ -4,7 +4,7 @@
 // Bhavesh Daswani <https://github.com/bhaveshdaswani93>
 // TypeScript Version: 3.7.5
 
-import * as React from "react";
+import * as React from 'react';
 import { themeType } from './types/theme';
 import { colorsType } from './types/colors-type';
 export * from './types/Button';

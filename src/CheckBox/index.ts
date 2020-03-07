@@ -1,2 +1,2 @@
-import CheckBox from "./CheckBox";
+import CheckBox from './CheckBox';
 export { CheckBox };

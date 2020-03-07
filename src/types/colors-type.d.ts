@@ -303,6 +303,6 @@ export interface colorsType {
     '800': string,
     '900': string,
   },
-};
+}
 
 
