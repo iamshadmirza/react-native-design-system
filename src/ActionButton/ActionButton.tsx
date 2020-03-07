@@ -5,10 +5,12 @@ import {
   View,
   Platform,
   StyleSheet,
+  StyleProp,
+  TextStyle,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {useThemeContext} from '../util/ThemeProvider';
-const getContainerStyle = ({theme, size, color}) => {
+const getContainerStyle = ({theme, size, color}: ActionButtonProps) => {
   return {
     ...styles.container,
     backgroundColor: theme.brandColor[color],
@@ -30,7 +32,7 @@ type ActionButtonProps = {
   iconColor?: string;
   color?: string;
   icon?: JSX.Element;
-  style?: object;
+  style?: StyleProp<TextStyle>;
 };
 const ActionButton: React.SFC<ActionButtonProps> = props => {
   const theme = useThemeContext();
@@ -48,7 +50,7 @@ const ActionButton: React.SFC<ActionButtonProps> = props => {
         {props.icon || (
           <Feather
             name="plus"
-            size={theme.iconSize[props.size]}
+            size={theme.iconSize[props.size!]}
             color={props.iconColor || theme.brandColor.white}
           />
         )}
@@ -81,7 +83,6 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
       },
       web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
         boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
       },
     }),

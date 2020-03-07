@@ -1,2 +1,2 @@
-import SearchBar from "./SearchBar";
+import SearchBar from './SearchBar';
 export { SearchBar };

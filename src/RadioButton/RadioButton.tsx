@@ -1,34 +1,34 @@
-import React, { useContext, createContext } from "react";
+import React, {useContext, createContext} from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TouchableNativeFeedback,
   TouchableOpacity,
-  Platform
-} from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { useThemeContext } from "../util/ThemeProvider";
+  Platform,
+} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useThemeContext} from '../util/ThemeProvider';
 const Context = createContext();
-const { Provider } = Context;
-const getTextStyle = ({ theme, size, textColor, iconRight }) => {
+const {Provider} = Context;
+const getTextStyle = ({theme, size, textColor, iconRight}) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
       color: theme.textColor[textColor],
       marginLeft: 10,
-      marginVertical: 2.5
-    }
+      marginVertical: 2.5,
+    },
   ];
   if (iconRight) {
     textStyle.push({
       marginLeft: 0,
-      marginRight: 10
+      marginRight: 10,
     });
   }
   return textStyle;
 };
-const renderIcon = ({ theme, size, color, id, activeId, ...props }) => {
+const renderIcon = ({theme, size, color, id, activeId, ...props}) => {
   if (activeId === id) {
     return (
       props.checkedIcon || (
@@ -51,11 +51,11 @@ const renderIcon = ({ theme, size, color, id, activeId, ...props }) => {
     );
   }
 };
-export const RadioItem = ({ children, id }) => {
-  const { selectItem, style, ...props } = useContext(Context);
-  const propsToPass = { ...props, id };
-  const TouchableElement =
-    Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
+export const RadioItem = ({children, id}) => {
+  const {selectItem, style, ...props} = useContext(Context);
+  const propsToPass = {...props, id};
+  const TouchableElement: React.ElementType =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement {...props} onPress={() => selectItem(id)}>
       <View style={[styles.itemContainer, style]}>
@@ -63,9 +63,8 @@ export const RadioItem = ({ children, id }) => {
         <Text
           style={StyleSheet.flatten([
             getTextStyle(propsToPass),
-            props.textStyle
-          ])}
-        >
+            props.textStyle,
+          ])}>
           {children}
         </Text>
         {props.iconRight && renderIcon(propsToPass)}
@@ -74,37 +73,37 @@ export const RadioItem = ({ children, id }) => {
   );
 };
 type RadioButtonProps = {
-  style?: object,
-  textStyle?: object,
-  activeId: number | string,
-  iconRight?: boolean,
-  color?: string,
-  textColor?: string,
+  style?: object;
+  textStyle?: object;
+  activeId: number | string;
+  iconRight?: boolean;
+  color?: string;
+  textColor?: string;
   size?:
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge",
-  selectItem: (...args: any[]) => any,
-  checkedIcon?: JSX.Element,
-  uncheckedIcon?: JSX.Element
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge';
+  selectItem: (...args: any[]) => any;
+  checkedIcon?: JSX.Element;
+  uncheckedIcon?: JSX.Element;
 };
-const RadioButton: React.SFC<RadioButtonProps> = ({ children, ...props }) => {
+const RadioButton: React.SFC<RadioButtonProps> = ({children, ...props}) => {
   const theme = useThemeContext();
-  return <Provider value={{ ...props, theme }}>{children}</Provider>;
+  return <Provider value={{...props, theme}}>{children}</Provider>;
 };
 RadioButton.defaultProps = {
-  size: "medium",
-  color: "primary",
-  textColor: "default"
+  size: 'medium',
+  color: 'primary',
+  textColor: 'default',
 };
 const styles = StyleSheet.create({
   itemContainer: {
-    flexDirection: "row",
-    alignItems: "center"
-  }
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 export default RadioButton;

@@ -1,34 +1,34 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import { useThemeContext } from "../util/ThemeProvider";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { useThemeContext } from '../util/ThemeProvider';
 const getChildrenStyle = (
   { theme, space, verticalSpace, cropEndSpace, children },
   index
 ) => {
   const childStyle = [
     {
-      marginRight: theme.layoutSpace[space]
-    }
+      marginRight: theme.layoutSpace[space],
+    },
   ];
   if (index === 0) {
     childStyle.push({
-      marginLeft: theme.layoutSpace[space]
+      marginLeft: theme.layoutSpace[space],
     });
   }
   if (verticalSpace) {
     childStyle.push({
-      marginVertical: theme.layoutSpace[verticalSpace]
+      marginVertical: theme.layoutSpace[verticalSpace],
     });
   }
   if (cropEndSpace) {
     if (index === 0) {
       childStyle.push({
-        marginLeft: 0
+        marginLeft: 0,
       });
     }
     if (index === React.Children.count(children) - 1) {
       childStyle.push({
-        marginRight: 0
+        marginRight: 0,
       });
     }
   }
@@ -37,23 +37,23 @@ const getChildrenStyle = (
 type InlineProps = {
   style?: object,
   space?:
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge",
+    | 'none'
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge',
   verticalSpace?:
-    | "none"
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge",
+    | 'none'
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge',
   cropEndSpace?: boolean
 };
 const Inline: React.SFC<InlineProps> = props => {
@@ -69,16 +69,16 @@ const Inline: React.SFC<InlineProps> = props => {
   );
 };
 Inline.defaultProps = {
-  space: "medium",
-  verticalSpace: "none",
-  cropEndSpace: true
+  space: 'medium',
+  verticalSpace: 'none',
+  cropEndSpace: true,
 };
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     flexGrow: 1,
-    flexWrap: "wrap"
-  }
+    flexWrap: 'wrap',
+  },
 });
 export default Inline;
