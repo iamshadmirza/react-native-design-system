@@ -7,6 +7,8 @@ import { useThemeContext } from '../util/ThemeProvider';
 const getContainerStyle = ({ theme, size, color }) => {
   return {
     ...styles.container,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: theme.brandColor[color],
     width: theme.actionButtonSize[size],
     height: theme.actionButtonSize[size],
@@ -14,17 +16,17 @@ const getContainerStyle = ({ theme, size, color }) => {
   };
 };
 
-const ActionButton = (props) => {
+const ActionButton = ({ style, ...props }) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement
       {...props}
-      style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}
       onPress={props.onPress}
     >
-      <View style={styles.centerView}>
+      <View
+        style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), style])}>
         {props.icon ||
           <Feather
             name="plus"
@@ -52,11 +54,6 @@ ActionButton.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    elevation: 3,
-    aspectRatio: 1,
-    bottom: 25,
-    right: 25,
     ...Platform.select({
       android: {
         elevation: 3,
@@ -75,11 +72,6 @@ const styles = StyleSheet.create({
         boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
       },
     }),
-  },
-  centerView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
