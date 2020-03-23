@@ -1,28 +1,21 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  ViewStyle,
-  StyleProp,
-} from 'react-native';
-import {useThemeContext} from '../util/ThemeProvider';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { useThemeContext } from '../util/ThemeProvider';
 type FullScreenLoaderProps = {
-  loading: boolean;
-  style?: StyleProp<ViewStyle>;
-  indicatorColor?: string;
-  background?: string;
-  size?: 'small' | 'large';
+  loading: boolean,
+  style?: object,
+  indicatorColor?: string,
+  background?: string,
+  size?: 'small' | 'large'
 };
 const FullScreenLoader: React.SFC<FullScreenLoaderProps> = props => {
   const theme = useThemeContext();
-  const background = {
-    backgroundColor: theme.brandColor[props.background!],
-  };
+  const background = { backgroundColor: theme.brandColor[props.background!] };
   if (props.loading) {
     return (
       <View
-        style={StyleSheet.flatten([styles.container, background, props.style])}>
+        style={StyleSheet.flatten([styles.container, background, props.style])}
+      >
         <ActivityIndicator
           style={styles.indicator}
           color={props.indicatorColor}
@@ -43,7 +36,6 @@ FullScreenLoader.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    elevation: 3,
     zIndex: 1000,
     width: '100%',
     height: '100%',

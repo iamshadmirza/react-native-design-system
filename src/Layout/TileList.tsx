@@ -1,14 +1,13 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
-import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
-
-const getChildrenStyle = ({ theme, space, horizontalSpace, cropEndSpace, data }, index) => {
-  const childStyle = [{
-    marginLeft: theme.layoutSpace[space],
-    marginTop: theme.layoutSpace[space],
-
-  }];
+import {View, FlatList} from 'react-native';
+import {useThemeContext} from '../util/ThemeProvider';
+const getChildrenStyle = ({theme, space}) => {
+  const childStyle = [
+    {
+      marginLeft: theme.layoutSpace[space],
+      marginTop: theme.layoutSpace[space],
+    },
+  ];
   // if (index === 0) {
   //   childStyle.push({
   //     marginTop: theme.layoutSpace[space],
@@ -17,7 +16,6 @@ const getChildrenStyle = ({ theme, space, horizontalSpace, cropEndSpace, data },
   // if (horizontalSpace) {
   //   childStyle.push({
   //     marginHorizontal: theme.layoutSpace[horizontalSpace],
-
   //   });
   // }
   // if (cropEndSpace) {
@@ -34,35 +32,46 @@ const getChildrenStyle = ({ theme, space, horizontalSpace, cropEndSpace, data },
   // }
   return childStyle;
 };
-
-const TileList = (props) => {
+type TileListProps = {
+  style?: object;
+  space?:
+    | 'none'
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge';
+  horizontalSpace?:
+    | 'none'
+    | 'xxsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'xxlarge';
+  cropEndSpace?: boolean;
+};
+const TileList: React.SFC<TileListProps> = props => {
   const theme = useThemeContext();
   return (
     <FlatList
       {...props}
       // style={{ flexDirection: 'row' }}
       numColumns={3}
-      renderItem={(child) => (
-        <View style={getChildrenStyle({ ...props, theme }, child.index)}>
+      renderItem={child => (
+        <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>
       )}
     />
   );
 };
-
-TileList.propTypes = {
-  style: PropTypes.object,
-  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  horizontalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  cropEndSpace: PropTypes.bool,
-  ...FlatList.propTypes,
-};
-
 TileList.defaultProps = {
   space: 'medium',
   horizontalSpace: 'none',
-  cropEndSpace: false
+  cropEndSpace: false,
 };
-
 export default TileList;

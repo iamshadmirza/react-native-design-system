@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
-import { useThemeContext } from '../util/ThemeProvider';
+import {View, StyleSheet, Platform} from 'react-native';
+import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({
   row,
   horizontal,
@@ -63,8 +63,8 @@ const getContainerStyle = ({
   return cardStyle;
 };
 type CardProps = {
-  row?: boolean,
-  style?: object,
+  row?: boolean;
+  style?: object;
   space?:
     | 'none'
     | 'xxsmall'
@@ -73,12 +73,12 @@ type CardProps = {
     | 'medium'
     | 'large'
     | 'xlarge'
-    | 'xxlarge',
-  horizontal?: boolean,
-  vertical?: boolean,
-  align?: 'center' | 'left' | 'right',
-  shadow?: boolean,
-  outline?: boolean
+    | 'xxlarge';
+  horizontal?: boolean;
+  vertical?: boolean;
+  align?: 'center' | 'left' | 'right';
+  shadow?: boolean;
+  outline?: boolean;
 };
 const Card: React.SFC<CardProps> = props => {
   const theme = useThemeContext();
@@ -86,10 +86,9 @@ const Card: React.SFC<CardProps> = props => {
     <View
       {...props}
       style={StyleSheet.flatten([
-        getContainerStyle({ ...props, theme }),
+        getContainerStyle({...props, theme}),
         props.style,
-      ])}
-    >
+      ])}>
       {props.children}
     </View>
   );
@@ -103,6 +102,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     alignItems: 'stretch',
+    backgroundColor: '#fff',
     justifyContent: 'center',
     borderRadius: 3,
   },
