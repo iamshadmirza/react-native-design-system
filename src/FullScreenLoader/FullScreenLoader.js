@@ -36,7 +36,6 @@ FullScreenLoader.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    elevation: 3,
     zIndex: 1000,
     width: '100%',
     height: '100%',
