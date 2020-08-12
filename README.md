@@ -152,7 +152,7 @@ function App(){
 - [x] [RadioButton](src/RadioButton/RadioButton.js)
 - [x] [SearchBar](src/SearchBar/SearchBar.js)
 - [ ] [Social Icons / Social Icon Buttons](src/)
-- [ ] [Deck](src/)
+- [x] [Deck](src/Deck/Deck.js)
 - [x] [Text](src/Text/Text.js)
 - [ ] [Tooltip](src/)
 

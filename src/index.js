@@ -14,6 +14,7 @@ export * from './RadioButton';
 export * from './SearchBar';
 export * from './Text';
 export * from './Layout';
+export * from './Deck';
 export { default as colors } from './util/colors';
 export { default as ThemeProvider } from './util/ThemeProvider';
 export { default as theme } from './util/theme';
