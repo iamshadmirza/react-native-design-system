@@ -142,4 +142,4 @@ export interface themeType {
     'clearWhite': string,
     'outline': string,
   },
-};
+}
