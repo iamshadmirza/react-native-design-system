@@ -2,16 +2,14 @@ import React from 'react';
 import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
 import { IconNode } from './icon-type';
 
 interface InputProps {
   style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
   textColor?: string,
-  value: string,
-  onChangeText: () => void,
+  value?: string,
+  onChangeText: (text: string) => void,
   placeholder?: string,
   floatingLabel?: boolean,
   labelStyle?: StyleProp<TextStyle>,
