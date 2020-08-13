@@ -14,10 +14,11 @@ class Deck extends Component {
             opacity: new Animated.Value(1),
             next: new Animated.Value(0.9),
             endOfCards: false,
-            loading: false,
+            loading: props.loadInitialData ? true : false,
         };
         this.page = 0;
         this.createPanResponder();
+        this.checkMoreCards();
     }
 
     createPanResponder = () => {
@@ -98,9 +99,12 @@ class Deck extends Component {
     };
 
     checkMoreCards = async () => {
-        if (this.state.data.length < 1) {
-            if (this.props.loop) {
+        if (this.state.data.length < 2) {
+            if (this.props.loop && !this.props.loadInitialData) {
                 return this.setState(state => ({ data: state.data.concat(this.props.data) }));
+            }
+            if (this.props.loadInitialData && this.state.data.length === 0) {
+                this.page = -1;
             }
             this.page++;
             this.setState({ loading: true });
@@ -182,11 +186,13 @@ Deck.propTypes = {
     style: PropTypes.object,
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
     vertical: PropTypes.bool,
+    loadInitialData: PropTypes.bool,
 };
 
 Deck.defaultProps = {
     vertical: false,
     loop: false,
+    loadInitialData: false,
 };
 
 const styles = StyleSheet.create({
