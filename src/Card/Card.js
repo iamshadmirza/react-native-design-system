@@ -79,7 +79,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   space: 'medium',
-  shadow: true,
+  shadow: false,
   outline: false,
 };
 
