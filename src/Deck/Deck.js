@@ -141,7 +141,7 @@ class Deck extends Component {
 
         const cardStyle = isLastItem ? animatedCardStyles : undefined;
         const nextStyle = isSecondToLast
-            ? { transform: [{ scale: next }] }
+            ? { transform: [{ scale: next }], borderRadius: 5 }
             : undefined;
 
         return StyleSheet.flatten([styles.card, cardStyle, nextStyle, this.props.style]);
