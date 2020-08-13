@@ -64,7 +64,7 @@ Header.propTypes = {
   children: PropTypes.string,
   color: PropTypes.string,
   leftIcon: PropTypes.element,
-  onleftIconPress: PropTypes.func,
+  onLeftIconPress: PropTypes.func,
   rightIcon: PropTypes.element,
   onRightIconPress: PropTypes.func,
   iconStyle: PropTypes.object,
