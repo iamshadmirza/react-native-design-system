@@ -41,9 +41,10 @@ const Header = ({ style, textStyle, ...props }) => {
           </View>
         </TouchableElement>
       }
-      <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
-        {props.children}
-      </Text>
+      {!!props.children &&
+        <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
+          {props.children}
+        </Text>}
       {props.rightIcon &&
         <TouchableElement {...props} onPress={props.onRightIconPress}>
           <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
@@ -72,7 +73,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  children: 'Home',
   color: 'primary',
   barColor: 'primary',
   barStyle: 'light-content',
