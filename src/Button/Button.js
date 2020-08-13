@@ -87,13 +87,17 @@ const renderChildren = (props) => {
         <ActivityIndicator
           style={styles.iconStyle}
           color={props.indicatorColor || props.theme.brandColor[props.color]} />}
-      {props.icon &&
+      {props.leftIcon || props.icon &&
         <View style={styles.iconStyle}>
-          {props.icon}
+          {props.leftIcon || props.icon}
         </View>}
       <Text style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
         {props.children}
       </Text>
+      {props.rightIcon &&
+        <View style={styles.iconStyle}>
+          {props.rightIcon}
+        </View>}
     </>
   );
 };
@@ -142,8 +146,12 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   /**  Boolean value for loading button */
   loading: PropTypes.bool,
-  /**  To pass custom icon */
+  /**  To pass custom icon (default and same as leftIcon) */
   icon: PropTypes.element,
+  /**  To pass custom icon on left */
+  leftIcon: PropTypes.element,
+  /**  To pass custom icon on right */
+  rightIcon: PropTypes.element,
   /**  To make button short or long */
   length: PropTypes.oneOf(['long', 'short']),
   /**  To enable outline button tint */
@@ -169,7 +177,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconStyle: {
-    paddingRight: 5,
+    paddingHorizontal: 5,
   },
 });
 
