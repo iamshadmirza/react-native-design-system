@@ -3,7 +3,7 @@ import { View, StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, shadow, outline }) => {
+const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, shadow, outline, wrap }) => {
   const cardStyle = [styles.container, {
     padding: theme.layoutSpace[space],
   }];
@@ -15,8 +15,10 @@ const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, sha
       flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      flexWrap: 'wrap',
     });
+  }
+  if (wrap){
+    cardStyle.push({ flexWrap: 'wrap' });
   }
   if (outline) {
     cardStyle.push({
@@ -64,6 +66,7 @@ const Card = (props) => {
 
 Card.propTypes = {
   row: PropTypes.bool,
+  wrap: PropTypes.bool,
   style: PropTypes.object,
   space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
