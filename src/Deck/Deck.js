@@ -23,26 +23,9 @@ class Deck extends Component {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
-            onPanResponderMove: vertical
-                ? Animated.event(
-                    [
-                        null,
-                        {
-                            dy: this.state.animation.y,
-                        },
-                    ],
-                    {},
-                )
-                : Animated.event(
-                    [
-                        null,
-                        {
-                            dx: this.state.animation.x,
-                            dy: this.state.animation.y,
-                        },
-                    ],
-                    {},
-                ),
+            onPanResponderMove: (event, gesture) => {
+                vertical ? this.state.animation.setValue({ y: gesture.dy }) : this.state.animation.setValue({ x: gesture.dx, y: gesture.dy });
+            },
             onPanResponderRelease: (e, { dx, dy, vx, vy }) => {
                 let velocity;
                 const vxy = vertical ? vy : vx;
