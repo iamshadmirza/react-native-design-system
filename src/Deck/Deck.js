@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Animated, PanResponder, Text, Platform } from 'react-native';
+import { FullScreenLoader } from '../FullScreenLoader';
 import PropTypes from 'prop-types';
 import clamp from 'clamp';
 const SWIPE_THRESHOLD = 120;
@@ -13,6 +14,7 @@ class Deck extends Component {
             opacity: new Animated.Value(1),
             next: new Animated.Value(0.9),
             endOfCards: false,
+            loading: false,
         };
         this.page = 0;
         this.createPanResponder();
@@ -101,9 +103,10 @@ class Deck extends Component {
                 return this.setState(state => ({ data: state.data.concat(this.props.data) }));
             }
             this.page++;
+            this.setState({ loading: true });
             const data = this.props.loadMoreCards ? (await this.props.loadMoreCards(this.page)) : [];
             const endOfCards = data.length === 0;
-            this.setState(state => ({ data: state.data.concat(data), endOfCards }));
+            this.setState(state => ({ data: state.data.concat(data), endOfCards, loading: false }));
         }
     }
 
@@ -144,26 +147,32 @@ class Deck extends Component {
         return StyleSheet.flatten([styles.card, cardStyle, nextStyle, this.props.style]);
     }
 
+    renderLoadingScreen() {
+        return this.props.loadingScreen || <FullScreenLoader loading />;
+    }
+
     render() {
-        const { data, endOfCards } = this.state;
+        const { data, endOfCards, loading } = this.state;
 
         return (
             <View style={styles.container}>
-                {endOfCards
-                    ? <Text>No more cards</Text>
-                    : data
-                        .slice(0, 2)
-                        .reverse()
-                        .map((item, index, items) => {
-                            return (
-                                <Animated.View
-                                    {...this._panResponder.panHandlers}
-                                    style={this.getCardStyles(index, items)}
-                                    key={this.props.keyExtractor(item)}>
-                                    {this.props.renderItem(item)}
-                                </Animated.View>
-                            );
-                        })}
+                {loading
+                    ? this.renderLoadingScreen()
+                    : endOfCards
+                        ? <Text>No more cards</Text>
+                        : data
+                            .slice(0, 2)
+                            .reverse()
+                            .map((item, index, items) => {
+                                return (
+                                    <Animated.View
+                                        {...this._panResponder.panHandlers}
+                                        style={this.getCardStyles(index, items)}
+                                        key={this.props.keyExtractor(item)}>
+                                        {this.props.renderItem(item)}
+                                    </Animated.View>
+                                );
+                            })}
             </View>
         );
     }
@@ -171,7 +180,7 @@ class Deck extends Component {
 
 Deck.propTypes = {
     style: PropTypes.object,
-    children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
+    data: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
     vertical: PropTypes.bool,
 };
 
@@ -189,27 +198,34 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
         borderRadius: 3,
-        shadow: {
-            ...Platform.select({
-                android: {
-                    elevation: 1,
+        ...Platform.select({
+            android: {
+                elevation: 1,
+            },
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: {
+                    width: 0,
+                    height: 3,
                 },
-                ios: {
-                    shadowColor: '#000',
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3,
-                },
-                web: {
-                    boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-                },
-            }),
-        },
+                shadowOpacity: 0.25,
+                shadowRadius: 3,
+            },
+            web: {
+                boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
+            },
+        }),
         borderWidth: 1,
         borderColor: '#FFF',
+    },
+    loadingScreen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    loadingText: {
+        fontStyle: 'italic',
+        fontSize: 18,
     },
 });
 
