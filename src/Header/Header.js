@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     ...Platform.select({
       android: {
-        elevation: 1,
+        elevation: 3,
       },
       ios: {
         shadowColor: '#000',
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
         boxShadow: '0 5px 5px rgba(0,0,0,0.10), 1px 5px 5px rgba(0,0,0,0.10)',
       },
     }),
+    zIndex: 10,
   },
   text: {
     flex: 1,
