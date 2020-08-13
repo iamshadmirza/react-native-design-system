@@ -107,7 +107,9 @@ class Deck extends Component {
         }
     }
 
-    getCardStyles = (isLastItem, isSecondToLast) => {
+    getCardStyles = (index, items) => {
+        const isLastItem = index === items.length - 1;
+        const isSecondToLast = index === items.length - 2;
         const { animation, next } = this.state;
         const { vertical } = this.props;
 
@@ -153,17 +155,10 @@ class Deck extends Component {
                         .slice(0, 2)
                         .reverse()
                         .map((item, index, items) => {
-                            const isLastItem = index === items.length - 1;
-                            const isSecondToLast = index === items.length - 2;
-
-                            const panHandlers = isLastItem || isSecondToLast
-                                ? this._panResponder.panHandlers
-                                : {};
-
                             return (
                                 <Animated.View
-                                    {...panHandlers}
-                                    style={this.getCardStyles(isLastItem, isSecondToLast)}
+                                    {...this._panResponder.panHandlers}
+                                    style={this.getCardStyles(index, items)}
                                     key={this.props.keyExtractor(item)}>
                                     {this.props.renderItem(item)}
                                 </Animated.View>
