@@ -24,7 +24,7 @@ class Deck extends Component {
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
             onPanResponderMove: (event, gesture) => {
-                vertical ? this.state.animation.setValue({ y: gesture.dy }) : this.state.animation.setValue({ x: gesture.dx, y: gesture.dy });
+                vertical ? this.state.animation.setValue({ x: 0, y: gesture.dy }) : this.state.animation.setValue({ x: gesture.dx, y: gesture.dy });
             },
             onPanResponderRelease: (e, { dx, dy, vx, vy }) => {
                 let velocity;
@@ -156,7 +156,7 @@ class Deck extends Component {
                             const isLastItem = index === items.length - 1;
                             const isSecondToLast = index === items.length - 2;
 
-                            const panHandlers = isLastItem
+                            const panHandlers = isLastItem || isSecondToLast
                                 ? this._panResponder.panHandlers
                                 : {};
 
