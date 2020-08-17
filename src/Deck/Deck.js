@@ -10,6 +10,7 @@ class Deck extends Component {
         super(props);
         this.state = {
             data: props.data,
+            swiped: [],
             animation: new Animated.ValueXY(),
             next: new Animated.Value(0.9),
             endOfCards: false,
@@ -32,8 +33,8 @@ class Deck extends Component {
             onPanResponderRelease: (e, { dx, dy, vx, vy }) => {
                 let velocity;
                 const vxy = vertical ? vy : vx;
-                const minClamp = vertical ? 6 : 4;
-                const maxClamp = vertical ? 7 : 5;
+                const minClamp = vertical ? 8 : 4;
+                const maxClamp = vertical ? 10 : 5;
                 if (vxy >= 0) {
                     velocity = clamp(vxy, minClamp, maxClamp);
                 } else if (vxy < 0) {
@@ -41,11 +42,18 @@ class Deck extends Component {
                 }
 
                 if (Math.abs(vertical ? dy : dx) > this.SWIPE_THRESHOLD) {
-                    Animated.decay(this.state.animation, {
-                        velocity: { x: vertical ? vx : velocity, y: vertical ? velocity : vy },
-                        deceleration: 0.99,
-                        useNativeDriver: true,
-                    }).start(this.transitionNext);
+                    Animated.parallel([
+                        Animated.decay(this.state.animation, {
+                            velocity: { x: vertical ? 0 : velocity, y: vertical ? velocity : vy },
+                            deceleration: 0.99,
+                            useNativeDriver: true,
+                        }),
+                        Animated.spring(this.state.next, {
+                            toValue: 1,
+                            friction: 4,
+                            useNativeDriver: true,
+                        }),
+                    ]).start(this.transitionNext);
                     if (velocity > 0) {
                         this.handlePositiveDecay();
                     } else {
@@ -71,24 +79,18 @@ class Deck extends Component {
     }
 
     transitionNext = () => {
-        Animated.spring(this.state.next, {
-            toValue: 1,
-            friction: 4,
-            useNativeDriver: true,
-        }).start(() => {
-            this.setState(
-                (state) => {
-                    return {
-                        data: state.data.slice(1),
-                    };
-                },
-                () => {
-                    this.state.next.setValue(0.9);
-                    this.state.animation.setValue({ x: 0, y: 0 });
-                    this.checkMoreCards();
-                },
-            );
-        });
+        this.setState(
+            (state) => {
+                const { data, swiped } = state;
+                swiped.push(data.shift());
+                return { swiped, data };
+            },
+            () => {
+                this.state.next.setValue(0.9);
+                this.state.animation.setValue({ x: 0, y: 0 });
+                this.checkMoreCards();
+            },
+        );
     };
 
     checkMoreCards = async () => {
