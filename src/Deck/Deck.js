@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Animated, PanResponder, Text, Platform } from 'react-native';
+import { StyleSheet, View, Animated, PanResponder, Text, Platform, Dimensions } from 'react-native';
 import { FullScreenLoader } from '../FullScreenLoader';
 import PropTypes from 'prop-types';
 import clamp from 'clamp';
-const SWIPE_THRESHOLD = 120;
+const { width, height } = Dimensions.get('window');
 
 class Deck extends Component {
     constructor(props) {
@@ -11,11 +11,11 @@ class Deck extends Component {
         this.state = {
             data: props.data,
             animation: new Animated.ValueXY(),
-            opacity: new Animated.Value(1),
             next: new Animated.Value(0.9),
             endOfCards: false,
             loading: props.loadInitialData ? true : false,
         };
+        this.SWIPE_THRESHOLD = 0.25 * (props.vertical ? height : width);
         this.page = 0;
         this.createPanResponder();
         this.checkMoreCards();
@@ -32,17 +32,18 @@ class Deck extends Component {
             onPanResponderRelease: (e, { dx, dy, vx, vy }) => {
                 let velocity;
                 const vxy = vertical ? vy : vx;
-
+                const minClamp = vertical ? 6 : 4;
+                const maxClamp = vertical ? 7 : 5;
                 if (vxy >= 0) {
-                    velocity = clamp(vxy, 3, 5);
+                    velocity = clamp(vxy, minClamp, maxClamp);
                 } else if (vxy < 0) {
-                    velocity = clamp(Math.abs(vxy), 3, 5) * -1;
+                    velocity = clamp(Math.abs(vxy), minClamp, maxClamp) * -1;
                 }
 
-                if (Math.abs(vertical ? dy : dx) > SWIPE_THRESHOLD) {
+                if (Math.abs(vertical ? dy : dx) > this.SWIPE_THRESHOLD) {
                     Animated.decay(this.state.animation, {
                         velocity: { x: vertical ? vx : velocity, y: vertical ? velocity : vy },
-                        deceleration: 0.98,
+                        deceleration: 0.99,
                         useNativeDriver: true,
                     }).start(this.transitionNext);
                     if (velocity > 0) {
@@ -70,18 +71,11 @@ class Deck extends Component {
     }
 
     transitionNext = () => {
-        Animated.parallel([
-            Animated.timing(this.state.opacity, {
-                toValue: 0,
-                duration: 300,
-                useNativeDriver: true,
-            }),
-            Animated.spring(this.state.next, {
-                toValue: 1,
-                friction: 4,
-                useNativeDriver: true,
-            }),
-        ]).start(() => {
+        Animated.spring(this.state.next, {
+            toValue: 1,
+            friction: 4,
+            useNativeDriver: true,
+        }).start(() => {
             this.setState(
                 (state) => {
                     return {
@@ -90,7 +84,6 @@ class Deck extends Component {
                 },
                 () => {
                     this.state.next.setValue(0.9);
-                    this.state.opacity.setValue(1);
                     this.state.animation.setValue({ x: 0, y: 0 });
                     this.checkMoreCards();
                 },
@@ -118,7 +111,7 @@ class Deck extends Component {
         const isLastItem = index === items.length - 1;
         const isSecondToLast = index === items.length - 2;
         const { animation, next } = this.state;
-        const { vertical } = this.props;
+        const { vertical, fade } = this.props;
 
         const rotate = vertical
             ? '0deg'
@@ -128,15 +121,17 @@ class Deck extends Component {
                 extrapolate: 'clamp',
             });
 
-        const opacity = vertical
-            ? animation.y.interpolate({
-                inputRange: [-200, 0, 200],
-                outputRange: [0.5, 1, 0.5],
-            })
-            : animation.x.interpolate({
-                inputRange: [-200, 0, 200],
-                outputRange: [0.5, 1, 0.5],
-            });
+        const opacity = fade
+            ? vertical
+                ? animation.y.interpolate({
+                    inputRange: [-200, 0, 200],
+                    outputRange: [0.5, 1, 0.5],
+                })
+                : animation.x.interpolate({
+                    inputRange: [-200, 0, 200],
+                    outputRange: [0.5, 1, 0.5],
+                })
+            : 1;
 
         const animatedCardStyles = {
             transform: [{ rotate }, ...animation.getTranslateTransform()],
@@ -168,9 +163,11 @@ class Deck extends Component {
                             .slice(0, 2)
                             .reverse()
                             .map((item, index, items) => {
+                                const isLastItem = index === items.length - 1;
+                                const panHandlers = isLastItem ? { ...this._panResponder.panHandlers } : {};
                                 return (
                                     <Animated.View
-                                        {...this._panResponder.panHandlers}
+                                        {...panHandlers}
                                         style={this.getCardStyles(index, items)}
                                         key={this.props.keyExtractor(item)}>
                                         {this.props.renderItem(item)}
@@ -187,12 +184,14 @@ Deck.propTypes = {
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
     vertical: PropTypes.bool,
     loadInitialData: PropTypes.bool,
+    fade: PropTypes.bool,
 };
 
 Deck.defaultProps = {
     vertical: false,
     loop: false,
     loadInitialData: false,
+    fade: true,
 };
 
 const styles = StyleSheet.create({
