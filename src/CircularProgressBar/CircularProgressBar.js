@@ -134,9 +134,9 @@ const CircularProgressBar = (props) => {
         {renderHalf(passiveColor, [{ rotate: rotate3 }], {
           elevation: elevation3, zIndex: elevation3,
         })}
-        <View style={innerCircleStyle}>
+        {<View style={innerCircleStyle}>
           {children}
-        </View>
+        </View>}
       </View>
     </View>
   );
@@ -150,7 +150,7 @@ CircularProgressBar.propTypes = {
   radius: PropTypes.number.isRequired,
   percent: PropTypes.number.isRequired,
   duration: PropTypes.number.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
 };
 
 const styles = StyleSheet.create({
