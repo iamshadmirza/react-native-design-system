@@ -16,14 +16,15 @@ class Deck extends Component {
             endOfCards: false,
             loading: props.loadInitialData ? true : false,
         };
-        this.SWIPE_THRESHOLD = 0.25 * (props.vertical ? height : width);
+        this.SWIPE_THRESHOLD = 0.25 * (props.direction === 'vertical' ? height : width);
         this.page = 0;
         this.createPanResponder();
         this.checkMoreCards();
     }
 
     createPanResponder = () => {
-        const { vertical } = this.props;
+        const { direction } = this.props;
+        const vertical = direction === 'vertical';
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
@@ -113,8 +114,8 @@ class Deck extends Component {
         const isLastItem = index === items.length - 1;
         const isSecondToLast = index === items.length - 2;
         const { animation, next } = this.state;
-        const { vertical, fade } = this.props;
-
+        const { direction, fade } = this.props;
+        const vertical = direction === 'vertical';
         const rotate = vertical
             ? '0deg'
             : animation.x.interpolate({
@@ -184,13 +185,19 @@ class Deck extends Component {
 Deck.propTypes = {
     style: PropTypes.object,
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
-    vertical: PropTypes.bool,
+    renderItem: PropTypes.func.isRequired,
+    keyExtractor: PropTypes.func.isRequired,
+    loadMoreCards: PropTypes.func,
+    onNegativeSwipe: PropTypes.func,
+    onPositiveSwipe: PropTypes.func,
+    direction: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
     loadInitialData: PropTypes.bool,
     fade: PropTypes.bool,
+    loop: PropTypes.bool,
 };
 
 Deck.defaultProps = {
-    vertical: false,
+    direction: 'horizontal',
     loop: false,
     loadInitialData: false,
     fade: true,
