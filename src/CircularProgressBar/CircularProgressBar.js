@@ -44,7 +44,7 @@ const CircularProgressBar = (props) => {
         toValue: (percent - 50) * 3.6,
         delay: 180 * timePerDegree,
         duration: timePerDegree * ((percent - 50) * 3.6),
-        useNativeDriver: true,
+        useNativeDriver: false,
         easing: Easing.linear,
       }),
     ]).start();
