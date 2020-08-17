@@ -12,5 +12,3 @@ module.exports = {
         '@storybook/addon-docs/preset'
     ]
 };
-
-//'../**/*.stories.(js|mdx)'
