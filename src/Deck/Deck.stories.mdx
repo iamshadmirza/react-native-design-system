@@ -1,0 +1,120 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, boolean, color, number } from "@storybook/addon-knobs";
+import { View, Text, Image } from "react-native";
+import { action } from '@storybook/addon-actions';
+import Stack from '../Layout/Stack';
+import Deck from './Deck';
+
+<Meta title="Deck" component={Deck} />
+
+# Deck
+Swippable Deck component.
+
+# Usage
+```js
+import { Deck } from 'react-native-design-system';
+
+<Deck
+    data={[
+        {
+            id: 28362836,
+            imageUrl: './Kitty1.png'
+        },
+        {
+            id: 5325732,
+            imageUrl: './Kitty2.png'
+        },
+        {
+            id: 9372333,
+            imageUrl: './Kitty3.png'
+        },
+        {
+            id: 76732573,
+            imageUrl: './Kitty4.png'
+        },
+    ]}
+    keyExtractor={item => item.id.toString()}
+    renderItem={item => {
+        return (
+            <View style={{ flex: 1}}>
+                <Image style={{ width: 100, height: 100 }} source={{ uri: item.imageUrl }} />
+            </View>
+        );
+    }}
+/>
+```
+
+# Props
+<Props of={Deck} />
+
+# data
+
+Pass array of items you want to render. Works just like `<FlatList />`
+
+# renderItem
+
+Pass a callback function to render each item. Function receives `item` as argument and returns react element. Works just like `<FlatList />`
+
+# keyExtractor
+
+Pass a function that returns unique id as strings. Function receives `item` as argument. Works just like `<FlatList />`
+
+# direction
+
+Pass `direction` as `vertical` or `horizontal` to change direction of swipe. Default is `horzintal`.
+
+# loop
+
+Pass `loop={true}` to repeat the data array when all items are swiped. Default is `false`.
+
+# fade 
+
+Pass `fade={true}` to reduce opacity as the user swipes. Default is `true`.
+
+# onPositiveSwipe
+
+Pass a function to be called when item has been swiped right in case of `direction="horizontal"` and up in case of `direction="vertical"`.
+
+# onNegativeSwipe
+
+Pass a function to be called when item has been swiped left in case of `direction="horizontal"` and down in case of `direction="vertical"`.
+
+# loadMoreCards
+
+Pass an async function (promise) to load more cards from all cards are swiped. This function will receive `page` as argument which is integer value for pagination and should return new batch of items in an array. We take care of concatinating received data inside Deck component, you just have to return an array with new data.
+
+# loadInitialData
+
+Pass `loadInitialData={true}` when passing `data={[]}` as empty array. Deck component will use `loadMoreCards` to fetch the initial batch of data. We show a loading screen while fetching data, you can pass this loading screen yourself. See next prop.
+
+# loadingScreen
+
+React component to show while fetching data, this component will be used at initial screen when `loadInitialData={true}`.
+
+# Playground
+This component is fully customizable. Go on, play with Deck inside Canvas.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Deck
+    data={[
+        'https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/kitty1.jpeg',
+        'https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/kitty2.jpeg',
+        'https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/kitty3.jpeg',
+        'https://raw.githubusercontent.com/iamshadmirza/BlogsByShad/master/blogs/saved_data/kitty4.jpeg',
+    ]}
+    keyExtractor={item => item.toString()}
+    renderItem={item => {
+        return (
+            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 100, backgroundColor: '#f4f4f4', padding: 30 }}>
+                <Image style={{ width: 300, height: 300}} source={{ uri: item }} resizeMode="contain" />
+                <Text>Adorable Kittens 😍</Text>
+            </View>
+        );
+    }}
+    direction={select('direction', ['horizontal', 'vertical'], 'horizontal')}
+    fade={boolean('fade', false)}
+    loop={boolean('loop', true)}
+    onPositiveSwipe={action('swipped up or right')}
+    onNegativeSwipe={action('swipped down or left')}
+/>
+</Story>

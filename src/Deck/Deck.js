@@ -97,7 +97,7 @@ class Deck extends Component {
     checkMoreCards = async () => {
         if (this.state.data.length < 2) {
             if (this.props.loop && !this.props.loadInitialData) {
-                return this.setState(state => ({ data: state.data.concat(this.props.data) }));
+                return this.setState(state => ({ data: state.data.concat(this.state.swiped) }));
             }
             if (this.props.loadInitialData && this.state.data.length === 0) {
                 this.page = -1;
@@ -184,7 +184,7 @@ class Deck extends Component {
 
 Deck.propTypes = {
     style: PropTypes.object,
-    data: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
+    data: PropTypes.array.isRequired,
     renderItem: PropTypes.func.isRequired,
     keyExtractor: PropTypes.func.isRequired,
     loadMoreCards: PropTypes.func,
@@ -194,6 +194,7 @@ Deck.propTypes = {
     loadInitialData: PropTypes.bool,
     fade: PropTypes.bool,
     loop: PropTypes.bool,
+    loadingScreen: PropTypes.element,
 };
 
 Deck.defaultProps = {
