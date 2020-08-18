@@ -19,6 +19,9 @@ class Deck extends Component {
         this.SWIPE_THRESHOLD = 0.25 * (props.direction === 'vertical' ? height : width);
         this.page = 0;
         this.createPanResponder();
+    }
+
+    componentDidMount() {
         this.checkMoreCards();
     }
 
