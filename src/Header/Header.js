@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3,
+        paddingTop: 15,
       },
       web: {
         // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
