@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, TouchableNativeFeedback, Text, StyleSheet, Platform, StatusBar } from 'react-native';
+import { View, TouchableOpacity, TouchableNativeFeedback, Text, StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
@@ -29,30 +29,32 @@ const Header = ({ style, textStyle, ...props }) => {
   const theme = useThemeContext();
   const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), style])}>
+    <SafeAreaView style={[styles.safeAreaView, { backgroundColor: theme.brandColor[props.barColor] }]}>
       <StatusBar
         barStyle={props.barStyle}
         backgroundColor={theme.brandColor[props.barColor]}
       />
-      {props.leftIcon &&
-        <TouchableElement {...props} onPress={props.onLeftIconPress}>
-          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
-            {props.leftIcon}
-          </View>
-        </TouchableElement>
-      }
-      {!!props.children &&
-        <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
-          {props.children}
-        </Text>}
-      {props.rightIcon &&
-        <TouchableElement {...props} onPress={props.onRightIconPress}>
-          <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
-            {props.rightIcon}
-          </View>
-        </TouchableElement>
-      }
-    </View>
+      <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), style])}>
+        {props.leftIcon &&
+          <TouchableElement {...props} onPress={props.onLeftIconPress}>
+            <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
+              {props.leftIcon}
+            </View>
+          </TouchableElement>
+        }
+        {!!props.children &&
+          <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
+            {props.children}
+          </Text>}
+        {props.rightIcon &&
+          <TouchableElement {...props} onPress={props.onRightIconPress}>
+            <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
+              {props.rightIcon}
+            </View>
+          </TouchableElement>
+        }
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -80,16 +82,7 @@ Header.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: Platform.select({
-      android: 56,
-      ios: 64,
-      web: 64,
-    }),
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10,
+  safeAreaView: {
     ...Platform.select({
       android: {
         elevation: 3,
@@ -102,13 +95,22 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3,
-        paddingTop: 15,
       },
       web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
         boxShadow: '0 5px 5px rgba(0,0,0,0.10), 1px 5px 5px rgba(0,0,0,0.10)',
       },
     }),
+    zIndex: 10,
+  },
+  container: {
+    width: '100%',
+    height: Platform.select({
+      android: 56,
+      ios: 56,
+      web: 64,
+    }),
+    flexDirection: 'row',
+    alignItems: 'center',
     zIndex: 10,
   },
   text: {
@@ -124,10 +126,9 @@ const styles = StyleSheet.create({
     }),
     color: '#fff',
     paddingHorizontal: 10,
-    marginTop: Platform.OS === 'ios' ? 8 : 0,
   },
   iconStyle: {
-    padding: 5,
+    padding: 10,
   },
 });
 
