@@ -4,3 +4,4 @@ guides
 docs
 *.stories.mdx
 *.example.js
+.vscode

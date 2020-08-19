@@ -5,6 +5,7 @@
 # node.js
 #
 node_modules/
+.vscode
 .cache-loader/
 npm-debug.log
 yarn-error.log
