@@ -126,6 +126,7 @@ const CircularProgressBar = (props) => {
             width: radius * 2,
             borderRadius: radius,
             backgroundColor: passiveColor,
+            overflow: 'hidden',
           },
         ]}
       >
