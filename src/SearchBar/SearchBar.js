@@ -6,14 +6,9 @@ import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 
 const renderIndicator = (props) => {
-  const scale = {
-    transform: [
-      { scale: props.theme.indicatorSize[props.size] },
-    ],
-  };
   return (
     <View style={styles.rightIcons}>
-      <View style={[styles.indicator, scale]}>
+      <View style={styles.indicator}>
         <ActivityIndicator animating={props.loading === true} color={props.indicatorColor} />
       </View>
       {props.onCancel && props.value.length !== 0 &&
@@ -34,13 +29,7 @@ const SearchBar = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   return (
     <Input
-      leftIcon={
-        <Feather
-          name="search"
-          size={20}
-          color={theme.brandColor[props.iconColor]}
-        />
-      }
+      leftIcon={props.leftIcon || <Feather name="search" size={20} color={theme.brandColor[props.iconColor]} />}
       {...props}
       ref={ref}
       rightIcon={renderIndicator({ ...props, theme })}
