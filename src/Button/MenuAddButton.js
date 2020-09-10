@@ -75,7 +75,7 @@ const MenuAddButton = ({ style, textStyle, ...props }) => {
             />}
         </View>
       </TouchableElement>
-      <View style={[styles.countView, { backgroundColor: textStyle.backgroundColor || colors.bluegrey[200] }]}>
+      <View style={[styles.countView, { backgroundColor: textStyle && textStyle.backgroundColor || colors.bluegrey[200] }]}>
         <Text style={[getTextStyle({ ...props, theme }), textStyle]}>
           {props.count}
         </Text>
