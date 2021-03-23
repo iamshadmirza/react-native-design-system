@@ -15,7 +15,7 @@ const getContainerStyle = ({ theme, space, background }) => {
 const Box = (props) => {
   const theme = useThemeContext();
   return (
-    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
+    <View {...props} style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
       {props.children}
     </View>
   );
