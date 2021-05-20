@@ -1,148 +1,51 @@
+
+type sizes = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+type textColors = 'default' | 'heading' | 'subtle' | 'grey' | 'disabled' | 'white';
+type brandColors = 'primary' | 'secondary' | 'tertiary' | 'background' | 'disabled' | 'white' | 'semitransparent' | 'grey' | 'clearWhite' | 'outline';
+
+type knownScale = {
+  [k in sizes]: number
+}
+
+type unknownScale = {
+  [size: string]: number
+}
+
+type knownBrandColors = {
+  [k in brandColors]: number
+}
+
+type knownTextColors = {
+  [k in textColors]: number
+}
+
+type unknownColors = {
+  [color: string]: string
+}
+
+type possibleSizes = knownScale & unknownScale;
+type possibleSpaces = knownScale & { none: number } & unknownScale;
+type possibleTextColors = knownTextColors & unknownColors;
+type possibleBrandColors = knownBrandColors & unknownColors;
+
 export interface themeType {
-  fontSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  size: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  actionButtonSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  buttonSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  buttonWidth: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  iconSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  avatarSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-    [size: string]: number;
-  };
-  badgeSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  miniBadgeSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  listItemSpace: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  space: {
-    none: number;
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  layoutSpace: {
-    none: number;
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
-  indicatorSize: {
-    xxsmall: number;
-    xsmall: number;
-    small: number;
-    medium: number;
-    large: number;
-    xlarge: number;
-    xxlarge: number;
-  };
+  fontSize: possibleSizes;
+  size: possibleSizes;
+  actionButtonSize: possibleSizes;
+  buttonSize: possibleSizes;
+  buttonWidth: possibleSizes;
+  iconSize: possibleSizes;
+  avatarSize: possibleSizes;
+  badgeSize: possibleSizes;
+  miniBadgeSize: possibleSizes;
+  listItemSpace: possibleSizes;
+  space: possibleSpaces;
+  layoutSpace: possibleSpaces;
+  indicatorSize: possibleSizes;
   fontFamily: {
     heading: string;
     text: string;
   };
-  textColor: {
-    default: string;
-    heading: string;
-    subtle: string;
-    grey: string;
-    disabled: string;
-    white: string;
-    [color: string]: string;
-  };
-  brandColor: {
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    background: string;
-    disabled: string;
-    white: string;
-    semitransparent: string;
-    grey: string;
-    clearWhite: string;
-    outline: string;
-    [color: string]: string;
-  };
+  textColor: possibleTextColors;
+  brandColor: possibleBrandColors;
 }
