@@ -17,4 +17,4 @@ interface BoxProps {
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly',
 }
 
-export const Box: React.FC<BoxProps>;
+export const Flex: React.FC<BoxProps>;

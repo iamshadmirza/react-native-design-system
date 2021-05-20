@@ -1,10 +1,18 @@
 import React from 'react';
-import { TouchableOpacity, TouchableNativeFeedback, Platform, View, Text, Image, StyleSheet } from 'react-native';
+import {
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  Platform,
+  View,
+  Text,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, source, square, rounded, size }) => {
+const getContainerStyle = ({theme, source, square, rounded, size}) => {
   const avatarStyle = [styles.container];
   avatarStyle.push({
     backgroundColor: '#f4f4f4',
@@ -31,17 +39,20 @@ const getContainerStyle = ({ theme, source, square, rounded, size }) => {
   return avatarStyle;
 };
 
-const getEditIconStyle = ({ theme, size }) => {
-  const iconStyle = [styles.editView, {
-    width: theme.avatarSize[size] / 4,
-    height: theme.avatarSize[size] / 4,
-    borderRadius: theme.avatarSize[size] / 8,
-    backgroundColor: theme.brandColor.disabled,
-  }];
+const getEditIconStyle = ({theme, size}) => {
+  const iconStyle = [
+    styles.editView,
+    {
+      width: theme.avatarSize[size] / 4,
+      height: theme.avatarSize[size] / 4,
+      borderRadius: theme.avatarSize[size] / 8,
+      backgroundColor: theme.brandColor.disabled,
+    },
+  ];
   return iconStyle;
 };
 
-const getTitleStyle = ({ theme, size }) => {
+const getTitleStyle = ({theme, size}) => {
   return {
     fontWeight: '600',
     fontSize: theme.avatarSize[size] / 4,
@@ -49,46 +60,76 @@ const getTitleStyle = ({ theme, size }) => {
   };
 };
 
-const Avatar = (props) => {
+const Avatar = props => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <View style={StyleSheet.flatten([styles.propView, { width: theme.avatarSize[props.size] }])}>
+    <View
+      style={StyleSheet.flatten([
+        styles.propView,
+        {width: theme.avatarSize[props.size]},
+      ])}>
       <TouchableElement disabled={!props.editable} {...props}>
-        <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
-          {props.source ?
+        <View
+          style={StyleSheet.flatten([
+            getContainerStyle({...props, theme}),
+            props.style,
+          ])}>
+          {props.source ? (
             <Image
               source={props.source}
               resizeMode="cover"
               style={styles.image}
-            /> :
-            <Text numberOfLines={1} style={StyleSheet.flatten([getTitleStyle({ ...props, theme }), props.textStyle])}>
+            />
+          ) : (
+            <Text
+              numberOfLines={1}
+              style={StyleSheet.flatten([
+                getTitleStyle({...props, theme}),
+                props.textStyle,
+              ])}>
               {props.title}
             </Text>
-          }
+          )}
         </View>
       </TouchableElement>
-      {props.editable &&
-        <View style={StyleSheet.flatten([getEditIconStyle({ ...props, theme }), props.editIconStyle])}>
+      {props.editable && (
+        <View
+          style={StyleSheet.flatten([
+            getEditIconStyle({...props, theme}),
+            props.editIconStyle,
+          ])}>
           <Feather
             name="edit-2"
             size={theme.avatarSize[props.size] / 8}
             color={props.editIconColor || theme.textColor.disabled}
           />
-        </View>}
+        </View>
+      )}
     </View>
   );
 };
 
 Avatar.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.object,
   title: PropTypes.string,
   source: PropTypes.object,
   editable: PropTypes.bool,
   onPress: PropTypes.func,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      'xxsmall',
+      'xsmall',
+      'small',
+      'medium',
+      'large',
+      'xlarge',
+      'xxlarge',
+    ]),
+    PropTypes.string,
+  ]),
   square: PropTypes.bool,
   rounded: PropTypes.bool,
   editIconStyle: PropTypes.object,
