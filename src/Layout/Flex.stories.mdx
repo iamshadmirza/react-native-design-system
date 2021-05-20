@@ -1,0 +1,68 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import Button from '../Button/Button';
+import Flex from './Flex';
+
+<Meta title="Flex" component={Flex} />
+
+# Flex
+Flex is a simple layout container works as a Flex box.
+
+# Usage
+```js
+import { Flex } from 'react-native-design-system';
+
+<Flex space="large">
+  <Button>
+    Press Me
+  </Button>    
+</Flex>
+```
+
+# Props
+<Props of={Flex} />
+
+# Space
+Customize padding for the child. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`
+
+<Preview>
+  <Story name="space">
+    <Flex space="large">
+      <Button>
+        Press Me
+      </Button>    
+    </Flex>
+  </Story>
+</Preview>
+
+# Background
+You can also pass a `background` color. Color string should be present inside `brandColor` of theme.
+
+<Preview>
+  <Story name="background">
+    <Flex background="disabled">
+      <Button>
+        Press Me
+      </Button>    
+    </Flex>
+  </Story>
+</Preview>
+
+# Playground
+
+Play with Flex in Canvas mode.
+
+<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+ <Flex
+  flex={1}
+  flexDirection={select('row', ['row', 'column', 'row-reverse', 'column-reverse'])}
+  alignItems={select('alignItems', ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'])}
+  justifyContent={select('justifyContent', ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'])}
+  space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+  background={select('background', ['background', 'clearWhite', 'disabled', 'semitransparent', 'grey', 'white', 'outline'], 'background')}>
+    <Button>
+      Press Me
+    </Button>    
+  </Flex>
+</Story>

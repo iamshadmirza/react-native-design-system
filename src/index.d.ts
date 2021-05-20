@@ -4,7 +4,7 @@
 // Bhavesh Daswani <https://github.com/bhaveshdaswani93>
 // TypeScript Version: 3.7.5
 
-import * as React from "react";
+import * as React from 'react';
 import { themeType } from './types/theme';
 import { colorsType } from './types/colors-type';
 export * from './types/Button';
@@ -27,6 +27,7 @@ export * from './types/SearchBar';
 export * from './types/Text';
 export * from './types/RadioItem';
 export * from './types/RadioButton';
+export * from './types/Flex';
 
 export let theme:themeType;
 export let colors:colorsType;
