@@ -12,11 +12,11 @@ type unknownScale = {
 }
 
 type knownBrandColors = {
-  [k in brandColors]: number
+  [k in brandColors]: string
 }
 
 type knownTextColors = {
-  [k in textColors]: number
+  [k in textColors]: string
 }
 
 type unknownColors = {
