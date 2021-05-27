@@ -1,15 +1,33 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TouchableNativeFeedback, Platform, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  Platform,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getTextStyle = ({ size, outline, transparent, loading, disabled, theme, color }) => {
-  const textStyle = [{
-    fontWeight: Platform.OS === 'android' ? 'bold' : '400',
-    fontSize: theme.fontSize[size],
-    margin: theme.buttonSize[size],
-    color: theme.textColor.white,
-  }];
+const getTextStyle = ({
+  size,
+  outline,
+  transparent,
+  loading,
+  disabled,
+  theme,
+  color,
+}) => {
+  const textStyle = [
+    {
+      fontWeight: Platform.OS === 'android' ? 'bold' : '400',
+      fontSize: theme.fontSize[size],
+      margin: theme.buttonSize[size],
+      color: theme.textColor.white,
+    },
+  ];
   if (outline || transparent) {
     textStyle.push({
       color: theme.brandColor[color],
@@ -28,8 +46,20 @@ const getTextStyle = ({ size, outline, transparent, loading, disabled, theme, co
   return textStyle;
 };
 
-const getContainerStyle = (props) => {
-  const { outline, width, round, transparent, disabled, loading, size, length, theme, color, tint } = props;
+const getContainerStyle = props => {
+  const {
+    outline,
+    width,
+    round,
+    transparent,
+    disabled,
+    loading,
+    size,
+    length,
+    theme,
+    color,
+    tint,
+  } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
     backgroundColor: theme.brandColor[color],
@@ -79,30 +109,35 @@ const getContainerStyle = (props) => {
   return buttonStyles;
 };
 
-
-const renderChildren = (props) => {
+const renderChildren = props => {
   return (
     <>
-      {props.loading && !props.disabled &&
+      {props.loading && !props.disabled && (
         <ActivityIndicator
-          style={styles.iconStyle}
-          color={props.indicatorColor || props.theme.brandColor[props.color]} />}
-      {props.leftIcon || props.icon &&
-        <View style={styles.iconStyle}>
-          {props.leftIcon || props.icon}
-        </View>}
+          style={[styles.iconStyle, props.iconStyle]}
+          color={props.indicatorColor || props.theme.brandColor[props.color]}
+        />
+      )}
+      {props.leftIcon ||
+        (props.icon && (
+          <View
+            style={[styles.iconStyle, props.iconStyle, props.leftIconStyle]}>
+            {props.leftIcon || props.icon}
+          </View>
+        ))}
       <Text style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
         {props.children}
       </Text>
-      {props.rightIcon &&
-        <View style={styles.iconStyle}>
+      {props.rightIcon && (
+        <View style={[styles.iconStyle, props.iconStyle, props.rightIconStyle]}>
           {props.rightIcon}
-        </View>}
+        </View>
+      )}
     </>
   );
 };
 
-const Button = (props) => {
+const Button = props => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -110,10 +145,13 @@ const Button = (props) => {
     <TouchableElement
       {...props}
       onPress={props.onPress}
-      disabled={props.disabled || props.loading}
-    >
-      <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
-        {renderChildren({ ...props, theme })}
+      disabled={props.disabled || props.loading}>
+      <View
+        style={StyleSheet.flatten([
+          getContainerStyle({...props, theme}),
+          props.style,
+        ])}>
+        {renderChildren({...props, theme})}
       </View>
     </TouchableElement>
   );
@@ -124,14 +162,36 @@ Button.propTypes = {
   style: PropTypes.object,
   /**  To override default text style */
   textStyle: PropTypes.object,
+  /**  To override default icon style */
+  iconStyle: PropTypes.object,
+  /**  To override default left icon style */
+  leftIconStyle: PropTypes.object,
+  /**  To override default right icon style */
+  rightIconStyle: PropTypes.object,
   /**  Pass button text as children as children */
   children: PropTypes.string,
   /**  Change indicator color */
   indicatorColor: PropTypes.string,
   /**  To change button size */
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   /**  To change button width */
-  width: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  width: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   /**  callback function to be called when pressed */
   onPress: PropTypes.func.isRequired,
   /**  Pass the brand color */
