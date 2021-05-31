@@ -1,10 +1,5 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
-
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
+import { ViewStyle, StyleProp } from 'react-native';
 
 interface OverlayProps {
   style?: StyleProp<ViewStyle>,
@@ -15,6 +10,7 @@ interface OverlayProps {
   borderRadius?: number,
   width?: string | number,
   height?: string | number,
+  onPressOutside?: () => void
 }
 
 export const Overlay: React.FC<OverlayProps>;
