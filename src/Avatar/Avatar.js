@@ -60,7 +60,7 @@ const getTitleStyle = ({theme, size}) => {
   };
 };
 
-const Avatar = props => {
+const Avatar = ({style, ...props}) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -74,7 +74,7 @@ const Avatar = props => {
         <View
           style={StyleSheet.flatten([
             getContainerStyle({...props, theme}),
-            props.style,
+            style,
           ])}>
           {props.source ? (
             <Image
