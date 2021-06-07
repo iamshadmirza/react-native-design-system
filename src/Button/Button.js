@@ -22,7 +22,6 @@ const getTextStyle = ({
 }) => {
   const textStyle = [
     {
-      fontWeight: Platform.OS === 'android' ? 'bold' : '400',
       fontSize: theme.fontSize[size],
       margin: theme.buttonSize[size],
       color: theme.textColor.white,
@@ -46,7 +45,7 @@ const getTextStyle = ({
   return textStyle;
 };
 
-const getContainerStyle = props => {
+const getContainerStyle = (props) => {
   const {
     outline,
     width,
@@ -109,7 +108,7 @@ const getContainerStyle = props => {
   return buttonStyles;
 };
 
-const renderChildren = props => {
+const renderChildren = (props) => {
   return (
     <>
       {props.loading && !props.disabled && (
@@ -137,7 +136,7 @@ const renderChildren = props => {
   );
 };
 
-const Button = props => {
+const Button = (props) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
