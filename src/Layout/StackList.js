@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
@@ -37,12 +37,16 @@ const getChildrenStyle = (
   return childStyle;
 };
 
-const StackList = props => {
+const StackList = (props) => {
   const theme = useThemeContext();
   return (
     <FlatList
       {...props}
-      renderItem={child => (
+      style={StyleSheet.flatten([
+        {backgroundColor: theme.brandColor.background},
+        props.style,
+      ])}
+      renderItem={(child) => (
         <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>

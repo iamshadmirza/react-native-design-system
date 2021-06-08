@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getChildrenStyle = ({ theme, space, verticalSpace, cropEndSpace, data }, index) => {
-  const childStyle = [{
-    marginRight: theme.layoutSpace[space],
-  }];
+const getChildrenStyle = (
+  {theme, space, verticalSpace, cropEndSpace, data},
+  index,
+) => {
+  const childStyle = [
+    {
+      marginRight: theme.layoutSpace[space],
+    },
+  ];
   if (index === 0) {
     childStyle.push({
       marginLeft: theme.layoutSpace[space],
@@ -38,8 +43,12 @@ const InlineList = (props) => {
     <FlatList
       horizontal
       {...props}
+      style={StyleSheet.flatten([
+        {backgroundColor: theme.brandColor.background},
+        props.style,
+      ])}
       renderItem={(child) => (
-        <View style={getChildrenStyle({ ...props, theme }, child.index)}>
+        <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>
       )}
@@ -49,16 +58,34 @@ const InlineList = (props) => {
 
 InlineList.propTypes = {
   style: PropTypes.object,
-  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  verticalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  space: PropTypes.oneOf([
+    'none',
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
+  verticalSpace: PropTypes.oneOf([
+    'none',
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   cropEndSpace: PropTypes.bool,
-  ...FlatList.propTypes
+  ...FlatList.propTypes,
 };
 
 InlineList.defaultProps = {
   space: 'medium',
   verticalSpace: 'none',
-  cropEndSpace: true
+  cropEndSpace: true,
 };
 
 export default InlineList;

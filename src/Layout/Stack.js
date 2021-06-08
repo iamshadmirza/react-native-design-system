@@ -1,14 +1,26 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getChildrenStyle = ({ direction, theme, space, verticalSpace, horizontalSpace, cropEndSpace, children }, index) => {
-  if (direction === 'vertical'){
-    const childStyle = [{
-      marginBottom: theme.layoutSpace[space],
-
-    }];
+const getChildrenStyle = (
+  {
+    direction,
+    theme,
+    space,
+    verticalSpace,
+    horizontalSpace,
+    cropEndSpace,
+    children,
+  },
+  index,
+) => {
+  if (direction === 'vertical') {
+    const childStyle = [
+      {
+        marginBottom: theme.layoutSpace[space],
+      },
+    ];
     if (index === 0) {
       childStyle.push({
         marginTop: theme.layoutSpace[space],
@@ -17,7 +29,6 @@ const getChildrenStyle = ({ direction, theme, space, verticalSpace, horizontalSp
     if (horizontalSpace) {
       childStyle.push({
         marginHorizontal: theme.layoutSpace[horizontalSpace],
-
       });
     }
     if (cropEndSpace) {
@@ -34,9 +45,11 @@ const getChildrenStyle = ({ direction, theme, space, verticalSpace, horizontalSp
     }
     return childStyle;
   } else {
-    const childStyle = [{
-      marginRight: theme.layoutSpace[space],
-    }];
+    const childStyle = [
+      {
+        marginRight: theme.layoutSpace[space],
+      },
+    ];
     if (index === 0) {
       childStyle.push({
         marginLeft: theme.layoutSpace[space],
@@ -66,9 +79,14 @@ const getChildrenStyle = ({ direction, theme, space, verticalSpace, horizontalSp
 const Stack = (props) => {
   const theme = useThemeContext();
   return (
-    <View {...props} style={[props.direction === 'horizontal' ? styles.container : {}, props.style]}>
+    <View
+      {...props}
+      style={[
+        props.direction === 'horizontal' ? styles.container : {},
+        props.style,
+      ]}>
       {React.Children.toArray(props.children).map((item, index) => (
-        <View style={getChildrenStyle({ ...props, theme }, index)} key={index}>
+        <View style={getChildrenStyle({...props, theme}, index)} key={index}>
           {item}
         </View>
       ))}
@@ -78,10 +96,38 @@ const Stack = (props) => {
 
 Stack.propTypes = {
   style: PropTypes.object,
-  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  horizontalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  verticalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
+  space: PropTypes.oneOf([
+    'none',
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
+  horizontalSpace: PropTypes.oneOf([
+    'none',
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
+  verticalSpace: PropTypes.oneOf([
+    'none',
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
+    .isRequired,
   direction: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   cropEndSpace: PropTypes.bool,
 };
