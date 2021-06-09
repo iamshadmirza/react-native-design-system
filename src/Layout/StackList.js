@@ -37,10 +37,11 @@ const getChildrenStyle = (
   return childStyle;
 };
 
-const StackList = (props) => {
+const StackList = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   return (
     <FlatList
+      ref={ref}
       {...props}
       style={StyleSheet.flatten([
         {backgroundColor: theme.brandColor.background},
@@ -53,7 +54,7 @@ const StackList = (props) => {
       )}
     />
   );
-};
+});
 
 StackList.propTypes = {
   style: PropTypes.object,

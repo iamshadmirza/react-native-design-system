@@ -37,10 +37,11 @@ const getChildrenStyle = (
   return childStyle;
 };
 
-const InlineList = (props) => {
+const InlineList = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   return (
     <FlatList
+      ref={ref}
       horizontal
       {...props}
       style={StyleSheet.flatten([
@@ -54,7 +55,7 @@ const InlineList = (props) => {
       )}
     />
   );
-};
+});
 
 InlineList.propTypes = {
   style: PropTypes.object,

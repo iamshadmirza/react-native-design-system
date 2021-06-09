@@ -76,10 +76,11 @@ const getChildrenStyle = (
   }
 };
 
-const Stack = (props) => {
+const Stack = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   return (
     <View
+      ref={ref}
       {...props}
       style={[
         props.direction === 'horizontal' ? styles.container : {},
@@ -92,7 +93,7 @@ const Stack = (props) => {
       ))}
     </View>
   );
-};
+};)
 
 Stack.propTypes = {
   style: PropTypes.object,
