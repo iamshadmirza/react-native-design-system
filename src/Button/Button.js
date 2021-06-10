@@ -158,9 +158,9 @@ const Button = (props) => {
 
 Button.propTypes = {
   /**  To override default style */
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   /**  To override default text style */
-  textStyle: PropTypes.object,
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   /**  To override default icon style */
   iconStyle: PropTypes.object,
   /**  To override default left icon style */

@@ -58,7 +58,7 @@ const InlineList = React.forwardRef((props, ref) => {
 });
 
 InlineList.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   space: PropTypes.oneOf([
     'none',
     'xxsmall',

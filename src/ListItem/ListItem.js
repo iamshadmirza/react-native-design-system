@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  Platform,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import { Avatar } from '../Avatar';
+import {Avatar} from '../Avatar';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, space, background }) => {
+const getContainerStyle = ({theme, space, background}) => {
   const itemStyle = [styles.container];
   itemStyle.push({
     borderColor: theme.brandColor.outline,
@@ -15,7 +22,7 @@ const getContainerStyle = ({ theme, space, background }) => {
   return itemStyle;
 };
 
-const getTextStyle = ({ theme, size, textColor, textAlign }) => {
+const getTextStyle = ({theme, size, textColor, textAlign}) => {
   return {
     fontSize: theme.fontSize[size],
     fontWeight: '500',
@@ -24,7 +31,7 @@ const getTextStyle = ({ theme, size, textColor, textAlign }) => {
   };
 };
 
-const getSubtitleStyle = ({ theme, size, subtitleColor, textAlign }) => {
+const getSubtitleStyle = ({theme, size, subtitleColor, textAlign}) => {
   return {
     fontSize: theme.fontSize[size] * 0.7,
     fontWeight: '400',
@@ -34,11 +41,9 @@ const getSubtitleStyle = ({ theme, size, subtitleColor, textAlign }) => {
   };
 };
 
-const renderLeftChild = ({ avatarSource, leftIcon, iconStyle }) => {
+const renderLeftChild = ({avatarSource, leftIcon, iconStyle}) => {
   if (avatarSource) {
-    return (
-      <Avatar source={avatarSource} size="xxsmall" />
-    );
+    return <Avatar source={avatarSource} size="xxsmall" />;
   }
   if (leftIcon) {
     return (
@@ -50,15 +55,22 @@ const renderLeftChild = ({ avatarSource, leftIcon, iconStyle }) => {
   return null;
 };
 
-const renderRightChild = ({ chevron, rightIcon, iconStyle, theme, size, chevronColor }) => {
+const renderRightChild = ({
+  chevron,
+  rightIcon,
+  iconStyle,
+  theme,
+  size,
+  chevronColor,
+}) => {
   return (
     <>
-      {rightIcon &&
+      {rightIcon && (
         <View style={StyleSheet.flatten([styles.iconStyle, iconStyle])}>
           {rightIcon}
         </View>
-      }
-      {chevron &&
+      )}
+      {chevron && (
         <View style={StyleSheet.flatten([styles.iconStyle, iconStyle])}>
           <Feather
             name="chevron-right"
@@ -66,29 +78,38 @@ const renderRightChild = ({ chevron, rightIcon, iconStyle, theme, size, chevronC
             color={theme.brandColor[chevronColor]}
           />
         </View>
-      }
+      )}
     </>
   );
 };
 
-
-const ListItem = ({ style, textStyle, subtitleStyle, background, ...props }) => {
+const ListItem = ({style, textStyle, subtitleStyle, background, ...props}) => {
   const theme = useThemeContext();
-  const propsWithTheme = { ...props, background, theme };
-  const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+  const propsWithTheme = {...props, background, theme};
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <TouchableElement {...props}>
-      <View style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
+      <View
+        style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
         {renderLeftChild(propsWithTheme)}
         <View style={styles.textView}>
-          <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), textStyle])}>
+          <Text
+            style={StyleSheet.flatten([
+              getTextStyle(propsWithTheme),
+              textStyle,
+            ])}>
             {props.children}
           </Text>
-          {props.subtitle &&
-            <Text style={StyleSheet.flatten([getSubtitleStyle(propsWithTheme), subtitleStyle])}>
+          {props.subtitle && (
+            <Text
+              style={StyleSheet.flatten([
+                getSubtitleStyle(propsWithTheme),
+                subtitleStyle,
+              ])}>
               {props.subtitle}
             </Text>
-          }
+          )}
         </View>
         {renderRightChild(propsWithTheme)}
       </View>
@@ -97,8 +118,8 @@ const ListItem = ({ style, textStyle, subtitleStyle, background, ...props }) => 
 };
 
 ListItem.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   subtitleStyle: PropTypes.object,
   iconStyle: PropTypes.object,
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
@@ -108,8 +129,24 @@ ListItem.propTypes = {
   textColor: PropTypes.string,
   subtitleColor: PropTypes.string,
   chevronColor: PropTypes.string,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  space: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
+  space: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   onPress: PropTypes.func.isRequired,
   avatarSource: PropTypes.object,
   leftIcon: PropTypes.element,

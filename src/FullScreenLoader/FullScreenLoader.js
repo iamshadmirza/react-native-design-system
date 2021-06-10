@@ -1,15 +1,20 @@
 import React from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
 const FullScreenLoader = (props) => {
   const theme = useThemeContext();
-  const background = { backgroundColor: theme.brandColor[props.background] };
+  const background = {backgroundColor: theme.brandColor[props.background]};
   if (props.loading) {
     return (
-      <View style={StyleSheet.flatten([styles.container, background, props.style])}>
-        <ActivityIndicator style={styles.indicator} color={props.indicatorColor} size={props.size} />
+      <View
+        style={StyleSheet.flatten([styles.container, background, props.style])}>
+        <ActivityIndicator
+          style={styles.indicator}
+          color={props.indicatorColor}
+          size={props.size}
+        />
         {props.children}
       </View>
     );
@@ -20,7 +25,7 @@ const FullScreenLoader = (props) => {
 
 FullScreenLoader.propTypes = {
   loading: PropTypes.bool.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.element,
   indicatorColor: PropTypes.string,
   background: PropTypes.string,

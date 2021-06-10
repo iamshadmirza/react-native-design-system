@@ -93,10 +93,10 @@ const Stack = React.forwardRef((props, ref) => {
       ))}
     </View>
   );
-};)
+});
 
 Stack.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   space: PropTypes.oneOf([
     'none',
     'xxsmall',

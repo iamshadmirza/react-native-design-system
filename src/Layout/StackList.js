@@ -57,7 +57,7 @@ const StackList = React.forwardRef((props, ref) => {
 });
 
 StackList.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   space: PropTypes.oneOf([
     'none',
     'xxsmall',

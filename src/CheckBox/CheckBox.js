@@ -1,15 +1,24 @@
 import React from 'react';
-import { View, TouchableOpacity, TouchableNativeFeedback, Platform, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  Platform,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getTextStyle = ({ theme, size, textColor, iconRight }) => {
-  const textStyle = [{
-    fontSize: theme.fontSize[size],
-    color: theme.textColor[textColor],
-    marginLeft: 5,
-  }];
+const getTextStyle = ({theme, size, textColor, iconRight}) => {
+  const textStyle = [
+    {
+      fontSize: theme.fontSize[size],
+      color: theme.textColor[textColor],
+      marginLeft: 5,
+    },
+  ];
   if (iconRight) {
     textStyle.push({
       marginLeft: 0,
@@ -19,38 +28,44 @@ const getTextStyle = ({ theme, size, textColor, iconRight }) => {
   return textStyle;
 };
 
-const renderIcon = ({ style, theme, size, color, ...props }) => {
+const renderIcon = ({style, theme, size, color, ...props}) => {
   if (props.checked) {
     return (
-      props.checkedIcon ||
-      <MaterialIcons
-        name="check-box"
-        size={theme.fontSize[size] * 1.5}
-        color={theme.brandColor[color]}
-      />
+      props.checkedIcon || (
+        <MaterialIcons
+          name="check-box"
+          size={theme.fontSize[size] * 1.5}
+          color={theme.brandColor[color]}
+        />
+      )
     );
   } else {
     return (
-      props.uncheckedIcon ||
-      <MaterialIcons
-        name="check-box-outline-blank"
-        size={theme.fontSize[size] * 1.5}
-        color={theme.brandColor[color]}
-      />
+      props.uncheckedIcon || (
+        <MaterialIcons
+          name="check-box-outline-blank"
+          size={theme.fontSize[size] * 1.5}
+          color={theme.brandColor[color]}
+        />
+      )
     );
   }
 };
 
-const CheckBox = ({ style, textStyle, ...props }) => {
+const CheckBox = ({style, textStyle, ...props}) => {
   const theme = useThemeContext();
-  const propsWithTheme = { ...props, theme };
+  const propsWithTheme = {...props, theme};
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement {...props} disabled={props.disabled} onPress={props.onPress}>
+    <TouchableElement
+      {...props}
+      disabled={props.disabled}
+      onPress={props.onPress}>
       <View style={StyleSheet.flatten([styles.container, style])}>
         {!props.iconRight && renderIcon(propsWithTheme)}
-        <Text style={StyleSheet.flatten([getTextStyle(propsWithTheme), textStyle])}>
+        <Text
+          style={StyleSheet.flatten([getTextStyle(propsWithTheme), textStyle])}>
           {props.children}
         </Text>
         {props.iconRight && renderIcon(propsWithTheme)}
@@ -60,14 +75,22 @@ const CheckBox = ({ style, textStyle, ...props }) => {
 };
 
 CheckBox.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   iconRight: PropTypes.bool,
   color: PropTypes.string,
   textColor: PropTypes.string,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   onPress: PropTypes.func.isRequired,
   checkedIcon: PropTypes.element,
   uncheckedIcon: PropTypes.element,

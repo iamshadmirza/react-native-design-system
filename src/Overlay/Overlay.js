@@ -37,7 +37,7 @@ const getChildStyle = ({
   return StyleSheet.flatten(contentStyle);
 };
 
-const Overlay = props => {
+const Overlay = (props) => {
   const theme = useThemeContext();
   const ContainerView = props.onPressOutside ? Pressable : View;
   return (
@@ -52,7 +52,7 @@ const Overlay = props => {
 };
 
 Overlay.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   overlayStyle: PropTypes.object,
   children: PropTypes.element.isRequired,
   background: PropTypes.string,

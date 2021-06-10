@@ -1,10 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, TouchableNativeFeedback, View, Platform, StyleSheet } from 'react-native';
+import {
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  View,
+  Platform,
+  StyleSheet,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, size, color }) => {
+const getContainerStyle = ({theme, size, color}) => {
   return {
     ...styles.container,
     justifyContent: 'center',
@@ -16,35 +22,44 @@ const getContainerStyle = ({ theme, size, color }) => {
   };
 };
 
-const ActionButton = ({ style, ...props }) => {
+const ActionButton = ({style, ...props}) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement
-      {...props}
-      onPress={props.onPress}
-    >
+    <TouchableElement {...props} onPress={props.onPress}>
       <View
-        style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), style])}>
-        {props.icon ||
+        style={StyleSheet.flatten([
+          getContainerStyle({...props, theme}),
+          style,
+        ])}>
+        {props.icon || (
           <Feather
             name="plus"
             size={theme.iconSize[props.size]}
-            color={props.iconColor || theme.brandColor.white} />
-        }
+            color={props.iconColor || theme.brandColor.white}
+          />
+        )}
       </View>
     </TouchableElement>
   );
 };
 
 ActionButton.propTypes = {
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   onPress: PropTypes.func.isRequired,
   iconColor: PropTypes.string,
   color: PropTypes.string,
   icon: PropTypes.element,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 ActionButton.defaultProps = {

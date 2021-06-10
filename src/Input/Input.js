@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, round, color, outline, error }) => {
+const getContainerStyle = ({theme, round, color, outline, error}) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
     borderBottomColor: theme.brandColor[color],
@@ -41,7 +41,7 @@ const getContainerStyle = ({ theme, round, color, outline, error }) => {
   return inputContainerStyle;
 };
 
-const getInputStyle = ({ theme, size, textColor }) => {
+const getInputStyle = ({theme, size, textColor}) => {
   const inputStyle = [styles.input];
   inputStyle.push({
     fontSize: theme.fontSize[size],
@@ -51,25 +51,29 @@ const getInputStyle = ({ theme, size, textColor }) => {
   return inputStyle;
 };
 
-const getLabelStyle = ({ theme, size, labelColor }) => {
-  const labelStyle = [{
-    fontSize: theme.fontSize[size] * 0.8,
-    fontWeight: 'bold',
-    paddingLeft: 2.5,
-    paddingBottom: 5,
-    color: theme.textColor[labelColor],
-  }];
+const getLabelStyle = ({theme, size, labelColor}) => {
+  const labelStyle = [
+    {
+      fontSize: theme.fontSize[size] * 0.8,
+      fontWeight: 'bold',
+      paddingLeft: 2.5,
+      paddingBottom: 5,
+      color: theme.textColor[labelColor],
+    },
+  ];
   return labelStyle;
 };
 
-const getCaptionStyle = ({ theme, size }) => {
-  const caption = [{
-    fontSize: theme.fontSize[size] * 0.8,
-    fontWeight: '600',
-    paddingLeft: 5,
-    paddingTop: 5,
-    color: '#ff000080',
-  }];
+const getCaptionStyle = ({theme, size}) => {
+  const caption = [
+    {
+      fontSize: theme.fontSize[size] * 0.8,
+      fontWeight: '600',
+      paddingLeft: 5,
+      paddingTop: 5,
+      color: '#ff000080',
+    },
+  ];
   return caption;
 };
 
@@ -78,40 +82,50 @@ const Input = React.forwardRef((props, ref) => {
   const showLabel = props.floatingLabel ? props.value.length > 0 : props.label;
   return (
     <View style={props.containerStyle}>
-      {showLabel ?
-        <Text style={StyleSheet.flatten([getLabelStyle({ ...props, theme }), props.labelStyle])}>
+      {showLabel ? (
+        <Text
+          style={StyleSheet.flatten([
+            getLabelStyle({...props, theme}),
+            props.labelStyle,
+          ])}>
           {props.label}
-        </Text> : null}
-      <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
-        {props.leftIcon &&
-          <View style={styles.leftIcon}>
-            {props.leftIcon}
-          </View>
-        }
+        </Text>
+      ) : null}
+      <View
+        style={StyleSheet.flatten([
+          getContainerStyle({...props, theme}),
+          props.style,
+        ])}>
+        {props.leftIcon && (
+          <View style={styles.leftIcon}>{props.leftIcon}</View>
+        )}
         <TextInput
           editable={!props.disabled}
           {...props}
           ref={ref}
-          style={getInputStyle({ ...props, theme })}
+          style={getInputStyle({...props, theme})}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
-        {props.rightIcon &&
-          <View style={styles.rightIcon}>
-            {props.rightIcon}
-          </View>
-        }
+        {props.rightIcon && (
+          <View style={styles.rightIcon}>{props.rightIcon}</View>
+        )}
       </View>
-      {(props.error && props.errorCaption) ?
-        <Text style={StyleSheet.flatten([getCaptionStyle({ ...props, theme }), props.labelStyle])}>
+      {props.error && props.errorCaption ? (
+        <Text
+          style={StyleSheet.flatten([
+            getCaptionStyle({...props, theme}),
+            props.labelStyle,
+          ])}>
           {props.errorCaption}
-        </Text> : null}
+        </Text>
+      ) : null}
     </View>
   );
 });
 
 Input.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textColor: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
@@ -125,7 +139,15 @@ Input.propTypes = {
   outline: PropTypes.bool,
   error: PropTypes.bool,
   errorCaption: PropTypes.string,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   disabled: PropTypes.bool,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,

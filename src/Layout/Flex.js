@@ -35,7 +35,7 @@ const getContainerStyle = ({
   return styles;
 };
 
-const Flex = props => {
+const Flex = (props) => {
   const theme = useThemeContext();
   return (
     <View
@@ -50,7 +50,7 @@ const Flex = props => {
 };
 
 Flex.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   background: PropTypes.string,
   space: PropTypes.oneOf([
     'none',

@@ -1,9 +1,18 @@
 import React from 'react';
-import { View, TouchableOpacity, TouchableNativeFeedback, Text, StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  Text,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  SafeAreaView,
+} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, color }) => {
+const getContainerStyle = ({theme, color}) => {
   const headerStyle = [styles.container];
   headerStyle.push({
     backgroundColor: theme.brandColor[color],
@@ -11,7 +20,7 @@ const getContainerStyle = ({ theme, color }) => {
   return headerStyle;
 };
 
-const getTextStyle = ({ theme, color, textAlign, fontSize }) => {
+const getTextStyle = ({theme, color, textAlign, fontSize}) => {
   const textStyle = [styles.text];
   textStyle.push({
     backgroundColor: theme.brandColor[color],
@@ -25,44 +34,68 @@ const getTextStyle = ({ theme, color, textAlign, fontSize }) => {
   return textStyle;
 };
 
-const Header = ({ style, textStyle, ...props }) => {
+const Header = ({style, textStyle, ...props}) => {
   const theme = useThemeContext();
-  const TouchableElement = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+  const TouchableElement =
+    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <SafeAreaView style={[styles.safeAreaView, { backgroundColor: theme.brandColor[props.barColor] }]}>
+    <SafeAreaView
+      style={[
+        styles.safeAreaView,
+        {backgroundColor: theme.brandColor[props.barColor]},
+      ]}>
       <StatusBar
         barStyle={props.barStyle}
         backgroundColor={theme.brandColor[props.barColor]}
       />
-      <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), style])}>
-        {props.leftIcon &&
+      <View
+        style={StyleSheet.flatten([
+          getContainerStyle({...props, theme}),
+          style,
+        ])}>
+        {props.leftIcon && (
           <TouchableElement {...props} onPress={props.onLeftIconPress}>
-            <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
+            <View
+              style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
               {props.leftIcon}
             </View>
           </TouchableElement>
-        }
-        {!!props.children &&
-          <Text style={StyleSheet.flatten([getTextStyle({ ...props, theme }), textStyle])}>
+        )}
+        {!!props.children && (
+          <Text
+            style={StyleSheet.flatten([
+              getTextStyle({...props, theme}),
+              textStyle,
+            ])}>
             {props.children}
-          </Text>}
-        {props.rightIcon &&
+          </Text>
+        )}
+        {props.rightIcon && (
           <TouchableElement {...props} onPress={props.onRightIconPress}>
-            <View style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
+            <View
+              style={StyleSheet.flatten([styles.iconStyle, props.iconStyle])}>
               {props.rightIcon}
             </View>
           </TouchableElement>
-        }
+        )}
       </View>
     </SafeAreaView>
   );
 };
 
 Header.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
-  fontSize: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  fontSize: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
   children: PropTypes.string,
   color: PropTypes.string,
   leftIcon: PropTypes.element,

@@ -1,12 +1,25 @@
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, shadow, outline, wrap }) => {
-  const cardStyle = [styles.container, {
-    padding: theme.layoutSpace[space],
-  }];
+const getContainerStyle = ({
+  row,
+  horizontal,
+  align,
+  vertical,
+  theme,
+  space,
+  shadow,
+  outline,
+  wrap,
+}) => {
+  const cardStyle = [
+    styles.container,
+    {
+      padding: theme.layoutSpace[space],
+    },
+  ];
   if (shadow) {
     cardStyle.push(styles.shadow);
   }
@@ -17,8 +30,8 @@ const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, sha
       alignItems: 'center',
     });
   }
-  if (wrap){
-    cardStyle.push({ flexWrap: 'wrap' });
+  if (wrap) {
+    cardStyle.push({flexWrap: 'wrap'});
   }
   if (outline) {
     cardStyle.push({
@@ -58,7 +71,12 @@ const getContainerStyle = ({ row, horizontal, align, vertical, theme, space, sha
 const Card = (props) => {
   const theme = useThemeContext();
   return (
-    <View {...props} style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
+    <View
+      {...props}
+      style={StyleSheet.flatten([
+        getContainerStyle({...props, theme}),
+        props.style,
+      ])}>
       {props.children}
     </View>
   );
@@ -67,9 +85,19 @@ const Card = (props) => {
 Card.propTypes = {
   row: PropTypes.bool,
   wrap: PropTypes.bool,
-  style: PropTypes.object,
-  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  space: PropTypes.oneOf([
+    'none',
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
+    .isRequired,
   horizontal: PropTypes.bool,
   vertical: PropTypes.bool,
   align: PropTypes.oneOf(['center', 'left', 'right']),
@@ -112,6 +140,5 @@ const styles = StyleSheet.create({
     }),
   },
 });
-
 
 export default Card;

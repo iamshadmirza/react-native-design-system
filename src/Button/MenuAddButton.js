@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, TouchableNativeFeedback, TouchableOpacity, Platform, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  Platform,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 import colors from '../util/colors';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({ theme, size, count, disabled }) => {
+const getContainerStyle = ({theme, size, count, disabled}) => {
   const buttonStyle = [styles.container];
   buttonStyle.push({
     width: theme.buttonWidth[size],
@@ -32,11 +39,13 @@ const getContainerStyle = ({ theme, size, count, disabled }) => {
   return buttonStyle;
 };
 
-const getTextStyle = ({ theme, size, disabled }) => {
-  const textStyle = [{
-    fontSize: theme.fontSize[size],
-    color: theme.textColor.default,
-  }];
+const getTextStyle = ({theme, size, disabled}) => {
+  const textStyle = [
+    {
+      fontSize: theme.fontSize[size],
+      color: theme.textColor.default,
+    },
+  ];
   if (disabled) {
     textStyle.push({
       color: theme.textColor.disabled,
@@ -45,7 +54,7 @@ const getTextStyle = ({ theme, size, disabled }) => {
   return textStyle;
 };
 
-const MenuAddButton = ({ style, textStyle, ...props }) => {
+const MenuAddButton = ({style, textStyle, ...props}) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -55,39 +64,46 @@ const MenuAddButton = ({ style, textStyle, ...props }) => {
         {...props}
         disabled={props.disabled}
         onPress={props.onIncrement}>
-        <View style={[getContainerStyle({ ...props, theme }), style]}>
-          <Text style={[getTextStyle({ ...props, theme }), textStyle]}>
-            ADD
-          </Text>
+        <View style={[getContainerStyle({...props, theme}), style]}>
+          <Text style={[getTextStyle({...props, theme}), textStyle]}>ADD</Text>
         </View>
       </TouchableElement>
     );
   }
   return (
-    <View style={[getContainerStyle({ ...props, theme }), style]}>
+    <View style={[getContainerStyle({...props, theme}), style]}>
       <TouchableElement {...props} onPress={props.onDecrement}>
         <View style={styles.icon}>
-          {props.minusIcon ||
+          {props.minusIcon || (
             <MaterialIcons
               name="remove"
               color={props.iconColor}
               size={theme.iconSize[props.size]}
-            />}
+            />
+          )}
         </View>
       </TouchableElement>
-      <View style={[styles.countView, { backgroundColor: textStyle && textStyle.backgroundColor || colors.bluegrey[200] }]}>
-        <Text style={[getTextStyle({ ...props, theme }), textStyle]}>
+      <View
+        style={[
+          styles.countView,
+          {
+            backgroundColor:
+              (textStyle && textStyle.backgroundColor) || colors.bluegrey[200],
+          },
+        ]}>
+        <Text style={[getTextStyle({...props, theme}), textStyle]}>
           {props.count}
         </Text>
       </View>
       <TouchableElement {...props} onPress={props.onIncrement}>
         <View style={styles.icon}>
-          {props.plusIcon ||
+          {props.plusIcon || (
             <MaterialIcons
               name="add"
               color={props.iconColor}
               size={theme.iconSize[props.size]}
-            />}
+            />
+          )}
         </View>
       </TouchableElement>
     </View>
@@ -95,8 +111,8 @@ const MenuAddButton = ({ style, textStyle, ...props }) => {
 };
 
 MenuAddButton.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   count: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
@@ -104,7 +120,15 @@ MenuAddButton.propTypes = {
   minusIcon: PropTypes.element,
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  size: PropTypes.oneOf([
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+  ]),
 };
 
 MenuAddButton.defaultProps = {

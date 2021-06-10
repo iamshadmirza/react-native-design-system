@@ -113,7 +113,7 @@ const Avatar = ({style, ...props}) => {
 
 Avatar.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  textStyle: PropTypes.object,
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   title: PropTypes.string,
   source: PropTypes.object,
   editable: PropTypes.bool,
