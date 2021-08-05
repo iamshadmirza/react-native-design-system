@@ -1,6 +1,6 @@
 {
   "name": "react-native-design-system",
-  "version": "1.2.6",
+  "version": "1.2.5",
   "description": "A reusabale component library and design rules for react-native.",
   "main": "src/index.js",
   "scripts": {
