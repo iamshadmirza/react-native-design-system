@@ -58,6 +58,7 @@ const getContainerStyle = (props) => {
     theme,
     color,
     tint,
+    borderColor,
   } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
@@ -68,6 +69,11 @@ const getContainerStyle = (props) => {
   if (length === 'short') {
     buttonStyles.push({
       width: theme.buttonWidth[width],
+    });
+  }
+  if (borderColor) {
+    buttonStyles.push({
+      borderColor: theme.brandColor[borderColor],
     });
   }
   if (round) {
@@ -96,7 +102,7 @@ const getContainerStyle = (props) => {
     buttonStyles.push({
       backgroundColor: theme.brandColor[color] + '20',
       borderWidth: StyleSheet.hairlineWidth,
-      borderColor: theme.brandColor[color] + '30',
+      borderColor: theme.brandColor[borderColor || color] + '30',
     });
   }
   if (disabled) {
@@ -136,7 +142,7 @@ const renderChildren = (props) => {
   );
 };
 
-const Button = (props) => {
+const Button = ({style, ...props}) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -148,7 +154,7 @@ const Button = (props) => {
       <View
         style={StyleSheet.flatten([
           getContainerStyle({...props, theme}),
-          props.style,
+          style,
         ])}>
         {renderChildren({...props, theme})}
       </View>
@@ -195,6 +201,8 @@ Button.propTypes = {
   onPress: PropTypes.func.isRequired,
   /**  Pass the brand color */
   color: PropTypes.string,
+  /**  Pass the brand color */
+  borderColor: PropTypes.string,
   /**  Boolean value for round button */
   round: PropTypes.bool,
   /**  Boolean value for outline button */
