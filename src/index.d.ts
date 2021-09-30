@@ -3,6 +3,7 @@
 // Definitions by:
 // Bhavesh Daswani <https://github.com/bhaveshdaswani93>
 // TypeScript Version: 3.7.5
+// Definition updated by Shad on 30 September
 
 import * as React from 'react';
 import { themeType } from './types/theme';
@@ -28,6 +29,7 @@ export * from './types/Text';
 export * from './types/RadioItem';
 export * from './types/RadioButton';
 export * from './types/Flex';
+export * from './types/StackList';
 
 export let theme:themeType;
 export let colors:colorsType;
@@ -37,4 +39,4 @@ export const ThemeProvider: React.FC<{
     value:themeType
 }>;
 
-export const useThemeContext: () => theme;
+export const useThemeContext: () => typeof theme;

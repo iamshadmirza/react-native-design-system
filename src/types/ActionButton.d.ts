@@ -1,13 +1,11 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { ViewStyle, StyleProp, ViewProps } from 'react-native';
 
 import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
 import { IconNode } from './icon-type';
 
 
-interface ActionButtonProps {
+interface ActionButtonProps extends ViewProps {
   size?: SizeType,
   onPress: () => void,
   iconColor?: string,

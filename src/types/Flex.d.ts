@@ -3,7 +3,7 @@ import { ViewStyle, StyleProp } from 'react-native';
 import { SpaceType } from './space-type';
 import { LayoutChildrenType } from './layout-children-type';
 
-interface BoxProps {
+interface FlexProp {
   style?: StyleProp<ViewStyle>,
   background?: string,
   space?: SpaceType,
@@ -17,4 +17,4 @@ interface BoxProps {
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly',
 }
 
-export const Flex: React.FC<BoxProps>;
+export const Flex: React.FC<FlexProp>;

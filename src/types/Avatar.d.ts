@@ -1,12 +1,9 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp, ViewProps } from 'react-native';
 
 import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
 
-interface AvatarProps {
+interface AvatarProps extends ViewProps {
   style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
   title?: string,

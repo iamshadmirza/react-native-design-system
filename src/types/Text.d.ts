@@ -1,18 +1,13 @@
 import React from 'react';
-import { TextStyle, StyleProp, TextProps } from 'react-native';
+import {TextStyle, TextProps as RNTextProps} from 'react-native';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
+import {SizeType} from './size-type';
 
-interface TextProps {
-  style?: StyleProp<TextStyle>,
-  children: TextProps,
-  size?: SizeType,
-  color?: string,
-  scale?: boolean,
-  fontWeight?: string,
+interface TextProps extends RNTextProps {
+  size?: SizeType | string;
+  color?: string;
+  scale?: boolean;
+  fontWeight?: string;
 }
 
 export const Text: React.FC<TextProps>;
