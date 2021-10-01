@@ -1,8 +1,7 @@
 import React from 'react';
-import { ViewStyle, StyleProp, FlatListProps } from 'react-native';
+import { ViewStyle, StyleProp, FlatListProps, ScrollViewComponent } from 'react-native';
 
 import { SpaceType, HorizontalSpaceType, VerticalSpaceType } from './space-type';
-import { LayoutChildrenType } from './layout-children-type';
 import { DirectionType } from './direction-type';
 
 interface StackListProps extends FlatListProps<any> {
@@ -12,6 +11,7 @@ interface StackListProps extends FlatListProps<any> {
   verticalSpace?: VerticalSpaceType;
   direction?: DirectionType;
   cropEndSpace?: boolean;
+  ref: React.RefObject<ScrollViewComponent>;
 }
 
 export const StackList: React.FC<StackListProps>;

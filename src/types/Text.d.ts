@@ -8,6 +8,7 @@ interface TextProps extends RNTextProps {
   color?: string;
   scale?: boolean;
   fontWeight?: string;
+  textAlign?: 'left' | 'center' | 'right';
 }
 
 export const Text: React.FC<TextProps>;
