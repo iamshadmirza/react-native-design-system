@@ -1,10 +1,10 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp, TextInputProps } from 'react-native';
 
 import { SizeType } from './size-type';
 import { IconNode } from './icon-type';
 
-interface InputProps {
+interface InputProps extends TextInputProps {
   style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
   textColor?: string,

@@ -8,22 +8,23 @@ import { IconNode } from './icon-type';
 
 
 interface ButtonProps {
-    style?: StyleProp<ViewStyle>,
-    textStyle?: StyleProp<TextStyle>,
-    children?: string,
-    indicatorColor?: string,
-    size?: SizeType,
-    width?: WidthType,
-    onPress: () => void,
-    color?: string,
-    round?: boolean,
-    outline?: boolean,
-    transparent?: boolean,
-    disabled?: boolean,
-    loading?: boolean,
-    tint?: boolean,
-    icon?: IconNode
-    length?: LengthType
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  children?: string;
+  indicatorColor?: string;
+  size?: SizeType;
+  width?: WidthType;
+  onPress: () => void;
+  color?: string;
+  borderColor?: string;
+  round?: boolean;
+  outline?: boolean;
+  transparent?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  tint?: boolean;
+  icon?: IconNode;
+  length?: LengthType;
 }
 
 export const Button: React.FC<ButtonProps>;

@@ -11,7 +11,7 @@ interface StackListProps extends FlatListProps<any> {
   verticalSpace?: VerticalSpaceType;
   direction?: DirectionType;
   cropEndSpace?: boolean;
-  ref: React.RefObject<ScrollViewComponent>;
+  ref?: React.RefObject<ScrollViewComponent>;
 }
 
 export const StackList: React.FC<StackListProps>;
