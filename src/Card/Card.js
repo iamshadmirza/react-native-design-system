@@ -13,11 +13,13 @@ const getContainerStyle = ({
   shadow,
   outline,
   wrap,
+  background,
 }) => {
   const cardStyle = [
     styles.container,
     {
       padding: theme.layoutSpace[space],
+      background: theme.colors[background],
     },
   ];
   if (shadow) {
@@ -68,7 +70,7 @@ const getContainerStyle = ({
   return cardStyle;
 };
 
-const Card = (props) => {
+const Card = props => {
   const theme = useThemeContext();
   return (
     <View
@@ -103,19 +105,20 @@ Card.propTypes = {
   align: PropTypes.oneOf(['center', 'left', 'right']),
   shadow: PropTypes.bool,
   outline: PropTypes.bool,
+  background: PropTypes.string,
 };
 
 Card.defaultProps = {
   space: 'medium',
   shadow: false,
   outline: false,
+  background: 'backgroundLight',
 };
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     alignItems: 'stretch',
-    backgroundColor: '#fff',
     justifyContent: 'center',
     borderRadius: 3,
   },

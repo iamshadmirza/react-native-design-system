@@ -21,7 +21,7 @@ const getContainerStyle = ({
     alignItems,
     justifyContent,
     padding: theme.layoutSpace[space],
-    background: theme.brandColor[background],
+    background: theme.colors[background],
   };
   if (flexWrap) {
     styles.flexWrap = flexWrap;
@@ -35,7 +35,7 @@ const getContainerStyle = ({
   return styles;
 };
 
-const Flex = (props) => {
+const Flex = props => {
   const theme = useThemeContext();
   return (
     <View
@@ -107,10 +107,8 @@ Flex.propTypes = {
 Flex.defaultProps = {
   flex: 1,
   flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
   space: 'medium',
-  background: 'clearWhite',
+  background: 'backgroundDark',
 };
 
 export default Flex;

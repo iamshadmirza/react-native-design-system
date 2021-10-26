@@ -46,7 +46,7 @@ const getEditIconStyle = ({theme, size}) => {
       width: theme.avatarSize[size] / 4,
       height: theme.avatarSize[size] / 4,
       borderRadius: theme.avatarSize[size] / 8,
-      backgroundColor: theme.brandColor.disabled,
+      backgroundColor: theme.colors.disabled,
     },
   ];
   return iconStyle;
@@ -56,7 +56,7 @@ const getTitleStyle = ({theme, size}) => {
   return {
     fontWeight: '600',
     fontSize: theme.avatarSize[size] / 4,
-    color: theme.textColor.disabled,
+    color: theme.colors.disabled,
   };
 };
 
@@ -103,7 +103,7 @@ const Avatar = ({style, ...props}) => {
           <Feather
             name="edit-2"
             size={theme.avatarSize[props.size] / 8}
-            color={props.editIconColor || theme.textColor.disabled}
+            color={props.editIconColor || theme.colors.disabled}
           />
         </View>
       )}

@@ -6,14 +6,14 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, round, color, outline, error}) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
-    borderBottomColor: theme.brandColor[color],
+    borderBottomColor: theme.colors[color],
   });
   if (outline) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      borderColor: theme.brandColor[color],
-      backgroundColor: theme.brandColor.background,
+      borderColor: theme.colors[color],
+      backgroundColor: theme.colors.background,
       borderRadius: 5,
     });
   }
@@ -21,14 +21,14 @@ const getContainerStyle = ({theme, round, color, outline, error}) => {
     inputContainerStyle.push({
       borderBottomWidth: 0,
       borderRadius: 50,
-      backgroundColor: theme.brandColor.background,
+      backgroundColor: theme.colors.background,
     });
   }
   if (outline && round) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      backgroundColor: theme.brandColor.background,
+      backgroundColor: theme.colors.background,
     });
   }
   if (error) {
@@ -46,7 +46,7 @@ const getInputStyle = ({theme, size, textColor}) => {
   inputStyle.push({
     fontSize: theme.fontSize[size],
     marginVertical: 0,
-    color: theme.textColor[textColor],
+    color: theme.colors[textColor],
   });
   return inputStyle;
 };
@@ -58,7 +58,7 @@ const getLabelStyle = ({theme, size, labelColor}) => {
       fontWeight: 'bold',
       paddingLeft: 2.5,
       paddingBottom: 5,
-      color: theme.textColor[labelColor],
+      color: theme.colors[labelColor],
     },
   ];
   return labelStyle;
@@ -156,11 +156,11 @@ Input.propTypes = {
 
 Input.defaultProps = {
   placeholder: 'Type here',
-  textColor: 'default',
+  textColor: 'para',
   color: 'outline',
   size: 'medium',
-  labelColor: 'grey',
-  background: 'grey',
+  labelColor: 'subtle',
+  background: 'foreground',
   floatingLabel: false,
 };
 

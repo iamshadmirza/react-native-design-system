@@ -30,7 +30,7 @@ const getContainerStyle = ({theme, size, count, disabled}) => {
   }
   if (disabled) {
     buttonStyle.push({
-      backgroundColor: theme.brandColor.disabled,
+      backgroundColor: theme.colors.disabled,
       elevation: 0,
       justifyContent: 'center',
       alignItems: 'center',
@@ -43,12 +43,12 @@ const getTextStyle = ({theme, size, disabled}) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
-      color: theme.textColor.default,
+      color: theme.colors.para,
     },
   ];
   if (disabled) {
     textStyle.push({
-      color: theme.textColor.disabled,
+      color: theme.colors.disabledText,
     });
   }
   return textStyle;

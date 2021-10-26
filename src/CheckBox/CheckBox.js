@@ -15,7 +15,7 @@ const getTextStyle = ({theme, size, textColor, iconRight}) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
-      color: theme.textColor[textColor],
+      color: theme.colors[textColor],
       marginLeft: 5,
     },
   ];
@@ -35,7 +35,7 @@ const renderIcon = ({style, theme, size, color, ...props}) => {
         <MaterialIcons
           name="check-box"
           size={theme.fontSize[size] * 1.5}
-          color={theme.brandColor[color]}
+          color={theme.colors[color]}
         />
       )
     );
@@ -45,7 +45,7 @@ const renderIcon = ({style, theme, size, color, ...props}) => {
         <MaterialIcons
           name="check-box-outline-blank"
           size={theme.fontSize[size] * 1.5}
-          color={theme.brandColor[color]}
+          color={theme.colors[color]}
         />
       )
     );
@@ -99,7 +99,7 @@ CheckBox.propTypes = {
 CheckBox.defaultProps = {
   size: 'medium',
   color: 'primary',
-  textColor: 'default',
+  textColor: 'para',
 };
 
 const styles = StyleSheet.create({

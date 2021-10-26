@@ -314,6 +314,7 @@ colors.light = {
   error: colors.red[500],
   warning: colors.yellow[800],
   disabled: colors.bluegrey[100],
+  disabledText: colors.bluegrey[300],
   // background color
   backgroundDark: '#fff',
   backgroundLight: '#f8f8f8',
@@ -325,6 +326,7 @@ colors.light = {
   subtle: colors.grey[600],
   // extras
   semitransparent: 'rgba(0, 0, 0, 0.3)',
+  transparent: 'transparent',
   white: '#fff',
   black: '#000',
 };
@@ -338,20 +340,22 @@ colors.dark = {
   error: colors.red[500],
   warning: colors.yellow[800],
   disabled: colors.bluegrey[100],
+  disabledText: colors.bluegrey[300],
   // background color
-  backgroundDark: '#fff',
-  backgroundLight: '#f8f8f8',
-  foregound: colors.grey[100],
+  backgroundDark: '#000',
+  backgroundLight: colors.grey[800],
+  foregound: colors.grey[500],
 
   // text colors
-  heading: colors.black[800],
-  para: colors.black[300],
-  subtle: colors.grey[600],
+  heading: '#fff',
+  para: colors.grey[300],
+  subtle: colors.grey[500],
   // extras
+  transparent: 'transparent',
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   white: '#fff',
   black: '#000',
-  outline: colors.grey[400],
+  outline: colors.grey[800],
 };
 
 export default colors;

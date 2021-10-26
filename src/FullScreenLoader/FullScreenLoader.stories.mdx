@@ -40,11 +40,11 @@ Play with FullScreenLoader in Canvas mode.
 
 <Preview>
   <Story name="playground" parameters={{ decorators: [withKnobs] }}>
-    <View style={{ height: 480, width: 270}}>
+    <View style={{ height: 480, width: 270, borderWidth: 1 }}>
       <FullScreenLoader 
         loading={boolean('loading', true)}
         size={select('size', ['small', 'large'])}
-        background={select('background', ['primary', 'secondary', 'tertiary', 'disabled', 'semitransparent'], 'semitransparent')}
+        background={select('background', ['backgroundDark', 'backgroundLight', 'foreground'], 'backgroundDark')}
         indicatorColor={color('indicatorColor', '#1e88e5')}
       >
       <Text>Loading...</Text>

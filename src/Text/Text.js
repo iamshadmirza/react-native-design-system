@@ -5,7 +5,7 @@ import {useThemeContext} from '../util/ThemeProvider';
 
 const getTextStyle = ({theme, color, size, fontWeight}) => {
   return {
-    color: theme.textColor[color],
+    color: theme.colors[color],
     fontSize: theme.fontSize[size],
     includeFontPadding: false,
     textAlignVertical: 'center',
@@ -48,7 +48,7 @@ TextElement.propTypes = {
 };
 
 TextElement.defaultProps = {
-  color: 'default',
+  color: 'heading',
   size: 'medium',
   fontWeight: '500',
 };

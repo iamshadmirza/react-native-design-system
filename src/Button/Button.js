@@ -24,28 +24,28 @@ const getTextStyle = ({
     {
       fontSize: theme.fontSize[size],
       margin: theme.buttonSize[size],
-      color: theme.textColor.white,
+      color: theme.colors.white,
     },
   ];
   if (outline || transparent) {
     textStyle.push({
-      color: theme.brandColor[color],
+      color: theme.colors[color],
     });
   }
   if (loading && outline) {
     textStyle.push({
-      color: theme.brandColor[color] + '50',
+      color: theme.colors[color] + '50',
     });
   }
   if (disabled) {
     textStyle.push({
-      color: theme.textColor.disabled,
+      color: theme.colors.disabled,
     });
   }
   return textStyle;
 };
 
-const getContainerStyle = (props) => {
+const getContainerStyle = props => {
   const {
     outline,
     width,
@@ -62,9 +62,9 @@ const getContainerStyle = (props) => {
   } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
-    backgroundColor: theme.brandColor[color],
+    backgroundColor: theme.colors[color],
     borderWidth: 1,
-    borderColor: theme.brandColor[color],
+    borderColor: theme.colors[color],
   });
   if (length === 'short') {
     buttonStyles.push({
@@ -73,7 +73,7 @@ const getContainerStyle = (props) => {
   }
   if (borderColor) {
     buttonStyles.push({
-      borderColor: theme.brandColor[borderColor],
+      borderColor: theme.colors[borderColor],
     });
   }
   if (round) {
@@ -83,13 +83,13 @@ const getContainerStyle = (props) => {
   }
   if (outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + (tint ? '10' : '00'),
+      backgroundColor: theme.colors[color] + (tint ? '10' : '00'),
     });
   }
   if (loading) {
     buttonStyles.push({
       borderWidth: 0,
-      backgroundColor: theme.brandColor[color] + '50',
+      backgroundColor: theme.colors[color] + '50',
     });
   }
   if (transparent) {
@@ -100,27 +100,27 @@ const getContainerStyle = (props) => {
   }
   if (loading && outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + '20',
+      backgroundColor: theme.colors[color] + '20',
       borderWidth: StyleSheet.hairlineWidth,
-      borderColor: theme.brandColor[borderColor || color] + '30',
+      borderColor: theme.colors[borderColor || color] + '30',
     });
   }
   if (disabled) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor.disabled,
-      borderColor: theme.textColor.disabled,
+      backgroundColor: theme.colors.disabled,
+      borderColor: theme.colors.disabled,
     });
   }
   return buttonStyles;
 };
 
-const renderChildren = (props) => {
+const renderChildren = props => {
   return (
     <>
       {props.loading && !props.disabled && (
         <ActivityIndicator
           style={[styles.iconStyle, props.iconStyle]}
-          color={props.indicatorColor || props.theme.brandColor[props.color]}
+          color={props.indicatorColor || props.theme.colors[props.color]}
         />
       )}
       {props.leftIcon ||

@@ -7,7 +7,7 @@ const getContainerStyle = ({theme, background, style}) => {
   const containerStyle = [
     styles.container,
     {
-      backgroundColor: theme.brandColor[background],
+      backgroundColor: theme.colors[background],
     },
   ];
   if (style) {
@@ -26,7 +26,7 @@ const getChildStyle = ({
   const contentStyle = [
     {
       elevation: 1,
-      backgroundColor: theme.brandColor[overlayBackground],
+      backgroundColor: theme.colors[overlayBackground],
       borderRadius: borderRadius,
       width: width,
     },
@@ -37,7 +37,7 @@ const getChildStyle = ({
   return StyleSheet.flatten(contentStyle);
 };
 
-const Overlay = (props) => {
+const Overlay = props => {
   const theme = useThemeContext();
   const ContainerView = props.onPressOutside ? Pressable : View;
   return (

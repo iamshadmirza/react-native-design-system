@@ -14,7 +14,7 @@ const getContainerStyle = ({theme, size, mini, color, square}) => {
   const badgeStyle = [styles.container];
   if (color) {
     badgeStyle.push({
-      backgroundColor: theme.brandColor[color],
+      backgroundColor: theme.colors[color],
     });
   }
   if (square) {
