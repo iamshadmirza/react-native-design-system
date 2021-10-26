@@ -36,7 +36,7 @@ export let colors:colorsType;
 
 
 export const ThemeProvider: React.FC<{
-    value:themeType
+    theme:themeType
 }>;
 
 export const useThemeContext: () => typeof theme;
