@@ -157,9 +157,9 @@ Input.propTypes = {
 Input.defaultProps = {
   placeholder: 'Type here',
   textColor: 'para',
-  color: 'outline',
+  color: 'subtle',
   size: 'medium',
-  labelColor: 'subtle',
+  labelColor: 'para',
   background: 'foreground',
   floatingLabel: false,
 };

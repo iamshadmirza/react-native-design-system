@@ -34,7 +34,7 @@ FullScreenLoader.propTypes = {
 
 FullScreenLoader.defaultProps = {
   size: 'large',
-  background: 'backgroundDark',
+  background: 'backgroundLight',
   indicatorColor: '#1e88e5',
 };
 

@@ -39,7 +39,7 @@ const getTextStyle = ({
   }
   if (disabled) {
     textStyle.push({
-      color: theme.colors.disabled,
+      color: theme.colors.disabledText,
     });
   }
   return textStyle;

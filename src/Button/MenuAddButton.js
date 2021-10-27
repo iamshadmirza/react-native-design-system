@@ -10,11 +10,12 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 import colors from '../util/colors';
-import {useThemeContext} from '../util/ThemeProvider';
+import {useThemeContext, useThemeMode} from '../util/ThemeProvider';
 
-const getContainerStyle = ({theme, size, count, disabled}) => {
+const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
   const buttonStyle = [styles.container];
   buttonStyle.push({
+    backgroundColor: theme.colors.backgroundLight,
     width: theme.buttonWidth[size],
     height: theme.buttonWidth[size] / 3,
     flexDirection: 'row',
@@ -22,7 +23,7 @@ const getContainerStyle = ({theme, size, count, disabled}) => {
   });
   if (count < 1) {
     buttonStyle.push({
-      backgroundColor: colors.bluegrey[200],
+      backgroundColor: isDarkMode ? colors.bluegrey[500] : colors.bluegrey[200],
       elevation: 0,
       justifyContent: 'center',
       alignItems: 'center',
@@ -56,6 +57,7 @@ const getTextStyle = ({theme, size, disabled}) => {
 
 const MenuAddButton = ({style, textStyle, ...props}) => {
   const theme = useThemeContext();
+  const {isDarkMode} = useThemeMode();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   if (props.count < 1 || props.disabled) {
@@ -64,8 +66,11 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
         {...props}
         disabled={props.disabled}
         onPress={props.onIncrement}>
-        <View style={[getContainerStyle({...props, theme}), style]}>
-          <Text style={[getTextStyle({...props, theme}), textStyle]}>ADD</Text>
+        <View style={[getContainerStyle({...props, theme, isDarkMode}), style]}>
+          <Text
+            style={[getTextStyle({...props, theme, isDarkMode}), textStyle]}>
+            ADD
+          </Text>
         </View>
       </TouchableElement>
     );
@@ -77,7 +82,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
           {props.minusIcon || (
             <MaterialIcons
               name="remove"
-              color={props.iconColor}
+              color={props.iconColor || theme.colors.para}
               size={theme.iconSize[props.size]}
             />
           )}
@@ -88,7 +93,8 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
           styles.countView,
           {
             backgroundColor:
-              (textStyle && textStyle.backgroundColor) || colors.bluegrey[200],
+              (textStyle && textStyle.backgroundColor) ||
+              (isDarkMode ? colors.bluegrey[500] : colors.bluegrey[200]),
           },
         ]}>
         <Text style={[getTextStyle({...props, theme}), textStyle]}>
@@ -100,7 +106,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
           {props.plusIcon || (
             <MaterialIcons
               name="add"
-              color={props.iconColor}
+              color={props.iconColor || theme.colors.para}
               size={theme.iconSize[props.size]}
             />
           )}
@@ -132,7 +138,6 @@ MenuAddButton.propTypes = {
 };
 
 MenuAddButton.defaultProps = {
-  iconColor: '#333',
   count: 0,
   size: 'medium',
 };

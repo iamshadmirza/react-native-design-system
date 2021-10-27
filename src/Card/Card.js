@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'stretch',
     justifyContent: 'center',
-    borderRadius: 3,
+    borderRadius: 5,
   },
   shadow: {
     ...Platform.select({
