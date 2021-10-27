@@ -3,14 +3,19 @@ import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
-const getTextStyle = ({theme, color, size, fontWeight}) => {
-  return {
+const getTextStyle = ({theme, color, size, fontWeight, fontFamily}) => {
+  const style = {
     color: theme.colors[color],
     fontSize: theme.fontSize[size],
+    lineHeight: theme.lineHeight[size],
     includeFontPadding: false,
     textAlignVertical: 'center',
-    fontWeight: fontWeight,
+    fontWeight,
   };
+  if (fontFamily) {
+    style.fontFamily = fontFamily;
+  }
+  return style;
 };
 
 const TextElement = ({style, ...props}) => {
@@ -45,10 +50,11 @@ TextElement.propTypes = {
   ]),
   color: PropTypes.string,
   fontWeight: PropTypes.string,
+  fontFamily: PropTypes.string,
 };
 
 TextElement.defaultProps = {
-  color: 'heading',
+  color: 'para',
   size: 'medium',
   fontWeight: '500',
 };

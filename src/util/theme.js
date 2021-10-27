@@ -147,4 +147,14 @@ const theme = {
   },
 };
 
+theme.lineHeight = {
+  xxsmall: theme.fontSize.xxsmall * 1.5,
+  xsmall: theme.fontSize.xsmall * 1.5,
+  small: theme.fontSize.small * 1.5,
+  medium: theme.fontSize.medium * 1.5,
+  large: theme.fontSize.large * 1.5,
+  xlarge: theme.fontSize.xlarge * 1.5,
+  xxlarge: theme.fontSize.xxlarge * 1.5,
+};
+
 export default theme;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, Scrollable, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
@@ -78,8 +78,9 @@ const getChildrenStyle = (
 
 const Stack = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
+  const Container = props.scrollable ? ScrollView : View;
   return (
-    <View
+    <Container
       ref={ref}
       {...props}
       style={[
@@ -91,7 +92,7 @@ const Stack = React.forwardRef((props, ref) => {
           {item}
         </View>
       ))}
-    </View>
+    </Container>
   );
 });
 
@@ -131,6 +132,7 @@ Stack.propTypes = {
     .isRequired,
   direction: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   cropEndSpace: PropTypes.bool,
+  scrollable: PropTypes.bool,
 };
 
 Stack.defaultProps = {
@@ -139,6 +141,7 @@ Stack.defaultProps = {
   verticalSpace: 'none',
   cropEndSpace: false,
   direction: 'vertical',
+  scrollable: false,
 };
 
 const styles = StyleSheet.create({
