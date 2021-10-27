@@ -42,8 +42,9 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
 
   const currentTheme = React.useMemo(() => {
     const _theme = theme;
-    const baseColors = isDarkMode ? theme.colors.dark : theme.colors.light;
-    _theme.colors = {...theme.colors, ...baseColors};
+    if (isDarkMode) {
+      _theme.colors.brandColor = theme.colors.dark;
+    }
     return _theme;
   }, [isDarkMode, theme]);
 

@@ -36,7 +36,6 @@ type shades =
   | 'A400'
   | 'A700';
 
-type themes = 'light' | 'dark';
 type brandColors =
   | 'primary'
   | 'seconday'
@@ -53,10 +52,33 @@ type brandColors =
   | 'subtle'
   | 'transparent'
   | 'semitransparent'
+  | 'outline'
   | 'white';
 
 type genericColorsType = {[K in colors]: {[K in shades]: string}};
+type customColors = {
+  customColor: {
+    [color: string]: string;
+  };
+};
 
-type themeColorsType = {[K in themes]: {[K in brandColors]: string}};
+type lightBrandColorsType = {brandColor: {[K in brandColors]: string}};
+type unknownLightBrandColors = {
+  brandColor: {
+    [color: string]: string;
+  };
+};
 
-type colorTypes = genericColorsType | themeColorsType;
+type darkBrandColorsType = {brandColor: {dark: {[K in brandColors]: string}}};
+type unknownDarkBrandColors = {
+  dark: {
+    [color: string]: string;
+  };
+};
+
+type colorTypes = genericColorsType &
+  customColors &
+  lightBrandColorsType &
+  darkBrandColorsType &
+  unknownLightBrandColors &
+  unknownDarkBrandColors;

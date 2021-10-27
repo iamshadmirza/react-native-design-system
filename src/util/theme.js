@@ -121,26 +121,6 @@ const theme = {
     xxlarge: 1.7,
   },
   colors: {...colors},
-  textColor: {
-    default: colors.black[300],
-    heading: colors.black[800],
-    subtle: colors.black[100],
-    grey: colors.grey[600],
-    disabled: colors.bluegrey[400],
-    white: colors.blue[50],
-  },
-  brandColor: {
-    primary: colors.blue[600],
-    secondary: colors.yellow[800],
-    tertiary: colors.red[600],
-    background: '#f8f8f8',
-    disabled: colors.bluegrey[100],
-    white: colors.blue[50],
-    semitransparent: 'rgba(0, 0, 0, 0.3)',
-    grey: colors.grey[200],
-    clearWhite: '#fff',
-    outline: colors.grey[400],
-  },
 };
 
 theme.lineHeight = {

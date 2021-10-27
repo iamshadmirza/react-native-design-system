@@ -445,21 +445,21 @@
                 borderWidth: 1,
                 borderBottomWidth: 1,
                 borderColor: theme.colors[color],
-                backgroundColor: theme.colors.background,
+                backgroundColor: theme.colors.brandColor.background,
                 borderRadius: 5,
               }),
             round &&
               inputContainerStyle.push({
                 borderBottomWidth: 0,
                 borderRadius: 50,
-                backgroundColor: theme.colors.background,
+                backgroundColor: theme.colors.brandColor.background,
               }),
             outline &&
               round &&
               inputContainerStyle.push({
                 borderWidth: 1,
                 borderBottomWidth: 1,
-                backgroundColor: theme.colors.background,
+                backgroundColor: theme.colors.brandColor.background,
               }),
             error &&
               inputContainerStyle.push({
@@ -2296,7 +2296,7 @@
             itemStyle = [styles.container];
           return (
             itemStyle.push({
-              borderColor: theme.colors.outline,
+              borderColor: theme.colors.brandColor.outline,
               backgroundColor: theme.colors[background],
               padding: theme.listItemSpace[space],
             }),
@@ -2907,7 +2907,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-js'}),
-              'import { ThemeProvider, theme } from \'react-native-design-system\';\n\ntheme.colors.primary = "orange";\n\nfunction App(){\n  return (\n    <ThemeProvider value={theme}>\n      <Root />\n    </ThemeProvider>\n  );\n}\n',
+              'import { ThemeProvider, theme } from \'react-native-design-system\';\n\ntheme.colors.brandColor.primary = "orange";\n\nfunction App(){\n  return (\n    <ThemeProvider value={theme}>\n      <Root />\n    </ThemeProvider>\n  );\n}\n',
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -3838,7 +3838,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-js'}),
-              "//usage\nimport { colors } from 'react-native-design-system';\n\ntheme.colors.primary = color.lime['A700'];\n",
+              "//usage\nimport { colors } from 'react-native-design-system';\n\ntheme.colors.brandColor.primary = color.lime['A700'];\n",
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -18788,7 +18788,7 @@
               width: theme.avatarSize[size] / 4,
               height: theme.avatarSize[size] / 4,
               borderRadius: theme.avatarSize[size] / 8,
-              backgroundColor: theme.colors.disabled,
+              backgroundColor: theme.colors.brandColor.disabled,
             },
           ];
         },
@@ -18798,7 +18798,7 @@
           return {
             fontWeight: '600',
             fontSize: theme.avatarSize[size] / 4,
-            color: theme.colors.disabled,
+            color: theme.colors.brandColor.disabled,
           };
         },
         Avatar = function Avatar(props) {
@@ -18876,7 +18876,8 @@
                   {
                     name: 'edit-2',
                     size: theme.avatarSize[props.size] / 8,
-                    color: props.editIconColor || theme.colors.disabled,
+                    color:
+                      props.editIconColor || theme.colors.brandColor.disabled,
                   },
                 ),
               ),
@@ -19078,7 +19079,7 @@
               }),
             disabled &&
               buttonStyle.push({
-                backgroundColor: theme.colors.disabled,
+                backgroundColor: theme.colors.brandColor.disabled,
                 elevation: 0,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -19091,10 +19092,14 @@
             size = _ref2.size,
             disabled = _ref2.disabled,
             textStyle = [
-              {fontSize: theme.fontSize[size], color: theme.colors.default},
+              {
+                fontSize: theme.fontSize[size],
+                color: theme.colors.brandColor.default,
+              },
             ];
           return (
-            disabled && textStyle.push({color: theme.colors.disabled}),
+            disabled &&
+              textStyle.push({color: theme.colors.brandColor.disabled}),
             textStyle
           );
         },
@@ -19465,7 +19470,7 @@
                   {
                     name: 'plus',
                     size: theme.iconSize[props.size],
-                    color: props.iconColor || theme.colors.white,
+                    color: props.iconColor || theme.colors.brandColor.white,
                   },
                 ),
             ),
@@ -20426,7 +20431,7 @@
                     : '400',
                 fontSize: theme.fontSize[size],
                 margin: theme.buttonSize[size],
-                color: theme.colors.white,
+                color: theme.colors.brandColor.white,
               },
             ];
           return (
@@ -20435,7 +20440,8 @@
             loading &&
               outline &&
               textStyle.push({color: theme.colors[color] + '50'}),
-            disabled && textStyle.push({color: theme.colors.disabled}),
+            disabled &&
+              textStyle.push({color: theme.colors.brandColor.disabled}),
             textStyle
           );
         },
@@ -20487,8 +20493,8 @@
               }),
             disabled &&
               buttonStyles.push({
-                backgroundColor: theme.colors.disabled,
-                borderColor: theme.colors.disabled,
+                backgroundColor: theme.colors.brandColor.disabled,
+                borderColor: theme.colors.brandColor.disabled,
               }),
             buttonStyles
           );

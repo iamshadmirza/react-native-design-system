@@ -303,9 +303,10 @@ const colors = {
     800: '#080808',
     900: '#000000',
   },
+  customColor: {},
 };
 
-colors.light = {
+const lightColors = {
   // brand colors
   primary: colors.blue[600],
   secondary: colors.yellow[800],
@@ -325,22 +326,14 @@ colors.light = {
   para: colors.black[300],
   subtle: colors.grey[600],
   // extras
-  semitransparent: 'rgba(0, 0, 0, 0.3)',
   transparent: 'transparent',
+  semitransparent: 'rgba(0, 0, 0, 0.3)',
+  outline: 'rgba(204, 214, 221, .5)',
   white: '#fff',
-  black: '#000',
 };
 
-colors.dark = {
-  // brand colors
-  primary: colors.blue[600],
-  secondary: colors.yellow[800],
-  // action colors
-  success: colors.green[500],
-  error: colors.red[500],
-  warning: colors.yellow[800],
-  disabled: colors.bluegrey[100],
-  disabledText: colors.bluegrey[300],
+const darkColors = {
+  ...lightColors,
   // background color
   backgroundDark: '#000',
   backgroundLight: colors.grey[800],
@@ -352,9 +345,12 @@ colors.dark = {
   subtle: colors.grey[500],
   // extras
   transparent: 'transparent',
+  outline: colors.grey[800],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   white: '#fff',
-  outline: colors.grey[800],
 };
+
+colors.brandColor = lightColors;
+colors.brandColor.dark = darkColors;
 
 export default colors;

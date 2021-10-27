@@ -37,7 +37,7 @@ const ActionButton = ({style, ...props}) => {
           <Feather
             name="plus"
             size={theme.iconSize[props.size]}
-            color={props.iconColor || theme.colors.white}
+            color={props.iconColor || theme.colors.brandColor.white}
           />
         )}
       </View>

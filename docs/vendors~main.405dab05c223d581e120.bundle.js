@@ -10397,14 +10397,12 @@
                 0 !== nonLeafChildren.length)
               )
                 throw new Error(
-                  "Unexpected '"
-                    .concat(item.id, "': ")
-                    .concat(
-                      JSON.stringify({
-                        isComponent: isComponent,
-                        nonLeafChildren: nonLeafChildren,
-                      }),
-                    ),
+                  "Unexpected '".concat(item.id, "': ").concat(
+                    JSON.stringify({
+                      isComponent: isComponent,
+                      nonLeafChildren: nonLeafChildren,
+                    }),
+                  ),
                 );
               return component;
             })
@@ -43270,7 +43268,7 @@
           var _ref5$theme = _ref5.theme,
             baseUnit = _ref5$theme.spacing.baseUnit;
           return {
-            color: _ref5$theme.colors.neutral40,
+            color: _ref5$theme.colors.brandColor.neutral40,
             padding: 2 * baseUnit + 'px ' + 3 * baseUnit + 'px',
             textAlign: 'center',
           };
@@ -45279,7 +45277,7 @@
             borderRadius = _ref$theme.borderRadius;
           return {
             label: 'multiValue',
-            backgroundColor: _ref$theme.colors.neutral10,
+            backgroundColor: _ref$theme.colors.brandColor.neutral10,
             borderRadius: borderRadius / 2,
             display: 'flex',
             margin: spacing.baseUnit / 2,
@@ -45358,7 +45356,7 @@
             spacing = _ref$theme.spacing;
           return {
             label: 'placeholder',
-            color: _ref$theme.colors.neutral50,
+            color: _ref$theme.colors.brandColor.neutral50,
             marginLeft: spacing.baseUnit / 2,
             marginRight: spacing.baseUnit / 2,
             position: 'absolute',

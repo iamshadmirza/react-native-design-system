@@ -24,6 +24,7 @@
 `React Native Design System` is a set of design rules and component library that lets you prototype faster with easy to use cross-platform components. Let's get started!
 
 ### 🏠 [Homepage](https://github.com/iamshadmirza/react-native-design-system#readme)
+
 ### 📄 [Documentation](https://rnds.netlify.com)
 
 # Install
@@ -82,8 +83,7 @@ Default primary color is blue but you like orange so you can simply do:
 ```js
 import { ThemeProvider, theme } from 'react-native-design-system';
 
-theme.colors.light.primary = "orange";
-theme.colors.dark.primary = "orange";
+theme.colors.brandColor.primary = "orange";
 
 function App(){
   return (
@@ -105,7 +105,7 @@ This is just a personal approach, you can do as you prefer. What I usually do is
 //theme.config.js at root
 import { theme } from 'react-native-design-system';
 
-theme.colors.light = {
+theme.colors.brandColor.dark = {
     'backgroundDark': '#fff',
     'backgroundLight': '#f8f8f8',
     'foreground': '#f4f4f4',
