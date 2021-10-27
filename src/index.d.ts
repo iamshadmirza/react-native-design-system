@@ -30,13 +30,24 @@ export * from './types/RadioItem';
 export * from './types/RadioButton';
 export * from './types/Flex';
 export * from './types/StackList';
+export * from './types/Spacer';
 
 export let theme:themeType;
 export let colors:colorsType;
 
-
+type AsyncStorage = {
+    getItem(key: string, callback?: (error?: Error, result?: string) => void): Promise<string | null>;
+    setItem(key: string, value: string, callback?: (error?: Error) => void): Promise<void>;
+}
 export const ThemeProvider: React.FC<{
-    theme:themeType
+    theme: themeType;
+    colorMode?: 'light' | 'dark';
+    storage?: AsyncStorage;
+    children: React.ReactElement | Array<any>;
 }>;
 
 export const useThemeContext: () => typeof theme;
+export const useThemeMode: () => {
+    isDarkMode: boolean;
+    toggleDarkMode: () => void
+};
