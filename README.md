@@ -83,7 +83,7 @@ Default primary color is blue but you like orange so you can simply do:
 ```js
 import { ThemeProvider, theme } from 'react-native-design-system';
 
-theme.colors.brandColor.primary = "orange";
+theme.colors.primary = "orange";
 
 function App(){
   return (
@@ -105,7 +105,7 @@ This is just a personal approach, you can do as you prefer. What I usually do is
 //theme.config.js at root
 import { theme } from 'react-native-design-system';
 
-theme.colors.brandColor.dark = {
+theme.colors.dark = {
     'backgroundDark': '#fff',
     'backgroundLight': '#f8f8f8',
     'foreground': '#f4f4f4',

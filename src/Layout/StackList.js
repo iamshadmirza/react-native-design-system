@@ -44,7 +44,7 @@ const StackList = React.forwardRef((props, ref) => {
       ref={ref}
       {...props}
       style={StyleSheet.flatten([
-        {backgroundColor: theme.colors.brandColor.background},
+        {backgroundColor: theme.colors.background},
         props.style,
       ])}
       renderItem={child => (

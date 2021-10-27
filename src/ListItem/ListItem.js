@@ -15,7 +15,7 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, space, background}) => {
   const itemStyle = [styles.container];
   itemStyle.push({
-    borderColor: theme.colors.brandColor.outline,
+    borderColor: theme.colors.outline,
     backgroundColor: theme.colors[background],
     padding: theme.listItemSpace[space],
   });

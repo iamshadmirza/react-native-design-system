@@ -1,4 +1,4 @@
-const colors = {
+let colors = {
   red: {
     50: '#ffebee',
     100: '#ffcdd2',
@@ -303,7 +303,6 @@ const colors = {
     800: '#080808',
     900: '#000000',
   },
-  customColor: {},
 };
 
 const lightColors = {
@@ -350,7 +349,23 @@ const darkColors = {
   white: '#fff',
 };
 
-colors.brandColor = lightColors;
-colors.brandColor.dark = darkColors;
+function flattenColors() {
+  const allColors = {...colors, ...lightColors};
+  const result = {};
+  for (const [color, shades] of Object.entries(allColors)) {
+    if (typeof shades === 'object') {
+      for (const [shade, hex] of Object.entries(shades)) {
+        result[`${color}-${shade}`] = hex;
+      }
+    } else {
+      result[color] = shades;
+    }
+  }
+  return result;
+}
 
-export default colors;
+const flatColors = flattenColors();
+
+flatColors.dark = darkColors;
+
+export default flatColors;

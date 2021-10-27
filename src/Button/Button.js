@@ -24,7 +24,7 @@ const getTextStyle = ({
     {
       fontSize: theme.fontSize[size],
       margin: theme.buttonSize[size],
-      color: theme.colors.brandColor.white,
+      color: theme.colors.white,
     },
   ];
   if (outline || transparent) {
@@ -39,7 +39,7 @@ const getTextStyle = ({
   }
   if (disabled) {
     textStyle.push({
-      color: theme.colors.brandColor.disabledText,
+      color: theme.colors.disabledText,
     });
   }
   return textStyle;
@@ -107,8 +107,8 @@ const getContainerStyle = props => {
   }
   if (disabled) {
     buttonStyles.push({
-      backgroundColor: theme.colors.brandColor.disabled,
-      borderColor: theme.colors.brandColor.disabled,
+      backgroundColor: theme.colors.disabled,
+      borderColor: theme.colors.disabled,
     });
   }
   return buttonStyles;

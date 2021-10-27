@@ -55,30 +55,27 @@ type brandColors =
   | 'outline'
   | 'white';
 
-type genericColorsType = {[K in colors]: {[K in shades]: string}};
-type customColors = {
-  customColor: {
-    [color: string]: string;
-  };
-};
+type colorShades = `${colors}-${shades}`
 
-type lightBrandColorsType = {brandColor: {[K in brandColors]: string}};
+type genericColorsType = { [K in colorShades]: string };
+
+type lightBrandColorsType =  { [K in brandColors]: string };
 type unknownLightBrandColors = {
   brandColor: {
     [color: string]: string;
   };
 };
 
-type darkBrandColorsType = {brandColor: {dark: {[K in brandColors]: string}}};
+type darkBrandColorsType = {dark: {[K in brandColors]: string}};
 type unknownDarkBrandColors = {
   dark: {
     [color: string]: string;
   };
 };
 
-type colorTypes = genericColorsType &
-  customColors &
+export type colorTypes = genericColorsType &
   lightBrandColorsType &
-  darkBrandColorsType &
   unknownLightBrandColors &
-  unknownDarkBrandColors;
+  darkBrandColorsType &
+  unknownDarkBrandColors
+

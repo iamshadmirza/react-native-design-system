@@ -439,27 +439,29 @@
             error = _ref.error,
             inputContainerStyle = [styles.container];
           return (
-            inputContainerStyle.push({borderBottomColor: theme.colors[color]}),
+            inputContainerStyle.push({
+              borderBottomColor: theme.colors[color],
+            }),
             outline &&
               inputContainerStyle.push({
                 borderWidth: 1,
                 borderBottomWidth: 1,
                 borderColor: theme.colors[color],
-                backgroundColor: theme.colors.brandColor.background,
+                backgroundColor: theme.colors.background,
                 borderRadius: 5,
               }),
             round &&
               inputContainerStyle.push({
                 borderBottomWidth: 0,
                 borderRadius: 50,
-                backgroundColor: theme.colors.brandColor.background,
+                backgroundColor: theme.colors.background,
               }),
             outline &&
               round &&
               inputContainerStyle.push({
                 borderWidth: 1,
                 borderBottomWidth: 1,
-                backgroundColor: theme.colors.brandColor.background,
+                backgroundColor: theme.colors.background,
               }),
             error &&
               inputContainerStyle.push({
@@ -810,7 +812,10 @@
             square = _ref.square,
             badgeStyle = [styles.container];
           return (
-            color && badgeStyle.push({backgroundColor: theme.colors[color]}),
+            color &&
+              badgeStyle.push({
+                backgroundColor: theme.colors[color],
+              }),
             square && badgeStyle.push({borderRadius: 3}),
             mini &&
               badgeStyle.push({
@@ -2296,7 +2301,7 @@
             itemStyle = [styles.container];
           return (
             itemStyle.push({
-              borderColor: theme.colors.brandColor.outline,
+              borderColor: theme.colors.outline,
               backgroundColor: theme.colors[background],
               padding: theme.listItemSpace[space],
             }),
@@ -2907,7 +2912,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-js'}),
-              'import { ThemeProvider, theme } from \'react-native-design-system\';\n\ntheme.colors.brandColor.primary = "orange";\n\nfunction App(){\n  return (\n    <ThemeProvider value={theme}>\n      <Root />\n    </ThemeProvider>\n  );\n}\n',
+              'import { ThemeProvider, theme } from \'react-native-design-system\';\n\ntheme.colors.primary = "orange";\n\nfunction App(){\n  return (\n    <ThemeProvider value={theme}>\n      <Root />\n    </ThemeProvider>\n  );\n}\n',
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -3838,7 +3843,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-js'}),
-              "//usage\nimport { colors } from 'react-native-design-system';\n\ntheme.colors.brandColor.primary = color.lime['A700'];\n",
+              "//usage\nimport { colors } from 'react-native-design-system';\n\ntheme.colors.primary = color.lime['A700'];\n",
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -18788,7 +18793,7 @@
               width: theme.avatarSize[size] / 4,
               height: theme.avatarSize[size] / 4,
               borderRadius: theme.avatarSize[size] / 8,
-              backgroundColor: theme.colors.brandColor.disabled,
+              backgroundColor: theme.colors.disabled,
             },
           ];
         },
@@ -18798,7 +18803,7 @@
           return {
             fontWeight: '600',
             fontSize: theme.avatarSize[size] / 4,
-            color: theme.colors.brandColor.disabled,
+            color: theme.colors.disabled,
           };
         },
         Avatar = function Avatar(props) {
@@ -18876,8 +18881,7 @@
                   {
                     name: 'edit-2',
                     size: theme.avatarSize[props.size] / 8,
-                    color:
-                      props.editIconColor || theme.colors.brandColor.disabled,
+                    color: props.editIconColor || theme.colors.disabled,
                   },
                 ),
               ),
@@ -19079,7 +19083,7 @@
               }),
             disabled &&
               buttonStyle.push({
-                backgroundColor: theme.colors.brandColor.disabled,
+                backgroundColor: theme.colors.disabled,
                 elevation: 0,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -19094,12 +19098,11 @@
             textStyle = [
               {
                 fontSize: theme.fontSize[size],
-                color: theme.colors.brandColor.default,
+                color: theme.colors.default,
               },
             ];
           return (
-            disabled &&
-              textStyle.push({color: theme.colors.brandColor.disabled}),
+            disabled && textStyle.push({color: theme.colors.disabled}),
             textStyle
           );
         },
@@ -19470,7 +19473,7 @@
                   {
                     name: 'plus',
                     size: theme.iconSize[props.size],
-                    color: props.iconColor || theme.colors.brandColor.white,
+                    color: props.iconColor || theme.colors.white,
                   },
                 ),
             ),
@@ -20431,7 +20434,7 @@
                     : '400',
                 fontSize: theme.fontSize[size],
                 margin: theme.buttonSize[size],
-                color: theme.colors.brandColor.white,
+                color: theme.colors.white,
               },
             ];
           return (
@@ -20440,8 +20443,7 @@
             loading &&
               outline &&
               textStyle.push({color: theme.colors[color] + '50'}),
-            disabled &&
-              textStyle.push({color: theme.colors.brandColor.disabled}),
+            disabled && textStyle.push({color: theme.colors.disabled}),
             textStyle
           );
         },
@@ -20493,8 +20495,8 @@
               }),
             disabled &&
               buttonStyles.push({
-                backgroundColor: theme.colors.brandColor.disabled,
-                borderColor: theme.colors.brandColor.disabled,
+                backgroundColor: theme.colors.disabled,
+                borderColor: theme.colors.disabled,
               }),
             buttonStyles
           );

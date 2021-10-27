@@ -15,7 +15,7 @@ import {useThemeContext, useThemeMode} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
   const buttonStyle = [styles.container];
   buttonStyle.push({
-    backgroundColor: theme.colors.brandColor.backgroundLight,
+    backgroundColor: theme.colors.backgroundLight,
     width: theme.buttonWidth[size],
     height: theme.buttonWidth[size] / 3,
     flexDirection: 'row',
@@ -31,7 +31,7 @@ const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
   }
   if (disabled) {
     buttonStyle.push({
-      backgroundColor: theme.colors.brandColor.disabled,
+      backgroundColor: theme.colors.disabled,
       elevation: 0,
       justifyContent: 'center',
       alignItems: 'center',
@@ -44,12 +44,12 @@ const getTextStyle = ({theme, size, disabled}) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
-      color: theme.colors.brandColor.para,
+      color: theme.colors.para,
     },
   ];
   if (disabled) {
     textStyle.push({
-      color: theme.colors.brandColor.disabledText,
+      color: theme.colors.disabledText,
     });
   }
   return textStyle;
@@ -82,7 +82,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
           {props.minusIcon || (
             <MaterialIcons
               name="remove"
-              color={props.iconColor || theme.colors.brandColor.para}
+              color={props.iconColor || theme.colors.para}
               size={theme.iconSize[props.size]}
             />
           )}
@@ -106,7 +106,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
           {props.plusIcon || (
             <MaterialIcons
               name="add"
-              color={props.iconColor || theme.colors.brandColor.para}
+              color={props.iconColor || theme.colors.para}
               size={theme.iconSize[props.size]}
             />
           )}

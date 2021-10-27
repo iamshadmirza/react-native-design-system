@@ -13,7 +13,7 @@ const getContainerStyle = ({theme, round, color, outline, error}) => {
       borderWidth: 1,
       borderBottomWidth: 1,
       borderColor: theme.colors[color],
-      backgroundColor: theme.colors.brandColor.background,
+      backgroundColor: theme.colors.background,
       borderRadius: 5,
     });
   }
@@ -21,14 +21,14 @@ const getContainerStyle = ({theme, round, color, outline, error}) => {
     inputContainerStyle.push({
       borderBottomWidth: 0,
       borderRadius: 50,
-      backgroundColor: theme.colors.brandColor.background,
+      backgroundColor: theme.colors.background,
     });
   }
   if (outline && round) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      backgroundColor: theme.colors.brandColor.background,
+      backgroundColor: theme.colors.background,
     });
   }
   if (error) {

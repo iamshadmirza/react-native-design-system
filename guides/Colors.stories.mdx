@@ -1,6 +1,6 @@
 import { Meta, Preview, Story, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 import { FlatList } from 'react-native';
-import color from '../src/util/colors';
+import colors from '../src/util/colors';
 
 <Meta title="Guide|Colors" />
 
@@ -11,7 +11,7 @@ These are all the colors that you can use.
 //usage
 import { colors } from 'react-native-design-system';
 
-theme.colors.brandColor.primary = color.lime['A700'];
+theme.colors.primary = colors['lime-A700'];
 ```
 <ColorPalette>
   <FlatList

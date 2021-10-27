@@ -5,7 +5,9 @@ import {useThemeContext} from '../util/ThemeProvider';
 
 const FullScreenLoader = props => {
   const theme = useThemeContext();
-  const background = {backgroundColor: theme.colors[props.background]};
+  const background = {
+    backgroundColor: theme.colors[props.background],
+  };
   if (props.loading) {
     return (
       <View
