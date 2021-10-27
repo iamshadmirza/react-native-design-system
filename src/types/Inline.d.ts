@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { ViewStyle, StyleProp } from 'react-native';
 
 import { SpaceType, VerticalSpaceType } from './space-type';
 import { LayoutChildrenType } from './layout-children-type';

@@ -354,7 +354,6 @@ colors.dark = {
   transparent: 'transparent',
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   white: '#fff',
-  black: '#000',
   outline: colors.grey[800],
 };
 

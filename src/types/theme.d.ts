@@ -1,7 +1,5 @@
 
 type sizes = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
-type textColors = 'default' | 'heading' | 'subtle' | 'grey' | 'disabled' | 'white';
-type brandColors = 'primary' | 'secondary' | 'tertiary' | 'background' | 'disabled' | 'white' | 'semitransparent' | 'grey' | 'clearWhite' | 'outline';
 
 type knownScale = {
   [k in sizes]: number
@@ -11,25 +9,17 @@ type unknownScale = {
   [size: string]: number
 }
 
-type knownBrandColors = {
-  [k in brandColors]: string
-}
-
-type knownTextColors = {
-  [k in textColors]: string
-}
-
 type unknownColors = {
   [color: string]: string
 }
 
 type possibleSizes = knownScale & unknownScale;
 type possibleSpaces = knownScale & { none: number } & unknownScale;
-type possibleTextColors = knownTextColors & unknownColors;
-type possibleBrandColors = knownBrandColors & unknownColors;
+type possibleColors = colorTypes & unknownColors;
 
 export interface themeType {
   fontSize: possibleSizes;
+  lineHeight: possibleSizes;
   size: possibleSizes;
   actionButtonSize: possibleSizes;
   buttonSize: possibleSizes;
@@ -42,10 +32,5 @@ export interface themeType {
   space: possibleSpaces;
   layoutSpace: possibleSpaces;
   indicatorSize: possibleSizes;
-  fontFamily: {
-    heading: string;
-    text: string;
-  };
-  textColor: possibleTextColors;
-  brandColor: possibleBrandColors;
+  colors: possibleColors;
 }

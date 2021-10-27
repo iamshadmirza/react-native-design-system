@@ -13,6 +13,7 @@ interface StackProps {
   direction?: DirectionType,
   children: LayoutChildrenType,
   cropEndSpace?: boolean,
+  scrollable?: boolean,
 }
 
 export const Stack: React.FC<StackProps>;

@@ -121,10 +121,6 @@ const theme = {
     xxlarge: 1.7,
   },
   colors: {...colors},
-  fontFamily: {
-    heading: 'FontAwesome',
-    text: 'FontAwesome',
-  },
   textColor: {
     default: colors.black[300],
     heading: colors.black[800],
