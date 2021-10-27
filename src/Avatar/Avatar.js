@@ -103,7 +103,7 @@ const Avatar = ({style, ...props}) => {
           <Feather
             name="edit-2"
             size={theme.avatarSize[props.size] / 8}
-            color={props.editIconColor || theme.colors.disabled}
+            color={props.editIconColor || theme.colors.para}
           />
         </View>
       )}

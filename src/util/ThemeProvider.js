@@ -6,7 +6,6 @@ const COLOR_SCHEME_KEY = 'RNDS_COLOR_SCHEME';
 
 export const useThemeContext = () => {
   const theme = React.useContext(ThemeContext);
-  console.log('theme', theme); // TODO: remove this
   if (theme === undefined) {
     throw new Error('useThemeContext must be used within a ThemeProvider');
   }
@@ -43,7 +42,7 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   const currentTheme = React.useMemo(() => {
     const _theme = theme;
     if (isDarkMode) {
-      _theme.colors.brandColor = theme.colors.dark;
+      _theme.colors = {...theme.colors, ...theme.colors.dark};
     }
     return _theme;
   }, [isDarkMode, theme]);
@@ -69,7 +68,7 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
 };
 
 ThemeProvider.defaultProps = {
-  colorMode: 'dark',
+  colorMode: 'light',
 };
 
 export default ThemeProvider;
