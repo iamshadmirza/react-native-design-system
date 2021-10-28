@@ -108,7 +108,7 @@ Flex.defaultProps = {
   flex: 1,
   flexDirection: 'row',
   space: 'medium',
-  background: 'backgroundDark',
+  background: 'transparent',
 };
 
 export default Flex;
