@@ -144,7 +144,7 @@ Stack.defaultProps = {
   cropEndSpace: false,
   direction: 'vertical',
   scrollable: false,
-  background: 'backgroundDark',
+  background: 'transparent',
 };
 
 const styles = StyleSheet.create({

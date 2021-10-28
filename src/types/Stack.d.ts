@@ -15,7 +15,7 @@ interface StackProps {
   children: LayoutChildrenType,
   cropEndSpace?: boolean,
   scrollable?: boolean,
-  background: keyof colorTypes | string
+  background?: keyof colorTypes | string
 }
 
 export const Stack: React.FC<StackProps>;
