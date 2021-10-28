@@ -4,6 +4,7 @@ import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 import { SizeType } from './size-type';
 import { IconNode } from './icon-type';
 import { TextAlignType } from './text-align-type';
+import { colorTypes } from './colors-type';
 
 interface HeaderProps {
   style?: StyleProp<ViewStyle>,
@@ -11,7 +12,7 @@ interface HeaderProps {
   textAlign?: TextAlignType,
   fontSize?: SizeType,
   children?: string,
-  color?: string,
+  color?: keyof colorTypes | string,
   leftIcon?: IconNode,
   onleftIconPress?: () => void,
   rightIcon?: IconNode,

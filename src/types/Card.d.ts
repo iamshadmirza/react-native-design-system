@@ -3,6 +3,7 @@ import { ViewStyle, StyleProp } from 'react-native';
 
 import { SpaceType } from './space-type';
 import { AlignType } from './align-type';
+import { colorTypes } from './colors-type';
 import { LayoutChildrenType } from './layout-children-type';
 
 interface CardProps extends ViewStyle {
@@ -14,6 +15,7 @@ interface CardProps extends ViewStyle {
   vertical?: boolean,
   align?: AlignType,
   shadow?: boolean,
+  background?: keyof colorTypes
 }
 
 export const Card: React.FC<CardProps>;

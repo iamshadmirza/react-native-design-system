@@ -3,11 +3,12 @@ import { ViewStyle, TextStyle, StyleProp, TextInputProps } from 'react-native';
 
 import { SizeType } from './size-type';
 import { IconNode } from './icon-type';
+import { colorTypes } from './colors-type';
 
 interface InputProps extends TextInputProps {
   style?: StyleProp<ViewStyle>,
   textStyle?: StyleProp<TextStyle>,
-  textColor?: string,
+  textColor?: keyof colorTypes | string,
   value?: string,
   onChangeText: (text: string) => void,
   placeholder?: string,
@@ -15,7 +16,7 @@ interface InputProps extends TextInputProps {
   labelStyle?: StyleProp<TextStyle>,
   labelColor?: string,
   label?: string,
-  color?: string,
+  color?: keyof colorTypes | string,
   round?: boolean,
   outline?: boolean,
   error?: boolean,
@@ -24,7 +25,7 @@ interface InputProps extends TextInputProps {
   disabled?: boolean,
   leftIcon?: IconNode,
   rightIcon?: IconNode,
-  background?: string,
+  background?: keyof colorTypes | string,
 }
 
 

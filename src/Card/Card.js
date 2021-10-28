@@ -19,7 +19,7 @@ const getContainerStyle = ({
     styles.container,
     {
       padding: theme.layoutSpace[space],
-      background: theme.colors[background],
+      backgroundColor: theme.colors[background],
     },
   ];
   if (shadow) {
