@@ -3,7 +3,14 @@ import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({theme, round, color, outline, error}) => {
+const getContainerStyle = ({
+  theme,
+  round,
+  color,
+  outline,
+  error,
+  background,
+}) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
     borderBottomColor: theme.colors[color],
@@ -12,8 +19,9 @@ const getContainerStyle = ({theme, round, color, outline, error}) => {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      borderColor: theme.colors[color],
-      backgroundColor: theme.colors.background,
+      borderColor: theme.colors.outline,
+      borderBottomColor: theme.colors.outline,
+      backgroundColor: theme.colors[background],
       borderRadius: 5,
     });
   }
@@ -21,14 +29,16 @@ const getContainerStyle = ({theme, round, color, outline, error}) => {
     inputContainerStyle.push({
       borderBottomWidth: 0,
       borderRadius: 50,
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors[background],
     });
   }
   if (outline && round) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      backgroundColor: theme.colors.background,
+      borderColor: theme.colors.outline,
+      borderBottomColor: theme.colors.outline,
+      backgroundColor: theme.colors[background],
     });
   }
   if (error) {
@@ -45,7 +55,6 @@ const getInputStyle = ({theme, size, textColor}) => {
   const inputStyle = [styles.input];
   inputStyle.push({
     fontSize: theme.fontSize[size],
-    marginVertical: 0,
     color: theme.colors[textColor],
   });
   return inputStyle;
@@ -104,6 +113,7 @@ const Input = React.forwardRef((props, ref) => {
           {...props}
           ref={ref}
           style={getInputStyle({...props, theme})}
+          placeholderTextColor={theme.colors.subtle}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
         {props.rightIcon && (
@@ -159,7 +169,7 @@ Input.defaultProps = {
   textColor: 'para',
   color: 'subtle',
   size: 'medium',
-  labelColor: 'para',
+  labelColor: 'subtle',
   background: 'foreground',
   floatingLabel: false,
 };

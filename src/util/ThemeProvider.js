@@ -25,9 +25,7 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
     throw new Error('theme value must be provided within a ThemeProvider');
   }
 
-  const colorTheme = colorMode;
-
-  const [isDarkMode, setIsDarkMode] = React.useState(colorTheme !== 'light');
+  const [isDarkMode, setIsDarkMode] = React.useState(colorMode !== 'light');
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevValue => {
@@ -40,9 +38,9 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   };
 
   const currentTheme = React.useMemo(() => {
-    const _theme = theme;
+    let _theme = {...theme};
     if (isDarkMode) {
-      _theme.colors = {...theme.colors, ...theme.colors.dark};
+      _theme = {...theme, colors: {...theme.colors, ...theme.colors.dark}};
     }
     return _theme;
   }, [isDarkMode, theme]);
