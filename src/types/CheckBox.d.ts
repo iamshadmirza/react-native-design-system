@@ -1,5 +1,6 @@
 import React from 'react';
 import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { colorTypes } from './colors-type';
 
 import { SizeType } from './size-type';
 
@@ -10,7 +11,7 @@ interface CheckBoxProps {
   checked?: boolean,
   iconRight?: boolean,
   color?: string,
-  textColor?: string,
+  textColor?: keyof colorTypes | string,
   size?: SizeType,
   onPress: () => void,
   checkedIcon?: React.ReactElement,

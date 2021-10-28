@@ -13,7 +13,7 @@ interface RadioButtonProps {
   activeId: number | string,
   iconRight?: boolean,
   color?: keyof colorTypes | string,
-  textColor?: string,
+  textColor?:  keyof colorTypes | string,
   size?: SizeType,
   selectItem: (id: number | string) => void,
   checkedIcon?: IconNode,

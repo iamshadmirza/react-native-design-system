@@ -84,6 +84,7 @@ const Stack = React.forwardRef((props, ref) => {
       ref={ref}
       {...props}
       style={[
+        {backgroundColor: theme.colors[props.background]},
         props.direction === 'horizontal' ? styles.container : {},
         props.style,
       ]}>
@@ -132,6 +133,7 @@ Stack.propTypes = {
     .isRequired,
   direction: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   cropEndSpace: PropTypes.bool,
+  background: PropTypes.string,
   scrollable: PropTypes.bool,
 };
 
@@ -142,6 +144,7 @@ Stack.defaultProps = {
   cropEndSpace: false,
   direction: 'vertical',
   scrollable: false,
+  background: 'backgroundDark',
 };
 
 const styles = StyleSheet.create({
