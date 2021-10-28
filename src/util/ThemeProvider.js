@@ -2,7 +2,7 @@ import React from 'react';
 export const ThemeContext = React.createContext();
 export const ColorSchemeContext = React.createContext();
 
-const COLOR_SCHEME_KEY = 'RNDS_COLOR_SCHEME';
+const COLOR_SCHEME_KEY = 'rnds_color_scheme';
 
 export const useThemeContext = () => {
   const theme = React.useContext(ThemeContext);
@@ -26,15 +26,12 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   }
 
   const [isDarkMode, setIsDarkMode] = React.useState(colorMode !== 'light');
+  const [loadingStorage, setLoadingStorage] = React.useState(
+    storage !== undefined,
+  );
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prevValue => {
-      if (storage) {
-        const AsyncStorage = storage;
-        AsyncStorage.setItem(COLOR_SCHEME_KEY, isDarkMode);
-      }
-      return !prevValue;
-    });
+    setIsDarkMode(prevValue => !prevValue);
   };
 
   const currentTheme = React.useMemo(() => {
@@ -46,11 +43,25 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   }, [isDarkMode, theme]);
 
   React.useEffect(() => {
+    if (storage && !loadingStorage) {
+      const AsyncStorage = storage;
+      AsyncStorage.setItem(
+        COLOR_SCHEME_KEY,
+        isDarkMode ? 'dark' : 'light',
+      ).catch(e => console.log(e));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDarkMode]);
+
+  React.useEffect(() => {
     async function getThemeFromStorage() {
       if (storage) {
         const AsyncStorage = storage;
-        const isDark = await AsyncStorage.getItem(COLOR_SCHEME_KEY);
+        const colorScheme = await AsyncStorage.getItem(COLOR_SCHEME_KEY);
+        console.log('colorScheme', colorScheme); // TODO: remove this
+        const isDark = colorScheme === 'dark';
         setIsDarkMode(isDark);
+        setLoadingStorage(false);
       }
     }
     getThemeFromStorage();
