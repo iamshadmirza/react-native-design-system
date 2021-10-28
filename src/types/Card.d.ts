@@ -15,7 +15,7 @@ interface CardProps extends ViewStyle {
   vertical?: boolean,
   align?: AlignType,
   shadow?: boolean,
-  background?: keyof colorTypes
+  background?: keyof colorTypes | string
 }
 
 export const Card: React.FC<CardProps>;
