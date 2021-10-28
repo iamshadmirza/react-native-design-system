@@ -63,7 +63,7 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-  iconColor: 'outline',
+  iconColor: 'subtle',
   value: '',
   placeholder: 'Search here',
 };
