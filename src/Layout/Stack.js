@@ -78,16 +78,19 @@ const getChildrenStyle = (
 
 const Stack = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
+  const {direction, style, children, ...otherProps} = props;
   return (
     <View
       ref={ref}
-      {...props}
-      style={[
-        props.direction === 'horizontal' ? styles.container : {},
-        props.style,
-      ]}>
-      {React.Children.toArray(props.children).map((item, index) => (
-        <View style={getChildrenStyle({...props, theme}, index)} key={index}>
+      {...otherProps}
+      style={[direction === 'horizontal' ? styles.container : {}, style]}>
+      {React.Children.toArray(children).map((item, index) => (
+        <View
+          style={getChildrenStyle(
+            {...otherProps, direction, children, theme},
+            index,
+          )}
+          key={index}>
           {item}
         </View>
       ))}
