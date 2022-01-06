@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 import {resizeFont} from '../util/resizeFont';
 
-const getTextStyle = ({theme, color, size, scale, fontWeight}) => {
+const getTextStyle = ({theme, color, size, scale, fontWeight, textAlign}) => {
   return {
     color: theme.textColor[color],
     fontSize: scale ? theme.fontSize[size] : resizeFont(theme.fontSize[size]),
     includeFontPadding: false,
     textAlignVertical: 'center',
+    textAlign,
     fontWeight: fontWeight,
   };
 };
@@ -47,6 +48,7 @@ TextElement.propTypes = {
   color: PropTypes.string,
   scale: PropTypes.bool,
   fontWeight: PropTypes.string,
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 TextElement.defaultProps = {
@@ -54,6 +56,7 @@ TextElement.defaultProps = {
   size: 'medium',
   scale: true,
   fontWeight: '500',
+  textAlign: 'left',
 };
 
 export default TextElement;

@@ -3,17 +3,25 @@ import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
-const getContainerStyle = ({theme, round, color, outline, error}) => {
+const getContainerStyle = ({
+  theme,
+  round,
+  color,
+  outlineColor,
+  outline,
+  background,
+  error,
+}) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
-    borderBottomColor: theme.brandColor[color],
+    borderBottomColor: theme.brandColor[outlineColor],
   });
   if (outline) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      borderColor: theme.brandColor[color],
-      backgroundColor: theme.brandColor.background,
+      borderColor: theme.brandColor[outlineColor],
+      backgroundColor: theme.brandColor[background],
       borderRadius: 5,
     });
   }
@@ -21,14 +29,14 @@ const getContainerStyle = ({theme, round, color, outline, error}) => {
     inputContainerStyle.push({
       borderBottomWidth: 0,
       borderRadius: 50,
-      backgroundColor: theme.brandColor.background,
+      backgroundColor: theme.brandColor[background],
     });
   }
   if (outline && round) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      backgroundColor: theme.brandColor.background,
+      backgroundColor: theme.brandColor[background],
     });
   }
   if (error) {
@@ -135,6 +143,7 @@ Input.propTypes = {
   labelColor: PropTypes.string,
   label: PropTypes.string,
   color: PropTypes.string,
+  outlineColor: PropTypes.string,
   round: PropTypes.bool,
   outline: PropTypes.bool,
   error: PropTypes.bool,
@@ -160,7 +169,8 @@ Input.defaultProps = {
   color: 'outline',
   size: 'medium',
   labelColor: 'grey',
-  background: 'grey',
+  background: 'background',
+  outlineColor: 'outline',
   floatingLabel: false,
 };
 

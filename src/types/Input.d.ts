@@ -25,6 +25,7 @@ interface InputProps extends TextInputProps {
   leftIcon?: IconNode,
   rightIcon?: IconNode,
   background?: string,
+  outlineColor?: string,
 }
 
 

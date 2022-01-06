@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextStyle, TextProps as RNTextProps} from 'react-native';
+import {TextProps as RNTextProps} from 'react-native';
 
 import {SizeType} from './size-type';
 
