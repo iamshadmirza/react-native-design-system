@@ -6,7 +6,6 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({
   theme,
   round,
-  color,
   outlineColor,
   outline,
   background,
@@ -49,12 +48,13 @@ const getContainerStyle = ({
   return inputContainerStyle;
 };
 
-const getInputStyle = ({theme, size, textColor}) => {
+const getInputStyle = ({theme, size, textColor, textAlign}) => {
   const inputStyle = [styles.input];
   inputStyle.push({
     fontSize: theme.fontSize[size],
     marginVertical: 0,
     color: theme.textColor[textColor],
+    textAlign,
   });
   return inputStyle;
 };
@@ -148,6 +148,7 @@ Input.propTypes = {
   outline: PropTypes.bool,
   error: PropTypes.bool,
   errorCaption: PropTypes.string,
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   size: PropTypes.oneOf([
     'xxsmall',
     'xsmall',
@@ -172,6 +173,7 @@ Input.defaultProps = {
   background: 'background',
   outlineColor: 'outline',
   floatingLabel: false,
+  textAlign: 'left',
 };
 
 const styles = StyleSheet.create({
