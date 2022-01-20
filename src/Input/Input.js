@@ -6,21 +6,21 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({
   theme,
   round,
-  color,
   outline,
+  outlineColor,
   error,
   background,
 }) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
-    borderBottomColor: theme.colors[color],
+    borderBottomColor: theme.colors[outlineColor],
   });
   if (outline) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      borderColor: theme.colors.outline,
-      borderBottomColor: theme.colors.outline,
+      borderColor: theme.colors[outlineColor],
+      borderBottomColor: theme.colors[outlineColor],
       backgroundColor: theme.colors[background],
       borderRadius: 5,
     });
@@ -36,8 +36,8 @@ const getContainerStyle = ({
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      borderColor: theme.colors.outline,
-      borderBottomColor: theme.colors.outline,
+      borderColor: theme.colors[outlineColor],
+      borderBottomColor: theme.colors[outlineColor],
       backgroundColor: theme.colors[background],
     });
   }
@@ -51,11 +51,13 @@ const getContainerStyle = ({
   return inputContainerStyle;
 };
 
-const getInputStyle = ({theme, size, textColor}) => {
+const getInputStyle = ({theme, size, textColor, textAlign}) => {
   const inputStyle = [styles.input];
   inputStyle.push({
     fontSize: theme.fontSize[size],
     color: theme.colors[textColor],
+    marginVertical: 0,
+    textAlign,
   });
   return inputStyle;
 };
@@ -145,10 +147,12 @@ Input.propTypes = {
   labelColor: PropTypes.string,
   label: PropTypes.string,
   color: PropTypes.string,
+  outlineColor: PropTypes.string,
   round: PropTypes.bool,
   outline: PropTypes.bool,
   error: PropTypes.bool,
   errorCaption: PropTypes.string,
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   size: PropTypes.oneOf([
     'xxsmall',
     'xsmall',
@@ -171,7 +175,9 @@ Input.defaultProps = {
   size: 'medium',
   labelColor: 'subtle',
   background: 'foreground',
+  outlineColor: 'outline',
   floatingLabel: false,
+  textAlign: 'left',
 };
 
 const styles = StyleSheet.create({

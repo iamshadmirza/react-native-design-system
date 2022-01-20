@@ -3,7 +3,14 @@ import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
-const getTextStyle = ({theme, color, size, fontWeight, fontFamily}) => {
+const getTextStyle = ({
+  theme,
+  color,
+  size,
+  fontWeight,
+  fontFamily,
+  textAlign,
+}) => {
   const style = {
     color: theme.colors[color],
     fontSize: theme.fontSize[size],
@@ -11,6 +18,7 @@ const getTextStyle = ({theme, color, size, fontWeight, fontFamily}) => {
     includeFontPadding: false,
     textAlignVertical: 'center',
     fontWeight,
+    textAlign,
   };
   if (fontFamily) {
     style.fontFamily = fontFamily;
@@ -51,12 +59,14 @@ TextElement.propTypes = {
   color: PropTypes.string,
   fontWeight: PropTypes.string,
   fontFamily: PropTypes.string,
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 TextElement.defaultProps = {
   color: 'para',
   size: 'medium',
   fontWeight: '500',
+  textAlign: 'left',
 };
 
 export default TextElement;
