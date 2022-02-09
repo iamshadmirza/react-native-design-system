@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp, ViewProps } from 'react-native';
 
 import { SizeType } from './size-type';
 import { WidthType } from './width-type';
@@ -8,7 +8,7 @@ import { IconNode } from './icon-type';
 import { colorTypes } from './colors-type';
 
 
-interface ButtonProps {
+interface ButtonProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string;
