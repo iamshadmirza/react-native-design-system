@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Modal, Pressable } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
-import { extractAccessibilityPropsFromProps, removeAccessibilityPropsFromProps } from '../util/accesibility';
+import { extractAccessibilityPropsFromProps, removeAccessibilityPropsFromProps } from '../util/accessibility';
 
 const getContainerStyle = ({ theme, background, style }) => {
   const containerStyle = [

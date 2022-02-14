@@ -10,7 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useThemeContext } from '../util/ThemeProvider';
-import { extractAccessibilityPropsFromProps } from '../util/accesibility';
+import { extractAccessibilityPropsFromProps } from '../util/accessibility';
 const Context = createContext();
 const { Provider } = Context;
 

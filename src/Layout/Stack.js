@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
-import { removeAccessibilityPropsFromProps } from '../util/accesibility';
+import { removeAccessibilityPropsFromProps } from '../util/accessibility';
 
 const getChildrenStyle = (
   {

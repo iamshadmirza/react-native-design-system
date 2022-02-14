@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import { extractAccessibilityPropsFromProps } from '../util/accesibility';
+import { extractAccessibilityPropsFromProps } from '../util/accessibility';
 
 const FullScreenLoader = (props) => {
   const theme = useThemeContext();
