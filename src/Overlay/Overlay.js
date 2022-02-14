@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, Modal, Pressable} from 'react-native';
+import { View, StyleSheet, Modal, Pressable } from 'react-native';
 import PropTypes from 'prop-types';
-import {useThemeContext} from '../util/ThemeProvider';
+import { useThemeContext } from '../util/ThemeProvider';
+import { extractAccessibilityPropsFromProps, removeAccessibilityPropsFromProps } from '../util/accesibility';
 
-const getContainerStyle = ({theme, background, style}) => {
+const getContainerStyle = ({ theme, background, style }) => {
   const containerStyle = [
     styles.container,
     {
@@ -41,11 +42,12 @@ const Overlay = (props) => {
   const theme = useThemeContext();
   const ContainerView = props.onPressOutside ? Pressable : View;
   return (
-    <Modal {...props}>
+    <Modal {...removeAccessibilityPropsFromProps(props)}>
       <ContainerView
+        {...extractAccessibilityPropsFromProps(props)}
         onPress={props.onPressOutside}
-        style={getContainerStyle({...props, theme})}>
-        <View style={getChildStyle({...props, theme})}>{props.children}</View>
+        style={getContainerStyle({ ...props, theme })}>
+        <View style={getChildStyle({ ...props, theme })}>{props.children}</View>
       </ContainerView>
     </Modal>
   );

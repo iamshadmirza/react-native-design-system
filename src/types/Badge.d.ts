@@ -1,10 +1,14 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {
+  AccessibilityProps,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+import {colorsType} from './colors-type';
+import {SizeType} from './size-type';
 
-import { SizeType } from './size-type';
-import { colorsType } from './colors-type';
-
-interface BadgeProps {
+interface BadgeProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string | number;

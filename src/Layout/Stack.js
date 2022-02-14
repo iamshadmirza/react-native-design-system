@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import {useThemeContext} from '../util/ThemeProvider';
+import { useThemeContext } from '../util/ThemeProvider';
+import { removeAccessibilityPropsFromProps } from '../util/accesibility';
 
 const getChildrenStyle = (
   {
@@ -78,7 +79,7 @@ const getChildrenStyle = (
 
 const Stack = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
-  const {direction, style, children, ...otherProps} = props;
+  const { direction, style, children, ...otherProps } = props;
   return (
     <View
       ref={ref}
@@ -87,7 +88,7 @@ const Stack = React.forwardRef((props, ref) => {
       {React.Children.toArray(children).map((item, index) => (
         <View
           style={getChildrenStyle(
-            {...otherProps, direction, children, theme},
+            { ...removeAccessibilityPropsFromProps(otherProps), direction, children, theme },
             index,
           )}
           key={index}>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,10 +8,11 @@ import {
   Platform,
   Dimensions,
 } from 'react-native';
-import {FullScreenLoader} from '../FullScreenLoader';
+import { FullScreenLoader } from '../FullScreenLoader';
 import PropTypes from 'prop-types';
 import clamp from 'clamp';
-const {width} = Dimensions.get('screen');
+import { extractAccessibilityPropsFromProps } from '../util/accesibility';
+const { width } = Dimensions.get('screen');
 
 class Deck extends Component {
   constructor(props) {
@@ -38,9 +39,9 @@ class Deck extends Component {
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
-        this.state.animation.setValue({x: gesture.dx, y: gesture.dy});
+        this.state.animation.setValue({ x: gesture.dx, y: gesture.dy });
       },
-      onPanResponderRelease: (e, {dx, dy, vx, vy}) => {
+      onPanResponderRelease: (e, { dx, dy, vx, vy }) => {
         let velocity;
         if (vx >= 0) {
           velocity = clamp(vx, 4, 5);
@@ -50,7 +51,7 @@ class Deck extends Component {
         if (Math.abs(dx) > this.SWIPE_THRESHOLD) {
           Animated.parallel([
             Animated.decay(this.state.animation, {
-              velocity: {x: velocity, y: vy},
+              velocity: { x: velocity, y: vy },
               deceleration: 0.99,
               useNativeDriver: true,
             }),
@@ -67,7 +68,7 @@ class Deck extends Component {
           }
         } else {
           Animated.spring(this.state.animation, {
-            toValue: {x: 0, y: 0},
+            toValue: { x: 0, y: 0 },
             friction: 4,
             useNativeDriver: true,
           }).start();
@@ -87,13 +88,13 @@ class Deck extends Component {
   transitionNext = () => {
     this.setState(
       (state) => {
-        const {data, swiped} = state;
+        const { data, swiped } = state;
         swiped.unshift(data.shift());
-        return {swiped, data};
+        return { swiped, data };
       },
       () => {
         this.state.next.setValue(0.9);
-        this.state.animation.setValue({x: 0, y: 0});
+        this.state.animation.setValue({ x: 0, y: 0 });
         this.checkMoreCards();
       },
     );
@@ -110,7 +111,7 @@ class Deck extends Component {
         this.page = -1;
       }
       this.page++;
-      this.setState({loading: true});
+      this.setState({ loading: true });
       const data = this.props.loadMoreCards
         ? await this.props.loadMoreCards(this.page)
         : [];
@@ -126,8 +127,8 @@ class Deck extends Component {
   getCardStyles = (index, items) => {
     const isLastItem = index === items.length - 1;
     const isSecondToLast = index === items.length - 2;
-    const {animation, next} = this.state;
-    const {fade} = this.props;
+    const { animation, next } = this.state;
+    const { fade } = this.props;
     const rotate = animation.x.interpolate({
       inputRange: [-200, 0, 200],
       outputRange: ['-30deg', '0deg', '30deg'],
@@ -136,19 +137,19 @@ class Deck extends Component {
 
     const opacity = fade
       ? animation.x.interpolate({
-          inputRange: [-200, 0, 200],
-          outputRange: [0.5, 1, 0.5],
-        })
+        inputRange: [-200, 0, 200],
+        outputRange: [0.5, 1, 0.5],
+      })
       : 1;
 
     const animatedCardStyles = {
-      transform: [{rotate}, ...animation.getTranslateTransform()],
+      transform: [{ rotate }, ...animation.getTranslateTransform()],
       opacity,
     };
 
     const cardStyle = isLastItem ? animatedCardStyles : undefined;
     const nextStyle = isSecondToLast
-      ? {transform: [{scale: next}], borderRadius: 5}
+      ? { transform: [{ scale: next }], borderRadius: 5 }
       : undefined;
 
     return StyleSheet.flatten([
@@ -164,7 +165,7 @@ class Deck extends Component {
   }
 
   renderCards() {
-    const {data} = this.state;
+    const { data } = this.state;
     return (
       <>
         {data
@@ -173,7 +174,7 @@ class Deck extends Component {
           .map((item, index, items) => {
             const isLastItem = index === items.length - 1;
             const panHandlers = isLastItem
-              ? {...this._panResponder.panHandlers}
+              ? { ...this._panResponder.panHandlers }
               : {};
             return (
               <Animated.View
@@ -189,10 +190,10 @@ class Deck extends Component {
   }
 
   render() {
-    const {endOfCards, loading} = this.state;
+    const { endOfCards, loading } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container} {...extractAccessibilityPropsFromProps(this.props)}>
         {loading ? (
           this.renderLoadingScreen()
         ) : endOfCards ? (
