@@ -1,15 +1,14 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {LayoutChildrenType} from './layout-children-type';
+import {SpaceType, VerticalSpaceType} from './space-type';
 
-import { SpaceType, VerticalSpaceType } from './space-type';
-import { LayoutChildrenType } from './layout-children-type';
-
-interface InlineProps {
-  style?: StyleProp<ViewStyle>,
-  space?: SpaceType,
-  children: LayoutChildrenType,
-  verticalSpace?: VerticalSpaceType,
-  cropEndSpace?: boolean,
+interface InlineProps extends AccessibilityProps {
+  style?: StyleProp<ViewStyle>;
+  space?: SpaceType;
+  children: LayoutChildrenType;
+  verticalSpace?: VerticalSpaceType;
+  cropEndSpace?: boolean;
 }
 
 export const Inline: React.FC<InlineProps>;

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { Animated, Easing, StyleSheet, View } from 'react-native';
+import { extractAccessibilityPropsFromProps } from '../util/accessibility';
 
 const CircularProgressBar = (props) => {
   const {
@@ -12,6 +13,7 @@ const CircularProgressBar = (props) => {
     width,
     duration,
     children,
+    ...rest
   } = props;
 
   const initialValueHalfCircle = percent >= 50 ? 0 : 180;
@@ -117,7 +119,7 @@ const CircularProgressBar = (props) => {
   };
 
   return (
-    <View style={styles.container} key={percent}>
+    <View {...extractAccessibilityPropsFromProps(rest)} style={styles.container} key={percent} >
       <View
         style={[
           styles.outerCircle,
@@ -126,7 +128,6 @@ const CircularProgressBar = (props) => {
             width: radius * 2,
             borderRadius: radius,
             backgroundColor: passiveColor,
-            overflow: 'hidden',
           },
         ]}
       >
@@ -165,6 +166,8 @@ const styles = StyleSheet.create({
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
+
   },
   half: {
     position: 'absolute',

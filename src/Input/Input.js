@@ -2,6 +2,7 @@ import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import { extractAccessibilityPropsFromProps } from '../util/accessibility';
 
 const getContainerStyle = ({
   theme,
@@ -89,7 +90,7 @@ const Input = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   const showLabel = props.floatingLabel ? props.value.length > 0 : props.label;
   return (
-    <View style={props.containerStyle}>
+    <View style={props.containerStyle}  {...extractAccessibilityPropsFromProps(this.props)}>
       {showLabel ? (
         <Text
           style={StyleSheet.flatten([

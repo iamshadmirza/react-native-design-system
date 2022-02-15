@@ -1,18 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  View,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Text,
-  StyleSheet,
-  Platform,
-  StatusBar,
-  SafeAreaView,
+  Platform, SafeAreaView, StatusBar, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View
 } from 'react-native';
-import PropTypes from 'prop-types';
-import {useThemeContext} from '../util/ThemeProvider';
+import { extractAccessibilityPropsFromProps } from '../util/accesibility';
+import { useThemeContext } from '../util/ThemeProvider';
 
-const getContainerStyle = ({theme, color}) => {
+const getContainerStyle = ({ theme, color }) => {
   const headerStyle = [styles.container];
   headerStyle.push({
     backgroundColor: theme.brandColor[color],
@@ -20,7 +14,7 @@ const getContainerStyle = ({theme, color}) => {
   return headerStyle;
 };
 
-const getTextStyle = ({theme, color, textAlign, fontSize}) => {
+const getTextStyle = ({ theme, color, textAlign, fontSize }) => {
   const textStyle = [styles.text];
   textStyle.push({
     backgroundColor: theme.brandColor[color],
@@ -34,15 +28,16 @@ const getTextStyle = ({theme, color, textAlign, fontSize}) => {
   return textStyle;
 };
 
-const Header = ({style, textStyle, ...props}) => {
+const Header = ({ style, textStyle, ...props }) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <SafeAreaView
+      {...extractAccessibilityPropsFromProps(props)}
       style={[
         styles.safeAreaView,
-        {backgroundColor: theme.brandColor[props.barColor]},
+        { backgroundColor: theme.brandColor[props.barColor] },
       ]}>
       <StatusBar
         barStyle={props.barStyle}
@@ -50,7 +45,7 @@ const Header = ({style, textStyle, ...props}) => {
       />
       <View
         style={StyleSheet.flatten([
-          getContainerStyle({...props, theme}),
+          getContainerStyle({ ...props, theme }),
           style,
         ])}>
         {props.leftIcon && (
@@ -64,7 +59,7 @@ const Header = ({style, textStyle, ...props}) => {
         {!!props.children && (
           <Text
             style={StyleSheet.flatten([
-              getTextStyle({...props, theme}),
+              getTextStyle({ ...props, theme }),
               textStyle,
             ])}>
             {props.children}
