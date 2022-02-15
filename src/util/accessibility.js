@@ -13,6 +13,15 @@ export const extractAccessibilityPropsFromProps = props => {
     accessibilityStates: props.accessibilityStates,
 
     accessibilityHint: props.accessibilityHint,
+    accessibilityComponentType: props.accessibilityComponentType,
+    accessibilityLiveRegion: props.importantForAccessibility,
+    importantForAccessibility: props.accessibilityLiveRegion,
+    accessibilityElementsHidden: props.accessibilityElementsHidden,
+    accessibilityTraits: props.accessibilityTraits,
+    onAccessibilityTap: props.onAccessibilityTap,
+    onMagicTap: props.onMagicTap,
+    accessibilityIgnoresInvertColors: props.accessibilityIgnoresInvertColors,
+
   };
 };
 
@@ -26,6 +35,12 @@ export const removeAccessibilityPropsFromProps = props => {
     accessibilityRole,
     accessibilityStates,
     accessibilityHint,
+    accessibilityComponentType, importantForAccessibility,
+    accessibilityLiveRegion,
+    accessibilityTraits,
+    onAccessibilityTap,
+    onMagicTap,
+    accessibilityIgnoresInvertColors,
     ...otherProps
   } = props;
 

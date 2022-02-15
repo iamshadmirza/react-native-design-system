@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { Animated, Easing, StyleSheet, View } from 'react-native';
+import { extractAccessibilityPropsFromProps } from '../util/accessibility';
 
 const CircularProgressBar = (props) => {
   const {
@@ -118,7 +119,7 @@ const CircularProgressBar = (props) => {
   };
 
   return (
-    <View {...rest} style={styles.container} key={percent} >
+    <View {...extractAccessibilityPropsFromProps(rest)} style={styles.container} key={percent} >
       <View
         style={[
           styles.outerCircle,
