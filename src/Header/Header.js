@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  View,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Text,
-  StyleSheet,
   Platform,
-  StatusBar,
   SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import PropTypes from 'prop-types';
+import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 import {useThemeContext} from '../util/ThemeProvider';
 
 const getContainerStyle = ({theme, color}) => {
@@ -40,6 +41,7 @@ const Header = ({style, textStyle, ...props}) => {
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <SafeAreaView
+      {...extractAccessibilityPropsFromProps(props)}
       style={[
         styles.safeAreaView,
         {backgroundColor: theme.brandColor[props.barColor]},

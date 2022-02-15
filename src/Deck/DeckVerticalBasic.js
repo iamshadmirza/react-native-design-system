@@ -1,16 +1,17 @@
+import clamp from 'clamp';
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {
-  StyleSheet,
-  View,
   Animated,
-  PanResponder,
-  Text,
-  Platform,
   Dimensions,
+  PanResponder,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import {FullScreenLoader} from '../FullScreenLoader';
-import PropTypes from 'prop-types';
-import clamp from 'clamp';
+import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 const {height} = Dimensions.get('window');
 
 class Deck extends Component {
@@ -87,7 +88,7 @@ class Deck extends Component {
 
   transitionNext = () => {
     this.setState(
-      (state) => {
+      state => {
         const {data, swiped} = state;
         swiped.push(data.shift());
         return {swiped, data};
@@ -103,7 +104,7 @@ class Deck extends Component {
   checkMoreCards = async () => {
     if (this.state.data.length < 2) {
       if (this.props.loop && !this.props.loadInitialData) {
-        return this.setState((state) => ({
+        return this.setState(state => ({
           data: state.data.concat(this.state.swiped),
         }));
       }
@@ -116,7 +117,7 @@ class Deck extends Component {
         ? await this.props.loadMoreCards(this.page)
         : [];
       const endOfCards = data.length === 0;
-      this.setState((state) => ({
+      this.setState(state => ({
         data: state.data.concat(data),
         endOfCards,
         loading: false,
@@ -164,7 +165,9 @@ class Deck extends Component {
     const {data, endOfCards, loading} = this.state;
 
     return (
-      <View style={styles.container}>
+      <View
+        style={styles.container}
+        {...extractAccessibilityPropsFromProps(this.props)}>
         {loading ? (
           this.renderLoadingScreen()
         ) : endOfCards ? (

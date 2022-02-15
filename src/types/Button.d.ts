@@ -1,13 +1,12 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {ViewStyle, TextStyle, StyleProp, AccessibilityProps} from 'react-native';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
+import {SizeType} from './size-type';
+import {WidthType} from './width-type';
+import {LengthType} from './length-type';
+import {IconNode} from './icon-type';
 
-
-interface ButtonProps {
+interface ButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string;
