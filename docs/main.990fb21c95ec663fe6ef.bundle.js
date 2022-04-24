@@ -633,8 +633,8 @@
           textColor: 'para',
           color: 'outline',
           size: 'medium',
-          labelColor: 'grey',
-          background: 'grey',
+          labelColor: 'gray',
+          background: 'gray',
           floatingLabel: !1,
         });
       var styles = react_native__WEBPACK_IMPORTED_MODULE_2__.StyleSheet.create({
@@ -701,13 +701,13 @@
             description: '',
           },
           labelColor: {
-            defaultValue: {value: "'grey'", computed: !1},
+            defaultValue: {value: "'gray'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
           },
           background: {
-            defaultValue: {value: "'grey'", computed: !1},
+            defaultValue: {value: "'gray'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -2508,7 +2508,7 @@
           children: 'Pass children to render',
           background: 'clearWhite',
           textColor: 'subtle',
-          subtitleColor: 'grey',
+          subtitleColor: 'gray',
           chevronColor: 'outline',
           textAlign: 'left',
           space: 'medium',
@@ -2558,7 +2558,7 @@
             description: '',
           },
           subtitleColor: {
-            defaultValue: {value: "'grey'", computed: !1},
+            defaultValue: {value: "'gray'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -2951,7 +2951,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-js'}),
-              "//theme.config.js at root\nimport { theme } from 'react-native-design-system';\n\ntheme.colors = {\n    'default': '#000',\n    'heading': '#999',\n    'subtle': '#333',\n    'grey': '#757575',\n    'disabled': '#78909c',\n    'white': '#f8f8f8',\n};\n\nexport default theme;\n",
+              "//theme.config.js at root\nimport { theme } from 'react-native-design-system';\n\ntheme.colors = {\n    'default': '#000',\n    'heading': '#999',\n    'subtle': '#333',\n    'gray': '#757575',\n    'disabled': '#78909c',\n    'white': '#f8f8f8',\n};\n\nexport default theme;\n",
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -3485,7 +3485,7 @@
                 {parentName: 'li'},
                 'textColor:',
               ),
-              ' "default", "heading", "grey", "subtle", "disabled", and "white"',
+              ' "default", "heading", "gray", "subtle", "disabled", and "white"',
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -3738,7 +3738,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-json'}),
-              "{\n  fontSize: {\n    'xxsmall': 11,\n    'xsmall': 12.5,\n    'small': 14,\n    'medium': 16,\n    'large': 20,\n    'xlarge': 26,\n    'xxlarge': 32,\n  },\n  size: {\n    'xxsmall': 10,\n    'xsmall': 12,\n    'small': 14,\n    'medium': 16,\n    'large': 18,\n    'xlarge': 20,\n    'xxlarge': 22,\n  },\n  actionButtonSize: {\n    'xxsmall': 30,\n    'xsmall': 40,\n    'small': 50,\n    'medium': 60,\n    'large': 70,\n    'xlarge': 80,\n    'xxlarge': 90,\n  },\n  buttonSize: {\n    'xxsmall': 8,\n    'xsmall': 10,\n    'small': 12,\n    'medium': 14,\n    'large': 16,\n    'xlarge': 18,\n    'xxlarge': 20,\n  },\n  buttonWidth: {\n    'xxsmall': 100,\n    'xsmall': 120,\n    'small': 140,\n    'medium': 160,\n    'large': 180,\n    'xlarge': 200,\n    'xxlarge': 220,\n  },\n  iconSize: {\n    'xxsmall': 16,\n    'xsmall': 18,\n    'small': 22,\n    'medium': 26,\n    'large': 28,\n    'xlarge': 32,\n    'xxlarge': 36,\n  },\n  avatarSize: {\n    'xxsmall': 40,\n    'xsmall': 60,\n    'small': 80,\n    'medium': 90,\n    'large': 110,\n    'xlarge': 120,\n    'xxlarge': 140,\n  },\n  badgeSize: {\n    'xxsmall': 10,\n    'xsmall': 11,\n    'small': 12,\n    'medium': 13,\n    'large': 14,\n    'xlarge': 16,\n    'xxlarge': 18,\n  },\n  miniBadgeSize: {\n    'xxsmall': 10,\n    'xsmall': 11,\n    'small': 12,\n    'medium': 15,\n    'large': 17,\n    'xlarge': 19,\n    'xxlarge': 21,\n  },\n  listItemSpace: {\n    'xxsmall': 5,\n    'xsmall': 7.5,\n    'small': 10,\n    'medium': 12,\n    'large': 14,\n    'xlarge': 16,\n    'xxlarge': 18,\n  },\n  space: {\n    'none': 0,\n    'xxsmall': 2.5,\n    'xsmall': 5,\n    'small': 7.5,\n    'medium': 10,\n    'large': 12.5,\n    'xlarge': 15,\n    'xxlarge': 20,\n  },\n  layoutSpace: {\n    'none': 0,\n    'xxsmall': 5,\n    'xsmall': 10,\n    'small': 12,\n    'medium': 16,\n    'large': 20,\n    'xlarge': 24,\n    'xxlarge': 32,\n  },\n  indicatorSize: {\n    'xxsmall': 0.8,\n    'xsmall': 0.9,\n    'small': 1,\n    'medium': 1.1,\n    'large': 1.25,\n    'xlarge': 1.5,\n    'xxlarge': 1.7,\n  },\n  textColor: {\n    'default': colors.black[300],\n    'heading': colors.black[800],\n    'subtle': colors.black[100],\n    'grey': colors.grey[600],\n    'disabled': colors.bluegrey[400],\n    'white': colors.blue[50],\n  },\n  brandColor: {\n    'primary': colors.blue[600],\n    'secondary': colors.yellow[800],\n    'tertiary': colors.red[600],\n    'background': '#f8f8f8',\n    'disabled': colors.bluegrey[100],\n    'white': colors.blue[50],\n    'semitransparent': 'rgba(0, 0, 0, 0.3)',\n    'grey': colors.grey[200],\n    'clearWhite': '#fff',\n    'outline': colors.grey[400],\n  },\n}\n",
+              "{\n  fontSize: {\n    'xxsmall': 11,\n    'xsmall': 12.5,\n    'small': 14,\n    'medium': 16,\n    'large': 20,\n    'xlarge': 26,\n    'xxlarge': 32,\n  },\n  size: {\n    'xxsmall': 10,\n    'xsmall': 12,\n    'small': 14,\n    'medium': 16,\n    'large': 18,\n    'xlarge': 20,\n    'xxlarge': 22,\n  },\n  actionButtonSize: {\n    'xxsmall': 30,\n    'xsmall': 40,\n    'small': 50,\n    'medium': 60,\n    'large': 70,\n    'xlarge': 80,\n    'xxlarge': 90,\n  },\n  buttonSize: {\n    'xxsmall': 8,\n    'xsmall': 10,\n    'small': 12,\n    'medium': 14,\n    'large': 16,\n    'xlarge': 18,\n    'xxlarge': 20,\n  },\n  buttonWidth: {\n    'xxsmall': 100,\n    'xsmall': 120,\n    'small': 140,\n    'medium': 160,\n    'large': 180,\n    'xlarge': 200,\n    'xxlarge': 220,\n  },\n  iconSize: {\n    'xxsmall': 16,\n    'xsmall': 18,\n    'small': 22,\n    'medium': 26,\n    'large': 28,\n    'xlarge': 32,\n    'xxlarge': 36,\n  },\n  avatarSize: {\n    'xxsmall': 40,\n    'xsmall': 60,\n    'small': 80,\n    'medium': 90,\n    'large': 110,\n    'xlarge': 120,\n    'xxlarge': 140,\n  },\n  badgeSize: {\n    'xxsmall': 10,\n    'xsmall': 11,\n    'small': 12,\n    'medium': 13,\n    'large': 14,\n    'xlarge': 16,\n    'xxlarge': 18,\n  },\n  miniBadgeSize: {\n    'xxsmall': 10,\n    'xsmall': 11,\n    'small': 12,\n    'medium': 15,\n    'large': 17,\n    'xlarge': 19,\n    'xxlarge': 21,\n  },\n  listItemSpace: {\n    'xxsmall': 5,\n    'xsmall': 7.5,\n    'small': 10,\n    'medium': 12,\n    'large': 14,\n    'xlarge': 16,\n    'xxlarge': 18,\n  },\n  space: {\n    'none': 0,\n    'xxsmall': 2.5,\n    'xsmall': 5,\n    'small': 7.5,\n    'medium': 10,\n    'large': 12.5,\n    'xlarge': 15,\n    'xxlarge': 20,\n  },\n  layoutSpace: {\n    'none': 0,\n    'xxsmall': 5,\n    'xsmall': 10,\n    'small': 12,\n    'medium': 16,\n    'large': 20,\n    'xlarge': 24,\n    'xxlarge': 32,\n  },\n  indicatorSize: {\n    'xxsmall': 0.8,\n    'xsmall': 0.9,\n    'small': 1,\n    'medium': 1.1,\n    'large': 1.25,\n    'xlarge': 1.5,\n    'xxlarge': 1.7,\n  },\n  textColor: {\n    'default': colors.black[300],\n    'heading': colors.black[800],\n    'subtle': colors.black[100],\n    'gray': colors.gray[600],\n    'disabled': colors.bluegray[400],\n    'white': colors.blue[50],\n  },\n  brandColor: {\n    'primary': colors.blue[600],\n    'secondary': colors.yellow[800],\n    'tertiary': colors.red[600],\n    'background': '#f8f8f8',\n    'disabled': colors.bluegray[100],\n    'white': colors.blue[50],\n    'semitransparent': 'rgba(0, 0, 0, 0.3)',\n    'gray': colors.gray[200],\n    'clearWhite': '#fff',\n    'outline': colors.gray[400],\n  },\n}\n",
             ),
           ),
         );
@@ -8088,7 +8088,7 @@
             Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               'code',
               _extends({parentName: 'pre'}, {className: 'language-js'}),
-              'import { CircularProgressBar } from \'react-native-design-system\';\n\n<CircularProgressBar\n    activeColor="darkviolet"\n    passiveColor="darkgrey"\n    baseColor="white"\n    width={50}\n    percent={35}\n    radius={100}\n    duration={1200}\n  >\n',
+              'import { CircularProgressBar } from \'react-native-design-system\';\n\n<CircularProgressBar\n    activeColor="darkviolet"\n    passiveColor="darkgray"\n    baseColor="white"\n    width={50}\n    percent={35}\n    radius={100}\n    duration={1200}\n  >\n',
             ),
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
@@ -8132,7 +8132,7 @@
                 )('activeColor', 'darkviolet'),
                 passiveColor: Object(
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.color,
-                )('passiveColor', 'darkgrey'),
+                )('passiveColor', 'darkgray'),
                 baseColor: Object(
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.color,
                 )('baseColor', 'white'),
@@ -8169,7 +8169,7 @@
             )('activeColor', 'darkviolet'),
             passiveColor: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.color,
-            )('passiveColor', 'darkgrey'),
+            )('passiveColor', 'darkgray'),
             baseColor: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.color,
             )('baseColor', 'white'),
@@ -8196,7 +8196,7 @@
         (playground.parameters = {
           storySource: {
             source:
-              '<CircularProgressBar activeColor={color("activeColor", "darkviolet")} passiveColor={color("passiveColor", "darkgrey")} baseColor={color("baseColor", "white")} width={number(\'width\', 50)} percent={number(\'percent\', 35)} radius={number(\'radius\', 100)} duration={number(\'duration\', 1200)}>\n    <Text>Wow!</Text>\n  </CircularProgressBar>',
+              '<CircularProgressBar activeColor={color("activeColor", "darkviolet")} passiveColor={color("passiveColor", "darkgray")} baseColor={color("baseColor", "white")} width={number(\'width\', 50)} percent={number(\'percent\', 35)} radius={number(\'radius\', 100)} duration={number(\'duration\', 1200)}>\n    <Text>Wow!</Text>\n  </CircularProgressBar>',
           },
           decorators: [
             _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.withKnobs,
@@ -9995,7 +9995,7 @@
                     'clearWhite',
                     'disabled',
                     'semitransparent',
-                    'grey',
+                    'gray',
                     'white',
                     'outline',
                   ],
@@ -10076,7 +10076,7 @@
                 'clearWhite',
                 'disabled',
                 'semitransparent',
-                'grey',
+                'gray',
                 'white',
                 'outline',
               ],
@@ -10093,7 +10093,7 @@
         (playground.parameters = {
           storySource: {
             source:
-              "<Box space={select('space', ['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} background={select('background', ['background', 'clearWhite', 'disabled', 'semitransparent', 'grey', 'white', 'outline'], 'background')}>\n    <Button>\n      Press Me\n    </Button>    \n  </Box>",
+              "<Box space={select('space', ['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} background={select('background', ['background', 'clearWhite', 'disabled', 'semitransparent', 'gray', 'white', 'outline'], 'background')}>\n    <Button>\n      Press Me\n    </Button>    \n  </Box>",
           },
           decorators: [
             _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.withKnobs,
@@ -11824,7 +11824,7 @@
                 _ListItem__WEBPACK_IMPORTED_MODULE_8__.a,
                 {
                   chevron: !0,
-                  textColor: 'grey',
+                  textColor: 'gray',
                   subtitle: 'a generic subtitle',
                   mdxType: 'ListItem',
                 },
@@ -12102,15 +12102,15 @@
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
                 )(
                   'textColor',
-                  ['default', 'heading', 'subtle', 'grey'],
-                  'grey',
+                  ['default', 'heading', 'subtle', 'gray'],
+                  'gray',
                 ),
                 subtitleColor: Object(
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
                 )(
                   'subtitleColor',
-                  ['default', 'heading', 'subtle', 'grey'],
-                  'grey',
+                  ['default', 'heading', 'subtle', 'gray'],
+                  'gray',
                 ),
                 textAlign: Object(
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
@@ -12240,14 +12240,14 @@
       const textColor = () =>
         Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
           _ListItem__WEBPACK_IMPORTED_MODULE_8__.a,
-          {chevron: !0, textColor: 'grey', subtitle: 'a generic subtitle'},
+          {chevron: !0, textColor: 'gray', subtitle: 'a generic subtitle'},
           'Hey there!',
         );
       (textColor.storyName = 'textColor'),
         (textColor.parameters = {
           storySource: {
             source:
-              '<ListItem chevron textColor="grey" subtitle="a generic subtitle">\n        Hey there!\n    </ListItem>',
+              '<ListItem chevron textColor="gray" subtitle="a generic subtitle">\n        Hey there!\n    </ListItem>',
           },
         });
       const textAlign = () =>
@@ -12414,13 +12414,13 @@
             ),
             textColor: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
-            )('textColor', ['default', 'heading', 'subtle', 'grey'], 'grey'),
+            )('textColor', ['default', 'heading', 'subtle', 'gray'], 'gray'),
             subtitleColor: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
             )(
               'subtitleColor',
-              ['default', 'heading', 'subtle', 'grey'],
-              'grey',
+              ['default', 'heading', 'subtle', 'gray'],
+              'gray',
             ),
             textAlign: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
@@ -12435,7 +12435,7 @@
         (playground.parameters = {
           storySource: {
             source:
-              "<ListItem chevron={boolean('chevron', true)} disabled={boolean('disabled', false)} size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} space={select('space', ['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} textColor={select('textColor', ['default', 'heading', 'subtle', 'grey'], 'grey')} subtitleColor={select('subtitleColor', ['default', 'heading', 'subtle', 'grey'], 'grey')} textAlign={select('center', ['auto', 'left', 'center', 'right', 'justify'], 'left')}>\n    {text('children', 'Play around wit ListItem')}\n  </ListItem>",
+              "<ListItem chevron={boolean('chevron', true)} disabled={boolean('disabled', false)} size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} space={select('space', ['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} textColor={select('textColor', ['default', 'heading', 'subtle', 'gray'], 'gray')} subtitleColor={select('subtitleColor', ['default', 'heading', 'subtle', 'gray'], 'gray')} textAlign={select('center', ['auto', 'left', 'center', 'right', 'justify'], 'left')}>\n    {text('children', 'Play around wit ListItem')}\n  </ListItem>",
           },
           decorators: [
             _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.withKnobs,
@@ -13413,7 +13413,7 @@
                     {
                       name: 'crosshair',
                       size: 22,
-                      color: 'grey',
+                      color: 'gray',
                       mdxType: 'Feather',
                     },
                   ),
@@ -13804,7 +13804,7 @@
             placeholder: 'Search for location',
             leftIcon: Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
               react_native_vector_icons_Feather__WEBPACK_IMPORTED_MODULE_6___default.a,
-              {name: 'crosshair', size: 22, color: 'grey'},
+              {name: 'crosshair', size: 22, color: 'gray'},
             ),
             value: '',
             onChangeText: text =>
@@ -13817,7 +13817,7 @@
         (icon.parameters = {
           storySource: {
             source:
-              '<SearchBar outline placeholder="Search for location" leftIcon={<Feather name="crosshair" size={22} color="grey" />} value="" onChangeText={text => action(\'pressed\')} />',
+              '<SearchBar outline placeholder="Search for location" leftIcon={<Feather name="crosshair" size={22} color="gray" />} value="" onChangeText={text => action(\'pressed\')} />',
           },
         });
       const playground = () =>
@@ -14161,7 +14161,7 @@
                 ),
                 Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
                   _Text__WEBPACK_IMPORTED_MODULE_5__.a,
-                  {color: 'grey', mdxType: 'Text'},
+                  {color: 'gray', mdxType: 'Text'},
                   'Hello Design System',
                 ),
               ),
@@ -14230,7 +14230,7 @@
                 ),
                 color: Object(
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
-                )('color', ['default', 'heading', 'subtle', 'grey'], 'grey'),
+                )('color', ['default', 'heading', 'subtle', 'gray'], 'gray'),
                 mdxType: 'Text',
               },
               'Hello World',
@@ -14307,7 +14307,7 @@
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(
             _Text__WEBPACK_IMPORTED_MODULE_5__.a,
-            {color: 'grey'},
+            {color: 'gray'},
             'Hello Design System',
           ),
         );
@@ -14315,7 +14315,7 @@
         (color.parameters = {
           storySource: {
             source:
-              '<Stack>\n      <Text color="default">\n        Hello Design System\n      </Text>\n      <Text color="heading">\n        Hello Design System\n      </Text>\n      <Text color="subtle">\n        Hello Design System\n      </Text>\n      <Text color="grey">\n        Hello Design System\n      </Text>\n    </Stack>',
+              '<Stack>\n      <Text color="default">\n        Hello Design System\n      </Text>\n      <Text color="heading">\n        Hello Design System\n      </Text>\n      <Text color="subtle">\n        Hello Design System\n      </Text>\n      <Text color="gray">\n        Hello Design System\n      </Text>\n    </Stack>',
           },
         });
       const playground = () =>
@@ -14339,7 +14339,7 @@
             ),
             color: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.select,
-            )('color', ['default', 'heading', 'subtle', 'grey'], 'grey'),
+            )('color', ['default', 'heading', 'subtle', 'gray'], 'gray'),
           },
           'Hello World',
         );
@@ -14347,7 +14347,7 @@
         (playground.parameters = {
           storySource: {
             source:
-              "<Text size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} color={select('color', ['default', 'heading', 'subtle', 'grey'], 'grey')}>\n  Hello World\n  </Text>",
+              "<Text size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')} color={select('color', ['default', 'heading', 'subtle', 'gray'], 'gray')}>\n  Hello World\n  </Text>",
           },
           decorators: [
             _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.withKnobs,
@@ -14965,8 +14965,8 @@
             default: colors.a.black[300],
             heading: colors.a.black[800],
             subtle: colors.a.black[100],
-            grey: colors.a.grey[600],
-            disabled: colors.a.bluegrey[400],
+            gray: colors.a.gray[600],
+            disabled: colors.a.bluegray[400],
             white: colors.a.blue[50],
           },
           brandColor: {
@@ -14974,12 +14974,12 @@
             secondary: colors.a.yellow[800],
             tertiary: colors.a.red[600],
             background: '#f8f8f8',
-            disabled: colors.a.bluegrey[100],
+            disabled: colors.a.bluegray[100],
             white: colors.a.blue[50],
             semitransparent: 'rgba(0, 0, 0, 0.3)',
-            grey: colors.a.grey[200],
+            gray: colors.a.gray[200],
             clearWhite: '#fff',
-            outline: colors.a.grey[400],
+            outline: colors.a.gray[400],
           },
         },
         decorators = [
@@ -15683,7 +15683,7 @@
             ),
             textColor: Object(dist.select)(
               'textColor',
-              ['heading', 'default', 'subtle', 'grey'],
+              ['heading', 'default', 'subtle', 'gray'],
               'default',
             ),
             onPress: function onPress() {
@@ -15920,7 +15920,7 @@
                 ),
                 Object(esm.mdx)(
                   CheckBox.a,
-                  {textColor: 'grey', mdxType: 'CheckBox'},
+                  {textColor: 'gray', mdxType: 'CheckBox'},
                   'Hello CheckBox',
                 ),
               ),
@@ -16061,13 +16061,13 @@
           Object(esm.mdx)(CheckBox.a, {textColor: 'heading'}, 'Hello CheckBox'),
           Object(esm.mdx)(CheckBox.a, {textColor: 'para'}, 'Hello CheckBox'),
           Object(esm.mdx)(CheckBox.a, {textColor: 'subtle'}, 'Hello CheckBox'),
-          Object(esm.mdx)(CheckBox.a, {textColor: 'grey'}, 'Hello CheckBox'),
+          Object(esm.mdx)(CheckBox.a, {textColor: 'gray'}, 'Hello CheckBox'),
         );
       (textColor.storyName = 'textColor'),
         (textColor.parameters = {
           storySource: {
             source:
-              '<Stack>\n      <CheckBox textColor="heading">\n        Hello CheckBox\n      </CheckBox>\n      <CheckBox textColor="default">\n        Hello CheckBox\n      </CheckBox>\n      <CheckBox textColor="subtle">\n        Hello CheckBox\n      </CheckBox>\n      <CheckBox textColor="grey">\n        Hello CheckBox\n      </CheckBox>\n    </Stack>',
+              '<Stack>\n      <CheckBox textColor="heading">\n        Hello CheckBox\n      </CheckBox>\n      <CheckBox textColor="default">\n        Hello CheckBox\n      </CheckBox>\n      <CheckBox textColor="subtle">\n        Hello CheckBox\n      </CheckBox>\n      <CheckBox textColor="gray">\n        Hello CheckBox\n      </CheckBox>\n    </Stack>',
           },
         });
       const icons = () =>
@@ -16303,8 +16303,8 @@
           label: Object(dist.text)('label', 'Username'),
           labelColor: Object(dist.select)(
             'labelColor',
-            ['default', 'heading', 'subtle', 'grey'],
-            'grey',
+            ['default', 'heading', 'subtle', 'gray'],
+            'gray',
           ),
           placeholder: Object(dist.text)('placeholder', 'Enter Username'),
           error: Object(dist.boolean)('error', !1),
@@ -16660,7 +16660,7 @@
                 leftIcon: Object(esm.mdx)(Feather_default.a, {
                   name: 'user',
                   size: 22,
-                  color: 'grey',
+                  color: 'gray',
                   mdxType: 'Feather',
                 }),
                 value: '',
@@ -16855,7 +16855,7 @@
           leftIcon: Object(esm.mdx)(Feather_default.a, {
             name: 'user',
             size: 22,
-            color: 'grey',
+            color: 'gray',
           }),
           value: '',
           onChangeText: text => Object(addon_actions_dist.action)('pressed'),
@@ -16864,7 +16864,7 @@
         (icon.parameters = {
           storySource: {
             source:
-              '<Input outline placeholder="Enter username" leftIcon={<Feather name="user" size={22} color="grey" />} value="" onChangeText={text => action(\'pressed\')} />',
+              '<Input outline placeholder="Enter username" leftIcon={<Feather name="user" size={22} color="gray" />} value="" onChangeText={text => action(\'pressed\')} />',
           },
         });
       const playground = () => Object(esm.mdx)(ExampleInput, null);
@@ -17063,7 +17063,7 @@
             ),
             textColor: Object(dist.select)(
               'textColor',
-              ['heading', 'default', 'subtle', 'grey'],
+              ['heading', 'default', 'subtle', 'gray'],
               'default',
             ),
             selectItem: function selectItem(id) {
@@ -17523,7 +17523,7 @@
                   RadioButton.b,
                   {
                     activeId: 'a',
-                    textColor: 'grey',
+                    textColor: 'gray',
                     selectItem: Object(addon_actions_dist.action)('pressed'),
                     mdxType: 'RadioButton',
                   },
@@ -17800,7 +17800,7 @@
             RadioButton.b,
             {
               activeId: 'a',
-              textColor: 'grey',
+              textColor: 'gray',
               selectItem: Object(addon_actions_dist.action)('pressed'),
             },
             Object(esm.mdx)(RadioButton.a, {id: 'a'}, 'Option A'),
@@ -17810,7 +17810,7 @@
         (textColor.parameters = {
           storySource: {
             source:
-              '<Stack>\n      <RadioButton activeId="a" textColor="heading" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="default" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="subtle" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="grey" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n    </Stack>',
+              '<Stack>\n      <RadioButton activeId="a" textColor="heading" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="default" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="subtle" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="gray" selectItem={action("pressed")}>\n        <RadioItem id="a">\n          Option A\n        </RadioItem>\n      </RadioButton>\n    </Stack>',
           },
         });
       const icons = () =>
@@ -19076,7 +19076,7 @@
             count < 1 &&
               buttonStyle.push({
                 backgroundColor:
-                  _util_colors__WEBPACK_IMPORTED_MODULE_8__.a.bluegrey[200],
+                  _util_colors__WEBPACK_IMPORTED_MODULE_8__.a.bluegray[200],
                 elevation: 0,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -19256,7 +19256,7 @@
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor:
-            _util_colors__WEBPACK_IMPORTED_MODULE_8__.a.bluegrey[200],
+            _util_colors__WEBPACK_IMPORTED_MODULE_8__.a.bluegray[200],
         },
       });
       (MenuAddButton.__docgenInfo = {
@@ -20340,7 +20340,7 @@
           800: '#4e342e',
           900: '#3e2723',
         },
-        grey: {
+        gray: {
           50: '#fafafa',
           100: '#f5f5f5',
           200: '#eeeeee',
@@ -20352,7 +20352,7 @@
           800: '#424242',
           900: '#212121',
         },
-        bluegrey: {
+        bluegray: {
           50: '#eceff1',
           100: '#cfd8dc',
           200: '#b0bec5',
