@@ -5,6 +5,8 @@ import {SizeType} from './size-type';
 import {WidthType} from './width-type';
 import {LengthType} from './length-type';
 import {IconNode} from './icon-type';
+import { colorTypes } from './colors-type';
+
 
 interface ButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -14,7 +16,7 @@ interface ButtonProps extends AccessibilityProps {
   size?: SizeType;
   width?: WidthType;
   onPress: () => void;
-  color?: string;
+  color?: keyof colorTypes | string;
   borderColor?: string;
   round?: boolean;
   outline?: boolean;

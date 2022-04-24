@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../util/ThemeProvider';
 import { removeAccessibilityPropsFromProps } from '../util/accessibility';
@@ -79,12 +79,17 @@ const getChildrenStyle = (
 
 const Stack = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
-  const { direction, style, children, ...otherProps } = props;
+  const Container = props.scrollable ? ScrollView : View;
+  const {direction, style, children, ...otherProps} = props;
   return (
-    <View
+    <Container
       ref={ref}
       {...otherProps}
-      style={[direction === 'horizontal' ? styles.container : {}, style]}>
+      style={[
+        {backgroundColor: theme.colors[props.background]},
+        props.direction === 'horizontal' ? styles.container : {},
+        props.style,
+      ]}>
       {React.Children.toArray(children).map((item, index) => (
         <View
           style={getChildrenStyle(
@@ -95,7 +100,7 @@ const Stack = React.forwardRef((props, ref) => {
           {item}
         </View>
       ))}
-    </View>
+    </Container>
   );
 });
 
@@ -135,6 +140,8 @@ Stack.propTypes = {
     .isRequired,
   direction: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
   cropEndSpace: PropTypes.bool,
+  background: PropTypes.string,
+  scrollable: PropTypes.bool,
 };
 
 Stack.defaultProps = {
@@ -143,6 +150,8 @@ Stack.defaultProps = {
   verticalSpace: 'none',
   cropEndSpace: false,
   direction: 'vertical',
+  scrollable: false,
+  background: 'transparent',
 };
 
 const styles = StyleSheet.create({

@@ -6,13 +6,13 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, space, background}) => {
   return {
     padding: theme.layoutSpace[space],
-    background: theme.brandColor[background],
+    background: theme.colors[background],
     alignItems: 'center',
     justifyContent: 'center',
   };
 };
 
-const Box = (props) => {
+const Box = props => {
   const theme = useThemeContext();
   return (
     <View
@@ -45,7 +45,7 @@ Box.propTypes = {
 
 Box.defaultProps = {
   space: 'medium',
-  background: 'clearWhite',
+  background: 'transparent',
 };
 
 export default Box;

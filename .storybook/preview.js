@@ -1,10 +1,12 @@
 import React from 'react';
-import { ThemeProvider, theme } from '../src';
+import {ThemeProvider, theme} from '../src';
+import {withKnobs} from '@storybook/addon-knobs';
 
 export const decorators = [
-    (Story) => (
-        <ThemeProvider value={theme}>
-            <Story />
-        </ThemeProvider>
-    ),
+  withKnobs,
+  Story => (
+    <ThemeProvider theme={theme}>
+      <Story />
+    </ThemeProvider>
+  ),
 ];

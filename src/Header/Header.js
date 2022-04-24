@@ -16,7 +16,7 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, color}) => {
   const headerStyle = [styles.container];
   headerStyle.push({
-    backgroundColor: theme.brandColor[color],
+    backgroundColor: theme.colors[color],
   });
   return headerStyle;
 };
@@ -24,7 +24,7 @@ const getContainerStyle = ({theme, color}) => {
 const getTextStyle = ({theme, color, textAlign, fontSize}) => {
   const textStyle = [styles.text];
   textStyle.push({
-    backgroundColor: theme.brandColor[color],
+    backgroundColor: theme.colors[color],
     fontSize: theme.fontSize[fontSize],
   });
   if (textAlign) {
@@ -44,11 +44,11 @@ const Header = ({style, textStyle, ...props}) => {
       {...extractAccessibilityPropsFromProps(props)}
       style={[
         styles.safeAreaView,
-        {backgroundColor: theme.brandColor[props.barColor]},
+        {backgroundColor: theme.colors[props.barColor]},
       ]}>
       <StatusBar
         barStyle={props.barStyle}
-        backgroundColor={theme.brandColor[props.barColor]}
+        backgroundColor={theme.colors[props.barColor]}
       />
       <View
         style={StyleSheet.flatten([

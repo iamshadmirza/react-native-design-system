@@ -9,6 +9,7 @@ import {IconNode} from './icon-type';
 import {SizeType} from './size-type';
 import {ListSpaceType} from './space-type';
 import {TextAlignType} from './text-align-type';
+import { colorTypes } from './colors-type';
 
 interface ListItemProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -18,8 +19,8 @@ interface ListItemProps extends AccessibilityProps {
   textAlign?: TextAlignType;
   children: string;
   subtitle?: string;
-  background?: string;
-  textColor?: string;
+  background?: keyof colorTypes | string,
+  textColor?: keyof colorTypes | string,
   subtitleColor?: string;
   chevronColor?: string;
   size?: SizeType;

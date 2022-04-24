@@ -41,7 +41,7 @@ You can also pass a `background` color. Color string should be present inside `b
 
 <Preview>
   <Story name="background">
-    <Box background="disabled">
+    <Box background="backgroundLight">
       <Button>
         Press Me
       </Button>    
@@ -56,7 +56,7 @@ Play with Box in Canvas mode.
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
  <Box
   space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-  background={select('background', ['background', 'clearWhite', 'disabled', 'semitransparent', 'grey', 'white', 'outline'], 'background')}>
+  background={select('background', ['backgroundDark','backgroundLight', 'foreground','white', 'disabled', 'semitransparent', 'transparent', 'black'])}>
     <Button>
       Press Me
     </Button>    

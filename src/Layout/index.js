@@ -5,5 +5,6 @@ import StackList from './StackList';
 import InlineList from './InlineList';
 import TileList from './TileList';
 import Flex from './Flex';
+import Spacer from './Spacer';
 
-export {Stack, Inline, Box, StackList, InlineList, TileList, Flex};
+export {Stack, Inline, Box, StackList, InlineList, TileList, Flex, Spacer};

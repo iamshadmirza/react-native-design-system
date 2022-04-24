@@ -57,16 +57,13 @@ Uses color defined in `textColor` in theme.
 <Preview>
   <Story name="color">
      <Stack>
-      <Text color="default">
-        Hello Design System
-      </Text>
       <Text color="heading">
         Hello Design System
       </Text>
-      <Text color="subtle" >
+      <Text color="para" >
         Hello Design System
       </Text>
-      <Text color="grey">
+      <Text color="subtle">
         Hello Design System
       </Text>
     </Stack>
@@ -82,7 +79,7 @@ Play with Text in Canvas mode.
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
   <Text
     size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-    color={select('color', ['default', 'heading', 'subtle', 'grey'], 'grey')}
+    color={select('color', ['heading', 'para', 'subtle'], 'heading')}
   >
   Hello World
   </Text>

@@ -12,7 +12,7 @@ interface BadgeProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string | number;
-  color?: colorsType | string;
+  color?: keyof colorsType | string;
   size?: SizeType;
   mini?: boolean;
   onPress?: () => void;

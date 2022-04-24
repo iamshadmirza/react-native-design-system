@@ -7,21 +7,22 @@ import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 const getContainerStyle = ({
   theme,
   round,
-  outlineColor,
   outline,
-  background,
+  outlineColor,
   error,
+  background,
 }) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
-    borderBottomColor: theme.brandColor[outlineColor],
+    borderBottomColor: theme.colors[outlineColor],
   });
   if (outline) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      borderColor: theme.brandColor[outlineColor],
-      backgroundColor: theme.brandColor[background],
+      borderColor: theme.colors[outlineColor],
+      borderBottomColor: theme.colors[outlineColor],
+      backgroundColor: theme.colors[background],
       borderRadius: 5,
     });
   }
@@ -29,14 +30,16 @@ const getContainerStyle = ({
     inputContainerStyle.push({
       borderBottomWidth: 0,
       borderRadius: 50,
-      backgroundColor: theme.brandColor[background],
+      backgroundColor: theme.colors[background],
     });
   }
   if (outline && round) {
     inputContainerStyle.push({
       borderWidth: 1,
       borderBottomWidth: 1,
-      backgroundColor: theme.brandColor[background],
+      borderColor: theme.colors[outlineColor],
+      borderBottomColor: theme.colors[outlineColor],
+      backgroundColor: theme.colors[background],
     });
   }
   if (error) {
@@ -53,8 +56,8 @@ const getInputStyle = ({theme, size, textColor, textAlign}) => {
   const inputStyle = [styles.input];
   inputStyle.push({
     fontSize: theme.fontSize[size],
+    color: theme.colors[textColor],
     marginVertical: 0,
-    color: theme.textColor[textColor],
     textAlign,
   });
   return inputStyle;
@@ -67,7 +70,7 @@ const getLabelStyle = ({theme, size, labelColor}) => {
       fontWeight: 'bold',
       paddingLeft: 2.5,
       paddingBottom: 5,
-      color: theme.textColor[labelColor],
+      color: theme.colors[labelColor],
     },
   ];
   return labelStyle;
@@ -115,6 +118,7 @@ const Input = React.forwardRef((props, ref) => {
           {...props}
           ref={ref}
           style={getInputStyle({...props, theme})}
+          placeholderTextColor={theme.colors.subtle}
           placeholder={props.floatingLabel ? props.label : props.placeholder}
         />
         {props.rightIcon && (
@@ -169,11 +173,11 @@ Input.propTypes = {
 
 Input.defaultProps = {
   placeholder: 'Type here',
-  textColor: 'default',
-  color: 'outline',
+  textColor: 'para',
+  color: 'subtle',
   size: 'medium',
-  labelColor: 'grey',
-  background: 'background',
+  labelColor: 'subtle',
+  background: 'foreground',
   outlineColor: 'outline',
   floatingLabel: false,
   textAlign: 'left',

@@ -162,11 +162,6 @@ Pass `color` to select from the available brand colors.
           Option A
         </RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" color="tertiary" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
-      </RadioButton>
     </Stack>
   </Story>
 </Preview>
@@ -182,7 +177,7 @@ Pass `textColor` to select from available brand text colors.
           Option A
         </RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" textColor="default" selectItem={action("pressed")}>
+      <RadioButton activeId="a" textColor="para" selectItem={action("pressed")}>
         <RadioItem id="a">
           Option A
         </RadioItem>
@@ -192,9 +187,14 @@ Pass `textColor` to select from available brand text colors.
           Option A
         </RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" textColor="grey" selectItem={action("pressed")}>
+      <RadioButton activeId="a" textColor="success" selectItem={action("pressed")}>
         <RadioItem id="a">
-          Option A
+          Success
+        </RadioItem>
+      </RadioButton>
+      <RadioButton activeId="a" textColor="warning" selectItem={action("pressed")}>
+        <RadioItem id="a">
+          Warning
         </RadioItem>
       </RadioButton>
     </Stack>

@@ -15,8 +15,8 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, space, background}) => {
   const itemStyle = [styles.container];
   itemStyle.push({
-    borderColor: theme.brandColor.outline,
-    backgroundColor: theme.brandColor[background],
+    borderColor: theme.colors.outline,
+    backgroundColor: theme.colors[background],
     padding: theme.listItemSpace[space],
   });
   return itemStyle;
@@ -26,7 +26,7 @@ const getTextStyle = ({theme, size, textColor, textAlign}) => {
   return {
     fontSize: theme.fontSize[size],
     fontWeight: '500',
-    color: theme.textColor[textColor],
+    color: theme.colors[textColor],
     textAlign: textAlign,
   };
 };
@@ -35,7 +35,7 @@ const getSubtitleStyle = ({theme, size, subtitleColor, textAlign}) => {
   return {
     fontSize: theme.fontSize[size] * 0.7,
     fontWeight: '400',
-    color: theme.textColor[subtitleColor],
+    color: theme.colors[subtitleColor],
     textAlign: textAlign,
     marginTop: 3,
   };
@@ -75,7 +75,7 @@ const renderRightChild = ({
           <Feather
             name="chevron-right"
             size={theme.iconSize[size]}
-            color={theme.brandColor[chevronColor]}
+            color={theme.colors[chevronColor]}
           />
         </View>
       )}
@@ -158,10 +158,10 @@ ListItem.propTypes = {
 
 ListItem.defaultProps = {
   children: 'Pass children to render',
-  background: 'clearWhite',
-  textColor: 'subtle',
-  subtitleColor: 'grey',
-  chevronColor: 'outline',
+  background: 'foreground',
+  textColor: 'para',
+  subtitleColor: 'subtle',
+  chevronColor: 'para',
   textAlign: 'left',
   space: 'medium',
   size: 'medium',

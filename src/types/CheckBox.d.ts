@@ -6,6 +6,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {SizeType} from './size-type';
+import { colorTypes } from './colors-type';
 
 interface CheckBoxProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -14,7 +15,7 @@ interface CheckBoxProps extends AccessibilityProps {
   checked?: boolean;
   iconRight?: boolean;
   color?: string;
-  textColor?: string;
+  textColor?: keyof colorTypes | string,
   size?: SizeType;
   onPress: () => void;
   checkedIcon?: React.ReactElement;

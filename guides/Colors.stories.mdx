@@ -1,6 +1,6 @@
 import { Meta, Preview, Story, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 import { FlatList } from 'react-native';
-import color from '../src/util/colors';
+import colors from '../src/util/colors';
 
 <Meta title="Guide|Colors" />
 
@@ -11,24 +11,20 @@ These are all the colors that you can use.
 //usage
 import { colors } from 'react-native-design-system';
 
-theme.brandColor.primary = color.lime['A700'];
+theme.colors.primary = colors['lime-A700'];
 ```
 <ColorPalette>
   <FlatList
-    data={Object.keys(color)}
-    keyExtractor={(colorGroup, index) => index.toString()}
-    renderItem={({ item: colorGroup }) => (
-      <FlatList
-        data={Object.keys(color[colorGroup])}
-        keyExtractor={hex => hex}
-        renderItem={({ item: hex }) => (
-          <ColorItem
-            title={`colors.${colorGroup}['${hex}']`}
-            subtitle={colorGroup.toUpperCase()}
-            colors={[color[colorGroup][hex]]}
-          />
-        )}
-      />
-    )}
+    data={Object.keys(colors).filter(item => typeof colors[item] === 'string')}
+    keyExtractor={(hex, index) => index.toString()}
+    renderItem={({ item: shade }) => {
+      return (
+        <ColorItem
+          title={shade}
+          subtitle={shade.toUpperCase().split('-').join(' ')}
+          colors={[colors[shade]]}
+        />
+      )
+    }}
   />
 </ColorPalette>

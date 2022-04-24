@@ -45,10 +45,10 @@ const InlineList = React.forwardRef((props, ref) => {
       horizontal
       {...props}
       style={StyleSheet.flatten([
-        {backgroundColor: theme.brandColor.background},
+        {backgroundColor: theme.colors.background},
         props.style,
       ])}
-      renderItem={(child) => (
+      renderItem={child => (
         <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>

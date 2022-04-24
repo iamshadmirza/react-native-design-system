@@ -1,13 +1,15 @@
 import React from 'react';
 import {TextProps as RNTextProps} from 'react-native';
+import { colorTypes } from './colors-type';
 
 import {SizeType} from './size-type';
 
 interface TextProps extends RNTextProps {
   size?: SizeType | string;
-  color?: string;
+  color?: keyof colorTypes | string;
   scale?: boolean;
   fontWeight?: string;
+  fontFamily?: string;
   textAlign?: 'left' | 'center' | 'right';
 }
 

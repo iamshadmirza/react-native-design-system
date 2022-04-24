@@ -18,7 +18,7 @@ const getTextStyle = ({ theme, size, textColor, iconRight }) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
-      color: theme.textColor[textColor],
+      color: theme.colors[textColor],
       marginLeft: 10,
       marginVertical: 2.5,
     },
@@ -39,7 +39,7 @@ const renderIcon = ({ theme, size, color, id, activeId, ...props }) => {
         <Ionicons
           name="ios-radio-button-on"
           size={theme.fontSize[size] * 1.2}
-          color={theme.brandColor[color]}
+          color={theme.colors[color]}
         />
       )
     );
@@ -49,7 +49,7 @@ const renderIcon = ({ theme, size, color, id, activeId, ...props }) => {
         <Ionicons
           name="ios-radio-button-off"
           size={theme.fontSize[size] * 1.2}
-          color={theme.brandColor[color]}
+          color={theme.colors[color]}
         />
       )
     );
@@ -109,7 +109,7 @@ RadioButton.propTypes = {
 RadioButton.defaultProps = {
   size: 'medium',
   color: 'primary',
-  textColor: 'default',
+  textColor: 'para',
 };
 
 const styles = StyleSheet.create({

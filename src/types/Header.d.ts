@@ -8,6 +8,7 @@ import {
 import {IconNode} from './icon-type';
 import {SizeType} from './size-type';
 import {TextAlignType} from './text-align-type';
+import { colorTypes } from './colors-type';
 
 interface HeaderProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -15,7 +16,7 @@ interface HeaderProps extends AccessibilityProps {
   textAlign?: TextAlignType;
   fontSize?: SizeType;
   children?: string;
-  color?: string;
+  color?: keyof colorTypes | string,
   leftIcon?: IconNode;
   onleftIconPress?: () => void;
   rightIcon?: IconNode;

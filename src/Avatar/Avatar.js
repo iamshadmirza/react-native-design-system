@@ -15,7 +15,7 @@ import {useThemeContext} from '../util/ThemeProvider';
 const getContainerStyle = ({theme, source, square, rounded, size}) => {
   const avatarStyle = [styles.container];
   avatarStyle.push({
-    backgroundColor: '#f4f4f4',
+    backgroundColor: theme.colors.backgroundLight,
     padding: theme.size[size],
     width: theme.avatarSize[size],
     height: theme.avatarSize[size],
@@ -46,7 +46,7 @@ const getEditIconStyle = ({theme, size}) => {
       width: theme.avatarSize[size] / 4,
       height: theme.avatarSize[size] / 4,
       borderRadius: theme.avatarSize[size] / 8,
-      backgroundColor: theme.brandColor.disabled,
+      backgroundColor: theme.colors.backgroundDark,
     },
   ];
   return iconStyle;
@@ -56,7 +56,7 @@ const getTitleStyle = ({theme, size}) => {
   return {
     fontWeight: '600',
     fontSize: theme.avatarSize[size] / 4,
-    color: theme.textColor.disabled,
+    color: theme.colors.para,
   };
 };
 
@@ -103,7 +103,7 @@ const Avatar = ({style, ...props}) => {
           <Feather
             name="edit-2"
             size={theme.avatarSize[props.size] / 8}
-            color={props.editIconColor || theme.textColor.disabled}
+            color={props.editIconColor || theme.colors.para}
           />
         </View>
       )}

@@ -44,10 +44,10 @@ const StackList = React.forwardRef((props, ref) => {
       ref={ref}
       {...props}
       style={StyleSheet.flatten([
-        {backgroundColor: theme.brandColor.background},
+        {backgroundColor: theme.colors[props.background]},
         props.style,
       ])}
-      renderItem={(child) => (
+      renderItem={child => (
         <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>
@@ -78,6 +78,7 @@ StackList.propTypes = {
     'xlarge',
     'xxlarge',
   ]),
+  background: PropTypes.string,
   cropEndSpace: PropTypes.bool,
   ...FlatList.propTypes,
 };
@@ -86,6 +87,7 @@ StackList.defaultProps = {
   space: 'medium',
   horizontalSpace: 'none',
   cropEndSpace: true,
+  background: 'backgroundDark',
 };
 
 export default StackList;

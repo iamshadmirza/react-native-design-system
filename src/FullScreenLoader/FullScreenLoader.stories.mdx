@@ -1,7 +1,8 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
 import { withKnobs, select, boolean, color } from "@storybook/addon-knobs";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import FullScreenLoader from './FullScreenLoader';
+import {Text} from '../Text'
 
 <Meta title="FullScreenLoader" component={FullScreenLoader} />
 
@@ -40,11 +41,11 @@ Play with FullScreenLoader in Canvas mode.
 
 <Preview>
   <Story name="playground" parameters={{ decorators: [withKnobs] }}>
-    <View style={{ height: 480, width: 270}}>
+    <View style={{ height: 480, width: 270, borderWidth: 1 }}>
       <FullScreenLoader 
         loading={boolean('loading', true)}
         size={select('size', ['small', 'large'])}
-        background={select('background', ['primary', 'secondary', 'tertiary', 'disabled', 'semitransparent'], 'semitransparent')}
+        background={select('background', ['backgroundDark', 'backgroundLight', 'foreground'], 'backgroundLight')}
         indicatorColor={color('indicatorColor', '#1e88e5')}
       >
       <Text>Loading...</Text>

@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select } from "@storybook/addon-knobs";
+import { withKnobs, select, boolean } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -104,7 +104,9 @@ Play with Stack in Canvas mode.
 <Story name="playground" parameters={{ decorators: [withKnobs] }}>
  <Stack
   space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+  scrollable={boolean('scrollable', false)}
   horizontalSpace={select('horizontalSpace', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+  direction={select('direction', ['vertical', 'horizontal'], 'vertical')}
   >
     <Input
       placeholder="Enter username"

@@ -15,7 +15,7 @@ const getContainerStyle = ({theme, size, color}) => {
     ...styles.container,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.brandColor[color],
+    backgroundColor: theme.colors[color],
     width: theme.actionButtonSize[size],
     height: theme.actionButtonSize[size],
     borderRadius: theme.actionButtonSize[size] / 2,
@@ -37,7 +37,7 @@ const ActionButton = ({style, ...props}) => {
           <Feather
             name="plus"
             size={theme.iconSize[props.size]}
-            color={props.iconColor || theme.brandColor.white}
+            color={props.iconColor || theme.colors.white}
           />
         )}
       </View>
