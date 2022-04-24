@@ -24,8 +24,8 @@ const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
   if (count < 1) {
     buttonStyle.push({
       backgroundColor: isDarkMode
-        ? colors['bluegrey-500']
-        : colors['bluegrey-200'],
+        ? colors['bluegray-500']
+        : colors['bluegray-200'],
       elevation: 0,
       justifyContent: 'center',
       alignItems: 'center',
@@ -96,7 +96,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
           {
             backgroundColor:
               (textStyle && textStyle.backgroundColor) ||
-              (isDarkMode ? colors['bluegrey-500'] : colors['bluegrey-200']),
+              (isDarkMode ? colors['bluegray-500'] : colors['bluegray-200']),
           },
         ]}>
         <Text style={[getTextStyle({...props, theme}), textStyle]}>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors['bluegrey-200'],
+    backgroundColor: colors['bluegray-200'],
   },
 });
 

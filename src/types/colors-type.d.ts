@@ -1,4 +1,7 @@
 type colors =
+  | 'stone'
+  | 'slate'
+  | 'zinc'
   | 'red'
   | 'pink'
   | 'purple'
@@ -12,13 +15,23 @@ type colors =
   | 'lightgreen'
   | 'lime'
   | 'yellow'
-  | 'orange'
   | 'amber'
+  | 'orange'
   | 'deeporange'
   | 'brown'
-  | 'grey'
-  | 'bluegrey'
-  | 'black';
+  | 'green'
+  | 'emerald'
+  | 'sky'
+  | 'voilet'
+  | 'fuchsia'
+  | 'rose'
+  | 'gray'
+  | 'neutral'
+  | 'lightBlue'
+  | 'warmGray'
+  | 'coolGray'
+  | 'blueGray';
+
 type shades =
   | '50'
   | '100'
@@ -29,12 +42,7 @@ type shades =
   | '600'
   | '700'
   | '800'
-  | '900'
-  | 'A100'
-  | 'A200'
-  | 'A300'
-  | 'A400'
-  | 'A700';
+  | '900';
 
 type brandColors =
   | 'primary'

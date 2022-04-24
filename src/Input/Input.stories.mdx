@@ -1,6 +1,6 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean, text } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean, text} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Input from './Input';
@@ -9,24 +9,29 @@ import ExampleInput from './Input.example.js';
 <Meta title="Input" component={Input} />
 
 # Input
+
 A Input is a wrapper around `TextInput` with commonly used styles and easy to make customization.
 
 # Usage
-```js
-import { Input } from 'react-native-design-system';
 
- <Input
+```js
+import {Input} from 'react-native-design-system';
+
+<Input
   placeholder="Start typing here"
   value=""
   onChangeText={text => handleChange(text)}
-/>
+/>;
 ```
 
 # Props
+
 <Props of={Input} />
 
 # Type
+
 There are three types of button mainly: `default`, `round`, and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.
+
 <Preview>
   <Story name="type">
     <Stack>
@@ -59,53 +64,58 @@ There are three types of button mainly: `default`, `round`, and `outline`. You c
 </Preview>
 
 # Label
+
 Pass `label` to render a label string above input. You can customise label using `labelColor` and `labelStyle` props.
 
 <Preview>
   <Story name="label">
     <Input
-        outline
-        label="Username"
-        placeholder="Enter Username"
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      label="Username"
+      placeholder="Enter Username"
+      value=""
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Error and Error Caption
+
 Pass `error={true}` when you want to show error and pass `errorCaption` string to render the string below input to notify user about the error.
 
 <Preview>
   <Story name="error">
     <Input
-        outline
-        error={true}
-        placeholder="Enter username"
-        value=""
-        errorCaption="Please check the username again"
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      error={true}
+      placeholder="Enter username"
+      value=""
+      errorCaption="Please check the username again"
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Color
+
 Pass `color` from brandColor to change outline color of input. Background is managed by `background` property inside theme. You can also directly pass a `background` prop with one of the colors in `brandColor`.
 
 <Preview>
   <Story name="color">
     <Input
-        outline
-        color="secondary"
-        placeholder="Enter username"
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      color="secondary"
+      placeholder="Enter username"
+      value=""
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Disabled
+
 `disabled={true}` property restrict any kind of action on input.
+
 <Preview>
   <Story name="disabled">
     <Input
@@ -118,7 +128,8 @@ Pass `color` from brandColor to change outline color of input. Background is man
   </Story>
 </Preview>
 
-# Size 
+# Size
+
 As usual, 7 available sized.
 
 <Preview>
@@ -178,33 +189,31 @@ As usual, 7 available sized.
 </Preview>
 
 # Icon
+
 You can pass any icon via `leftIcon` and `rightIcon` props.
+
 > Icon size and color should be defined by developers manually according to button size.
 
 <Preview>
   <Story name="icon">
     <Input
-        outline
-        placeholder="Enter username"
-        leftIcon={
-          <Feather
-            name="user"
-            size={22}
-            color="grey" 
-          />
-        }
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      placeholder="Enter username"
+      leftIcon={<Feather name="user" size={22} color="gray" />}
+      value=""
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # floatingLabel
-A boolean value to make the label float. Label will appear as soon as youn start typing. 
+
+A boolean value to make the label float. Label will appear as soon as youn start typing.
 
 # Playground
+
 Play with Input in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <ExampleInput />
 </Story>
