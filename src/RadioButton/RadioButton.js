@@ -1,4 +1,4 @@
-import React, {useContext, createContext} from 'react';
+import React, { useContext, createContext } from 'react';
 import {
   Text,
   View,
@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useThemeContext} from '../util/ThemeProvider';
+import { useThemeContext } from '../util/ThemeProvider';
+import { extractAccessibilityPropsFromProps } from '../util/accessibility';
 const Context = createContext();
-const {Provider} = Context;
+const { Provider } = Context;
 
-const getTextStyle = ({theme, size, textColor, iconRight}) => {
+const getTextStyle = ({ theme, size, textColor, iconRight }) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
@@ -31,7 +32,7 @@ const getTextStyle = ({theme, size, textColor, iconRight}) => {
   return textStyle;
 };
 
-const renderIcon = ({theme, size, color, id, activeId, ...props}) => {
+const renderIcon = ({ theme, size, color, id, activeId, ...props }) => {
   if (activeId === id) {
     return (
       props.checkedIcon || (
@@ -55,13 +56,13 @@ const renderIcon = ({theme, size, color, id, activeId, ...props}) => {
   }
 };
 
-export const RadioItem = ({children, id}) => {
-  const {selectItem, style, ...props} = useContext(Context);
-  const propsToPass = {...props, id};
+export const RadioItem = ({ children, id, ...otherProps }) => {
+  const { selectItem, style, ...props } = useContext(Context);
+  const propsToPass = { ...props, id };
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement {...props} onPress={() => selectItem(id)}>
+    <TouchableElement {...props} {...extractAccessibilityPropsFromProps(otherProps)} onPress={() => selectItem(id)}>
       <View style={[styles.itemContainer, style]}>
         {!props.iconRight && renderIcon(propsToPass)}
         <Text
@@ -77,9 +78,9 @@ export const RadioItem = ({children, id}) => {
   );
 };
 
-const RadioButton = ({children, ...props}) => {
+const RadioButton = ({ children, ...props }) => {
   const theme = useThemeContext();
-  return <Provider value={{...props, theme}}>{children}</Provider>;
+  return <Provider value={{ ...props, theme }}>{children}</Provider>;
 };
 
 RadioButton.propTypes = {

@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import {useThemeContext} from '../util/ThemeProvider';
+import { useThemeContext } from '../util/ThemeProvider';
+import { removeAccessibilityPropsFromProps } from '../util/accessibility';
 
 const getChildrenStyle = (
   {
@@ -92,7 +93,7 @@ const Stack = React.forwardRef((props, ref) => {
       {React.Children.toArray(children).map((item, index) => (
         <View
           style={getChildrenStyle(
-            {...otherProps, direction, children, theme},
+            { ...removeAccessibilityPropsFromProps(otherProps), direction, children, theme },
             index,
           )}
           key={index}>
