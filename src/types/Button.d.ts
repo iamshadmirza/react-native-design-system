@@ -30,8 +30,8 @@ interface ButtonProps extends AccessibilityProps {
   icon?: IconNode;
   leftIcon?: IconNode;
   rightIcon?: IconNode;
-  rightIconStyle?: IconNode;
-  leftIconStyle?: IconNode;
+  rightIconStyle?: StyleProp<ViewStyle>;
+  leftIconStyle?: StyleProp<ViewStyle>;
   length?: LengthType;
 }
 
