@@ -2,7 +2,6 @@ import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 
 const getContainerStyle = ({
   theme,
@@ -73,6 +72,19 @@ const getLabelStyle = ({theme, size, labelColor}) => {
   return labelStyle;
 };
 
+const getLabelHintStyle = ({theme, size, labelHintColor}) => {
+  const labelHintStyle = [
+    {
+      fontSize: theme.fontSize[size] * 0.8,
+      fontStyle: 'italic',
+      paddingLeft: 2.5,
+      paddingBottom: 5,
+      color: theme.textColor[labelHintColor],
+    },
+  ];
+  return labelHintStyle;
+};
+
 const getCaptionStyle = ({theme, size}) => {
   const caption = [
     {
@@ -89,10 +101,9 @@ const getCaptionStyle = ({theme, size}) => {
 const Input = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   const showLabel = props.floatingLabel ? props.value.length > 0 : props.label;
+  const showLabelHint = showLabel && props.labelHint;
   return (
-    <View
-      style={props.containerStyle}
-      {...extractAccessibilityPropsFromProps(props)}>
+    <View style={props.containerStyle}>
       {showLabel ? (
         <Text
           style={StyleSheet.flatten([
@@ -100,6 +111,15 @@ const Input = React.forwardRef((props, ref) => {
             props.labelStyle,
           ])}>
           {props.label}
+        </Text>
+      ) : null}
+      {showLabelHint ? (
+        <Text
+          style={StyleSheet.flatten([
+            getLabelHintStyle({...props, theme}),
+            props.labelHintStyle,
+          ])}>
+          {props.labelHint}
         </Text>
       ) : null}
       <View
@@ -143,8 +163,11 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   floatingLabel: PropTypes.bool,
   labelStyle: PropTypes.object,
+  labelHintStyle: PropTypes.object,
   labelColor: PropTypes.string,
+  labelHintColor: PropTypes.string,
   label: PropTypes.string,
+  labelHint: PropTypes.string,
   color: PropTypes.string,
   outlineColor: PropTypes.string,
   round: PropTypes.bool,
