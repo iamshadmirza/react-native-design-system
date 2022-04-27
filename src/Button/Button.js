@@ -45,7 +45,7 @@ const getTextStyle = ({
   return textStyle;
 };
 
-const getContainerStyle = (props) => {
+const getContainerStyle = props => {
   const {
     outline,
     width,
@@ -114,7 +114,7 @@ const getContainerStyle = (props) => {
   return buttonStyles;
 };
 
-const renderChildren = (props) => {
+const renderChildren = props => {
   return (
     <>
       {props.loading && !props.disabled && (
@@ -231,7 +231,7 @@ Button.defaultProps = {
   length: 'long',
   width: 'medium',
   color: 'primary',
-  tint: true,
+  tint: false,
 };
 
 const styles = StyleSheet.create({
