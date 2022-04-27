@@ -62,10 +62,10 @@ const getInputStyle = ({theme, size, textColor, textAlign}) => {
 const getLabelStyle = ({theme, size, labelColor}) => {
   const labelStyle = [
     {
-      fontSize: theme.fontSize[size] * 0.8,
+      fontSize: theme.fontSize[size],
       fontWeight: 'bold',
       paddingLeft: 2.5,
-      paddingBottom: 5,
+      paddingBottom: 8,
       color: theme.textColor[labelColor],
     },
   ];
@@ -75,10 +75,10 @@ const getLabelStyle = ({theme, size, labelColor}) => {
 const getLabelHintStyle = ({theme, size, labelHintColor}) => {
   const labelHintStyle = [
     {
-      fontSize: theme.fontSize[size] * 0.8,
+      fontSize: theme.fontSize[size] * 0.9,
       fontStyle: 'italic',
       paddingLeft: 2.5,
-      paddingBottom: 5,
+      paddingBottom: 8,
       color: theme.textColor[labelHintColor],
     },
   ];
@@ -210,9 +210,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    padding: 15,
   },
   leftIcon: {
     paddingLeft: 10,
