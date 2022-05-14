@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {ViewStyle, TextStyle, StyleProp, TextInputProps} from 'react-native';
 
 import {SizeType} from './size-type';
@@ -16,7 +16,7 @@ interface InputProps extends TextInputProps {
   labelHintStyle?: StyleProp<TextStyle>;
   labelColor?: string;
   labelHintColor?: string;
-  label?: string;
+  label?: string | ReactElement;
   labelHint?: string;
   color?: string;
   round?: boolean;

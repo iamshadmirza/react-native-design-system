@@ -105,13 +105,17 @@ const Input = React.forwardRef((props, ref) => {
   return (
     <View style={props.containerStyle}>
       {showLabel ? (
-        <Text
-          style={StyleSheet.flatten([
-            getLabelStyle({...props, theme}),
-            props.labelStyle,
-          ])}>
-          {props.label}
-        </Text>
+        typeof props.label === 'string' ? (
+          <Text
+            style={StyleSheet.flatten([
+              getLabelStyle({...props, theme}),
+              props.labelStyle,
+            ])}>
+            {props.label}
+          </Text>
+        ) : (
+          props.label
+        )
       ) : null}
       {showLabelHint ? (
         <Text
@@ -166,7 +170,7 @@ Input.propTypes = {
   labelHintStyle: PropTypes.object,
   labelColor: PropTypes.string,
   labelHintColor: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   labelHint: PropTypes.string,
   color: PropTypes.string,
   outlineColor: PropTypes.string,
