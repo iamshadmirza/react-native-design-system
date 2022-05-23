@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 15,
+    padding: 10,
   },
   leftIcon: {
     paddingLeft: 10,
