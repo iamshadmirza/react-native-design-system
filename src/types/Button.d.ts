@@ -14,7 +14,7 @@ import {IconNode} from './icon-type';
 interface ButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children?: string;
+  children?: string | Array<any>;
   indicatorColor?: string;
   size?: SizeType;
   width?: WidthType;

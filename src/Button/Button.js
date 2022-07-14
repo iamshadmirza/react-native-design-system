@@ -174,7 +174,7 @@ Button.propTypes = {
   /**  To override default right icon style */
   rightIconStyle: PropTypes.object,
   /**  Pass button text as children as children */
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /**  Change indicator color */
   indicatorColor: PropTypes.string,
   /**  To change button size */
