@@ -52,16 +52,20 @@ type brandColors =
   | 'warning'
   | 'disabled'
   | 'disabledText'
-  | 'backgroundDark'
-  | 'backgroundLight'
-  | 'foreground'
   | 'heading'
   | 'para'
   | 'subtle'
   | 'transparent'
   | 'semitransparent'
   | 'outline'
-  | 'white';
+  | 'white'
+  | 'black'
+
+type backgroundColors = {
+  100: string;
+  200: string;
+  300: string;
+}
 
 type colorShades = `${colors}-${shades}`
 
@@ -85,5 +89,6 @@ export type colorTypes = genericColorsType &
   lightBrandColorsType &
   unknownLightBrandColors &
   darkBrandColorsType &
-  unknownDarkBrandColors
+  unknownDarkBrandColors &
+  backgroundColors
 

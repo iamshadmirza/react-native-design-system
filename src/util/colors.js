@@ -278,52 +278,55 @@ const colors = {
   get blueGray() {
     return this.slate;
   },
+  black: '#000',
+  white: '#fff',
+  transparent: 'transparent',
+  get background() {
+    return {
+      100: this.gray[100],
+      200: this.gray[50],
+      300: this.white,
+    };
+  },
 };
 
 const lightColors = {
   // brand colors
   primary: colors.blue[600],
-  secondary: colors.yellow[800],
+  secondary: colors.orange[400],
   // action colors
   success: colors.green[500],
   error: colors.red[500],
-  warning: colors.yellow[800],
+  warning: colors.yellow[500],
   disabled: colors.blueGray[100],
   disabledText: colors.blueGray[300],
-  // background color
-  backgroundDark: '#fff',
-  backgroundLight: '#f8f8f8',
-  foregound: colors.gray[100],
 
   // text colors
-  heading: colors.black,
-  para: colors.gray[800],
-  subtle: colors.gray[600],
+  heading: colors.gray[900],
+  para: colors.gray[700],
+  subtle: colors.gray[500],
   // extras
   transparent: 'transparent',
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   outline: 'rgba(204, 214, 221, .5)',
-  white: '#fff',
-  black: '#000',
 };
 
 const darkColors = {
   ...lightColors,
-  // background color
-  backgroundDark: '#000',
-  backgroundLight: colors.gray[800],
-  foregound: colors.gray[500],
+  background: {
+    100: colors.gray[700],
+    200: colors.gray[800],
+    300: colors.gray[900],
+  },
 
   // text colors
-  heading: '#fff',
-  para: colors.gray[300],
-  subtle: colors.gray[500],
+  heading: colors.white,
+  para: colors.gray[100],
+  subtle: colors.gray[300],
   // extras
   transparent: 'transparent',
   outline: colors.gray[800],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
-  white: '#fff',
-  black: '#000',
 };
 
 function flattenColors() {
