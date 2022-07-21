@@ -2,6 +2,7 @@ import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
 const getContainerStyle = ({
   theme,
@@ -183,15 +184,7 @@ Input.propTypes = {
   error: PropTypes.bool,
   errorCaption: PropTypes.string,
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   disabled: PropTypes.bool,
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
@@ -202,7 +195,7 @@ Input.defaultProps = {
   placeholder: 'Type here',
   textColor: 'para',
   color: 'subtle',
-  size: 'medium',
+  size: 'md',
   labelColor: 'subtle',
   background: 'foreground',
   outlineColor: 'outline',

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
 const getTextStyle = ({
   size,
@@ -178,25 +179,9 @@ Button.propTypes = {
   /**  Change indicator color */
   indicatorColor: PropTypes.string,
   /**  To change button size */
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   /**  To change button width */
-  width: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  width: sizes,
   /**  callback function to be called when pressed */
   onPress: PropTypes.func.isRequired,
   /**  Pass the brand color */
@@ -227,9 +212,9 @@ Button.propTypes = {
 
 Button.defaultProps = {
   children: 'Submit',
-  size: 'medium',
+  size: 'md',
   length: 'long',
-  width: 'medium',
+  width: 'md',
   color: 'primary',
   tint: false,
 };

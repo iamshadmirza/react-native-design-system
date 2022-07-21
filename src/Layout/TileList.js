@@ -2,6 +2,7 @@ import React from 'react';
 import {View, FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {spaces} from '../util/prop-types';
 
 const getChildrenStyle = (
   {theme, space, horizontalSpace, cropEndSpace, data},
@@ -9,18 +10,18 @@ const getChildrenStyle = (
 ) => {
   const childStyle = [
     {
-      marginLeft: theme.layoutSpace[space],
-      marginTop: theme.layoutSpace[space],
+      marginLeft: theme.space[space],
+      marginTop: theme.space[space],
     },
   ];
   // if (index === 0) {
   //   childStyle.push({
-  //     marginTop: theme.layoutSpace[space],
+  //     marginTop: theme.space[space],
   //   });
   // }
   // if (horizontalSpace) {
   //   childStyle.push({
-  //     marginHorizontal: theme.layoutSpace[horizontalSpace],
+  //     marginHorizontal: theme.space[horizontalSpace],
 
   //   });
   // }
@@ -39,14 +40,14 @@ const getChildrenStyle = (
   return childStyle;
 };
 
-const TileList = (props) => {
+const TileList = props => {
   const theme = useThemeContext();
   return (
     <FlatList
       {...props}
       // style={{ flexDirection: 'row' }}
       numColumns={3}
-      renderItem={(child) => (
+      renderItem={child => (
         <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>
@@ -57,32 +58,14 @@ const TileList = (props) => {
 
 TileList.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  space: PropTypes.oneOf([
-    'none',
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
-  horizontalSpace: PropTypes.oneOf([
-    'none',
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  space: spaces,
+  horizontalSpace: spaces,
   cropEndSpace: PropTypes.bool,
   ...FlatList.propTypes,
 };
 
 TileList.defaultProps = {
-  space: 'medium',
+  space: 'md',
   horizontalSpace: 'none',
   cropEndSpace: false,
 };

@@ -11,12 +11,19 @@ import {
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
-const getContainerStyle = ({theme, source, square, rounded, size}) => {
+const getContainerStyle = ({
+  theme,
+  source,
+  square,
+  rounded,
+  size,
+  background,
+}) => {
   const avatarStyle = [styles.container];
   avatarStyle.push({
-    backgroundColor: theme.colors.backgroundLight,
-    padding: theme.size[size],
+    backgroundColor: theme.colors[background],
     width: theme.avatarSize[size],
     height: theme.avatarSize[size],
     borderRadius: theme.avatarSize[size] * 2,
@@ -43,10 +50,10 @@ const getEditIconStyle = ({theme, size}) => {
   const iconStyle = [
     styles.editView,
     {
-      width: theme.avatarSize[size] / 4,
-      height: theme.avatarSize[size] / 4,
-      borderRadius: theme.avatarSize[size] / 8,
-      backgroundColor: theme.colors.backgroundDark,
+      width: theme.avatarSize[size] / 3,
+      height: theme.avatarSize[size] / 3,
+      borderRadius: theme.avatarSize[size],
+      backgroundColor: theme.colors['background-200'],
     },
   ];
   return iconStyle;
@@ -102,7 +109,7 @@ const Avatar = ({style, ...props}) => {
           ])}>
           <Feather
             name="edit-2"
-            size={theme.avatarSize[props.size] / 8}
+            size={theme.avatarSize[props.size] / 6}
             color={props.editIconColor || theme.colors.para}
           />
         </View>
@@ -115,21 +122,11 @@ Avatar.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   title: PropTypes.string,
+  background: PropTypes.string,
   source: PropTypes.object,
   editable: PropTypes.bool,
   onPress: PropTypes.func,
-  size: PropTypes.oneOfType([
-    PropTypes.oneOf([
-      'xxsmall',
-      'xsmall',
-      'small',
-      'medium',
-      'large',
-      'xlarge',
-      'xxlarge',
-    ]),
-    PropTypes.string,
-  ]),
+  size: PropTypes.oneOfType([sizes, PropTypes.string]),
   square: PropTypes.bool,
   rounded: PropTypes.bool,
   editIconStyle: PropTypes.object,
@@ -139,7 +136,8 @@ Avatar.propTypes = {
 Avatar.defaultProps = {
   title: 'MD',
   editable: false,
-  size: 'medium',
+  size: 'lg',
+  background: 'background-100',
 };
 
 const styles = StyleSheet.create({

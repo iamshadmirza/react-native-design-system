@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import {extractAccessibilityPropsFromProps} from '../util/accessibility';
+import {sizes} from '../util/prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
 const getContainerStyle = ({theme, color}) => {
@@ -89,15 +90,7 @@ Header.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
-  fontSize: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  fontSize: sizes,
   children: PropTypes.string,
   color: PropTypes.string,
   leftIcon: PropTypes.element,
@@ -113,7 +106,7 @@ Header.defaultProps = {
   color: 'primary',
   barColor: 'primary',
   barStyle: 'light-content',
-  fontSize: 'medium',
+  fontSize: 'md',
 };
 
 const styles = StyleSheet.create({

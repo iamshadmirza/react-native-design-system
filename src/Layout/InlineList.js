@@ -2,6 +2,7 @@ import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {spaces} from '../util/prop-types';
 
 const getChildrenStyle = (
   {theme, space, verticalSpace, cropEndSpace, data},
@@ -9,17 +10,17 @@ const getChildrenStyle = (
 ) => {
   const childStyle = [
     {
-      marginRight: theme.layoutSpace[space],
+      marginRight: theme.space[space],
     },
   ];
   if (index === 0) {
     childStyle.push({
-      marginLeft: theme.layoutSpace[space],
+      marginLeft: theme.space[space],
     });
   }
   if (verticalSpace) {
     childStyle.push({
-      marginVertical: theme.layoutSpace[verticalSpace],
+      marginVertical: theme.space[verticalSpace],
     });
   }
   if (cropEndSpace) {
@@ -59,32 +60,14 @@ const InlineList = React.forwardRef((props, ref) => {
 
 InlineList.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  space: PropTypes.oneOf([
-    'none',
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
-  verticalSpace: PropTypes.oneOf([
-    'none',
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  space: spaces,
+  verticalSpace: spaces,
   cropEndSpace: PropTypes.bool,
   ...FlatList.propTypes,
 };
 
 InlineList.defaultProps = {
-  space: 'medium',
+  space: 'md',
   verticalSpace: 'none',
   cropEndSpace: true,
 };

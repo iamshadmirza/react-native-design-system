@@ -61,11 +61,8 @@ type brandColors =
   | 'white'
   | 'black'
 
-type backgroundColors = {
-  100: string;
-  200: string;
-  300: string;
-}
+type backgroundShade = '100' | '200' | '300';
+type backgroundColors = `background-${backgroundShade}`
 
 type colorShades = `${colors}-${shades}`
 

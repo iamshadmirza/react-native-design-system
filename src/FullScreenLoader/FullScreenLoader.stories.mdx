@@ -1,54 +1,66 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean, color } from "@storybook/addon-knobs";
-import { View } from "react-native";
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean, color} from '@storybook/addon-knobs';
+import {View} from 'react-native';
 import FullScreenLoader from './FullScreenLoader';
-import {Text} from '../Text'
+import {Text} from '../Text';
 
 <Meta title="FullScreenLoader" component={FullScreenLoader} />
 
 # FullScreenLoader
+
 FullScreenLoader is a loading screen component which sits on top of all the view. It shows an Activity Indicator and restrict touches while spinner is rotating.
 
 # Usage
+
 ```js
 import { FullScreenLoader } from 'react-native-design-system';
 
-<FullScreenLoader 
+<FullScreenLoader
   loading={this.state.loading}
 >
 ```
 
 # Props
+
 <Props of={FullScreenLoader} />
 
 # Loading
+
 Passing `loading={true}` makes the loading screen visible. View will be unmounted when `loading` changes to `false`.
 
 # Indicator Color
+
 Pass any theme color in `indicatorColor` prop for desired result. Passed color should be present in `brandColor` of `theme`.
 
 # Background
+
 Pass any theme color in `background` prop for set desired Background. Passed color should be present in `brandColor` of `theme`.
 
 # Size
+
 Size gives the size of Indicator: `small` and `large`.
 
 # Children
+
 If you want to pass any element to render with spinner.
 
 # Playground
+
 Play with FullScreenLoader in Canvas mode.
 
 <Preview>
-  <Story name="playground" parameters={{ decorators: [withKnobs] }}>
-    <View style={{ height: 480, width: 270, borderWidth: 1 }}>
-      <FullScreenLoader 
+  <Story name="playground" parameters={{decorators: [withKnobs]}}>
+    <View style={{height: 480, width: 270, borderWidth: 1}}>
+      <FullScreenLoader
         loading={boolean('loading', true)}
-        size={select('size', ['small', 'large'])}
-        background={select('background', ['backgroundDark', 'backgroundLight', 'foreground'], 'backgroundLight')}
-        indicatorColor={color('indicatorColor', '#1e88e5')}
-      >
-      <Text>Loading...</Text>
+        size={select('size', ['sm', 'lg'])}
+        background={select(
+          'background',
+          ['backgroundDark', 'backgroundLight', 'foreground'],
+          'backgroundLight',
+        )}
+        indicatorColor={color('indicatorColor', '#1e88e5')}>
+        <Text>Loading...</Text>
       </FullScreenLoader>
     </View>
   </Story>

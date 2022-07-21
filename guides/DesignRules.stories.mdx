@@ -15,9 +15,9 @@ For example:
 
 - If it's a Button, it receives all the props of Touchable component of React Native.
 - If it's a Modal, it receives all the props of Modal.
-- Each component receives a `size` prop whose value can be one of these: `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` & `xxlarge`. You just have to pass `size` prop with one of these value and you're done.
+- Each component receives a `size` prop whose value can be one of these: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, & `9xl`. You just have to pass `size` prop with one of these value and you're done.
 - Another example could be `color` prop. You can pass one of the colors defined in `brandColor` of theme to any component.
-- If it's a layout based component like `Box`, `Stack`, `Inline` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xxsmall` and `xxlarge` ( with an addition of `space="none"`) and provide appropriate spacing between components.
+- If it's a layout based component like `Box`, `Stack`, `Inline` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xs` and `9xl` ( with an addition of `space="none"`) and provide appropriate spacing between components.
 - Each component receives a `style` and a `textStyle` prop (if there is a text involved). This is for some rare cases when you have to override the default styling. It's preferable to tweak the `theme` instead to maintain consistency and avoid adding that `style` again and again.
 
 These props are common to all the components. Other component-specific props are pretty straight forward too.
@@ -62,11 +62,11 @@ To keep things simple and consistent. There are two choices for fonts to use:
 
 ## Size
 
-- The available sizes you can use is `"xxsmall"`, `"xsmall"`, `"small"`, `"medium"`, `"large"`, `"xlarge"` and `"xxlarge"`. The default is `"medium"` and it will be applied if are not passing anything.
-- Font size is also similar and it ranges from "xxsmall" to "xxlarge".
+- The available sizes you can use is `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, & `9xl`. The default is `"md"` and it will be applied if are not passing anything.
+- Font size is also similar and it ranges from "xs" to "9xl".
 
 ## Space
 
-Space also shares similar API as size but with one addition. You can also pass `"none"` with the range of `"xxsmall"` to `"xxlarge"`. Space is a dedicated prop for layout components like `Stack`, `Inline`, `Box` and `Card`.
+Space also shares similar API as size but with one addition. You can also pass `"none"` with the range of `"xs"` to `"9xl"`. Space is a dedicated prop for layout components like `Stack`, `Inline`, `Box` and `Card`.
 
 > You can contribute to the theme. Please share what are the common color tokens you use, what are the common font sizes that you use in any app, etc. Let's make the theme config more generic together.

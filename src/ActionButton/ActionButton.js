@@ -9,6 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
 const getContainerStyle = ({theme, size, color}) => {
   return {
@@ -46,15 +47,7 @@ const ActionButton = ({style, ...props}) => {
 };
 
 ActionButton.propTypes = {
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   onPress: PropTypes.func.isRequired,
   iconColor: PropTypes.string,
   color: PropTypes.string,
@@ -63,7 +56,7 @@ ActionButton.propTypes = {
 };
 
 ActionButton.defaultProps = {
-  size: 'medium',
+  size: 'md',
   color: 'primary',
 };
 

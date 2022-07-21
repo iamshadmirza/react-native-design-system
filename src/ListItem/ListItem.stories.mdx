@@ -5,6 +5,7 @@ import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ListItem from './ListItem';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="ListItem" component={ListItem} />
 
@@ -144,25 +145,25 @@ As usual, 7 available sized.
 <Preview>
   <Story name="size">
     <Stack>
-      <ListItem chevron size="xxsmall">
+      <ListItem chevron size="xs">
         Hey there!
       </ListItem>
-      <ListItem chevron size="xsmall">
+      <ListItem chevron size="xs">
         Hey there!
       </ListItem>
-      <ListItem chevron size="small">
+      <ListItem chevron size="sm">
         Hey there!
       </ListItem>
-      <ListItem chevron size="medium">
+      <ListItem chevron size="md">
         Hey there!
       </ListItem>
-      <ListItem chevron size="large">
+      <ListItem chevron size="lg">
         Hey there!
       </ListItem>
-      <ListItem chevron size="xlarge">
+      <ListItem chevron size="xl">
         Hey there!
       </ListItem>
-      <ListItem chevron size="xxlarge">
+      <ListItem chevron size="2xl">
         Hey there!
       </ListItem>
     </Stack>
@@ -176,25 +177,25 @@ You can customize just the padding too by passing `space` props with one of the 
 <Preview>
   <Story name="space">
     <Stack>
-      <ListItem chevron space="xxsmall">
+      <ListItem chevron size="xs">
         Hey there!
       </ListItem>
-      <ListItem chevron space="xsmall">
+      <ListItem chevron size="xs">
         Hey there!
       </ListItem>
-      <ListItem chevron space="small">
+      <ListItem chevron size="sm">
         Hey there!
       </ListItem>
-      <ListItem chevron space="medium">
+      <ListItem chevron space="md">
         Hey there!
       </ListItem>
-      <ListItem chevron space="large">
+      <ListItem chevron size="lg">
         Hey there!
       </ListItem>
-      <ListItem chevron space="xlarge">
+      <ListItem chevron size="xl">
         Hey there!
       </ListItem>
-      <ListItem chevron space="xxlarge">
+      <ListItem chevron size="2xl">
         Hey there!
       </ListItem>
     </Stack>
@@ -209,24 +210,11 @@ Play with ListItem in Canvas mode.
   <ListItem
     chevron={boolean('chevron', true)}
     disabled={boolean('disabled', false)}
-    size={select(
-      'size',
-      ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'],
-      'medium',
-    )}
+    size={select('size', sizeArray, 'md')}
     space={select(
       'space',
-      [
-        'none',
-        'xxsmall',
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-      ],
-      'medium',
+      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+      'md',
     )}
     textColor={select(
       'textColor',

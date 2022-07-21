@@ -1,20 +1,33 @@
+import {colorTypes} from './colors-type';
 
-type sizes = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+type sizes =
+  | 'xs'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | '7xl'
+  | '8xl'
+  | '9xl';
 
-type knownScale = {
-  [k in sizes]: number
-}
+type knownScale = {[k in sizes]: number};
 
 type unknownScale = {
-  [size: string]: number
-}
+  [size: string]: number;
+};
 
 type unknownColors = {
-  [color: string]: string
-}
+  [color: string]: string;
+};
 
 type possibleSizes = knownScale & unknownScale;
-type possibleSpaces = knownScale & { none: number } & unknownScale;
+type possibleSpaces = knownScale & {none: number} & unknownScale;
 type possibleColors = colorTypes & unknownColors;
 
 export interface themeType {
@@ -28,9 +41,7 @@ export interface themeType {
   avatarSize: possibleSizes;
   badgeSize: possibleSizes;
   miniBadgeSize: possibleSizes;
-  listItemSpace: possibleSizes;
-  space: possibleSpaces;
-  layoutSpace: possibleSpaces;
+  space: 'none' | possibleSizes;
   indicatorSize: possibleSizes;
   colors: possibleColors;
 }

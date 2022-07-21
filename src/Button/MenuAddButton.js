@@ -11,6 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 import colors from '../util/colors';
 import {useThemeContext, useThemeMode} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
 const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
   const buttonStyle = [styles.container];
@@ -128,20 +129,12 @@ MenuAddButton.propTypes = {
   minusIcon: PropTypes.element,
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
 };
 
 MenuAddButton.defaultProps = {
   count: 0,
-  size: 'medium',
+  size: 'md',
 };
 
 const styles = StyleSheet.create({

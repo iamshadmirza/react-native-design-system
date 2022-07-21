@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
 const getContainerStyle = ({theme, size, mini, color, square}) => {
   const badgeStyle = [styles.container];
@@ -68,15 +69,7 @@ Badge.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   mini: PropTypes.bool,
   onPress: PropTypes.func,
   square: PropTypes.bool,
@@ -85,7 +78,7 @@ Badge.propTypes = {
 Badge.defaultProps = {
   children: 0,
   color: 'primary',
-  size: 'small',
+  size: 'sm',
 };
 
 const styles = StyleSheet.create({
@@ -94,24 +87,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
   },
 });
 

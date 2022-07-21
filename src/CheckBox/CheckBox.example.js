@@ -6,11 +6,7 @@ export default function ExampleRadioButton() {
   const [value, setCheckBoxValue] = useState(false);
   return (
     <CheckBox
-      size={select(
-        'size',
-        ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'],
-        'medium',
-      )}
+      size={select('size', sizeArray, 'md')}
       checked={value}
       iconRight={boolean('iconRight', false)}
       color={select('color', ['primary', 'secondary'], 'primary')}

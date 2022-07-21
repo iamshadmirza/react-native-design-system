@@ -33,11 +33,11 @@ FullScreenLoader.propTypes = {
   children: PropTypes.element,
   indicatorColor: PropTypes.string,
   background: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(['sm', 'lg']),
 };
 
 FullScreenLoader.defaultProps = {
-  size: 'large',
+  size: 'lg',
   background: 'backgroundDark',
   indicatorColor: '#1e88e5',
 };

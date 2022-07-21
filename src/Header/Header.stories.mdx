@@ -1,7 +1,7 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select } from "@storybook/addon-knobs";
-import { View } from 'react-native';
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select} from '@storybook/addon-knobs';
+import {View} from 'react-native';
+import {action} from '@storybook/addon-actions';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import Header from './Header';
@@ -10,16 +10,17 @@ import Stack from '../Layout/Stack';
 <Meta title="Header" component={Header} />
 
 # Header
+
 Header is just a fixed Header bar that sits on top of screen.
 
 # Usage
-```js
-import { Header } from 'react-native-design-system';
 
-<Header>
-  Home
-</Header>
+```js
+import {Header} from 'react-native-design-system';
+
+<Header>Home</Header>;
 ```
+
 > If you're using `Expo` then you have to provide top margin for StatusBar:
 
 ```js
@@ -30,106 +31,92 @@ headerStyle: { marginTop: Constants.statusBarHeight },
 ```
 
 # Props
+
 <Props of={Header} />
 
 # Text Align
+
 You can align Header title position by passing `auto`,`left`, `center`, `right` or `justify` as `textAlign` property.
 
 <Preview>
   <Story name="textAlign">
     <Stack>
-      <Header textAlign="left">
-        Home
-      </Header>
-      <Header textAlign="center">
-        Home
-      </Header>
-      <Header textAlign="right">
-        Home
-      </Header>
+      <Header textAlign="left">Home</Header>
+      <Header textAlign="center">Home</Header>
+      <Header textAlign="right">Home</Header>
     </Stack>
   </Story>
 </Preview>
 
 # Font Size
+
 There are 7 font sizes available from `xxsmall` to `xxlarge`. Below Headers are of size `xxsmall`, `medium` and `large`.
 
 <Preview>
   <Story name="fontSize">
     <Stack>
-      <Header fontSize="xxsmall">
-        Home
-      </Header>
-      <Header fontSize="medium">
-        Home
-      </Header>
-      <Header fontSize="xxlarge">
-        Home
-      </Header>
+      <Header fontsize="xs">Home</Header>
+      <Header fontsize="md">Home</Header>
+      <Header fontsize="2xl">Home</Header>
     </Stack>
   </Story>
 </Preview>
 
 # Color
+
 Color takes any string defined in `brandColor` of `theme` file.
 
 <Preview>
   <Story name="color">
     <Stack>
-      <Header color="primary">
-        Home
-      </Header>
-      <Header color="secondary">
-        Home
-      </Header>
-      <Header color="tertiary">
-        Home
-      </Header>
+      <Header color="primary">Home</Header>
+      <Header color="secondary">Home</Header>
+      <Header color="tertiary">Home</Header>
     </Stack>
   </Story>
 </Preview>
 
 # Icons
+
 You can pass `leftIcon` and `rightIcon` with `onLeftIconPress` and `onRightIconPress` handler. Size, type and color of icon is upto developer.
 
 <Preview>
   <Story name="icons">
     <Header
-      leftIcon={
-        <EvilIcons
-          name="navicon"
-          size={26}
-          color="white" />
-      }
-      rightIcon={
-        <Feather
-          name="settings"
-          size={24}
-          color="white" />
-      }
+      leftIcon={<EvilIcons name="navicon" size={26} color="white" />}
+      rightIcon={<Feather name="settings" size={24} color="white" />}
       onLeftIconPress={action('left icon pressed')}
-      onRightIconPress={action('right icon pressed')}
-    >
+      onRightIconPress={action('right icon pressed')}>
       Home
     </Header>
   </Story>
 </Preview>
 
 # Bar Color
+
 You can pass StatusBar **backgroundColor** as `barColor` and **barStyle** for StatusBar `barColor`
 
 # Icon Styles
+
 You can pass `iconStyle` to pass custom styling for left and right. This is handy when you have to provide some extra padding to the icons.
 
 # Playground
+
 Play with Header in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
- <Header
-    fontSize={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-    textAlign={select('center',['auto','left', 'center', 'right', 'justify'], 'left')}
-    color={select('color',['primary', 'secondary', 'tertiary'], 'primary')}
-    >
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
+  <Header
+    fontSize={select(
+      'space',
+      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+      'md',
+    )}
+    textAlign={select(
+      'center',
+      ['auto', 'left', 'center', 'right', 'justify'],
+      'left',
+    )}
+    color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}>
     Home
   </Header>
 </Story>

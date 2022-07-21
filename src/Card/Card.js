@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Platform} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {spaces} from '../util/prop-types';
 
 const getContainerStyle = ({
   row,
@@ -18,7 +19,7 @@ const getContainerStyle = ({
   const cardStyle = [
     styles.container,
     {
-      padding: theme.layoutSpace[space],
+      padding: theme.space[space],
       backgroundColor: theme.colors[background],
     },
   ];
@@ -88,16 +89,7 @@ Card.propTypes = {
   row: PropTypes.bool,
   wrap: PropTypes.bool,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  space: PropTypes.oneOf([
-    'none',
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  space: spaces,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,
   horizontal: PropTypes.bool,
@@ -109,7 +101,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  space: 'medium',
+  space: 'md',
   shadow: false,
   outline: false,
   background: 'backgroundLight',

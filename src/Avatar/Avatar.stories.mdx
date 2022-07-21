@@ -1,24 +1,27 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, text, boolean, color } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, text, boolean, color} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import Inline from '../Layout/Inline';
 import Feather from 'react-native-vector-icons/Feather';
 import Avatar from './Avatar';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="Avatar" component={Avatar} />
 
 # Avatar
+
 Avatars are used to represent a user and can contain photos or text.
 
 # Usage
+
 ```js
-import { Avatar } from 'react-native-design-system';
+import {Avatar} from 'react-native-design-system';
 
 <Avatar
   title="MD"
-  source={{ uri: 'image_url_here'}}
+  source={{uri: 'image_url_here'}}
   onPress={() => this.handlePress()}
-/>
+/>;
 ```
 
 # Props
@@ -26,73 +29,46 @@ import { Avatar } from 'react-native-design-system';
 <Props of={Avatar} />
 
 # Sizes
-As usual, 7 sizes are available.
+
+As usual, 13 sizes are available.
+
 <Preview>
   <Story name="sizes">
     <Inline>
-      <Avatar
-        size="xxlarge"
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        size="xlarge"
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        size="large"
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        size="medium"
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        size="small"
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        size="xsmall"
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        size="xxsmall"
-        onPress={action('pressed')}
-      />
-  </Inline>
+      <Avatar size="9xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="8xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="7xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="6xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="5xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="4xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="3xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="2xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="xl" title="MD" onPress={action('pressed')} />
+      <Avatar size="lg" title="MD" onPress={action('pressed')} />
+      <Avatar size="md" title="MD" onPress={action('pressed')} />
+      <Avatar size="sm" title="MD" onPress={action('pressed')} />
+      <Avatar size="xs" title="MD" onPress={action('pressed')} />
+    </Inline>
   </Story>
 </Preview>
 
 # Types
+
 There are mainly three types og Avatar: `default`, `square` and `rounded`. All props accept `boolean` value.
+
 <Preview>
   <Story name="types">
     <Inline>
-      <Avatar
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        square
-        title="MD"
-        onPress={action('pressed')}
-      />
-      <Avatar
-        rounded
-        title="MD"
-        onPress={action('pressed')}
-      />
-  </Inline>
+      <Avatar title="MD" onPress={action('pressed')} />
+      <Avatar square title="MD" onPress={action('pressed')} />
+      <Avatar rounded title="MD" onPress={action('pressed')} />
+    </Inline>
   </Story>
 </Preview>
 
 # Title
-`title` accepts a string. Passing upto 3 character (maximum) is recommended. 
+
+`title` accepts a string. Passing upto 3 character (maximum) is recommended.
 
 <Preview>
   <Story name="title">
@@ -101,29 +77,27 @@ There are mainly three types og Avatar: `default`, `square` and `rounded`. All p
 </Preview>
 
 # Source
+
 `source` is same as Image component. You can pass a `required` image or a `uri` object.
+
 <Preview>
   <Story name="source">
-    <Avatar
-      source={{ uri: 'https://www.github.com/iamshadmirza.png'}}
-    />
+    <Avatar source={{uri: 'https://www.github.com/iamshadmirza.png'}} />
   </Story>
 </Preview>
 
 # Editable
+
 `editable` is a boolean value which adds an edit button to the bottom. You just have to pass one `onPress` function and the `Avatar` is clickable.
+
 <Preview>
   <Story name="editable">
     <Inline>
+      <Avatar title="MD" editable={true} onPress={action('pressed')} />
       <Avatar
-      title="MD"
-      editable={true}
-      onPress={action("pressed")}
-      />
-      <Avatar
-        source={{ uri: 'https://www.github.com/iamshadmirza.png'}}
+        source={{uri: 'https://www.github.com/iamshadmirza.png'}}
         editable={true}
-        onPress={action("pressed")}
+        onPress={action('pressed')}
       />
     </Inline>
   </Story>
@@ -133,9 +107,9 @@ There are mainly three types og Avatar: `default`, `square` and `rounded`. All p
 
 Play with Avatar in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Avatar
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    size={select('size', sizeArray, 'md')}
     title={text('title', 'MD')}
     editable={boolean('editable', true)}
     onPress={action('pressed')}

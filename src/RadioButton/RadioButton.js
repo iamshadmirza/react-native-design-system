@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useThemeContext} from '../util/ThemeProvider';
 import {extractAccessibilityPropsFromProps} from '../util/accessibility';
+import {sizes} from '../util/prop-types';
 const Context = createContext();
 const {Provider} = Context;
 
@@ -96,22 +97,14 @@ RadioButton.propTypes = {
   iconRight: PropTypes.bool,
   color: PropTypes.string,
   textColor: PropTypes.string,
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   selectItem: PropTypes.func.isRequired,
   checkedIcon: PropTypes.element,
   uncheckedIcon: PropTypes.element,
 };
 
 RadioButton.defaultProps = {
-  size: 'medium',
+  size: 'md',
   color: 'primary',
   textColor: 'para',
 };

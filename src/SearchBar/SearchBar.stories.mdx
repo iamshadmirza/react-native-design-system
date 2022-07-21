@@ -4,6 +4,7 @@ import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchBar from './SearchBar';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="SearchBar" component={SearchBar} />
 
@@ -151,7 +152,7 @@ As usual, 7 available sized.
     <Stack>
       <SearchBar
         outline
-        size="xxsmall"
+        size="xs"
         placeholder="Enter username"
         value=""
         loading
@@ -159,7 +160,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="xsmall"
+        size="xs"
         placeholder="Enter username"
         value=""
         loading
@@ -167,7 +168,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="small"
+        size="sm"
         placeholder="Enter username"
         value=""
         loading
@@ -175,7 +176,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="medium"
+        size="md"
         placeholder="Enter username"
         value=""
         loading
@@ -183,7 +184,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="large"
+        size="lg"
         placeholder="Enter username"
         value=""
         loading
@@ -191,7 +192,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="xlarge"
+        size="xl"
         placeholder="Enter username"
         value=""
         loading
@@ -199,7 +200,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="xxlarge"
+        size="2xl"
         placeholder="Enter username"
         value=""
         loading
@@ -233,11 +234,7 @@ Play with SearchBar in Canvas mode.
 
 <Story name="playground" parameters={{decorators: [withKnobs]}}>
   <SearchBar
-    size={select(
-      'size',
-      ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'],
-      'medium',
-    )}
+    size={select('size', sizeArray, 'md')}
     outline={boolean('outline', false)}
     round={boolean('round', true)}
     loading={boolean('loading', true)}

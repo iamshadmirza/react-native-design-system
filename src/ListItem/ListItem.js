@@ -11,13 +11,15 @@ import Feather from 'react-native-vector-icons/Feather';
 import {Avatar} from '../Avatar';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes, spaces} from '../util/prop-types';
 
 const getContainerStyle = ({theme, space, background}) => {
   const itemStyle = [styles.container];
   itemStyle.push({
     borderColor: theme.colors.outline,
     backgroundColor: theme.colors[background],
-    padding: theme.listItemSpace[space],
+    paddingVertical: theme.space[space] * 1.2,
+    paddingHorizontal: theme.space[space] * 1.2,
   });
   return itemStyle;
 };
@@ -33,7 +35,6 @@ const getTextStyle = ({theme, size, textColor, textAlign}) => {
 
 const getSubtitleStyle = ({theme, size, subtitleColor, textAlign}) => {
   return {
-    fontSize: theme.fontSize[size] * 0.7,
     fontWeight: '400',
     color: theme.colors[subtitleColor],
     textAlign: textAlign,
@@ -43,7 +44,7 @@ const getSubtitleStyle = ({theme, size, subtitleColor, textAlign}) => {
 
 const renderLeftChild = ({avatarSource, leftIcon, iconStyle}) => {
   if (avatarSource) {
-    return <Avatar source={avatarSource} size="xxsmall" />;
+    return <Avatar source={avatarSource} size="xs" />;
   }
   if (leftIcon) {
     return (
@@ -83,7 +84,14 @@ const renderRightChild = ({
   );
 };
 
-const ListItem = ({style, textStyle, subtitleStyle, background, ...props}) => {
+const ListItem = ({
+  style,
+  textStyle,
+  subtitleStyle,
+  background,
+  subtitleSize,
+  ...props
+}) => {
   const theme = useThemeContext();
   const propsWithTheme = {...props, background, theme};
   const TouchableElement =
@@ -103,6 +111,7 @@ const ListItem = ({style, textStyle, subtitleStyle, background, ...props}) => {
           </Text>
           {props.subtitle && (
             <Text
+              size={subtitleSize}
               style={StyleSheet.flatten([
                 getSubtitleStyle(propsWithTheme),
                 subtitleStyle,
@@ -129,24 +138,9 @@ ListItem.propTypes = {
   textColor: PropTypes.string,
   subtitleColor: PropTypes.string,
   chevronColor: PropTypes.string,
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
-  space: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
+  subtitleSize: sizes,
+  space: spaces,
   onPress: PropTypes.func.isRequired,
   avatarSource: PropTypes.object,
   leftIcon: PropTypes.element,
@@ -163,8 +157,9 @@ ListItem.defaultProps = {
   subtitleColor: 'subtle',
   chevronColor: 'para',
   textAlign: 'left',
-  space: 'medium',
-  size: 'medium',
+  space: 'md',
+  size: 'md',
+  subtitleSize: 'md',
 };
 
 const styles = StyleSheet.create({

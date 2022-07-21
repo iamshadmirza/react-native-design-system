@@ -1,4 +1,6 @@
-export type SpaceType = 'none' | 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
-export type HorizontalSpaceType = 'none' | 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
-export type VerticalSpaceType = 'none' | 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
-export type ListSpaceType = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+import {SizeType} from './size-type';
+
+export type SpaceType = 'none' | SizeType;
+export type HorizontalSpaceType = SpaceType;
+export type VerticalSpaceType = SpaceType;
+export type ListSpaceType = SpaceType;

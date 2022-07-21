@@ -15,7 +15,7 @@ Flex is a simple layout container works as a Flex box.
 ```js
 import {Flex} from 'react-native-design-system';
 
-<Flex space="large">
+<Flex size="lg">
   <Button>Press Me</Button>
 </Flex>;
 ```
@@ -30,7 +30,7 @@ Customize padding for the child. `space` prop accepts one of the given values: `
 
 <Preview>
   <Story name="space">
-    <Flex space="large">
+    <Flex size="lg">
       <Button>Press Me</Button>
     </Flex>
   </Story>
@@ -78,17 +78,8 @@ Play with Flex in Canvas mode.
     ])}
     space={select(
       'space',
-      [
-        'none',
-        'xxsmall',
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-      ],
-      'medium',
+      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+      'md',
     )}
     background={select(
       'background',

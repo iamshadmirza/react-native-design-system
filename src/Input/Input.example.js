@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import Input from './Input';
 import {select, boolean, text} from '@storybook/addon-knobs';
+import {sizeArray} from '../util/prop-types';
 
 export default function ExampleInput() {
   const [textValue, setTextValue] = useState('');
   return (
     <Input
-      size={select(
-        'size',
-        ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'],
-        'medium',
-      )}
+      size={select('size', sizeArray, 'md')}
       outline={boolean('outline', true)}
       round={boolean('round', false)}
       label={text('label', 'Username')}

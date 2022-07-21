@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes, {number} from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {spaces} from '../util/prop-types';
 
 const getContainerStyle = ({
   theme,
@@ -20,7 +21,7 @@ const getContainerStyle = ({
     flexDirection,
     alignItems,
     justifyContent,
-    padding: theme.layoutSpace[space],
+    padding: theme.space[space],
     background: theme.colors[background],
   };
   if (flexWrap) {
@@ -52,16 +53,7 @@ const Flex = props => {
 Flex.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   background: PropTypes.string,
-  space: PropTypes.oneOf([
-    'none',
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  space: spaces,
   flexDirection: PropTypes.oneOf([
     'row',
     'column',
@@ -107,7 +99,7 @@ Flex.propTypes = {
 Flex.defaultProps = {
   flex: 1,
   flexDirection: 'row',
-  space: 'medium',
+  space: 'md',
   background: 'transparent',
 };
 

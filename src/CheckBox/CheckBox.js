@@ -10,6 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useThemeContext} from '../util/ThemeProvider';
+import {sizes} from '../util/prop-types';
 
 const getTextStyle = ({theme, size, textColor, iconRight}) => {
   const textStyle = [
@@ -82,22 +83,14 @@ CheckBox.propTypes = {
   iconRight: PropTypes.bool,
   color: PropTypes.string,
   textColor: PropTypes.string,
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   onPress: PropTypes.func.isRequired,
   checkedIcon: PropTypes.element,
   uncheckedIcon: PropTypes.element,
 };
 
 CheckBox.defaultProps = {
-  size: 'medium',
+  size: 'md',
   color: 'primary',
   textColor: 'para',
 };

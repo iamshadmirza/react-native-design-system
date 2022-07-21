@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import {select, boolean} from '@storybook/addon-knobs';
 import {RadioButton, RadioItem} from './index';
+import {sizeArray} from '../util/prop-types';
 
 export default function ExampleRadioButton() {
   const [activeId, setActiveId] = useState('a');
   return (
     <RadioButton
-      size={select(
-        'size',
-        ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'],
-        'medium',
-      )}
+      size={select('size', sizeArray, 'md')}
       activeId={activeId}
       iconRight={boolean('iconRight', false)}
       color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}
