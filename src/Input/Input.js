@@ -2,7 +2,6 @@ import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 
 const getContainerStyle = ({
   theme,
@@ -66,7 +65,7 @@ const getInputStyle = ({theme, size, textColor, textAlign}) => {
 const getLabelStyle = ({theme, size, labelColor}) => {
   const labelStyle = [
     {
-      fontSize: theme.fontSize[size] * 0.8,
+      fontSize: theme.fontSize[size],
       fontWeight: 'bold',
       paddingLeft: 2.5,
       paddingBottom: 5,
@@ -74,6 +73,19 @@ const getLabelStyle = ({theme, size, labelColor}) => {
     },
   ];
   return labelStyle;
+};
+
+const getLabelHintStyle = ({theme, size, labelHintColor}) => {
+  const labelHintStyle = [
+    {
+      fontSize: theme.fontSize[size] * 0.9,
+      fontStyle: 'italic',
+      paddingLeft: 2.5,
+      paddingBottom: 8,
+      color: theme.textColor[labelHintColor],
+    },
+  ];
+  return labelHintStyle;
 };
 
 const getCaptionStyle = ({theme, size}) => {
@@ -92,17 +104,29 @@ const getCaptionStyle = ({theme, size}) => {
 const Input = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   const showLabel = props.floatingLabel ? props.value.length > 0 : props.label;
+  const showLabelHint = showLabel && props.labelHint;
   return (
-    <View
-      style={props.containerStyle}
-      {...extractAccessibilityPropsFromProps(props)}>
+    <View style={props.containerStyle}>
       {showLabel ? (
+        typeof props.label === 'string' ? (
+          <Text
+            style={StyleSheet.flatten([
+              getLabelStyle({...props, theme}),
+              props.labelStyle,
+            ])}>
+            {props.label}
+          </Text>
+        ) : (
+          props.label
+        )
+      ) : null}
+      {showLabelHint ? (
         <Text
           style={StyleSheet.flatten([
-            getLabelStyle({...props, theme}),
-            props.labelStyle,
+            getLabelHintStyle({...props, theme}),
+            props.labelHintStyle,
           ])}>
-          {props.label}
+          {props.labelHint}
         </Text>
       ) : null}
       <View
@@ -147,8 +171,11 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   floatingLabel: PropTypes.bool,
   labelStyle: PropTypes.object,
+  labelHintStyle: PropTypes.object,
   labelColor: PropTypes.string,
-  label: PropTypes.string,
+  labelHintColor: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  labelHint: PropTypes.string,
   color: PropTypes.string,
   outlineColor: PropTypes.string,
   round: PropTypes.bool,
@@ -191,9 +218,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    padding: 10,
   },
   leftIcon: {
     paddingLeft: 10,
