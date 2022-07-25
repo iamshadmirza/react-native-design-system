@@ -29,12 +29,14 @@ import {ActionButton} from 'react-native-design-system';
 <Preview>
   <Story name="sizes">
     <Inline>
+      <ActionButton size="5xl" onPress={action('pressed')} />
+      <ActionButton size="4xl" onPress={action('pressed')} />
+      <ActionButton size="3xl" onPress={action('pressed')} />
       <ActionButton size="2xl" onPress={action('pressed')} />
       <ActionButton size="xl" onPress={action('pressed')} />
       <ActionButton size="lg" onPress={action('pressed')} />
       <ActionButton size="md" onPress={action('pressed')} />
       <ActionButton size="sm" onPress={action('pressed')} />
-      <ActionButton size="xs" onPress={action('pressed')} />
       <ActionButton size="xs" onPress={action('pressed')} />
     </Inline>
   </Story>

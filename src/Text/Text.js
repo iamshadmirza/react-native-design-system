@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {fontSizes} from '../util/prop-types';
 
 const getTextStyle = ({
   theme,
@@ -45,7 +45,7 @@ TextElement.propTypes = {
     PropTypes.number,
     PropTypes.array,
   ]).isRequired,
-  size: PropTypes.oneOfType([sizes, PropTypes.string]),
+  size: fontSizes,
   color: PropTypes.string,
   fontWeight: PropTypes.string,
   fontFamily: PropTypes.string,

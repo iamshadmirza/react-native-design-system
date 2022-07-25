@@ -49,13 +49,11 @@ const getTextStyle = ({
 const getContainerStyle = props => {
   const {
     outline,
-    width,
     round,
     transparent,
     disabled,
     loading,
     size,
-    length,
     theme,
     color,
     tint,
@@ -67,11 +65,6 @@ const getContainerStyle = props => {
     borderWidth: 1,
     borderColor: theme.colors[color],
   });
-  if (length === 'short') {
-    buttonStyles.push({
-      width: theme.buttonWidth[width],
-    });
-  }
   if (borderColor) {
     buttonStyles.push({
       borderColor: theme.colors[borderColor],
