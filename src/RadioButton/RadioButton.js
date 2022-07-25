@@ -106,7 +106,7 @@ RadioButton.propTypes = {
 RadioButton.defaultProps = {
   size: 'md',
   color: 'primary',
-  textColor: 'para',
+  textColor: 'body',
 };
 
 const styles = StyleSheet.create({

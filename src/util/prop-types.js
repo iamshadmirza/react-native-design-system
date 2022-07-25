@@ -57,6 +57,17 @@ export const radius = [
   'full',
 ];
 
+export const fontBaseArray = ['heading', 'body'];
+export const fontVariantArray = [
+  'light',
+  'medium',
+  'semibold',
+  'bold',
+  'extrabold',
+  'italic',
+  'bolditalic',
+];
+
 export const shadowArray = ['none', 'xs', 'sm', 'md', 'lg', 'xl'];
 
 export const sizes = PropTypes.oneOf(sizeArray);
@@ -65,3 +76,5 @@ export const fontSizes = PropTypes.oneOf(fontSizes);
 export const spaces = PropTypes.oneOf(spaceArray);
 export const shadows = PropTypes.oneOf(shadowArray);
 export const radii = PropTypes.oneOf(radius);
+export const fontBases = PropTypes.oneOf(fontBaseArray);
+export const fontVariants = PropTypes.oneOf(fontVariantArray);

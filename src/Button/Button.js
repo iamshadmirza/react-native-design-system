@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
@@ -11,9 +10,9 @@ import {
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 import {radii, shadows, sizes} from '../util/prop-types';
+import Text from '../Text/Text';
 
 const getTextStyle = ({
-  size,
   outline,
   transparent,
   loading,
@@ -21,12 +20,7 @@ const getTextStyle = ({
   theme,
   color,
 }) => {
-  const textStyle = [
-    {
-      fontSize: theme.fontSize[size],
-      color: theme.colors.white,
-    },
-  ];
+  const textStyle = [];
   if (outline || transparent) {
     textStyle.push({
       color: theme.colors[color],
@@ -129,7 +123,10 @@ const renderChildren = props => {
             {props.leftIcon || props.icon}
           </View>
         ))}
-      <Text style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
+      <Text
+        size={props.size}
+        color={props.textColor}
+        style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
         {props.children}
       </Text>
       {props.rightIcon && (
@@ -184,6 +181,8 @@ Button.propTypes = {
   onPress: PropTypes.func.isRequired,
   /**  Pass the brand color */
   color: PropTypes.string,
+  /**  Pass the text color */
+  textColor: PropTypes.string,
   /**  Pass the brand color */
   borderColor: PropTypes.string,
   /**  Boolean value for round button */
@@ -218,6 +217,7 @@ Button.defaultProps = {
   length: 'long',
   width: 'md',
   color: 'primary',
+  textColor: 'white',
   tint: false,
   radius: 'sm',
   shadow: 'none',
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconStyle: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
   },
 });
 

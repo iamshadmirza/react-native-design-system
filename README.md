@@ -47,9 +47,9 @@ This step is important. We are passing `theme` as context value that each compon
 
 ```js
 //your root component
-import { ThemeProvider, theme } from 'react-native-design-system';
+import {ThemeProvider, theme} from 'react-native-design-system';
 
-function App(){
+function App() {
   return (
     <ThemeProvider theme={theme} colorMode="light">
       <Root />
@@ -62,14 +62,10 @@ function App(){
 
 ```js
 //inside any file
-import { Button } from 'react-native-design-system';
+import {Button} from 'react-native-design-system';
 
-function HomeScreen(){
-  return (
-    <Button>
-      Press Me
-    </Button>
-  );
+function HomeScreen() {
+  return <Button>Press Me</Button>;
 }
 ```
 
@@ -81,11 +77,11 @@ You just need to import `theme`, reassign the value you want to change and pass 
 Default primary color is blue but you like orange so you can simply do:
 
 ```js
-import { ThemeProvider, theme } from 'react-native-design-system';
+import {ThemeProvider, theme} from 'react-native-design-system';
 
-theme.colors.primary = "orange";
+theme.colors.primary = 'orange';
 
-function App(){
+function App() {
   return (
     <ThemeProvider theme={theme} colorMode="light">
       <Root />
@@ -95,6 +91,7 @@ function App(){
 ```
 
 And we are done!
+
 > You can see all the configurations available on the theme page.
 
 # If you have a lot of customizations
@@ -103,18 +100,18 @@ This is just a personal approach, you can do as you prefer. What I usually do is
 
 ```js
 //theme.config.js at root
-import { theme } from 'react-native-design-system';
+import {theme} from 'react-native-design-system';
 
 theme.colors.dark = {
-    'backgroundDark': '#fff',
-    'backgroundLight': '#f8f8f8',
-    'foreground': '#f4f4f4',
-    'heading': '#999',
-    'para': '#000',
-    'subtle': '#333',
-    'disabled': '#78909c',
-    'disabledText': '#78907c',
-    'white': '#f8f8f8',
+  backgroundDark: '#fff',
+  backgroundLight: '#f8f8f8',
+  foreground: '#f4f4f4',
+  heading: '#999',
+  body: '#000',
+  subtle: '#333',
+  disabled: '#78909c',
+  disabledText: '#78907c',
+  white: '#f8f8f8',
 };
 
 export default theme;
@@ -123,10 +120,10 @@ export default theme;
 Now, I will just import `theme` from here and pass it to my `ThemeProvider`.
 
 ```js
-import { ThemeProvider } from 'react-native-design-system';
+import {ThemeProvider} from 'react-native-design-system';
 import theme from './theme.config.js';
 
-function App(){
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <Root />
@@ -171,9 +168,9 @@ function App(){
 
 👤 **Shad Mirza**
 
-* Twitter: [@iamshadmirza](https://twitter.com/iamshadmirza)
-* Github: [@iamshadmirza](https://github.com/iamshadmirza)
-* Blogs: [@iamshadmirza](https://iamshadmirza.hashnode.dev)
+- Twitter: [@iamshadmirza](https://twitter.com/iamshadmirza)
+- Github: [@iamshadmirza](https://github.com/iamshadmirza)
+- Blogs: [@iamshadmirza](https://iamshadmirza.hashnode.dev)
 
 ## 🤝 Contributing
 
@@ -188,5 +185,6 @@ Give a ⭐️ if this project helped you!
 Copyright © 2019 [Shad Mirza](https://github.com/iamshadmirza).<br />
 This project is [MIT](https://github.com/iamshadmirza/react-native-design-system/blob/master/LICENSE) licensed.
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

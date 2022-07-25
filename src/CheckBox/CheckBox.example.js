@@ -10,7 +10,7 @@ export default function ExampleRadioButton() {
       checked={value}
       iconRight={boolean('iconRight', false)}
       color={select('color', ['primary', 'secondary'], 'primary')}
-      textColor={select('textColor', ['heading', 'para', 'subtle'], 'heading')}
+      textColor={select('textColor', ['heading', 'body', 'subtle'], 'heading')}
       onPress={() => setCheckBoxValue(!value)}>
       Hello CheckBox
     </CheckBox>

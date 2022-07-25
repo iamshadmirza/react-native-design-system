@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import colors from './colors';
 
 const DEFAULT_FONT_SIZE = 16;
@@ -210,6 +211,55 @@ const theme = {
     '2xl': 16,
     '3xl': 24,
     full: 9999,
+  },
+  font: {
+    heading: {
+      light: Platform.select({
+        ios: 'AppleSDGothicNeo-Light',
+        android: 'sans-serif-light',
+      }),
+      medium: Platform.select({
+        ios: 'AppleSDGothicNeo-Medium',
+        android: 'sans-serif',
+      }),
+      semibold: Platform.select({
+        ios: 'AppleSDGothicNeo-SemiBold',
+        android: 'sans-serif-medium',
+      }),
+      bold: Platform.select({
+        ios: 'AppleSDGothicNeo-Bold',
+        android: 'sans-serif-medium',
+      }),
+      extrabold: Platform.select({
+        ios: 'AppleSDGothicNeo-Bold',
+        android: 'sans-serif-medium',
+      }),
+      bolditalic: '',
+    },
+    body: {
+      light: Platform.select({
+        ios: 'AppleSDGothicNeo-Light',
+        android: 'sans-serif-light',
+      }),
+      medium: Platform.select({
+        ios: 'AppleSDGothicNeo-Medium',
+        android: 'sans-serif',
+      }),
+      semibold: Platform.select({
+        ios: 'AppleSDGothicNeo-SemiBold',
+        android: 'sans-serif-medium',
+      }),
+      bold: Platform.select({
+        ios: 'AppleSDGothicNeo-Bold',
+        android: 'sans-serif-medium',
+      }),
+      extrabold: Platform.select({
+        ios: 'AppleSDGothicNeo-Bold',
+        android: 'sans-serif-medium',
+      }),
+      italic: '',
+      bolditalic: '',
+    },
   },
 };
 

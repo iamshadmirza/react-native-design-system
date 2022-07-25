@@ -1,6 +1,7 @@
 import {colorTypes} from './colors-type';
 import {FontSizeType, RadiusType, ShadowType, SizeType} from './size-type';
 import {SpaceType} from './space-type';
+import {FontThemeType} from './typography-type';
 
 type knownScale<T> = {[k in T]: number};
 
@@ -32,4 +33,5 @@ export interface themeType {
   colors: possibleColors;
   shadow: ShadowType;
   radius: RadiusType;
+  font: FontThemeType;
 }

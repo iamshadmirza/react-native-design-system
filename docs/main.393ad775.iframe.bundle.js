@@ -12522,7 +12522,7 @@
                 ),
                 Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.b)(
                   _Text__WEBPACK_IMPORTED_MODULE_5__.a,
-                  {color: 'para', mdxType: 'Text'},
+                  {color: 'body', mdxType: 'Text'},
                   'Hello Design System',
                 ),
                 Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.b)(
@@ -12588,7 +12588,7 @@
                 ),
                 color: Object(
                   _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.d,
-                )('color', ['heading', 'para', 'subtle'], 'heading'),
+                )('color', ['heading', 'body', 'subtle'], 'heading'),
                 mdxType: 'Text',
               },
               'Hello World',
@@ -12655,7 +12655,7 @@
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.b)(
             _Text__WEBPACK_IMPORTED_MODULE_5__.a,
-            {color: 'para'},
+            {color: 'body'},
             'Hello Design System',
           ),
           Object(_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.b)(
@@ -12668,7 +12668,7 @@
         (color.parameters = {
           storySource: {
             source:
-              '<Stack>\n      <Text color="heading">Hello Design System</Text>\n      <Text color="para">Hello Design System</Text>\n      <Text color="subtle">Hello Design System</Text>\n    </Stack>',
+              '<Stack>\n      <Text color="heading">Hello Design System</Text>\n      <Text color="body">Hello Design System</Text>\n      <Text color="subtle">Hello Design System</Text>\n    </Stack>',
           },
         });
       const playground = () =>
@@ -12682,7 +12682,7 @@
             ),
             color: Object(
               _storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.d,
-            )('color', ['heading', 'para', 'subtle'], 'heading'),
+            )('color', ['heading', 'body', 'subtle'], 'heading'),
           },
           'Hello World',
         );
@@ -12690,7 +12690,7 @@
         (playground.parameters = {
           storySource: {
             source:
-              "<Text size={select('size', sizeArray, 'md')} color={select('color', ['heading', 'para', 'subtle'], 'heading')}>\n    Hello World\n  </Text>",
+              "<Text size={select('size', sizeArray, 'md')} color={select('color', ['heading', 'body', 'subtle'], 'heading')}>\n    Hello World\n  </Text>",
           },
           decorators: [_storybook_addon_knobs__WEBPACK_IMPORTED_MODULE_3__.f],
         });
@@ -13807,7 +13807,7 @@
         (RadioButton.defaultProps = {
           size: 'medium',
           color: 'primary',
-          textColor: 'para',
+          textColor: 'body',
         });
       var styles = react_native__WEBPACK_IMPORTED_MODULE_5__.StyleSheet.create({
         itemContainer: {flexDirection: 'row', alignItems: 'center'},
@@ -13830,7 +13830,7 @@
             description: '',
           },
           textColor: {
-            defaultValue: {value: "'para'", computed: !1},
+            defaultValue: {value: "'body'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -14549,7 +14549,7 @@
             ),
             textColor: Object(dist_esm.d)(
               'textColor',
-              ['heading', 'para', 'subtle'],
+              ['heading', 'body', 'subtle'],
               'heading',
             ),
             onPress: function onPress() {
@@ -14767,7 +14767,7 @@
                 ),
                 Object(esm.b)(
                   CheckBox.a,
-                  {textColor: 'para', mdxType: 'CheckBox'},
+                  {textColor: 'body', mdxType: 'CheckBox'},
                   'Hello CheckBox',
                 ),
                 Object(esm.b)(
@@ -14906,14 +14906,14 @@
           Stack.a,
           null,
           Object(esm.b)(CheckBox.a, {textColor: 'heading'}, 'Hello CheckBox'),
-          Object(esm.b)(CheckBox.a, {textColor: 'para'}, 'Hello CheckBox'),
+          Object(esm.b)(CheckBox.a, {textColor: 'body'}, 'Hello CheckBox'),
           Object(esm.b)(CheckBox.a, {textColor: 'subtle'}, 'Hello CheckBox'),
         );
       (textColor.storyName = 'textColor'),
         (textColor.parameters = {
           storySource: {
             source:
-              '<Stack>\n      <CheckBox textColor="heading">Hello CheckBox</CheckBox>\n      <CheckBox textColor="para">Hello CheckBox</CheckBox>\n      <CheckBox textColor="subtle">Hello CheckBox</CheckBox>\n    </Stack>',
+              '<Stack>\n      <CheckBox textColor="heading">Hello CheckBox</CheckBox>\n      <CheckBox textColor="body">Hello CheckBox</CheckBox>\n      <CheckBox textColor="subtle">Hello CheckBox</CheckBox>\n    </Stack>',
           },
         });
       const icons = () =>
@@ -15138,13 +15138,13 @@
           label: Object(dist_esm.e)('label', 'Username'),
           labelColor: Object(dist_esm.d)(
             'labelColor',
-            ['heading', 'para', 'subtle'],
-            'para',
+            ['heading', 'body', 'subtle'],
+            'body',
           ),
           textColor: Object(dist_esm.d)(
             'textColor',
-            ['heading', 'para', 'subtle'],
-            'para',
+            ['heading', 'body', 'subtle'],
+            'body',
           ),
           placeholder: Object(dist_esm.e)('placeholder', 'Enter Username'),
           error: Object(dist_esm.a)('error', !1),
@@ -16342,7 +16342,7 @@
                   RadioButton.b,
                   {
                     activeId: 'a',
-                    textColor: 'para',
+                    textColor: 'body',
                     selectItem: Object(addon_actions_dist_esm.action)(
                       'pressed',
                     ),
@@ -16642,7 +16642,7 @@
             RadioButton.b,
             {
               activeId: 'a',
-              textColor: 'para',
+              textColor: 'body',
               selectItem: Object(addon_actions_dist_esm.action)('pressed'),
             },
             Object(esm.b)(RadioButton.a, {id: 'a'}, 'Option A'),
@@ -16679,7 +16679,7 @@
         (textColor.parameters = {
           storySource: {
             source:
-              '<Stack>\n      <RadioButton activeId="a" textColor="heading" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Option A</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="para" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Option A</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="subtle" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Option A</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="success" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Success</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="warning" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Warning</RadioItem>\n      </RadioButton>\n    </Stack>',
+              '<Stack>\n      <RadioButton activeId="a" textColor="heading" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Option A</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="body" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Option A</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="subtle" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Option A</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="success" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Success</RadioItem>\n      </RadioButton>\n      <RadioButton activeId="a" textColor="warning" selectItem={action(\'pressed\')}>\n        <RadioItem id="a">Warning</RadioItem>\n      </RadioButton>\n    </Stack>',
           },
         });
       const icons = () =>
@@ -20020,7 +20020,7 @@
       }),
         (Input.defaultProps = {
           placeholder: 'Type here',
-          textColor: 'para',
+          textColor: 'body',
           color: 'subtle',
           size: 'medium',
           labelColor: 'subtle',
@@ -20059,7 +20059,7 @@
             description: '',
           },
           textColor: {
-            defaultValue: {value: "'para'", computed: !1},
+            defaultValue: {value: "'body'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -20433,9 +20433,9 @@
         (ListItem.defaultProps = {
           children: 'Pass children to render',
           background: 'foreground',
-          textColor: 'para',
+          textColor: 'body',
           subtitleColor: 'subtle',
-          chevronColor: 'para',
+          chevronColor: 'body',
           textAlign: 'left',
           space: 'medium',
           size: 'medium',
@@ -20478,7 +20478,7 @@
             description: '',
           },
           textColor: {
-            defaultValue: {value: "'para'", computed: !1},
+            defaultValue: {value: "'body'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -20490,7 +20490,7 @@
             description: '',
           },
           chevronColor: {
-            defaultValue: {value: "'para'", computed: !1},
+            defaultValue: {value: "'body'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -21624,7 +21624,7 @@
         (CheckBox.defaultProps = {
           size: 'medium',
           color: 'primary',
-          textColor: 'para',
+          textColor: 'body',
         });
       var styles = react_native__WEBPACK_IMPORTED_MODULE_5__.StyleSheet.create({
         container: {flexDirection: 'row', alignItems: 'center'},
@@ -21647,7 +21647,7 @@
             description: '',
           },
           textColor: {
-            defaultValue: {value: "'para'", computed: !1},
+            defaultValue: {value: "'body'", computed: !1},
             type: {name: 'string'},
             required: !1,
             description: '',
@@ -23029,7 +23029,7 @@
           ]),
         }),
         (TextElement.defaultProps = {
-          color: 'para',
+          color: 'body',
           size: 'medium',
           fontWeight: '500',
           textAlign: 'left',
@@ -23040,7 +23040,7 @@
           displayName: 'TextElement',
           props: {
             color: {
-              defaultValue: {value: "'para'", computed: !1},
+              defaultValue: {value: "'body'", computed: !1},
               type: {name: 'string'},
               required: !1,
               description: '',

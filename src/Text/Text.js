@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {fontSizes} from '../util/prop-types';
+import {fontBases, fontSizes, fontVariants} from '../util/prop-types';
 
 const getTextStyle = ({
   theme,
@@ -11,18 +11,32 @@ const getTextStyle = ({
   fontWeight,
   fontFamily,
   textAlign,
+  lineHeight,
+  letterSpacing,
+  fontBase,
+  fontVariant,
 }) => {
-  const style = {
-    color: theme.colors[color],
-    fontSize: theme.fontSize[size],
-    lineHeight: theme.lineHeight[size],
-    includeFontPadding: false,
-    textAlignVertical: 'center',
-    fontWeight,
-    textAlign,
-  };
+  const style = [
+    {
+      color: theme.colors[color],
+      fontSize: theme.fontSize[size],
+      lineHeight: theme.lineHeight[lineHeight || size],
+      includeFontPadding: false,
+      textAlignVertical: 'center',
+      fontWeight,
+      textAlign,
+    },
+  ];
   if (fontFamily) {
-    style.fontFamily = fontFamily;
+    style.push({fontFamily: theme.font[fontFamily]});
+  }
+  if (letterSpacing) {
+    style.push({letterSpacing: theme.letterSpacing[letterSpacing]});
+  }
+  if (fontBase && fontVariant) {
+    style.push({
+      fontFamily: theme.font[fontBase][fontVariant],
+    });
   }
   return style;
 };
@@ -46,17 +60,23 @@ TextElement.propTypes = {
     PropTypes.array,
   ]).isRequired,
   size: fontSizes,
+  lineHeight: fontSizes,
+  fontFamily: PropTypes.string,
   color: PropTypes.string,
   fontWeight: PropTypes.string,
-  fontFamily: PropTypes.string,
+  letterSpacing: fontSizes,
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  fontBase: fontBases,
+  fontVariant: fontVariants,
 };
 
 TextElement.defaultProps = {
-  color: 'para',
+  color: 'body',
   size: 'md',
   fontWeight: '500',
   textAlign: 'left',
+  fontBases: 'body',
+  fontVariant: 'medium',
 };
 
 export default TextElement;

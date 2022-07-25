@@ -53,7 +53,7 @@ type brandColors =
   | 'disabled'
   | 'disabledText'
   | 'heading'
-  | 'para'
+  | 'body'
   | 'subtle'
   | 'transparent'
   | 'semitransparent'

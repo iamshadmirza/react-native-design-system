@@ -11,8 +11,8 @@ export default function ExampleInput() {
       outline={boolean('outline', true)}
       round={boolean('round', false)}
       label={text('label', 'Username')}
-      labelColor={select('labelColor', ['heading', 'para', 'subtle'], 'para')}
-      textColor={select('textColor', ['heading', 'para', 'subtle'], 'para')}
+      labelColor={select('labelColor', ['heading', 'body', 'subtle'], 'body')}
+      textColor={select('textColor', ['heading', 'body', 'subtle'], 'body')}
       placeholder={text('placeholder', 'Enter Username')}
       error={boolean('error', false)}
       floatingLabel={boolean('floatingLabel', false)}

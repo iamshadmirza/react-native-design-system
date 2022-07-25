@@ -157,9 +157,9 @@ ListItem.propTypes = {
 ListItem.defaultProps = {
   children: 'Pass children to render',
   background: 'background-200',
-  textColor: 'para',
+  textColor: 'body',
   subtitleColor: 'subtle',
-  chevronColor: 'para',
+  chevronColor: 'body',
   textAlign: 'left',
   space: 'md',
   size: 'md',
