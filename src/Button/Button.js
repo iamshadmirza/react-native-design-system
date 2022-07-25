@@ -9,7 +9,13 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {radii, shadows, sizes} from '../util/prop-types';
+import {
+  fontBases,
+  fontVariants,
+  radii,
+  shadows,
+  sizes,
+} from '../util/prop-types';
 import Text from '../Text/Text';
 
 const getTextStyle = ({
@@ -108,30 +114,50 @@ const getContainerStyle = props => {
 };
 
 const renderChildren = props => {
+  const {
+    loading,
+    disabled,
+    iconStyle,
+    theme,
+    color,
+    indicatorColor,
+    leftIcon,
+    rightIcon,
+    fontBase,
+    fontVariant,
+    textStyle,
+    children,
+    size,
+    textColor,
+    leftIconStyle,
+    icon,
+    rightIconStyle,
+  } = props;
   return (
     <>
-      {props.loading && !props.disabled && (
+      {loading && !disabled && (
         <ActivityIndicator
-          style={[styles.iconStyle, props.iconStyle]}
-          color={props.indicatorColor || props.theme.colors[props.color]}
+          style={[styles.iconStyle, iconStyle]}
+          color={indicatorColor || theme.colors[color]}
         />
       )}
-      {props.leftIcon ||
-        (props.icon && (
-          <View
-            style={[styles.iconStyle, props.iconStyle, props.leftIconStyle]}>
-            {props.leftIcon || props.icon}
+      {leftIcon ||
+        (icon && (
+          <View style={[styles.iconStyle, iconStyle, leftIconStyle]}>
+            {leftIcon || icon}
           </View>
         ))}
       <Text
-        size={props.size}
-        color={props.textColor}
-        style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
-        {props.children}
+        size={size}
+        color={textColor}
+        fontBase={fontBase}
+        fontVariant={fontVariant}
+        style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+        {children}
       </Text>
-      {props.rightIcon && (
-        <View style={[styles.iconStyle, props.iconStyle, props.rightIconStyle]}>
-          {props.rightIcon}
+      {rightIcon && (
+        <View style={[styles.iconStyle, iconStyle, rightIconStyle]}>
+          {rightIcon}
         </View>
       )}
     </>
@@ -209,6 +235,9 @@ Button.propTypes = {
   radius: radii,
   /**  Customize Shadow */
   shadow: shadows,
+  /**  Customize button font */
+  fontBase: fontBases,
+  fontVariant: fontVariants,
 };
 
 Button.defaultProps = {
@@ -221,12 +250,13 @@ Button.defaultProps = {
   tint: false,
   radius: 'sm',
   shadow: 'none',
+  fontBase: 'body',
+  fontVariant: 'semibold',
 };
 
 const styles = StyleSheet.create({
   container: {
-    left: 0,
-    right: 0,
+    flexGrow: 0,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
