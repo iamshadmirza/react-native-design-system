@@ -99,7 +99,7 @@ Flex.propTypes = {
 Flex.defaultProps = {
   flex: 1,
   flexDirection: 'row',
-  space: 'md',
+  space: 'none',
   background: 'transparent',
 };
 
