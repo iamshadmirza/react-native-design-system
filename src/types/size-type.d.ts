@@ -23,3 +23,15 @@ export type FontSizeType =
   | '7xl'
   | '8xl'
   | '9xl';
+
+export type ShadowType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type RadiusType =
+  | 'none'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | 'full';

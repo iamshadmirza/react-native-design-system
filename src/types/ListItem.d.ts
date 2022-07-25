@@ -6,10 +6,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import {IconNode} from './icon-type';
-import {SizeType} from './size-type';
+import {RadiusType, ShadowType, SizeType} from './size-type';
 import {ListSpaceType} from './space-type';
 import {TextAlignType} from './text-align-type';
-import { colorTypes } from './colors-type';
+import {colorTypes} from './colors-type';
 
 interface ListItemProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -19,8 +19,8 @@ interface ListItemProps extends AccessibilityProps {
   textAlign?: TextAlignType;
   children: string;
   subtitle?: string;
-  background?: keyof colorTypes | string,
-  textColor?: keyof colorTypes | string,
+  background?: keyof colorTypes | string;
+  textColor?: keyof colorTypes | string;
   subtitleColor?: string;
   chevronColor?: string;
   size?: SizeType;
@@ -32,6 +32,8 @@ interface ListItemProps extends AccessibilityProps {
   chevron?: boolean;
   disabled?: boolean;
   activeOpacity?: number;
+  shadow: ShadowType;
+  radius: RadiusType;
 }
 
 export const ListItem: React.FC<ListItemProps>;

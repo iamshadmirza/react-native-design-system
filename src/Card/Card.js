@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {spaces} from '../util/prop-types';
+import {radii, shadows, spaces} from '../util/prop-types';
 
 const getContainerStyle = ({
   row,
@@ -15,16 +15,18 @@ const getContainerStyle = ({
   outline,
   wrap,
   background,
+  radius,
 }) => {
   const cardStyle = [
     styles.container,
     {
       padding: theme.space[space],
       backgroundColor: theme.colors[background],
+      borderRadius: theme.radius[radius],
     },
   ];
   if (shadow) {
-    cardStyle.push(styles.shadow);
+    cardStyle.push(theme.shadow[shadow]);
   }
   if (row) {
     cardStyle.push({
@@ -38,7 +40,6 @@ const getContainerStyle = ({
   }
   if (outline) {
     cardStyle.push({
-      elevation: 0,
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: '#333',
     });
@@ -95,16 +96,18 @@ Card.propTypes = {
   horizontal: PropTypes.bool,
   vertical: PropTypes.bool,
   align: PropTypes.oneOf(['center', 'left', 'right']),
-  shadow: PropTypes.bool,
+  shadow: shadows,
   outline: PropTypes.bool,
   background: PropTypes.string,
+  radius: radii,
 };
 
 Card.defaultProps = {
-  space: 'md',
-  shadow: false,
+  space: 'lg',
   outline: false,
-  background: 'backgroundLight',
+  background: 'background-200',
+  shadow: 'none',
+  radius: 'sm',
 };
 
 const styles = StyleSheet.create({
@@ -112,27 +115,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'stretch',
     justifyContent: 'center',
-    borderRadius: 5,
-  },
-  shadow: {
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
   },
 });
 

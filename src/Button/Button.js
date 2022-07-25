@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {radii, shadows, sizes} from '../util/prop-types';
 
 const getTextStyle = ({
   size,
@@ -24,7 +24,6 @@ const getTextStyle = ({
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
-      margin: theme.buttonSize[size],
       color: theme.colors.white,
     },
   ];
@@ -58,12 +57,18 @@ const getContainerStyle = props => {
     color,
     tint,
     borderColor,
+    radius,
+    shadow,
   } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
     backgroundColor: theme.colors[color],
     borderWidth: 1,
     borderColor: theme.colors[color],
+    borderRadius: theme.radius[radius],
+    paddingVertical: theme.buttonSize[size],
+    paddingHorizontal: theme.buttonSize[size] * 2,
+    ...theme.shadow[shadow],
   });
   if (borderColor) {
     buttonStyles.push({
@@ -72,7 +77,7 @@ const getContainerStyle = props => {
   }
   if (round) {
     buttonStyles.push({
-      borderRadius: theme.buttonSize[size] * 2,
+      borderRadius: theme.buttonSize.full,
     });
   }
   if (outline) {
@@ -201,6 +206,10 @@ Button.propTypes = {
   length: PropTypes.oneOf(['long', 'short']),
   /**  To enable outline button tint */
   tint: PropTypes.bool,
+  /**  Customize Radius */
+  radius: radii,
+  /**  Customize Shadow */
+  shadow: shadows,
 };
 
 Button.defaultProps = {
@@ -210,13 +219,14 @@ Button.defaultProps = {
   width: 'md',
   color: 'primary',
   tint: false,
+  radius: 'sm',
+  shadow: 'none',
 };
 
 const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
-    borderRadius: 2,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

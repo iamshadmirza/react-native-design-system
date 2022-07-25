@@ -1,7 +1,7 @@
 import React from 'react';
 import {ViewStyle, TextStyle, StyleProp, TextInputProps} from 'react-native';
 
-import {SizeType} from './size-type';
+import {RadiusType, ShadowType, SizeType} from './size-type';
 import {IconNode} from './icon-type';
 import {colorTypes} from './colors-type';
 
@@ -31,6 +31,8 @@ interface InputProps extends TextInputProps {
   labelHintStyle?: StyleProp<TextStyle>;
   labelHintColor?: string;
   labelHint?: string;
+  shadow: ShadowType;
+  radius: RadiusType;
 }
 
 export const Input: React.FC<InputProps>;

@@ -11,7 +11,7 @@ import {
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {radii, shadows, sizes} from '../util/prop-types';
 
 const getContainerStyle = ({
   theme,
@@ -20,14 +20,19 @@ const getContainerStyle = ({
   rounded,
   size,
   background,
+  shadow,
+  radius,
 }) => {
   const avatarStyle = [styles.container];
   avatarStyle.push({
     backgroundColor: theme.colors[background],
     width: theme.avatarSize[size],
     height: theme.avatarSize[size],
-    borderRadius: theme.avatarSize[size] * 2,
+    borderRadius: theme.radius.full,
   });
+  if (shadow) {
+    avatarStyle.push(theme.shadow[shadow]);
+  }
   if (source) {
     avatarStyle.push({
       padding: 0,
@@ -40,7 +45,12 @@ const getContainerStyle = ({
   }
   if (rounded) {
     avatarStyle.push({
-      borderRadius: 10,
+      borderRadius: theme.radius.md,
+    });
+  }
+  if (radius) {
+    avatarStyle.push({
+      borderRadius: theme.radius[radius],
     });
   }
   return avatarStyle;
@@ -131,6 +141,8 @@ Avatar.propTypes = {
   rounded: PropTypes.bool,
   editIconStyle: PropTypes.object,
   editIconColor: PropTypes.string,
+  shadow: shadows,
+  radius: radii,
 };
 
 Avatar.defaultProps = {
@@ -138,6 +150,7 @@ Avatar.defaultProps = {
   editable: false,
   size: 'lg',
   background: 'background-100',
+  shadow: 'none',
 };
 
 const styles = StyleSheet.create({
@@ -145,7 +158,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 1,
   },
   propView: {
     backgroundColor: 'transparent',

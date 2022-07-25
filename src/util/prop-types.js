@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const componentSizeArray = [
+export const sizeArray = [
   'xs',
   'sm',
   'md',
@@ -45,7 +45,23 @@ export const spaceArray = [
   '9xl',
 ];
 
-export const sizes = PropTypes.oneOf(componentSizeArray);
+export const radius = [
+  'none',
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  'full',
+];
+
+export const shadowArray = ['none', 'xs', 'sm', 'md', 'lg', 'xl'];
+
+export const sizes = PropTypes.oneOf(sizeArray);
 export const fontSizes = PropTypes.oneOf(fontSizes);
 
 export const spaces = PropTypes.oneOf(spaceArray);
+export const shadows = PropTypes.oneOf(shadowArray);
+export const radii = PropTypes.oneOf(radius);

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {radii, shadows, sizes} from '../util/prop-types';
 
 const getContainerStyle = ({
   theme,
@@ -11,10 +11,14 @@ const getContainerStyle = ({
   outlineColor,
   error,
   background,
+  radius,
+  shadow,
 }) => {
   const inputContainerStyle = [styles.container];
   inputContainerStyle.push({
     borderBottomColor: theme.colors[outlineColor],
+    borderRadius: theme.radius[radius],
+    ...theme.shadow[shadow],
   });
   if (outline) {
     inputContainerStyle.push({
@@ -23,13 +27,12 @@ const getContainerStyle = ({
       borderColor: theme.colors[outlineColor],
       borderBottomColor: theme.colors[outlineColor],
       backgroundColor: theme.colors[background],
-      borderRadius: 5,
     });
   }
   if (round) {
     inputContainerStyle.push({
       borderBottomWidth: 0,
-      borderRadius: 50,
+      borderRadius: theme.radius.full,
       backgroundColor: theme.colors[background],
     });
   }
@@ -189,6 +192,8 @@ Input.propTypes = {
   leftIcon: PropTypes.element,
   rightIcon: PropTypes.element,
   background: PropTypes.string,
+  shadow: shadows,
+  radius: radii,
 };
 
 Input.defaultProps = {
@@ -201,6 +206,8 @@ Input.defaultProps = {
   outlineColor: 'outline',
   floatingLabel: false,
   textAlign: 'left',
+  shadow: 'none',
+  radius: 'sm',
 };
 
 const styles = StyleSheet.create({

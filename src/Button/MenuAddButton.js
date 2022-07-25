@@ -9,25 +9,32 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
-import colors from '../util/colors';
 import {useThemeContext, useThemeMode} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {radii, shadows, sizes} from '../util/prop-types';
 
-const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
+const getContainerStyle = ({
+  theme,
+  size,
+  count,
+  disabled,
+  shadow,
+  radius,
+  background,
+}) => {
   const buttonStyle = [styles.container];
   buttonStyle.push({
-    backgroundColor: theme.colors.backgroundLight,
-    width: theme.buttonWidth[size],
-    height: theme.buttonWidth[size] / 3,
+    backgroundColor: theme.colors[background],
+    paddingVertical: theme.buttonSize[size],
     flexDirection: 'row',
     justifyContent: 'center',
+    borderRadius: theme.radius[radius],
   });
+  if (shadow) {
+    buttonStyle.push(theme.shadow[shadow]);
+  }
   if (count < 1) {
     buttonStyle.push({
-      backgroundColor: isDarkMode
-        ? colors['bluegray-500']
-        : colors['bluegray-200'],
-      elevation: 0,
+      backgroundColor: theme.colors[background],
       justifyContent: 'center',
       alignItems: 'center',
     });
@@ -35,7 +42,6 @@ const getContainerStyle = ({theme, size, count, disabled, isDarkMode}) => {
   if (disabled) {
     buttonStyle.push({
       backgroundColor: theme.colors.disabled,
-      elevation: 0,
       justifyContent: 'center',
       alignItems: 'center',
     });
@@ -47,6 +53,7 @@ const getTextStyle = ({theme, size, disabled}) => {
   const textStyle = [
     {
       fontSize: theme.fontSize[size],
+      paddingHorizontal: 10,
       color: theme.colors.para,
     },
   ];
@@ -63,7 +70,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
   const {isDarkMode} = useThemeMode();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  if (props.count < 1 || props.disabled) {
+  if (props.count < 1) {
     return (
       <TouchableElement
         {...props}
@@ -86,20 +93,12 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
             <MaterialIcons
               name="remove"
               color={props.iconColor || theme.colors.para}
-              size={theme.iconSize[props.size]}
+              size={theme.fontSize[props.size]}
             />
           )}
         </View>
       </TouchableElement>
-      <View
-        style={[
-          styles.countView,
-          {
-            backgroundColor:
-              (textStyle && textStyle.backgroundColor) ||
-              (isDarkMode ? colors['bluegray-500'] : colors['bluegray-200']),
-          },
-        ]}>
+      <View style={[styles.countView]}>
         <Text style={[getTextStyle({...props, theme}), textStyle]}>
           {props.count}
         </Text>
@@ -110,7 +109,7 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
             <MaterialIcons
               name="add"
               color={props.iconColor || theme.colors.para}
-              size={theme.iconSize[props.size]}
+              size={theme.fontSize[props.size]}
             />
           )}
         </View>
@@ -130,38 +129,33 @@ MenuAddButton.propTypes = {
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
   size: sizes,
+  shadow: shadows,
+  radius: radii,
 };
 
 MenuAddButton.defaultProps = {
   count: 0,
   size: 'md',
+  shadow: 'none',
+  radius: 'sm',
+  background: 'background-200',
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: '#f8f8f8',
-    borderRadius: 2,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 1,
   },
   icon: {
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 5,
+    paddingHorizontal: 15,
   },
   countView: {
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors['bluegray-200'],
   },
 });
 

@@ -9,11 +9,11 @@ import {
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {shadows, sizes} from '../util/prop-types';
 
-const getContainerStyle = ({theme, size, color}) => {
+const getContainerStyle = ({theme, size, color, shadow}) => {
   return {
-    ...styles.container,
+    ...theme.shadow[shadow],
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.colors[color],
@@ -53,34 +53,13 @@ ActionButton.propTypes = {
   color: PropTypes.string,
   icon: PropTypes.element,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  shadow: shadows,
 };
 
 ActionButton.defaultProps = {
   size: 'md',
   color: 'primary',
+  shadow: 'md',
 };
-
-const styles = StyleSheet.create({
-  container: {
-    ...Platform.select({
-      android: {
-        elevation: 3,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
-  },
-});
 
 export default ActionButton;

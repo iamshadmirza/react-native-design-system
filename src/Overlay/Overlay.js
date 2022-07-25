@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, Modal, Pressable } from 'react-native';
+import {View, StyleSheet, Modal, Pressable} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
-import { extractAccessibilityPropsFromProps, removeAccessibilityPropsFromProps } from '../util/accessibility';
+import {useThemeContext} from '../util/ThemeProvider';
+import {
+  extractAccessibilityPropsFromProps,
+  removeAccessibilityPropsFromProps,
+} from '../util/accessibility';
+import {radii} from '../util/prop-types';
 
-const getContainerStyle = ({ theme, background, style }) => {
+const getContainerStyle = ({theme, background, style}) => {
   const containerStyle = [
     styles.container,
     {
@@ -21,14 +25,14 @@ const getChildStyle = ({
   theme,
   overlayBackground,
   overlayStyle,
-  borderRadius,
+  radius,
   width,
 }) => {
   const contentStyle = [
     {
       elevation: 1,
       backgroundColor: theme.colors[overlayBackground],
-      borderRadius: borderRadius,
+      borderRadius: theme.radius[radius],
       width: width,
     },
   ];
@@ -46,8 +50,8 @@ const Overlay = props => {
       <ContainerView
         {...extractAccessibilityPropsFromProps(props)}
         onPress={props.onPressOutside}
-        style={getContainerStyle({ ...props, theme })}>
-        <View style={getChildStyle({ ...props, theme })}>{props.children}</View>
+        style={getContainerStyle({...props, theme})}>
+        <View style={getChildStyle({...props, theme})}>{props.children}</View>
       </ContainerView>
     </Modal>
   );
@@ -59,7 +63,7 @@ Overlay.propTypes = {
   children: PropTypes.element.isRequired,
   background: PropTypes.string,
   overlayBackground: PropTypes.string,
-  borderRadius: PropTypes.number,
+  radius: radii,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
@@ -67,7 +71,7 @@ Overlay.propTypes = {
 Overlay.defaultProps = {
   background: 'semitransparent',
   overlayBackground: 'clearWhite',
-  borderRadius: 3,
+  radius: 'lg',
   width: '80%',
 };
 

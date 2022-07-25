@@ -1,7 +1,7 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp, ViewProps } from 'react-native';
+import {ViewStyle, TextStyle, StyleProp, ViewProps} from 'react-native';
 
-import { SizeType } from './size-type';
+import {RadiusType, ShadowType, SizeType} from './size-type';
 
 interface AvatarProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
@@ -15,6 +15,8 @@ interface AvatarProps extends ViewProps {
   rounded?: boolean;
   editIconStyle?: StyleProp<ViewStyle>;
   editIconColor?: string;
+  shadow: ShadowType;
+  radius: RadiusType;
 }
 
 export const Avatar: React.FC<AvatarProps>;

@@ -6,9 +6,9 @@ import {
   ViewStyle,
 } from 'react-native';
 import {IconNode} from './icon-type';
-import {SizeType} from './size-type';
+import {ShadowType, SizeType} from './size-type';
 import {TextAlignType} from './text-align-type';
-import { colorTypes } from './colors-type';
+import {colorTypes} from './colors-type';
 
 interface HeaderProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -16,7 +16,7 @@ interface HeaderProps extends AccessibilityProps {
   textAlign?: TextAlignType;
   fontSize?: SizeType;
   children?: string;
-  color?: keyof colorTypes | string,
+  color?: keyof colorTypes | string;
   leftIcon?: IconNode;
   onleftIconPress?: () => void;
   rightIcon?: IconNode;
@@ -24,6 +24,7 @@ interface HeaderProps extends AccessibilityProps {
   iconStyle?: StyleProp<ViewStyle>;
   barColor?: string;
   barStyle?: 'default' | 'dark-content' | 'light-content';
+  shadow: ShadowType;
 }
 
 export const Header: React.FC<HeaderProps>;

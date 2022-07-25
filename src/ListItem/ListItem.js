@@ -11,15 +11,17 @@ import Feather from 'react-native-vector-icons/Feather';
 import {Avatar} from '../Avatar';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes, spaces} from '../util/prop-types';
+import {radii, shadows, sizes, spaces} from '../util/prop-types';
 
-const getContainerStyle = ({theme, space, background}) => {
+const getContainerStyle = ({theme, space, background, shadow, radius}) => {
   const itemStyle = [styles.container];
   itemStyle.push({
     borderColor: theme.colors.outline,
+    borderRadius: theme.radius[radius],
     backgroundColor: theme.colors[background],
-    paddingVertical: theme.space[space] * 1.2,
+    paddingVertical: theme.space[space] * 2,
     paddingHorizontal: theme.space[space] * 1.2,
+    ...theme.shadow[shadow],
   });
   return itemStyle;
 };
@@ -148,11 +150,13 @@ ListItem.propTypes = {
   chevron: PropTypes.bool,
   disabled: PropTypes.bool,
   activeOpacity: PropTypes.number,
+  shadow: shadows,
+  radius: radii,
 };
 
 ListItem.defaultProps = {
   children: 'Pass children to render',
-  background: 'foreground',
+  background: 'background-200',
   textColor: 'para',
   subtitleColor: 'subtle',
   chevronColor: 'para',
@@ -160,31 +164,14 @@ ListItem.defaultProps = {
   space: 'md',
   size: 'md',
   subtitleSize: 'md',
+  shadow: 'none',
+  radius: 'sm',
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 1,
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
   },
   textView: {
     flex: 1,

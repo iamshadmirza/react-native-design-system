@@ -6,12 +6,11 @@ import {
   AccessibilityProps,
 } from 'react-native';
 
-import {SizeType} from './size-type';
+import {RadiusType, ShadowType, SizeType} from './size-type';
 import {WidthType} from './width-type';
 import {LengthType} from './length-type';
 import {IconNode} from './icon-type';
-import { colorTypes } from './colors-type';
-
+import {colorTypes} from './colors-type';
 
 interface ButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -35,6 +34,8 @@ interface ButtonProps extends AccessibilityProps {
   rightIconStyle?: StyleProp<ViewStyle>;
   leftIconStyle?: StyleProp<ViewStyle>;
   length?: LengthType;
+  radius: RadiusType;
+  shadow: ShadowType;
 }
 
 export const Button: React.FC<ButtonProps>;

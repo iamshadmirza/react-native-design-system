@@ -1,22 +1,8 @@
 import {colorTypes} from './colors-type';
+import {FontSizeType, RadiusType, ShadowType, SizeType} from './size-type';
+import {SpaceType} from './space-type';
 
-type sizes =
-  | 'xs'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | '7xl'
-  | '8xl'
-  | '9xl';
-
-type knownScale = {[k in sizes]: number};
+type knownScale<T> = {[k in T]: number};
 
 type unknownScale = {
   [size: string]: number;
@@ -26,22 +12,24 @@ type unknownColors = {
   [color: string]: string;
 };
 
-type possibleSizes = knownScale & unknownScale;
-type possibleSpaces = knownScale & {none: number} & unknownScale;
+type possibleSizes = knownScale<SizeType> & unknownScale;
+type possibleFontSizes = knownScale<FontSizeType> & unknownScale;
+type possibleSpaces = knownScale<SpaceType> & unknownScale;
 type possibleColors = colorTypes & unknownColors;
 
 export interface themeType {
-  fontSize: possibleSizes;
-  lineHeight: possibleSizes;
+  fontSize: possibleFontSizes;
+  lineHeight: possibleFontSizes;
   size: possibleSizes;
   actionButtonSize: possibleSizes;
   buttonSize: possibleSizes;
-  buttonWidth: possibleSizes;
   iconSize: possibleSizes;
   avatarSize: possibleSizes;
   badgeSize: possibleSizes;
   miniBadgeSize: possibleSizes;
-  space: 'none' | possibleSizes;
+  space: possibleSpaces;
   indicatorSize: possibleSizes;
   colors: possibleColors;
+  shadow: ShadowType;
+  radius: RadiusType;
 }

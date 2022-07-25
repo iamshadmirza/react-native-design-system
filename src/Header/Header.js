@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import {extractAccessibilityPropsFromProps} from '../util/accessibility';
-import {sizes} from '../util/prop-types';
+import {shadows, sizes} from '../util/prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 
 const getContainerStyle = ({theme, color}) => {
@@ -36,7 +36,7 @@ const getTextStyle = ({theme, color, textAlign, fontSize}) => {
   return textStyle;
 };
 
-const Header = ({style, textStyle, ...props}) => {
+const Header = ({style, textStyle, shadow, ...props}) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -45,7 +45,10 @@ const Header = ({style, textStyle, ...props}) => {
       {...extractAccessibilityPropsFromProps(props)}
       style={[
         styles.safeAreaView,
-        {backgroundColor: theme.colors[props.barColor]},
+        {
+          backgroundColor: theme.colors[props.barColor],
+          ...theme.shadow[shadow],
+        },
       ]}>
       <StatusBar
         barStyle={props.barStyle}
@@ -100,6 +103,7 @@ Header.propTypes = {
   iconStyle: PropTypes.object,
   barColor: PropTypes.string,
   barStyle: PropTypes.oneOf(['default', 'dark-content', 'light-content']),
+  shadow: shadows,
 };
 
 Header.defaultProps = {
@@ -107,27 +111,11 @@ Header.defaultProps = {
   barColor: 'primary',
   barStyle: 'light-content',
   fontSize: 'md',
+  shadow: 'md',
 };
 
 const styles = StyleSheet.create({
   safeAreaView: {
-    ...Platform.select({
-      android: {
-        elevation: 3,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        boxShadow: '0 5px 5px rgba(0,0,0,0.10), 1px 5px 5px rgba(0,0,0,0.10)',
-      },
-    }),
     zIndex: 10,
   },
   container: {
@@ -144,16 +132,17 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     fontWeight: Platform.select({
-      android: 'bold',
+      android: '600',
       ios: '500',
+      web: '600',
     }),
     textAlign: Platform.select({
       android: 'left',
       ios: 'center',
-      web: 'center',
+      web: 'left',
     }),
     color: '#fff',
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
   },
   iconStyle: {
     padding: 10,
