@@ -143,6 +143,7 @@ const Input = React.forwardRef((props, ref) => {
         )}
         <TextInput
           editable={!props.disabled}
+          textAlignVertical="top"
           {...props}
           ref={ref}
           style={getInputStyle({...props, theme})}

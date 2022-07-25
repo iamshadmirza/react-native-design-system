@@ -15,6 +15,7 @@ export default function ExampleInput() {
       textColor={select('textColor', ['heading', 'body', 'subtle'], 'body')}
       placeholder={text('placeholder', 'Enter Username')}
       error={boolean('error', false)}
+      disabled={boolean('disabled', false)}
       floatingLabel={boolean('floatingLabel', false)}
       errorCaption={text('errorCaption', 'Please enter the correct username')}
       value={textValue}
