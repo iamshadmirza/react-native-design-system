@@ -12,6 +12,10 @@ import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
 import {useThemeContext} from '../util/ThemeProvider';
 import {radii, shadows, sizes} from '../util/prop-types';
+import {
+  extractAccessibilityPropsFromProps,
+  removeAccessibilityPropsFromProps,
+} from '../util/accessibility';
 
 const getContainerStyle = ({
   theme,
@@ -83,11 +87,14 @@ const Avatar = ({style, ...props}) => {
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <View
+      {...extractAccessibilityPropsFromProps(props)}
       style={StyleSheet.flatten([
         styles.propView,
         {width: theme.avatarSize[props.size]},
       ])}>
-      <TouchableElement disabled={!props.editable} {...props}>
+      <TouchableElement
+        disabled={!props.editable}
+        {...removeAccessibilityPropsFromProps(props)}>
         <View
           style={StyleSheet.flatten([
             getContainerStyle({...props, theme}),
