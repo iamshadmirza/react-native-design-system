@@ -62,7 +62,7 @@ type brandColors =
   | 'black'
 
 type backgroundShade = '100' | '200' | '300';
-type backgroundColors = `background-${backgroundShade}`
+type backgroundColors = `bg-${backgroundShade}`
 
 type colorShades = `${colors}-${shades}`
 

@@ -105,7 +105,7 @@ Card.propTypes = {
 Card.defaultProps = {
   space: 'lg',
   outline: false,
-  background: 'background-200',
+  background: 'bg-200',
   shadow: 'none',
   radius: 'sm',
 };

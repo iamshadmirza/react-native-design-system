@@ -281,7 +281,7 @@ const colors = {
   black: '#000',
   white: '#fff',
   transparent: 'transparent',
-  get background() {
+  get bg() {
     return {
       100: this.gray[100],
       200: this.gray[50],
@@ -313,7 +313,7 @@ const lightColors = {
 
 const darkColors = {
   ...lightColors,
-  background: {
+  bg: {
     100: colors.gray[700],
     200: colors.gray[800],
     300: colors.gray[900],
