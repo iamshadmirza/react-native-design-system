@@ -33,6 +33,7 @@ export * from './types/Flex';
 export * from './types/StackList';
 export * from './types/Spacer';
 export * from './types/DismissKeyboard';
+export * from './types/Image';
 
 export let theme: themeType;
 export let colors: colorsType;
