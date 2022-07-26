@@ -32,6 +32,7 @@ export * from './types/RadioButton';
 export * from './types/Flex';
 export * from './types/StackList';
 export * from './types/Spacer';
+export * from './types/DismissKeyboard';
 
 export let theme: themeType;
 export let colors: colorsType;

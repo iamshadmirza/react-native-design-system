@@ -15,6 +15,7 @@ export * from './SearchBar';
 export * from './Text';
 export * from './Layout';
 export * from './Deck';
+export * from './DismissKeyboard';
 export {default as colors} from './util/colors';
 export {
   default as ThemeProvider,
