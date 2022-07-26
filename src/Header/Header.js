@@ -36,7 +36,7 @@ const getTextStyle = ({theme, color, textAlign, fontSize}) => {
   return textStyle;
 };
 
-const Header = ({style, textStyle, shadow, ...props}) => {
+const Header = React.forwardRef(({style, textStyle, shadow, ...props}, ref) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -55,6 +55,7 @@ const Header = ({style, textStyle, shadow, ...props}) => {
         backgroundColor={theme.colors[props.barColor]}
       />
       <View
+        ref={ref}
         style={StyleSheet.flatten([
           getContainerStyle({...props, theme}),
           style,
@@ -87,7 +88,7 @@ const Header = ({style, textStyle, shadow, ...props}) => {
       </View>
     </SafeAreaView>
   );
-};
+});
 
 Header.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

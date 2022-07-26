@@ -53,7 +53,7 @@ const renderIcon = ({style, theme, size, color, ...props}) => {
   }
 };
 
-const CheckBox = ({style, textStyle, ...props}) => {
+const CheckBox = React.forwardRef(({style, textStyle, ...props}, ref) => {
   const theme = useThemeContext();
   const propsWithTheme = {...props, theme};
   const TouchableElement =
@@ -61,6 +61,7 @@ const CheckBox = ({style, textStyle, ...props}) => {
   return (
     <TouchableElement
       {...props}
+      ref={ref}
       disabled={props.disabled}
       onPress={props.onPress}>
       <View style={StyleSheet.flatten([styles.container, style])}>
@@ -80,7 +81,7 @@ const CheckBox = ({style, textStyle, ...props}) => {
       </View>
     </TouchableElement>
   );
-};
+});
 
 CheckBox.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

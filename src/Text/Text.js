@@ -41,16 +41,17 @@ const getTextStyle = ({
   return style;
 };
 
-const TextElement = ({style, ...props}) => {
+const TextElement = React.forwardRef(({style, ...props}, ref) => {
   const theme = useThemeContext();
   return (
     <Text
       {...props}
+      ref={ref}
       style={StyleSheet.flatten([getTextStyle({...props, theme}), style])}>
       {props.children}
     </Text>
   );
-};
+});
 
 TextElement.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

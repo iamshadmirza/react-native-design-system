@@ -48,7 +48,7 @@ const getContainerStyle = ({
   return imageStyle;
 };
 
-const Image = ({style, ...props}) => {
+const Image = React.forwardRef(({style, ...props}, ref) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -58,11 +58,11 @@ const Image = ({style, ...props}) => {
         disabled={typeof props.onPress === 'undefined'}
         style={{flex: 1}}
         onPress={props.onPress}>
-        <RNImage {...props} style={{flex: 1}} />
+        <RNImage ref={ref} {...props} style={{flex: 1}} />
       </TouchableElement>
     </View>
   );
-};
+});
 
 Image.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

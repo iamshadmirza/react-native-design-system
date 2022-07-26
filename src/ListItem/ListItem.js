@@ -86,54 +86,55 @@ const renderRightChild = ({
   );
 };
 
-const ListItem = ({
-  style,
-  textStyle,
-  subtitleStyle,
-  background,
-  subtitleSize,
-  ...props
-}) => {
-  const theme = useThemeContext();
-  const propsWithTheme = {...props, background, theme};
-  const TouchableElement =
-    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  return (
-    <TouchableElement {...props}>
-      <View
-        style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
-        {renderLeftChild(propsWithTheme)}
-        <View style={styles.textView}>
-          {typeof props.children === 'string' ? (
-            <Text
-              style={StyleSheet.flatten([
-                getTextStyle(propsWithTheme),
-                textStyle,
-              ])}>
-              {props.children}
-            </Text>
-          ) : (
-            props.children
-          )}
-          {props.subtitle &&
-            (typeof props.subtitle === 'string' ? (
+const ListItem = React.forwardRef(
+  (
+    {style, textStyle, subtitleStyle, background, subtitleSize, ...props},
+    ref,
+  ) => {
+    const theme = useThemeContext();
+    const propsWithTheme = {...props, background, theme};
+    const TouchableElement =
+      Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+    return (
+      <TouchableElement {...props} ref={ref}>
+        <View
+          style={StyleSheet.flatten([
+            getContainerStyle(propsWithTheme),
+            style,
+          ])}>
+          {renderLeftChild(propsWithTheme)}
+          <View style={styles.textView}>
+            {typeof props.children === 'string' ? (
               <Text
-                size={subtitleSize}
                 style={StyleSheet.flatten([
-                  getSubtitleStyle(propsWithTheme),
-                  subtitleStyle,
+                  getTextStyle(propsWithTheme),
+                  textStyle,
                 ])}>
-                {props.subtitle}
+                {props.children}
               </Text>
             ) : (
-              props.subtitle
-            ))}
+              props.children
+            )}
+            {props.subtitle &&
+              (typeof props.subtitle === 'string' ? (
+                <Text
+                  size={subtitleSize}
+                  style={StyleSheet.flatten([
+                    getSubtitleStyle(propsWithTheme),
+                    subtitleStyle,
+                  ])}>
+                  {props.subtitle}
+                </Text>
+              ) : (
+                props.subtitle
+              ))}
+          </View>
+          {renderRightChild(propsWithTheme)}
         </View>
-        {renderRightChild(propsWithTheme)}
-      </View>
-    </TouchableElement>
-  );
-};
+      </TouchableElement>
+    );
+  },
+);
 
 ListItem.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

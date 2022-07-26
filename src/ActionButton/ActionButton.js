@@ -23,12 +23,12 @@ const getContainerStyle = ({theme, size, color, shadow}) => {
   };
 };
 
-const ActionButton = ({style, ...props}) => {
+const ActionButton = React.forwardRef(({style, ...props}, ref) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
-    <TouchableElement {...props} onPress={props.onPress}>
+    <TouchableElement {...props} onPress={props.onPress} ref={ref}>
       <View
         style={StyleSheet.flatten([
           getContainerStyle({...props, theme}),
@@ -44,7 +44,7 @@ const ActionButton = ({style, ...props}) => {
       </View>
     </TouchableElement>
   );
-};
+});
 
 ActionButton.propTypes = {
   size: sizes,

@@ -81,13 +81,14 @@ const getTitleStyle = ({theme, size}) => {
   };
 };
 
-const Avatar = ({style, ...props}) => {
+const Avatar = React.forwardRef(({style, ...props}, ref) => {
   const theme = useThemeContext();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   return (
     <View
       {...extractAccessibilityPropsFromProps(props)}
+      ref={ref}
       style={StyleSheet.flatten([
         styles.propView,
         {width: theme.avatarSize[props.size]},
@@ -133,7 +134,7 @@ const Avatar = ({style, ...props}) => {
       )}
     </View>
   );
-};
+});
 
 Avatar.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
