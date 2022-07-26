@@ -76,6 +76,7 @@ Image.propTypes = {
   borderWidth: PropTypes.number,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onPress: PropTypes.func,
 };
 
 Image.defaultProps = {
