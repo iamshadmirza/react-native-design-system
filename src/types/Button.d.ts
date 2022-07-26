@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 
 import {RadiusType, ShadowType, SizeType} from './size-type';
-import {WidthType} from './width-type';
 import {LengthType} from './length-type';
 import {IconNode} from './icon-type';
 import {colorTypes} from './colors-type';
@@ -18,7 +17,6 @@ interface ButtonProps extends AccessibilityProps {
   children?: string | ReactElement | ReactElement[];
   indicatorColor?: string;
   size?: SizeType;
-  width?: WidthType;
   onPress: () => void;
   color?: keyof colorTypes | string;
   borderColor?: string;

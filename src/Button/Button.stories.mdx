@@ -4,6 +4,7 @@ import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Button from './Button';
+import IconButton from './IconButton';
 import {sizeArray} from '../util/prop-types';
 
 <Meta title="Button" component={Button} />
@@ -190,6 +191,16 @@ Tint is a boolean property which allows you to enable or disable transpent tint 
     <Button outline tint={false} onPress={action('pressed')}>
       Login
     </Button>
+  </Story>
+</Preview>
+
+# IconButton
+
+This is another variant of Button exported as IconButton
+
+<Preview>
+  <Story name="iconbutton">
+    <IconButton icon={<Feather name="plus" size={20} color="blue" />} />
   </Story>
 </Preview>
 

@@ -37,8 +37,8 @@ const ActionButton = ({style, ...props}) => {
         {props.icon || (
           <Feather
             name="plus"
-            size={theme.iconSize[props.size]}
-            color={props.iconColor || theme.colors.white}
+            size={theme.size[props.size]}
+            color={theme.colors[props.iconColor]}
           />
         )}
       </View>
@@ -60,6 +60,7 @@ ActionButton.defaultProps = {
   size: 'md',
   color: 'primary',
   shadow: 'md',
+  iconColor: 'white',
 };
 
 export default ActionButton;

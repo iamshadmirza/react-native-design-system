@@ -87,20 +87,19 @@ const getContainerStyle = props => {
   }
   if (loading) {
     buttonStyles.push({
-      borderWidth: 0,
       backgroundColor: theme.colors[color] + '50',
     });
   }
   if (transparent) {
     buttonStyles.push({
-      borderWidth: 0,
+      borderWidth: 1,
+      borderColor: 'transparent',
       backgroundColor: 'transparent',
     });
   }
   if (loading && outline) {
     buttonStyles.push({
       backgroundColor: theme.colors[color] + '20',
-      borderWidth: StyleSheet.hairlineWidth,
       borderColor: theme.colors[borderColor || color] + '30',
     });
   }
