@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {ViewStyle, TextStyle, StyleProp, TextInputProps} from 'react-native';
 
 import {RadiusType, ShadowType, SizeType} from './size-type';
@@ -15,12 +15,12 @@ interface InputProps extends TextInputProps {
   floatingLabel?: boolean;
   labelStyle?: StyleProp<TextStyle>;
   labelColor?: string;
-  label?: string;
+  label?: string | ReactElement | ReactElement[];
   color?: keyof colorTypes | string;
   round?: boolean;
   outline?: boolean;
   error?: boolean;
-  errorCaption?: string;
+  errorCaption?: string | ReactElement | ReactElement[];
   size?: SizeType;
   disabled?: boolean;
   leftIcon?: IconNode;
@@ -30,7 +30,7 @@ interface InputProps extends TextInputProps {
   textAlign?: 'left' | 'center' | 'right';
   labelHintStyle?: StyleProp<TextStyle>;
   labelHintColor?: string;
-  labelHint?: string;
+  labelHint?: string | ReactElement | ReactElement[];
   shadow: ShadowType;
   radius: RadiusType;
 }

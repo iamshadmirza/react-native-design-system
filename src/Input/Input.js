@@ -125,13 +125,17 @@ const Input = React.forwardRef((props, ref) => {
         )
       ) : null}
       {showLabelHint ? (
-        <Text
-          style={StyleSheet.flatten([
-            getLabelHintStyle({...props, theme}),
-            props.labelHintStyle,
-          ])}>
-          {props.labelHint}
-        </Text>
+        typeof props.labelHint === 'string' ? (
+          <Text
+            style={StyleSheet.flatten([
+              getLabelHintStyle({...props, theme}),
+              props.labelHintStyle,
+            ])}>
+            {props.labelHint}
+          </Text>
+        ) : (
+          props.labelHint
+        )
       ) : null}
       <View
         style={StyleSheet.flatten([
@@ -155,13 +159,17 @@ const Input = React.forwardRef((props, ref) => {
         )}
       </View>
       {props.error && props.errorCaption ? (
-        <Text
-          style={StyleSheet.flatten([
-            getCaptionStyle({...props, theme}),
-            props.labelStyle,
-          ])}>
-          {props.errorCaption}
-        </Text>
+        typeof props.errorCaption === 'string' ? (
+          <Text
+            style={StyleSheet.flatten([
+              getCaptionStyle({...props, theme}),
+              props.labelStyle,
+            ])}>
+            {props.errorCaption}
+          </Text>
+        ) : (
+          props.errorCaption
+        )
       ) : null}
     </View>
   );
@@ -180,13 +188,13 @@ Input.propTypes = {
   labelColor: PropTypes.string,
   labelHintColor: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  labelHint: PropTypes.string,
+  labelHint: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   color: PropTypes.string,
   outlineColor: PropTypes.string,
   round: PropTypes.bool,
   outline: PropTypes.bool,
   error: PropTypes.bool,
-  errorCaption: PropTypes.string,
+  errorCaption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   size: sizes,
   disabled: PropTypes.bool,

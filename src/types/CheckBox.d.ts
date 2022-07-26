@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {
   AccessibilityProps,
   StyleProp,
@@ -6,16 +6,16 @@ import {
   ViewStyle,
 } from 'react-native';
 import {SizeType} from './size-type';
-import { colorTypes } from './colors-type';
+import {colorTypes} from './colors-type';
 
 interface CheckBoxProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children: string;
+  children: string | ReactElement | ReactElement[];
   checked?: boolean;
   iconRight?: boolean;
   color?: string;
-  textColor?: keyof colorTypes | string,
+  textColor?: keyof colorTypes | string;
   size?: SizeType;
   onPress: () => void;
   checkedIcon?: React.ReactElement;

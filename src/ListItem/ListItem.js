@@ -104,23 +104,30 @@ const ListItem = ({
         style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
         {renderLeftChild(propsWithTheme)}
         <View style={styles.textView}>
-          <Text
-            style={StyleSheet.flatten([
-              getTextStyle(propsWithTheme),
-              textStyle,
-            ])}>
-            {props.children}
-          </Text>
-          {props.subtitle && (
+          {typeof props.children === 'string' ? (
             <Text
-              size={subtitleSize}
               style={StyleSheet.flatten([
-                getSubtitleStyle(propsWithTheme),
-                subtitleStyle,
+                getTextStyle(propsWithTheme),
+                textStyle,
               ])}>
-              {props.subtitle}
+              {props.children}
             </Text>
+          ) : (
+            props.children
           )}
+          {props.subtitle &&
+            (typeof props.subtitle === 'string' ? (
+              <Text
+                size={subtitleSize}
+                style={StyleSheet.flatten([
+                  getSubtitleStyle(propsWithTheme),
+                  subtitleStyle,
+                ])}>
+                {props.subtitle}
+              </Text>
+            ) : (
+              props.subtitle
+            ))}
         </View>
         {renderRightChild(propsWithTheme)}
       </View>
@@ -134,7 +141,8 @@ ListItem.propTypes = {
   subtitleStyle: PropTypes.object,
   iconStyle: PropTypes.object,
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   subtitle: PropTypes.string,
   background: PropTypes.string,
   textColor: PropTypes.string,

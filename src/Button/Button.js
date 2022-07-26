@@ -147,14 +147,18 @@ const renderChildren = props => {
             {leftIcon || icon}
           </View>
         ))}
-      <Text
-        size={size}
-        color={textColor}
-        fontBase={fontBase}
-        fontVariant={fontVariant}
-        style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
-        {children}
-      </Text>
+      {typeof children === 'string' ? (
+        <Text
+          size={size}
+          color={textColor}
+          fontBase={fontBase}
+          fontVariant={fontVariant}
+          style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
       {rightIcon && (
         <View style={[styles.iconStyle, iconStyle, rightIconStyle]}>
           {rightIcon}
@@ -196,7 +200,7 @@ Button.propTypes = {
   /**  To override default right icon style */
   rightIconStyle: PropTypes.object,
   /**  Pass button text as children as children */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /**  Change indicator color */
   indicatorColor: PropTypes.string,
   /**  To change button size */

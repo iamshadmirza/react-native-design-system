@@ -65,10 +65,17 @@ const CheckBox = ({style, textStyle, ...props}) => {
       onPress={props.onPress}>
       <View style={StyleSheet.flatten([styles.container, style])}>
         {!props.iconRight && renderIcon(propsWithTheme)}
-        <Text
-          style={StyleSheet.flatten([getTextStyle(propsWithTheme), textStyle])}>
-          {props.children}
-        </Text>
+        {typeof props.children === 'string' ? (
+          <Text
+            style={StyleSheet.flatten([
+              getTextStyle(propsWithTheme),
+              textStyle,
+            ])}>
+            {props.children}
+          </Text>
+        ) : (
+          props.children
+        )}
         {props.iconRight && renderIcon(propsWithTheme)}
       </View>
     </TouchableElement>
@@ -78,7 +85,8 @@ const CheckBox = ({style, textStyle, ...props}) => {
 CheckBox.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   checked: PropTypes.bool,
   iconRight: PropTypes.bool,
   color: PropTypes.string,

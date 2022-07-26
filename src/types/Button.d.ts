@@ -15,7 +15,7 @@ import {colorTypes} from './colors-type';
 interface ButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children?: string | Array<any>;
+  children?: string | ReactElement | ReactElement[];
   indicatorColor?: string;
   size?: SizeType;
   width?: WidthType;
