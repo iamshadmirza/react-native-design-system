@@ -1,7 +1,7 @@
 import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
 import {withKnobs, select, text, boolean, color} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
-import Inline from '../Layout/Inline';
+import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Avatar from './Avatar';
 import {sizeArray} from '../util/prop-types';
@@ -34,7 +34,7 @@ As usual, 9 sizes are available.
 
 <Preview>
   <Story name="sizes">
-    <Inline>
+    <Stack direction="horizontal">
       <Avatar size="5xl" title="MD" onPress={action('pressed')} />
       <Avatar size="4xl" title="MD" onPress={action('pressed')} />
       <Avatar size="3xl" title="MD" onPress={action('pressed')} />
@@ -44,7 +44,7 @@ As usual, 9 sizes are available.
       <Avatar size="md" title="MD" onPress={action('pressed')} />
       <Avatar size="sm" title="MD" onPress={action('pressed')} />
       <Avatar size="xs" title="MD" onPress={action('pressed')} />
-    </Inline>
+    </Stack>
   </Story>
 </Preview>
 
@@ -54,11 +54,11 @@ There are mainly three types og Avatar: `default`, `square` and `rounded`. All p
 
 <Preview>
   <Story name="types">
-    <Inline>
+    <Stack direction="horizontal">
       <Avatar title="MD" onPress={action('pressed')} />
       <Avatar square title="MD" onPress={action('pressed')} />
       <Avatar rounded title="MD" onPress={action('pressed')} />
-    </Inline>
+    </Stack>
   </Story>
 </Preview>
 
@@ -88,14 +88,14 @@ There are mainly three types og Avatar: `default`, `square` and `rounded`. All p
 
 <Preview>
   <Story name="editable">
-    <Inline>
+    <Stack direction="horizontal">
       <Avatar title="MD" editable={true} onPress={action('pressed')} />
       <Avatar
         source={{uri: 'https://www.github.com/iamshadmirza.png'}}
         editable={true}
         onPress={action('pressed')}
       />
-    </Inline>
+    </Stack>
   </Story>
 </Preview>
 

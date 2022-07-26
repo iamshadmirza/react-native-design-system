@@ -19,4 +19,4 @@ interface ImageProps extends ImageProps {
   onPress: () => void;
 }
 
-export const Inline: React.FC<ImageProps>;
+export const Image: React.FC<ImageProps>;

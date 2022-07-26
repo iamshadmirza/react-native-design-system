@@ -7,7 +7,7 @@ import {
   color,
 } from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
-import Inline from '../Layout/Inline';
+import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Badge from './Badge';
 import {sizeArray} from '../util/prop-types';
@@ -40,7 +40,7 @@ As usual, there are 9 sizes available.
 
 <Preview>
   <Story name="sizes">
-    <Inline>
+    <Stack direction="horizontal">
       <Badge size="5xl" onPress={action('pressed')}>
         10000
       </Badge>
@@ -71,7 +71,7 @@ As usual, there are 9 sizes available.
       <Badge size="xs" onPress={action('pressed')}>
         -10
       </Badge>
-    </Inline>
+    </Stack>
   </Story>
 </Preview>
 
@@ -81,7 +81,7 @@ There are 3 types of Badges mainly: `default` which is round, `sqaure` and `mini
 
 <Preview>
   <Story name="types">
-    <Inline>
+    <Stack direction="horizontal">
       <Badge onPress={action('pressed')}>10</Badge>
       <Badge square onPress={action('pressed')}>
         10
@@ -93,7 +93,7 @@ There are 3 types of Badges mainly: `default` which is round, `sqaure` and `mini
       <Badge color="error" onPress={action('pressed')}>
         Deprecated
       </Badge>
-    </Inline>
+    </Stack>
   </Story>
 </Preview>
 

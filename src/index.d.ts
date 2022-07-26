@@ -21,7 +21,6 @@ export * from './types/FullScreenLoader';
 export * from './types/Header';
 export * from './types/Input';
 export * from './types/Box';
-export * from './types/Inline';
 export * from './types/Stack';
 export * from './types/ListItem';
 export * from './types/OverLay';
