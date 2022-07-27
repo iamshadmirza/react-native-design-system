@@ -24,12 +24,10 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   if (theme === undefined) {
     throw new Error('theme value must be provided within a ThemeProvider');
   }
-
   const [isDarkMode, setIsDarkMode] = React.useState(colorMode !== 'light');
   const [loadingStorage, setLoadingStorage] = React.useState(
     storage !== undefined,
   );
-
   const toggleDarkMode = () => {
     setIsDarkMode(prevValue => !prevValue);
   };
@@ -37,6 +35,7 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   const currentTheme = React.useMemo(() => {
     let _theme = {...theme};
     if (isDarkMode) {
+      console.log('theme.colors.dark', theme.colors.dark); // TODO: remove this
       _theme = {...theme, colors: {...theme.colors, ...theme.colors.dark}};
     }
     return _theme;
@@ -58,7 +57,6 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
       if (storage) {
         const AsyncStorage = storage;
         const colorScheme = await AsyncStorage.getItem(COLOR_SCHEME_KEY);
-        console.log('colorScheme', colorScheme); // TODO: remove this
         const isDark = colorScheme === 'dark';
         setIsDarkMode(isDark);
         setLoadingStorage(false);
