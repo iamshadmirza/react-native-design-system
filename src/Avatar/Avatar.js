@@ -67,7 +67,7 @@ const getEditIconStyle = ({theme, size}) => {
       width: theme.avatarSize[size] / 3,
       height: theme.avatarSize[size] / 3,
       borderRadius: theme.avatarSize[size],
-      backgroundColor: theme.colors['bg200'],
+      backgroundColor: theme.colors.bg200,
     },
   ];
   return iconStyle;
@@ -144,7 +144,7 @@ Avatar.propTypes = {
   source: PropTypes.object,
   editable: PropTypes.bool,
   onPress: PropTypes.func,
-  size: PropTypes.oneOfType([sizes, PropTypes.string]),
+  size: sizes,
   square: PropTypes.bool,
   rounded: PropTypes.bool,
   editIconStyle: PropTypes.object,
