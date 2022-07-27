@@ -138,7 +138,7 @@ MenuAddButton.defaultProps = {
   size: 'md',
   shadow: 'none',
   radius: 'sm',
-  background: 'bg-200',
+  background: 'bg200',
 };
 
 const styles = StyleSheet.create({

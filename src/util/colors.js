@@ -335,7 +335,7 @@ function flattenColors() {
   for (const [color, shades] of Object.entries(allColors)) {
     if (typeof shades === 'object') {
       for (const [shade, hex] of Object.entries(shades)) {
-        result[`${color}-${shade}`] = hex;
+        result[`${color}${shade}`] = hex;
       }
     } else {
       result[color] = shades;

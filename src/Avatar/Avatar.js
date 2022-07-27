@@ -67,7 +67,7 @@ const getEditIconStyle = ({theme, size}) => {
       width: theme.avatarSize[size] / 3,
       height: theme.avatarSize[size] / 3,
       borderRadius: theme.avatarSize[size],
-      backgroundColor: theme.colors['bg-200'],
+      backgroundColor: theme.colors['bg200'],
     },
   ];
   return iconStyle;
@@ -157,7 +157,7 @@ Avatar.defaultProps = {
   title: 'MD',
   editable: false,
   size: 'lg',
-  background: 'bg-100',
+  background: 'bg100',
   shadow: 'none',
 };
 

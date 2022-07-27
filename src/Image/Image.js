@@ -82,7 +82,7 @@ Image.propTypes = {
 Image.defaultProps = {
   space: 'none',
   outline: false,
-  background: 'bg-200',
+  background: 'bg200',
   shadow: 'none',
   radius: 'none',
   borderColor: 'outline',

@@ -62,30 +62,22 @@ type brandColors =
   | 'black'
 
 type backgroundShade = '100' | '200' | '300';
-type backgroundColors = `bg-${backgroundShade}`
+type backgroundColors = `bg${backgroundShade}`
 
-type colorShades = `${colors}-${shades}`
+type colorShades = `${colors}${shades}`
 
 type genericColorsType = { [K in colorShades]: string };
 
 type lightBrandColorsType =  { [K in brandColors]: string };
 type unknownLightBrandColors = {
-  brandColor: {
-    [color: string]: string;
-  };
+  [color: string]: string;
 };
 
 type darkBrandColorsType = {dark: {[K in brandColors]: string}};
-type unknownDarkBrandColors = {
-  dark: {
-    [color: string]: string;
-  };
-};
 
 export type colorTypes = genericColorsType &
   lightBrandColorsType &
   unknownLightBrandColors &
-  darkBrandColorsType &
   unknownDarkBrandColors &
   backgroundColors
 

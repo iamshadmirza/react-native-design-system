@@ -93,7 +93,7 @@ const IconButton = props => {
 
 IconButton.defaultProps = {
   size: 'lg',
-  background: 'bg-100',
+  background: 'bg100',
   radius: 'full',
   shadow: 'none',
   borderColor: 'primary',
