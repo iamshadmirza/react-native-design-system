@@ -101,7 +101,7 @@ CheckBox.propTypes = {
 CheckBox.defaultProps = {
   size: 'md',
   color: 'primary',
-  textColor: 'body',
+  textColor: 'para',
 };
 
 const styles = StyleSheet.create({

@@ -13807,7 +13807,7 @@
         (RadioButton.defaultProps = {
           size: 'medium',
           color: 'primary',
-          textColor: 'body',
+          textColor: 'para',
         });
       var styles = react_native__WEBPACK_IMPORTED_MODULE_5__.StyleSheet.create({
         itemContainer: {flexDirection: 'row', alignItems: 'center'},
@@ -14767,7 +14767,7 @@
                 ),
                 Object(esm.b)(
                   CheckBox.a,
-                  {textColor: 'body', mdxType: 'CheckBox'},
+                  {textColor: 'para', mdxType: 'CheckBox'},
                   'Hello CheckBox',
                 ),
                 Object(esm.b)(
@@ -14906,7 +14906,7 @@
           Stack.a,
           null,
           Object(esm.b)(CheckBox.a, {textColor: 'heading'}, 'Hello CheckBox'),
-          Object(esm.b)(CheckBox.a, {textColor: 'body'}, 'Hello CheckBox'),
+          Object(esm.b)(CheckBox.a, {textColor: 'para'}, 'Hello CheckBox'),
           Object(esm.b)(CheckBox.a, {textColor: 'subtle'}, 'Hello CheckBox'),
         );
       (textColor.storyName = 'textColor'),
@@ -16342,7 +16342,7 @@
                   RadioButton.b,
                   {
                     activeId: 'a',
-                    textColor: 'body',
+                    textColor: 'para',
                     selectItem: Object(addon_actions_dist_esm.action)(
                       'pressed',
                     ),
@@ -16642,7 +16642,7 @@
             RadioButton.b,
             {
               activeId: 'a',
-              textColor: 'body',
+              textColor: 'para',
               selectItem: Object(addon_actions_dist_esm.action)('pressed'),
             },
             Object(esm.b)(RadioButton.a, {id: 'a'}, 'Option A'),
@@ -20020,7 +20020,7 @@
       }),
         (Input.defaultProps = {
           placeholder: 'Type here',
-          textColor: 'body',
+          textColor: 'para',
           color: 'subtle',
           size: 'medium',
           labelColor: 'subtle',
@@ -20433,7 +20433,7 @@
         (ListItem.defaultProps = {
           children: 'Pass children to render',
           background: 'foreground',
-          textColor: 'body',
+          textColor: 'para',
           subtitleColor: 'subtle',
           chevronColor: 'body',
           textAlign: 'left',
@@ -21624,7 +21624,7 @@
         (CheckBox.defaultProps = {
           size: 'medium',
           color: 'primary',
-          textColor: 'body',
+          textColor: 'para',
         });
       var styles = react_native__WEBPACK_IMPORTED_MODULE_5__.StyleSheet.create({
         container: {flexDirection: 'row', alignItems: 'center'},

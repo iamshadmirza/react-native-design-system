@@ -72,7 +72,7 @@ TextElement.propTypes = {
 };
 
 TextElement.defaultProps = {
-  color: 'body',
+  color: 'para',
   size: 'md',
   fontWeight: '500',
   textAlign: 'left',
