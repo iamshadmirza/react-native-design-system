@@ -300,7 +300,6 @@ const lightColors = {
   warning: colors.yellow[500],
   disabled: colors.blueGray[100],
   disabledText: colors.blueGray[300],
-  loader: colors.gray[200],
 
   // text colors
   heading: colors.gray[900],
@@ -310,6 +309,7 @@ const lightColors = {
   transparent: 'transparent',
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   outline: 'rgba(204, 214, 221, .5)',
+  loader: colors.gray[200],
 };
 
 const darkColors = {
@@ -323,10 +323,11 @@ const darkColors = {
   // text colors
   heading: colors.white,
   para: colors.gray[100],
-  subtle: colors.gray[300],
-  loader: colors.gray[600],
+  subtle: colors.gray[400],
+
   // extras
   transparent: 'transparent',
+  loader: colors.gray[600],
   outline: colors.gray[700],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
 };
