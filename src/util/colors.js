@@ -325,12 +325,12 @@ const darkColors = {
   subtle: colors.gray[300],
   // extras
   transparent: 'transparent',
-  outline: colors.gray[800],
+  outline: colors.gray[700],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
 };
 
-function flattenColors() {
-  const allColors = {...colors, ...lightColors};
+function flattenColors(selectedColor) {
+  const allColors = {...selectedColor};
   const result = {};
   for (const [color, shades] of Object.entries(allColors)) {
     if (typeof shades === 'object') {
@@ -344,8 +344,9 @@ function flattenColors() {
   return result;
 }
 
-const flatColors = flattenColors();
+const genericColors = flattenColors(colors);
+const flatColors = {...genericColors, ...flattenColors(lightColors)};
 
-flatColors.dark = darkColors;
+flatColors.dark = flatColors(darkColors);
 
 export default flatColors;
