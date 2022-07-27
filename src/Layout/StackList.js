@@ -70,7 +70,7 @@ StackList.defaultProps = {
   space: 'md',
   horizontalSpace: 'none',
   cropEndSpace: true,
-  background: 'backgroundDark',
+  background: 'bg-300',
 };
 
 export default StackList;
