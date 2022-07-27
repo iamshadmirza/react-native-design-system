@@ -17,7 +17,7 @@ interface BadgeProps extends AccessibilityProps {
   mini?: boolean;
   onPress?: () => void;
   square?: boolean;
-  radius: RadiusType;
+  radius?: RadiusType;
 }
 
 export const Badge: React.FC<BadgeProps>;

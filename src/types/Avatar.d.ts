@@ -15,8 +15,8 @@ interface AvatarProps extends ViewProps {
   rounded?: boolean;
   editIconStyle?: StyleProp<ViewStyle>;
   editIconColor?: string;
-  shadow: ShadowType;
-  radius: RadiusType;
+  shadow?: ShadowType;
+  radius?: RadiusType;
 }
 
 export const Avatar: React.FC<AvatarProps>;

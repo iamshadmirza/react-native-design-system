@@ -32,8 +32,8 @@ interface ListItemProps extends AccessibilityProps {
   chevron?: boolean;
   disabled?: boolean;
   activeOpacity?: number;
-  shadow: ShadowType;
-  radius: RadiusType;
+  shadow?: ShadowType;
+  radius?: RadiusType;
 }
 
 export const ListItem: React.FC<ListItemProps>;

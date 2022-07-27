@@ -31,7 +31,7 @@ export interface themeType {
   space: possibleSpaces;
   indicatorSize: possibleSizes;
   colors: possibleColors;
-  shadow: ShadowType;
-  radius: RadiusType;
+  shadow?: ShadowType;
+  radius?: RadiusType;
   font: FontThemeType;
 }

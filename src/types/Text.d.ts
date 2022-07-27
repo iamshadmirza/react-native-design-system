@@ -9,6 +9,7 @@ interface TextProps extends RNTextProps {
   size?: FontSizeType | string;
   color?: keyof colorTypes | string;
   scale?: boolean;
+  textAlign?: 'left' | 'center' | 'right';
   fontWeight?: string;
   fontFamily?: string;
   fontBase?: fontBaseType;

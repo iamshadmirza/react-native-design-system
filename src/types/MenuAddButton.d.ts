@@ -14,8 +14,8 @@ interface MenuAddButtonProps {
   iconColor?: string;
   disabled?: boolean;
   size: SizeType;
-  shadow: ShadowType;
-  radius: RadiusType;
+  shadow?: ShadowType;
+  radius?: RadiusType;
 }
 
 export const MenuAddButton: React.FC<MenuAddButtonProps>;

@@ -32,8 +32,8 @@ interface ButtonProps extends AccessibilityProps {
   rightIconStyle?: StyleProp<ViewStyle>;
   leftIconStyle?: StyleProp<ViewStyle>;
   length?: LengthType;
-  radius: RadiusType;
-  shadow: ShadowType;
+  radius?: RadiusType;
+  shadow?: ShadowType;
 }
 
 export const Button: React.FC<ButtonProps>;

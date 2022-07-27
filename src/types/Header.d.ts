@@ -24,7 +24,7 @@ interface HeaderProps extends AccessibilityProps {
   iconStyle?: StyleProp<ViewStyle>;
   barColor?: string;
   barStyle?: 'default' | 'dark-content' | 'light-content';
-  shadow: ShadowType;
+  shadow?: ShadowType;
 }
 
 export const Header: React.FC<HeaderProps>;

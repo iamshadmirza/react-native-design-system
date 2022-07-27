@@ -23,8 +23,8 @@ interface IconButtonProps extends AccessibilityProps {
   outline?: boolean;
   transparent?: boolean;
   disabled?: boolean;
-  radius: RadiusType;
-  shadow: ShadowType;
+  radius?: RadiusType;
+  shadow?: ShadowType;
 }
 
 export const IconButton: React.FC<IconButtonProps>;

@@ -31,8 +31,8 @@ interface InputProps extends TextInputProps {
   labelHintStyle?: StyleProp<TextStyle>;
   labelHintColor?: string;
   labelHint?: string | ReactElement | ReactElement[];
-  shadow: ShadowType;
-  radius: RadiusType;
+  shadow?: ShadowType;
+  radius?: RadiusType;
 }
 
 export const Input: React.FC<InputProps>;
