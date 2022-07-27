@@ -35,7 +35,6 @@ const ThemeProvider = ({theme, colorMode, storage, children}) => {
   const currentTheme = React.useMemo(() => {
     let _theme = {...theme};
     if (isDarkMode) {
-      console.log('theme.colors.dark', theme.colors.dark); // TODO: remove this
       _theme = {...theme, colors: {...theme.colors, ...theme.colors.dark}};
     }
     return _theme;
