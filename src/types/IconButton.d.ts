@@ -15,10 +15,10 @@ interface IconButtonProps extends AccessibilityProps {
   textStyle?: StyleProp<TextStyle>;
   icon?: IconNode;
   size?: SizeType;
-  background: colorTypes;
-  color: colorTypes;
+  background?: colorTypes;
+  color?: colorTypes;
   onPress: () => void;
-  onLongPress: () => void;
+  onLongPress?: () => void;
   rounded?: boolean;
   outline?: boolean;
   transparent?: boolean;
