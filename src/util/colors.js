@@ -300,6 +300,7 @@ const lightColors = {
   warning: colors.yellow[500],
   disabled: colors.blueGray[100],
   disabledText: colors.blueGray[300],
+  loader: colors.gray[200],
 
   // text colors
   heading: colors.gray[900],
@@ -323,6 +324,7 @@ const darkColors = {
   heading: colors.white,
   para: colors.gray[100],
   subtle: colors.gray[300],
+  loader: colors.gray[600],
   // extras
   transparent: 'transparent',
   outline: colors.gray[700],
@@ -347,6 +349,6 @@ function flattenColors(selectedColor) {
 const genericColors = flattenColors(colors);
 const flatColors = {...genericColors, ...flattenColors(lightColors)};
 
-flatColors.dark = flatColors(darkColors);
+flatColors.dark = flattenColors(darkColors);
 
 export default flatColors;
