@@ -77,7 +77,7 @@ const getContainerStyle = props => {
   }
   if (round) {
     buttonStyles.push({
-      borderRadius: theme.buttonSize.full,
+      borderRadius: theme.radius.full,
     });
   }
   if (outline) {
