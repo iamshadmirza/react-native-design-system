@@ -211,7 +211,7 @@ Input.defaultProps = {
   color: 'subtle',
   size: 'md',
   labelColor: 'subtle',
-  background: 'foreground',
+  background: 'bgInput',
   outlineColor: 'outline',
   floatingLabel: false,
   textAlign: 'left',
