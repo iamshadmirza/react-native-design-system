@@ -18,6 +18,17 @@ type possibleFontSizes = knownScale<FontSizeType> & unknownScale;
 type possibleSpaces = knownScale<SpaceType> & unknownScale;
 type possibleColors = colorTypes & unknownColors;
 
+type ShadowObject = {
+  shadowColor: string;
+  shadowOffset: {
+    width: number;
+    height: number;
+  };
+  shadowOpacity: number;
+  shadowRadius: number;
+  elevation: number;
+};
+
 export interface themeType {
   fontSize: possibleFontSizes;
   lineHeight: possibleFontSizes;
@@ -31,7 +42,7 @@ export interface themeType {
   space: possibleSpaces;
   indicatorSize: possibleSizes;
   colors: possibleColors;
-  shadow?: ShadowType;
+  shadow: {[S in ShadowType]: ShadowObject};
   radius?: RadiusType;
   font: FontThemeType;
 }
