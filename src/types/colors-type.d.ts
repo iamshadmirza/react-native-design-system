@@ -60,6 +60,7 @@ type brandColors =
   | 'outline'
   | 'white'
   | 'black'
+  | 'shadowColor'
 
 type backgroundShade = '100' | '200' | '300';
 type backgroundColors = `bg${backgroundShade}`
