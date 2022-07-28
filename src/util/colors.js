@@ -333,7 +333,7 @@ const darkColors = {
   outline: colors.gray[700],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   shadowColor: colors.white,
-  bgInput: '#fafbff',
+  bgInput: colors.gray[800],
 };
 
 function flattenColors(selectedColor) {
