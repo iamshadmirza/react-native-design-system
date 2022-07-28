@@ -310,6 +310,7 @@ const lightColors = {
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   outline: 'rgba(204, 214, 221, .5)',
   loader: colors.gray[200],
+  shadowColor: colors.black,
 };
 
 const darkColors = {
@@ -330,6 +331,7 @@ const darkColors = {
   loader: colors.gray[600],
   outline: colors.gray[700],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
+  shadowColor: colors.wnite,
 };
 
 function flattenColors(selectedColor) {

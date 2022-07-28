@@ -151,7 +151,7 @@ const theme = {
       elevation: 0,
     },
     xs: {
-      shadowColor: colors.black,
+      shadowColor: colors.shadowColor,
       shadowOffset: {
         width: 0,
         height: 1,
@@ -161,7 +161,7 @@ const theme = {
       elevation: 1,
     },
     sm: {
-      shadowColor: colors.black,
+      shadowColor: colors.shadowColor,
       shadowOffset: {
         width: 0,
         height: 1,
@@ -171,7 +171,7 @@ const theme = {
       elevation: 2,
     },
     md: {
-      shadowColor: colors.black,
+      shadowColor: colors.shadowColor,
       shadowOffset: {
         width: 0,
         height: 1,
@@ -181,7 +181,7 @@ const theme = {
       elevation: 3,
     },
     lg: {
-      shadowColor: colors.black,
+      shadowColor: colors.shadowColor,
       shadowOffset: {
         width: 0,
         height: 2,
@@ -191,7 +191,7 @@ const theme = {
       elevation: 4,
     },
     '2xl': {
-      shadowColor: colors.black,
+      shadowColor: colors.shadowColor,
       shadowOffset: {
         width: 0,
         height: 2.5,
