@@ -86,7 +86,7 @@ const getLabelHintStyle = ({theme, size, labelHintColor}) => {
       fontStyle: 'italic',
       paddingLeft: 2.5,
       paddingBottom: 8,
-      color: theme.textColor[labelHintColor],
+      color: theme.colors[labelHintColor],
     },
   ];
   return labelHintStyle;
