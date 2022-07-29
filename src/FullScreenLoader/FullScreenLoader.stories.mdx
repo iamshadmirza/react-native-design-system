@@ -34,7 +34,7 @@ Pass any theme color in `indicatorColor` prop for desired result. Passed color s
 
 # Background
 
-Pass any theme color in `background` prop for set desired Background. Passed color should be present in `brandColor` of `theme`.
+Pass any theme color in `background` prop for set desired Background. Passed color should be present in `colors` of `theme`.
 
 # Size
 
@@ -53,12 +53,8 @@ Play with FullScreenLoader in Canvas mode.
     <View style={{height: 480, width: 270, borderWidth: 1}}>
       <FullScreenLoader
         loading={boolean('loading', true)}
-        size={select('size', ['sm', 'lg'])}
-        background={select(
-          'background',
-          ['backgroundDark', 'backgroundLight', 'foreground'],
-          'backgroundLight',
-        )}
+        size={select('size', ['small', 'large'])}
+        background={select('background', ['bg300', 'bg200', 'bg100'], 'bg300')}
         indicatorColor={color('indicatorColor', '#1e88e5')}>
         <Text>Loading...</Text>
       </FullScreenLoader>
