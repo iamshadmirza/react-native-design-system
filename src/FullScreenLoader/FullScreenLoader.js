@@ -6,13 +6,17 @@ import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 
 const FullScreenLoader = props => {
   const theme = useThemeContext();
-  const background = {
+  const backgroundStyles = {
     backgroundColor: theme.colors[props.background],
   };
   if (props.loading) {
     return (
       <View
-        style={StyleSheet.flatten([styles.container, background, props.style])}
+        style={StyleSheet.flatten([
+          styles.container,
+          backgroundStyles,
+          props.style,
+        ])}
         {...extractAccessibilityPropsFromProps(props)}>
         <ActivityIndicator
           style={styles.indicator}
@@ -28,7 +32,7 @@ const FullScreenLoader = props => {
 };
 
 FullScreenLoader.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.element,
   indicatorColor: PropTypes.string,
@@ -38,8 +42,9 @@ FullScreenLoader.propTypes = {
 
 FullScreenLoader.defaultProps = {
   size: 'lg',
-  background: 'backgroundDark',
+  background: 'bg300',
   indicatorColor: '#1e88e5',
+  loading: true,
 };
 
 const styles = StyleSheet.create({
