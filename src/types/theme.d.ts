@@ -43,6 +43,6 @@ export interface themeType {
   indicatorSize: possibleSizes;
   colors: possibleColors;
   shadow: {[S in ShadowType]: ShadowObject};
-  radius?: RadiusType;
+  radius: RadiusType;
   font: FontThemeType;
 }
