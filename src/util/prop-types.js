@@ -45,7 +45,7 @@ export const spaceArray = [
   '9xl',
 ];
 
-export const radius = [
+export const radiusArray = [
   'none',
   'xs',
   'sm',
@@ -71,10 +71,10 @@ export const fontVariantArray = [
 export const shadowArray = ['none', 'xs', 'sm', 'md', 'lg', 'xl'];
 
 export const sizes = PropTypes.oneOf(sizeArray);
-export const fontSizes = PropTypes.oneOf(fontSizes);
+export const fontSizes = PropTypes.oneOf(fontSizeArray);
 
 export const spaces = PropTypes.oneOf(spaceArray);
 export const shadows = PropTypes.oneOf(shadowArray);
-export const radii = PropTypes.oneOf(radius);
+export const radii = PropTypes.oneOf(radiusArray);
 export const fontBases = PropTypes.oneOf(fontBaseArray);
 export const fontVariants = PropTypes.oneOf(fontVariantArray);
