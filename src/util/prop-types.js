@@ -61,6 +61,7 @@ export const fontBaseArray = ['heading', 'body'];
 export const fontVariantArray = [
   'light',
   'medium',
+  'regular',
   'semibold',
   'bold',
   'extrabold',

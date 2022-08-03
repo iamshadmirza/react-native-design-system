@@ -2,6 +2,7 @@ export type fontBaseType = 'heading' | 'body';
 export type fontVariantType =
   | 'light'
   | 'medium'
+  | 'regular'
   | 'semibold'
   | 'bold'
   | 'extrabold'

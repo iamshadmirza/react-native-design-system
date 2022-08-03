@@ -222,6 +222,10 @@ const theme = {
         ios: 'AppleSDGothicNeo-Medium',
         android: 'sans-serif',
       }),
+      regular: Platform.select({
+        ios: 'AppleSDGothicNeo-Medium',
+        android: 'sans-serif',
+      }),
       semibold: Platform.select({
         ios: 'AppleSDGothicNeo-SemiBold',
         android: 'sans-serif-medium',
@@ -242,6 +246,10 @@ const theme = {
         android: 'sans-serif-light',
       }),
       medium: Platform.select({
+        ios: 'AppleSDGothicNeo-Medium',
+        android: 'sans-serif',
+      }),
+      regular: Platform.select({
         ios: 'AppleSDGothicNeo-Medium',
         android: 'sans-serif',
       }),
