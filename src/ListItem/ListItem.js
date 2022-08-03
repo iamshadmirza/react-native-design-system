@@ -11,7 +11,14 @@ import Feather from 'react-native-vector-icons/Feather';
 import {Avatar} from '../Avatar';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import {radii, shadows, sizes, spaces} from '../util/prop-types';
+import {
+  fontBases,
+  fontVariants,
+  radii,
+  shadows,
+  sizes,
+  spaces,
+} from '../util/prop-types';
 
 const getContainerStyle = ({theme, space, background, shadow, radius}) => {
   const itemStyle = [styles.container];
@@ -26,21 +33,37 @@ const getContainerStyle = ({theme, space, background, shadow, radius}) => {
   return itemStyle;
 };
 
-const getTextStyle = ({theme, size, textColor, textAlign}) => {
+const getTextStyle = ({
+  theme,
+  size,
+  textColor,
+  textAlign,
+  fontBase,
+  fontVariant,
+}) => {
   return {
     fontSize: theme.fontSize[size],
     fontWeight: '500',
     color: theme.colors[textColor],
     textAlign: textAlign,
+    fontFamily: theme.font[fontBase][fontVariant],
   };
 };
 
-const getSubtitleStyle = ({theme, size, subtitleColor, textAlign}) => {
+const getSubtitleStyle = ({
+  theme,
+  size,
+  subtitleColor,
+  textAlign,
+  subtitleFontBase,
+  subtitleFontVariant,
+}) => {
   return {
     fontWeight: '400',
     color: theme.colors[subtitleColor],
     textAlign: textAlign,
     marginTop: 3,
+    fontFamily: theme.font[subtitleFontBase][subtitleFontVariant],
   };
 };
 
@@ -161,6 +184,12 @@ ListItem.propTypes = {
   activeOpacity: PropTypes.number,
   shadow: shadows,
   radius: radii,
+  /**  Customize button font */
+  fontBase: fontBases,
+  fontVariant: fontVariants,
+  /**  Customize button font */
+  subtitleFontBase: fontBases,
+  subtitleFontVariant: fontVariants,
 };
 
 ListItem.defaultProps = {
@@ -175,6 +204,10 @@ ListItem.defaultProps = {
   subtitleSize: 'md',
   shadow: 'none',
   radius: 'sm',
+  fontBase: 'body',
+  fontVariant: 'medium',
+  subtitleFontBase: 'body',
+  subtitleFontVariant: 'light',
 };
 
 const styles = StyleSheet.create({

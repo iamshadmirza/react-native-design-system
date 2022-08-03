@@ -10,6 +10,7 @@ import {RadiusType, ShadowType, SizeType} from './size-type';
 import {ListSpaceType} from './space-type';
 import {TextAlignType} from './text-align-type';
 import {colorTypes} from './colors-type';
+import {fontBaseType, fontVariantType} from './typography-type';
 
 interface ListItemProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -34,6 +35,10 @@ interface ListItemProps extends AccessibilityProps {
   activeOpacity?: number;
   shadow?: ShadowType;
   radius?: RadiusType;
+  fontbase?: fontBaseType;
+  fontVariant?: fontVariantType;
+  subtitleFontbase?: fontBaseType;
+  subtitleFontVariant?: fontVariantType;
 }
 
 export const ListItem: React.FC<ListItemProps>;

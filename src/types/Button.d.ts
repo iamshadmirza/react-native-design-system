@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {
   ViewStyle,
   TextStyle,
@@ -10,6 +10,7 @@ import {RadiusType, ShadowType, SizeType} from './size-type';
 import {LengthType} from './length-type';
 import {IconNode} from './icon-type';
 import {colorTypes} from './colors-type';
+import {fontBaseType, fontVariantType} from './typography-type';
 
 interface ButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -34,6 +35,8 @@ interface ButtonProps extends AccessibilityProps {
   length?: LengthType;
   radius?: RadiusType;
   shadow?: ShadowType;
+  fontbase?: fontBaseType;
+  fontVariant?: fontVariantType;
 }
 
 export const Button: React.FC<ButtonProps>;

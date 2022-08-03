@@ -42,7 +42,7 @@ export interface themeType {
   space: possibleSpaces;
   indicatorSize: possibleSizes;
   colors: possibleColors;
-  shadow: {[S in ShadowType]: ShadowObject};
-  radius: RadiusType;
+  shadow: {[T in ShadowType]: ShadowObject};
+  radius: {[T in RadiusType]: string};
   font: FontThemeType;
 }
