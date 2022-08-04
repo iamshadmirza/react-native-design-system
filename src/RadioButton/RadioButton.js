@@ -1,6 +1,5 @@
 import React, {useContext, createContext} from 'react';
 import {
-  Text,
   View,
   StyleSheet,
   TouchableNativeFeedback,
@@ -12,14 +11,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useThemeContext} from '../util/ThemeProvider';
 import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 import {sizes} from '../util/prop-types';
+import {Text} from '../Text';
 const Context = createContext();
 const {Provider} = Context;
 
-const getTextStyle = ({theme, size, textColor, iconRight}) => {
+const getTextStyle = ({iconRight}) => {
   const textStyle = [
     {
-      fontSize: theme.fontSize[size],
-      color: theme.colors[textColor],
       marginLeft: 10,
       marginVertical: 2.5,
     },
@@ -70,6 +68,8 @@ export const RadioItem = ({children, id, ...otherProps}) => {
       <View style={[styles.itemContainer, style]}>
         {!props.iconRight && renderIcon(propsToPass)}
         <Text
+          color={otherProps.textColor}
+          size={otherProps.size}
           style={StyleSheet.flatten([
             getTextStyle(propsToPass),
             props.textStyle,

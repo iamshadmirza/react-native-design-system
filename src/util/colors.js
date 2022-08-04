@@ -330,6 +330,7 @@ const darkColors = {
 
   // extras
   transparent: 'transparent',
+  disabled: colors.blueGray[600],
   loader: colors.gray[600],
   outline: colors.gray[700],
   semitransparent: 'rgba(0, 0, 0, 0.3)',
