@@ -61,6 +61,8 @@ type brandColors =
   | 'white'
   | 'black'
   | 'shadowColor'
+  | 'bgInput'
+  | 'bgImage'
 
 type backgroundShade = '100' | '200' | '300';
 type backgroundColors = `bg${backgroundShade}`

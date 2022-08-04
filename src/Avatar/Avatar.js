@@ -157,7 +157,7 @@ Avatar.defaultProps = {
   title: 'MD',
   editable: false,
   size: 'lg',
-  background: 'bg100',
+  background: 'bgImage',
   shadow: 'none',
 };
 
