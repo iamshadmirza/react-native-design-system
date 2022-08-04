@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import {SizeType} from './size-type';
 import {colorTypes} from './colors-type';
+import {fontBaseType, fontVariantType} from './typography-type';
 
 interface CheckBoxProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -20,6 +21,8 @@ interface CheckBoxProps extends AccessibilityProps {
   onPress: () => void;
   checkedIcon?: React.ReactElement;
   uncheckedIcon?: React.ReactElement;
+  fontBase?: fontBaseType;
+  fontVariant?: fontVariantType;
 }
 
 export const CheckBox: React.FC<CheckBoxProps>;

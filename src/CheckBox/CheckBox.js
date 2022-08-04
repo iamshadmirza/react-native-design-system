@@ -4,20 +4,18 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-  Text,
   StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useThemeContext} from '../util/ThemeProvider';
-import {sizes} from '../util/prop-types';
+import {fontBases, fontVariants, sizes} from '../util/prop-types';
+import {Text} from '../Text';
 
 const getTextStyle = ({theme, size, textColor, iconRight}) => {
   const textStyle = [
     {
-      fontSize: theme.fontSize[size],
-      color: theme.colors[textColor],
-      marginLeft: 5,
+      marginLeft: theme.space.lg,
     },
   ];
   if (iconRight) {
@@ -68,6 +66,9 @@ const CheckBox = React.forwardRef(({style, textStyle, ...props}, ref) => {
         {!props.iconRight && renderIcon(propsWithTheme)}
         {typeof props.children === 'string' ? (
           <Text
+            color={props.textColor}
+            fontBase={props.fontBase}
+            fontVariant={props.fontVariant}
             style={StyleSheet.flatten([
               getTextStyle(propsWithTheme),
               textStyle,
@@ -96,12 +97,16 @@ CheckBox.propTypes = {
   onPress: PropTypes.func.isRequired,
   checkedIcon: PropTypes.element,
   uncheckedIcon: PropTypes.element,
+  fontBase: fontBases,
+  fontVariant: fontVariants,
 };
 
 CheckBox.defaultProps = {
   size: 'md',
   color: 'primary',
   textColor: 'para',
+  fontBase: 'body',
+  fontVariant: 'regular',
 };
 
 const styles = StyleSheet.create({
