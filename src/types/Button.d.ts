@@ -1,10 +1,5 @@
 import React, {ReactElement} from 'react';
-import {
-  ViewStyle,
-  TextStyle,
-  StyleProp,
-  AccessibilityProps,
-} from 'react-native';
+import {ViewStyle, TextStyle, StyleProp, ViewProps} from 'react-native';
 
 import {RadiusType, ShadowType, SizeType} from './size-type';
 import {LengthType} from './length-type';
@@ -12,7 +7,7 @@ import {IconNode} from './icon-type';
 import {colorTypes} from './colors-type';
 import {fontBaseType, fontVariantType} from './typography-type';
 
-interface ButtonProps extends AccessibilityProps {
+interface ButtonProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   children?: string | ReactElement | ReactElement[];

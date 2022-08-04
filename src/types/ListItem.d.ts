@@ -35,9 +35,9 @@ interface ListItemProps extends AccessibilityProps {
   activeOpacity?: number;
   shadow?: ShadowType;
   radius?: RadiusType;
-  fontbase?: fontBaseType;
+  fontBase?: fontBaseType;
   fontVariant?: fontVariantType;
-  subtitleFontbase?: fontBaseType;
+  subtitleFontBase?: fontBaseType;
   subtitleFontVariant?: fontVariantType;
 }
 
