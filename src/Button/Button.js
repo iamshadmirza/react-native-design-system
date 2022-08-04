@@ -11,12 +11,13 @@ import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 import {
   fontBases,
+  fontSizes,
   fontVariants,
   radii,
   shadows,
   sizes,
 } from '../util/prop-types';
-import Text from '../Text/Text';
+import {Text} from '../Text';
 
 const getTextStyle = ({
   outline,
@@ -24,17 +25,23 @@ const getTextStyle = ({
   loading,
   disabled,
   theme,
+  textColor,
   color,
 }) => {
-  const textStyle = [];
+  const textStyle = [{color: theme.colors.white}];
   if (outline || transparent) {
     textStyle.push({
       color: theme.colors[color],
     });
   }
-  if (loading && outline) {
+  if (textColor) {
     textStyle.push({
-      color: theme.colors[color] + '50',
+      color: theme.colors[textColor],
+    });
+  }
+  if (loading) {
+    textStyle.push({
+      opacity: 0.6,
     });
   }
   if (disabled) {
@@ -66,8 +73,8 @@ const getContainerStyle = props => {
     borderWidth: 1,
     borderColor: theme.colors[color],
     borderRadius: theme.radius[radius],
-    paddingVertical: theme.buttonSize[size],
-    paddingHorizontal: theme.buttonSize[size] * 2,
+    paddingVertical: theme.buttonSize.paddingVertical[size],
+    paddingHorizontal: theme.buttonSize.paddingHorizontal[size],
     ...theme.shadow[shadow],
   });
   if (borderColor) {
@@ -94,6 +101,13 @@ const getContainerStyle = props => {
     buttonStyles.push({
       borderWidth: 1,
       borderColor: 'transparent',
+      backgroundColor: 'transparent',
+    });
+  }
+  if (transparent && outline) {
+    buttonStyles.push({
+      borderWidth: 1,
+      borderColor: theme.colors[borderColor],
       backgroundColor: 'transparent',
     });
   }
@@ -127,7 +141,7 @@ const renderChildren = props => {
     textStyle,
     children,
     size,
-    textColor,
+    textSize,
     leftIconStyle,
     icon,
     rightIconStyle,
@@ -146,17 +160,16 @@ const renderChildren = props => {
             {leftIcon || icon}
           </View>
         ))}
-      {typeof children === 'string' ? (
+      {typeof children === 'function' ? (
+        children
+      ) : (
         <Text
-          size={size}
-          color={textColor}
+          size={textSize || size}
           fontBase={fontBase}
           fontVariant={fontVariant}
           style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
           {children}
         </Text>
-      ) : (
-        children
       )}
       {rightIcon && (
         <View style={[styles.iconStyle, iconStyle, rightIconStyle]}>
@@ -199,11 +212,17 @@ Button.propTypes = {
   /**  To override default right icon style */
   rightIconStyle: PropTypes.object,
   /**  Pass button text as children as children */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+  ]),
   /**  Change indicator color */
   indicatorColor: PropTypes.string,
   /**  To change button size */
   size: sizes,
+  /**  To change font size */
+  textSize: fontSizes,
   /**  To change button width */
   width: sizes,
   /**  callback function to be called when pressed */
@@ -249,7 +268,6 @@ Button.defaultProps = {
   length: 'long',
   width: 'md',
   color: 'primary',
-  textColor: 'white',
   tint: false,
   radius: 'sm',
   shadow: 'none',

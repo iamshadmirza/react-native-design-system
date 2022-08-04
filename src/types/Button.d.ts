@@ -1,7 +1,7 @@
-import React, {ReactElement} from 'react';
+import React, {ReactNode} from 'react';
 import {ViewStyle, TextStyle, StyleProp, ViewProps} from 'react-native';
 
-import {RadiusType, ShadowType, SizeType} from './size-type';
+import {FontSizeType, RadiusType, ShadowType, SizeType} from './size-type';
 import {LengthType} from './length-type';
 import {IconNode} from './icon-type';
 import {colorTypes} from './colors-type';
@@ -10,11 +10,13 @@ import {fontBaseType, fontVariantType} from './typography-type';
 interface ButtonProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children?: string | ReactElement | ReactElement[];
+  children?: string | number | ReactNode;
   indicatorColor?: string;
   size?: SizeType;
+  textSize?: FontSizeType;
   onPress: () => void;
   color?: keyof colorTypes | string;
+  textColor?: keyof colorTypes | string;
   borderColor?: string;
   round?: boolean;
   outline?: boolean;
@@ -30,7 +32,7 @@ interface ButtonProps extends ViewProps {
   length?: LengthType;
   radius?: RadiusType;
   shadow?: ShadowType;
-  fontbase?: fontBaseType;
+  fontBase?: fontBaseType;
   fontVariant?: fontVariantType;
 }
 

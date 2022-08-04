@@ -34,7 +34,10 @@ export interface themeType {
   lineHeight: possibleFontSizes;
   size: possibleSizes;
   actionButtonSize: possibleSizes;
-  buttonSize: possibleSizes;
+  buttonSize: {
+    paddingHorizontal: possibleSizes;
+    paddingVertical: possibleSizes;
+  };
   iconSize: possibleSizes;
   avatarSize: possibleSizes;
   badgeSize: possibleSizes;

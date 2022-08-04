@@ -4,11 +4,11 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-  Text,
   StyleSheet,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {Avatar} from '../Avatar';
+import {Text} from '../Text';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
 import {
@@ -26,45 +26,11 @@ const getContainerStyle = ({theme, space, background, shadow, radius}) => {
     borderColor: theme.colors.outline,
     borderRadius: theme.radius[radius],
     backgroundColor: theme.colors[background],
-    paddingVertical: theme.space[space] * 2,
-    paddingHorizontal: theme.space[space] * 1.2,
+    paddingVertical: theme.buttonSize.paddingVertical[space],
+    paddingHorizontal: theme.space[space],
     ...theme.shadow[shadow],
   });
   return itemStyle;
-};
-
-const getTextStyle = ({
-  theme,
-  size,
-  textColor,
-  textAlign,
-  fontBase,
-  fontVariant,
-}) => {
-  return {
-    fontSize: theme.fontSize[size],
-    fontWeight: '500',
-    color: theme.colors[textColor],
-    textAlign: textAlign,
-    fontFamily: theme.font[fontBase][fontVariant],
-  };
-};
-
-const getSubtitleStyle = ({
-  theme,
-  size,
-  subtitleColor,
-  textAlign,
-  subtitleFontBase,
-  subtitleFontVariant,
-}) => {
-  return {
-    fontWeight: '400',
-    color: theme.colors[subtitleColor],
-    textAlign: textAlign,
-    marginTop: 3,
-    fontFamily: theme.font[subtitleFontBase][subtitleFontVariant],
-  };
 };
 
 const renderLeftChild = ({avatarSource, leftIcon, iconStyle}) => {
@@ -129,10 +95,12 @@ const ListItem = React.forwardRef(
           <View style={styles.textView}>
             {typeof props.children === 'string' ? (
               <Text
-                style={StyleSheet.flatten([
-                  getTextStyle(propsWithTheme),
-                  textStyle,
-                ])}>
+                color={props.textColor}
+                fontBase={props.fontBase}
+                fontVariant={props.fontVariant}
+                size={props.size}
+                textAlign={props.textAlign}
+                style={textStyle || {}}>
                 {props.children}
               </Text>
             ) : (
@@ -141,11 +109,12 @@ const ListItem = React.forwardRef(
             {props.subtitle &&
               (typeof props.subtitle === 'string' ? (
                 <Text
-                  size={subtitleSize}
-                  style={StyleSheet.flatten([
-                    getSubtitleStyle(propsWithTheme),
-                    subtitleStyle,
-                  ])}>
+                  size={props.subtitleSize}
+                  fontBase={props.subtitleFontBase}
+                  fontVariant={props.subtitleFontVariant}
+                  color={props.subtitleColor}
+                  textAlign={props.textAlign}
+                  style={[{marginTop: 3}, subtitleStyle]}>
                   {props.subtitle}
                 </Text>
               ) : (

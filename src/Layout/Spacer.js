@@ -26,7 +26,7 @@ const getContainerStyle = ({
     style.margin = theme.space[m];
   }
   if (mv) {
-    style.marginVerticle = theme.space[mv];
+    style.marginVertical = theme.space[mv];
   }
   if (mh) {
     style.marginHorizontal = theme.space[mh];
@@ -47,7 +47,7 @@ const getContainerStyle = ({
     style.padding = theme.space[p];
   }
   if (pv) {
-    style.paddingVerticle = theme.space[pv];
+    style.paddingVertical = theme.space[pv];
   }
   if (ph) {
     style.paddingHorizontal = theme.space[ph];
