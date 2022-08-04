@@ -335,7 +335,7 @@ const darkColors = {
   semitransparent: 'rgba(0, 0, 0, 0.3)',
   shadowColor: colors.white,
   bgInput: colors.gray[800],
-  bgImage: colors.slate[500],
+  bgImage: colors.slate[600],
 };
 
 function flattenColors(selectedColor) {
