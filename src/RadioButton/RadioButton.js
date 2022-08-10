@@ -19,7 +19,6 @@ const getTextStyle = ({iconRight}) => {
   const textStyle = [
     {
       marginLeft: 10,
-      marginVertical: 2.5,
     },
   ];
   if (iconRight) {
