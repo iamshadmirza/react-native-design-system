@@ -39,6 +39,7 @@ interface ListItemProps extends AccessibilityProps {
   fontVariant?: fontVariantType;
   subtitleFontBase?: fontBaseType;
   subtitleFontVariant?: fontVariantType;
+  subtitleSize?: SizeType;
 }
 
 export const ListItem: React.FC<ListItemProps>;
