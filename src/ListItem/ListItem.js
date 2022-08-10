@@ -93,7 +93,7 @@ const ListItem = React.forwardRef(
           ])}>
           {renderLeftChild(propsWithTheme)}
           <View style={styles.textView}>
-            {typeof props.children === 'string' ? (
+            {typeof props.children !== 'function' ? (
               <Text
                 color={props.textColor}
                 fontBase={props.fontBase}
@@ -107,9 +107,9 @@ const ListItem = React.forwardRef(
               props.children
             )}
             {props.subtitle &&
-              (typeof props.subtitle === 'string' ? (
+              (typeof props.subtitle !== 'function' ? (
                 <Text
-                  size={props.subtitleSize}
+                  size={subtitleSize}
                   fontBase={props.subtitleFontBase}
                   fontVariant={props.subtitleFontVariant}
                   color={props.subtitleColor}

@@ -112,7 +112,7 @@ const Input = React.forwardRef((props, ref) => {
   return (
     <View style={props.containerStyle}>
       {showLabel ? (
-        typeof props.label === 'string' ? (
+        typeof props.label !== 'function' ? (
           <Text
             style={StyleSheet.flatten([
               getLabelStyle({...props, theme}),
@@ -125,7 +125,7 @@ const Input = React.forwardRef((props, ref) => {
         )
       ) : null}
       {showLabelHint ? (
-        typeof props.labelHint === 'string' ? (
+        typeof props.labelHint !== 'function' ? (
           <Text
             style={StyleSheet.flatten([
               getLabelHintStyle({...props, theme}),
@@ -159,7 +159,7 @@ const Input = React.forwardRef((props, ref) => {
         )}
       </View>
       {props.error && props.errorCaption ? (
-        typeof props.errorCaption === 'string' ? (
+        typeof props.errorCaption !== 'function' ? (
           <Text
             style={StyleSheet.flatten([
               getCaptionStyle({...props, theme}),

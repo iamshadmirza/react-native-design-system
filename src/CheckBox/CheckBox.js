@@ -64,7 +64,7 @@ const CheckBox = React.forwardRef(({style, textStyle, ...props}, ref) => {
       onPress={props.onPress}>
       <View style={StyleSheet.flatten([styles.container, style])}>
         {!props.iconRight && renderIcon(propsWithTheme)}
-        {typeof props.children === 'string' ? (
+        {typeof props.children !== 'function' ? (
           <Text
             color={props.textColor}
             fontBase={props.fontBase}
