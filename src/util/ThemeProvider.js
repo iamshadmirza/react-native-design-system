@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 export const ThemeContext = React.createContext();
 export const ColorSchemeContext = React.createContext();
 
@@ -26,6 +26,10 @@ const ThemeProvider = ({theme, colorMode, children}) => {
   const toggleDarkMode = () => {
     setIsDarkMode(prevValue => !prevValue);
   };
+
+  useEffect(() => {
+    setIsDarkMode(colorMode === 'dark');
+  }, [colorMode]);
 
   const currentTheme = React.useMemo(() => {
     let _theme = {...theme};
