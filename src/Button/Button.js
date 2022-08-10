@@ -73,7 +73,12 @@ const getContainerStyle = props => {
     borderWidth: 1,
     borderColor: theme.colors[color],
     borderRadius: theme.radius[radius],
-    paddingVertical: theme.buttonSize.paddingVertical[size],
+    paddingTop:
+      theme.buttonSize.paddingVertical[size] +
+      (['xs', 'sm', 'md', 'lg', 'xl'].indexOf(size) >= 0 ? 0 : 2),
+    paddingBottom:
+      theme.buttonSize.paddingVertical[size] +
+      (['xs', 'sm', 'md', 'lg', 'xl'].indexOf(size) > 0 ? 1.2 : 0),
     paddingHorizontal: theme.buttonSize.paddingHorizontal[size],
     ...theme.shadow[shadow],
   });
@@ -167,7 +172,7 @@ const renderChildren = props => {
           size={textSize || size}
           fontBase={fontBase}
           fontVariant={fontVariant}
-          style={StyleSheet.flatten([getTextStyle(props), textStyle])}>
+          style={[getTextStyle(props), textStyle]}>
           {children}
         </Text>
       )}

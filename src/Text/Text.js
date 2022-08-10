@@ -21,7 +21,6 @@ const getTextStyle = ({
       color: theme.colors[color],
       fontSize: theme.fontSize[size],
       lineHeight: theme.lineHeight[lineHeight || size],
-      includeFontPadding: false,
       textAlignVertical: 'center',
       fontWeight,
       textAlign,
@@ -47,6 +46,7 @@ const TextElement = React.forwardRef(({style, ...props}, ref) => {
     <Text
       {...props}
       ref={ref}
+      includeFontPadding={false}
       style={StyleSheet.flatten([getTextStyle({...props, theme}), style])}>
       {props.children}
     </Text>
