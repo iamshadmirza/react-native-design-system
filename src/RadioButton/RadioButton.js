@@ -67,15 +67,23 @@ export const RadioItem = ({children, id, ...otherProps}) => {
       onPress={() => selectItem(id)}>
       <View style={[styles.itemContainer, style]}>
         {!props.iconRight && renderIcon(propsToPass)}
-        <Text
-          color={otherProps.textColor}
-          size={otherProps.size}
-          style={StyleSheet.flatten([
-            getTextStyle(propsToPass),
-            props.textStyle,
-          ])}>
-          {children}
-        </Text>
+        <View style={{flex: 1}}>
+          {typeof children === 'function' ? (
+            children
+          ) : (
+            <Text
+              color={otherProps.textColor}
+              size={otherProps.size}
+              fontBase={props.fontBase}
+              fontVariant={props.fontVariant}
+              style={StyleSheet.flatten([
+                getTextStyle(propsToPass),
+                props.textStyle,
+              ])}>
+              {children}
+            </Text>
+          )}
+        </View>
         {props.iconRight && renderIcon(propsToPass)}
       </View>
     </TouchableElement>
@@ -113,6 +121,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
