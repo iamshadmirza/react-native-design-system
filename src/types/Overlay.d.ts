@@ -5,7 +5,7 @@ import {RadiusType} from './size-type';
 interface OverlayProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   overlayStyle?: StyleProp<ViewStyle>;
-  children: React.ReactElement;
+  children: React.ReactNode;
   background?: string;
   overlayBackground?: string;
   radius?: RadiusType;

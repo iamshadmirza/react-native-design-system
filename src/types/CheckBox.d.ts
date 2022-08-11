@@ -19,8 +19,8 @@ interface CheckBoxProps extends AccessibilityProps {
   textColor?: keyof colorTypes | string;
   size?: SizeType;
   onPress: () => void;
-  checkedIcon?: React.ReactElement;
-  uncheckedIcon?: React.ReactElement;
+  checkedIcon?: React.ReactNode;
+  uncheckedIcon?: React.ReactNode;
   fontBase?: fontBaseType;
   fontVariant?: fontVariantType;
 }

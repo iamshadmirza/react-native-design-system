@@ -40,7 +40,7 @@ export let colors: colorsType;
 export const ThemeProvider: React.FC<{
   theme: themeType;
   colorMode?: 'light' | 'dark';
-  children: React.ReactElement | Array<any>;
+  children: React.ReactNode | Array<any>;
 }>;
 
 export const useThemeContext: () => typeof theme;

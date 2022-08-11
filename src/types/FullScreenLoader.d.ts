@@ -5,7 +5,7 @@ import {colorTypes} from './colors-type';
 interface FullScreenLoaderProps extends AccessibilityProps {
   loading?: boolean;
   style?: StyleProp<ViewStyle>;
-  children?: React.ReactElement;
+  children?: React.ReactNode;
   indicatorColor?: string;
   background?: keyof colorTypes | string;
   size?: 'sm' | 'lg';

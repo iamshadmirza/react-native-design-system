@@ -9,8 +9,8 @@ interface MenuAddButtonProps {
   count: number;
   onIncrement: () => void;
   onDecrement: () => void;
-  plusIcon?: React.ReactElement;
-  minusIcon?: React.ReactElement;
+  plusIcon?: React.ReactNode;
+  minusIcon?: React.ReactNode;
   iconColor?: string;
   disabled?: boolean;
   size: SizeType;
