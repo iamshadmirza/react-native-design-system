@@ -11,7 +11,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {radii, shadows, sizes} from '../util/prop-types';
 import {useThemeContext, useThemeMode} from '../util/ThemeProvider';
-import { generateTouchableNativeFeedbackBackground } from '../util/touchable';
+import {removeBackgroundProp} from '../util/touchable';
 
 const getContainerStyle = ({
   theme,
@@ -71,14 +71,15 @@ const MenuAddButton = ({style, textStyle, ...props}) => {
   const {isDarkMode} = useThemeMode();
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  const background = generateTouchableNativeFeedbackBackground(props, theme);
+
+  const updateProps = removeBackgroundProp(props);
+
   if (props.count < 1) {
     return (
       <TouchableElement
-        {...props}
+        {...updateProps}
         disabled={props.disabled}
-        onPress={props.onIncrement}
-        {...background}>
+        onPress={props.onIncrement}>
         <View style={[getContainerStyle({...props, theme, isDarkMode}), style]}>
           <Text
             style={[getTextStyle({...props, theme, isDarkMode}), textStyle]}>
