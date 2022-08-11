@@ -46,5 +46,5 @@ export const ThemeProvider: React.FC<{
 export const useThemeContext: () => typeof theme;
 export const useThemeMode: () => {
   isDarkMode: boolean;
-  toggleDarkMode: () => void;
+  toggleDarkMode: (mode?: 'light' | 'dark') => void;
 };

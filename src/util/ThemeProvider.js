@@ -23,8 +23,8 @@ const ThemeProvider = ({theme, colorMode, children}) => {
     throw new Error('theme value must be provided within a ThemeProvider');
   }
   const [isDarkMode, setIsDarkMode] = React.useState(colorMode !== 'light');
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevValue => !prevValue);
+  const toggleDarkMode = mode => {
+    setIsDarkMode(prevValue => (mode ? mode === 'dark' : !prevValue));
   };
 
   useEffect(() => {
