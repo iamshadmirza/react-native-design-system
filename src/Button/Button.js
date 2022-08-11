@@ -221,6 +221,7 @@ Button.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.element,
+    PropTypes.array,
   ]),
   /**  Change indicator color */
   indicatorColor: PropTypes.string,

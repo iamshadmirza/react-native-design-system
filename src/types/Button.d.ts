@@ -10,7 +10,7 @@ import {fontBaseType, fontVariantType} from './typography-type';
 interface ButtonProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children?: string | number | ReactNode;
+  children?: string | number | ReactNode | ReactNode[];
   indicatorColor?: string;
   size?: SizeType;
   textSize?: FontSizeType;
