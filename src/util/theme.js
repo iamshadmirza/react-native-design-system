@@ -5,19 +5,19 @@ const DEFAULT_FONT_SIZE = 16;
 
 const theme = {
   fontSize: {
-    xs: DEFAULT_FONT_SIZE * 0.75,
-    sm: DEFAULT_FONT_SIZE * 0.875,
-    md: DEFAULT_FONT_SIZE,
-    lg: DEFAULT_FONT_SIZE * 1.125,
-    xl: DEFAULT_FONT_SIZE * 1.25,
-    '2xl': DEFAULT_FONT_SIZE * 1.5,
-    '3xl': DEFAULT_FONT_SIZE * 1.875,
-    '4xl': DEFAULT_FONT_SIZE * 2.25,
-    '5xl': DEFAULT_FONT_SIZE * 3,
-    '6xl': DEFAULT_FONT_SIZE * 3.75,
-    '7xl': DEFAULT_FONT_SIZE * 4.2,
-    '8xl': DEFAULT_FONT_SIZE * 4.6,
-    '9xl': DEFAULT_FONT_SIZE * 5.2,
+    xs: DEFAULT_FONT_SIZE * 0.75, //12
+    sm: DEFAULT_FONT_SIZE * 0.875, //14
+    md: DEFAULT_FONT_SIZE, //16
+    lg: DEFAULT_FONT_SIZE * 1.125, //18
+    xl: DEFAULT_FONT_SIZE * 1.25, //20
+    '2xl': DEFAULT_FONT_SIZE * 1.5, //24
+    '3xl': DEFAULT_FONT_SIZE * 1.75, //28
+    '4xl': DEFAULT_FONT_SIZE * 2, //32
+    '5xl': DEFAULT_FONT_SIZE * 2.25, //36
+    '6xl': DEFAULT_FONT_SIZE * 2.5, //40
+    '7xl': DEFAULT_FONT_SIZE * 2.75, //44
+    '8xl': DEFAULT_FONT_SIZE * 2.875, //46
+    '9xl': DEFAULT_FONT_SIZE * 3, //48
   },
   get lineHeight() {
     return {
@@ -94,13 +94,13 @@ const theme = {
     '5xl': 44,
   },
   avatarSize: {
-    xs: 20,
-    sm: 30,
-    md: 36,
-    lg: 42,
-    xl: 56,
-    '2xl': 70,
-    '3xl': 82,
+    xs: 18,
+    sm: 20,
+    md: 26,
+    lg: 36,
+    xl: 52,
+    '2xl': 80,
+    '3xl': 90,
     '4xl': 100,
     '5xl': 120,
   },
