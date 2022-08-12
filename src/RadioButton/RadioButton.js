@@ -67,7 +67,7 @@ export const RadioItem = ({children, id, ...otherProps}) => {
       <View style={[styles.itemContainer, style]}>
         {!props.iconRight && renderIcon(propsToPass)}
         <View style={{flex: 1}}>
-          {typeof children === 'function' ? (
+          {typeof children === 'function' || typeof children === 'object' ? (
             children
           ) : (
             <Text
