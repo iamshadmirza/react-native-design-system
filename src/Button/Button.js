@@ -87,12 +87,7 @@ const getContainerStyle = props => {
     borderWidth: 1,
     borderColor: theme.colors[color],
     borderRadius: theme.radius[radius],
-    paddingTop:
-      theme.buttonSize.paddingVertical[size] +
-      (['xs', 'sm', 'md', 'lg', 'xl'].indexOf(size) >= 0 ? 0 : 2),
-    paddingBottom:
-      theme.buttonSize.paddingVertical[size] +
-      (['xs', 'sm', 'md', 'lg', 'xl'].indexOf(size) > 0 ? 1.2 : 0),
+    paddingVertical: theme.buttonSize.paddingVertical[size],
     paddingHorizontal: theme.buttonSize.paddingHorizontal[size],
     ...theme.shadow[shadow],
   });

@@ -55,7 +55,7 @@ const getContainerStyle = ({
   return inputContainerStyle;
 };
 
-const getInputStyle = ({theme, size, textColor, textAlign}) => {
+const getInputStyle = ({theme, size, textColor, textAlign, textStyle}) => {
   const inputStyle = [styles.input];
   inputStyle.push({
     fontSize: theme.fontSize[size],
@@ -109,6 +109,23 @@ const Input = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   const showLabel = props.floatingLabel ? props.value.length > 0 : props.label;
   const showLabelHint = showLabel && props.labelHint;
+  const {
+    style,
+    textStyle,
+    labelStyle,
+    label,
+    labelHintStyle,
+    labelHint,
+    leftIcon,
+    rightIcon,
+    floatingLabel,
+    multiline,
+    placeholder,
+    disabled,
+    error,
+    errorCaption,
+    ...otherProps
+  } = props;
   return (
     <View style={props.containerStyle}>
       {showLabel ? (
@@ -116,59 +133,55 @@ const Input = React.forwardRef((props, ref) => {
           <Text
             style={StyleSheet.flatten([
               getLabelStyle({...props, theme}),
-              props.labelStyle,
+              labelStyle,
             ])}>
-            {props.label}
+            {label}
           </Text>
         ) : (
-          props.label
+          label
         )
       ) : null}
       {showLabelHint ? (
-        typeof props.labelHint !== 'function' ? (
+        typeof labelHint !== 'function' ? (
           <Text
             style={StyleSheet.flatten([
               getLabelHintStyle({...props, theme}),
-              props.labelHintStyle,
+              labelHintStyle,
             ])}>
-            {props.labelHint}
+            {labelHint}
           </Text>
         ) : (
-          props.labelHint
+          labelHint
         )
       ) : null}
       <View
         style={StyleSheet.flatten([
           getContainerStyle({...props, theme}),
-          props.style,
+          style,
         ])}>
-        {props.leftIcon && (
-          <View style={styles.leftIcon}>{props.leftIcon}</View>
-        )}
+        {leftIcon && <View style={styles.leftIcon}>{leftIcon}</View>}
         <TextInput
-          editable={!props.disabled}
-          textAlignVertical="top"
-          {...props}
           ref={ref}
-          style={getInputStyle({...props, theme})}
+          editable={!disabled}
+          textAlignVertical={multiline ? 'top' : 'center'}
           placeholderTextColor={theme.colors.subtle}
-          placeholder={props.floatingLabel ? props.label : props.placeholder}
+          placeholder={floatingLabel ? label : placeholder}
+          {...otherProps}
+          style={[getInputStyle({...otherProps, theme}), textStyle]}
         />
-        {props.rightIcon && (
-          <View style={styles.rightIcon}>{props.rightIcon}</View>
-        )}
+        {rightIcon && <View style={styles.rightIcon}>{rightIcon}</View>}
       </View>
-      {props.error && props.errorCaption ? (
-        typeof props.errorCaption !== 'function' ? (
+      {error && errorCaption ? (
+        typeof errorCaption !== 'function' ? (
           <Text
             style={StyleSheet.flatten([
               getCaptionStyle({...props, theme}),
-              props.labelStyle,
+              labelStyle,
             ])}>
-            {props.errorCaption}
+            {errorCaption}
           </Text>
         ) : (
-          props.errorCaption
+          errorCaption
         )
       ) : null}
     </View>

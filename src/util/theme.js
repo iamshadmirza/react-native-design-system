@@ -62,9 +62,9 @@ const theme = {
     paddingVertical: {
       xs: 5,
       sm: 6,
-      md: 8,
-      lg: 8,
-      xl: 10,
+      md: 12,
+      lg: 12,
+      xl: 12,
       '2xl': 16,
       '3xl': 16,
       '4xl': 18,
