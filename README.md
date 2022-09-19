@@ -103,15 +103,16 @@ This is just a personal approach, you can do as you prefer. What I usually do is
 import {theme} from 'react-native-design-system';
 
 theme.colors.dark = {
-  backgroundDark: '#fff',
-  backgroundLight: '#f8f8f8',
-  foreground: '#f4f4f4',
-  heading: '#999',
-  body: '#000',
+  bg: {
+    '100': '#fff',
+    '200': '#f8f8f8',
+    '300': '#f4f4f4',
+  }
+  heading: '#000',
+  para: '#999',
   subtle: '#333',
   disabled: '#78909c',
   disabledText: '#78907c',
-  white: '#f8f8f8',
 };
 
 export default theme;
@@ -140,7 +141,6 @@ function App() {
 - [x] [ActionButton](src/ActionButton/ActionButton.js)
 - [x] [Badge](src/Badge/Badge.js)
 - [x] [Button](src/Button/Button.js)
-- [x] [SlidingButton](src/Button/SlidingButton.js)
 - [x] [MenuAddButton](src/Button/MenuAddButton.js)
 - [x] [Card](src/Card/Card.js)
 - [x] [CheckBox](src/CheckBox/CheckBox.js)
@@ -160,7 +160,6 @@ function App() {
 - [x] [Stacklist](src/Layout/StackList.js)
 - [x] [Flex](src/Layout/Flex.js)
 - [x] [Spacer](src/Layout/Spacer.js)
-- [ ] [Tooltip](src/)
 
 ## Author
 
