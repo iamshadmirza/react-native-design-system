@@ -6,6 +6,7 @@ import Avatar from '../Avatar/Avatar';
 import Text from '../Text/Text';
 import Stack from '../Layout/Stack';
 import Flex from './Flex';
+import {spaceArray} from '../util/prop-types';
 
 <Meta title="Flex" component={Flex} />
 
@@ -29,7 +30,7 @@ import {Flex} from 'react-native-design-system';
 
 # Space
 
-Customize padding for the child. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`
+`space` receives values from `none`, `xs` upto `9xl`.
 
 <Preview>
   <Story name="space">
@@ -97,24 +98,14 @@ Play with Flex in Canvas mode.
       'space-around',
       'space-evenly',
     ])}
-    space={select(
-      'space',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
-    background={select(
-      'background',
-      [
-        'background',
-        'clearWhite',
-        'disabled',
-        'semitransparent',
-        'gray',
-        'white',
-        'outline',
-      ],
-      'background',
-    )}>
+    space={select('space', spaceArray, 'md')}
+    background={select('background', [
+      'bg100',
+      'bg200',
+      'bg300',
+      'red500',
+      'blue700',
+    ])}>
     <Button>Press Me</Button>
   </Flex>
 </Story>

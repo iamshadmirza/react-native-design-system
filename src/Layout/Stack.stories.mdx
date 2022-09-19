@@ -4,6 +4,7 @@ import {action} from '@storybook/addon-actions';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Stack from './Stack';
+import {spaceArray} from '../util/prop-types';
 
 <Meta title="Stack" component={Stack} />
 
@@ -44,11 +45,11 @@ import {Stack, Input} from 'react-native-design-system';
 
 # Space
 
-Customize spacing of each child from one another. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge` and provide constant spacing between each children.
+`space` receives values from `none`, `xs` upto `9xl`.
 
 <Preview>
   <Story name="space">
-    <Stack size="lg">
+    <Stack space="lg">
       <Input
         placeholder="Enter Username"
         value=""
@@ -73,7 +74,7 @@ Customize spacing of each child from one another. `space` prop accepts one of th
 
 # Direction
 
-Give direction="horizontal" to make it behave like Inline. Direction can either be "vertical" or "horizontal". Default is "vertical".
+Give `direction="horizontal"` to make it behave like Inline. Direction can either be "vertical" or "horizontal". Default is "vertical".
 
 # Horizontal Space
 
@@ -81,7 +82,7 @@ Give direction="horizontal" to make it behave like Inline. Direction can either 
 
 <Preview>
   <Story name="horizontalSpace">
-    <Stack size="lg" horizontalsize="2xl">
+    <Stack size="lg" direction="horizontal" horizontalSpace="2xl">
       <Input
         placeholder="Enter Username"
         value=""
@@ -110,17 +111,9 @@ Play with Stack in Canvas mode.
 
 <Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Stack
-    space={select(
-      'space',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
+    space={select('space', spaceArray, 'md')}
     scrollable={boolean('scrollable', false)}
-    horizontalSpace={select(
-      'horizontalSpace',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
+    horizontalSpace={select('horizontalSpace', spaceArray, 'md')}
     direction={select('direction', ['vertical', 'horizontal'], 'vertical')}>
     <Input
       placeholder="Enter username"

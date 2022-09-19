@@ -11,11 +11,7 @@ export default function ExampleRadioButton() {
       activeId={activeId}
       iconRight={boolean('iconRight', false)}
       color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}
-      textColor={select(
-        'textColor',
-        ['heading', 'default', 'subtle', 'gray'],
-        'default',
-      )}
+      textColor={select('textColor', ['heading', 'subtle', 'para'], 'default')}
       selectItem={id => setActiveId(id)}>
       <RadioItem id="a">Option A</RadioItem>
       <RadioItem id="b">Option B</RadioItem>

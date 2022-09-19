@@ -3,6 +3,7 @@ import {withKnobs, select} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
 import Button from '../Button/Button';
 import Box from './Box';
+import {spaceArray} from '../util/prop-types';
 
 <Meta title="Box" component={Box} />
 
@@ -26,7 +27,7 @@ import {Box} from 'react-native-design-system';
 
 # Space
 
-Customize padding for the child. `space` prop accepts one of the given values: `none`, `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`
+`space` receives values from `none`, `xs` upto `9xl`.
 
 <Preview>
   <Story name="space">
@@ -54,20 +55,13 @@ Play with Box in Canvas mode.
 
 <Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Box
-    space={select(
-      'space',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
+    space={select('space', spaceArray, 'md')}
     background={select('background', [
-      'backgroundDark',
-      'backgroundLight',
-      'foreground',
-      'white',
-      'disabled',
-      'semitransparent',
-      'transparent',
-      'black',
+      'bg100',
+      'bg200',
+      'bg300',
+      'red500',
+      'blue700',
     ])}>
     <Button>Press Me</Button>
   </Box>

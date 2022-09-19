@@ -28,7 +28,7 @@ React Native Design System uses a centralized theme to provide consistency acros
 
 ### Step 1. Import ThemeProvider and theme then wrap your root component.
 
-This step is important. We are passing `theme` as context value that each component will access.
+This step is important. We are passing `theme` as context value that each component will access. `ThemeProvider` also needs a `colorMode` prop to resolve the component UI to either light mode or dark mode.
 
 ```js
 //your root component
@@ -36,7 +36,7 @@ import {ThemeProvider, theme} from 'react-native-design-system';
 
 function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={theme} colorMode="light">
       <Root />
     </ThemeProvider>
   );
@@ -68,7 +68,7 @@ theme.colors.primary = 'orange';
 
 function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={theme} colorMode="light">
       <Root />
     </ThemeProvider>
   );
@@ -88,12 +88,10 @@ This is just a personal approach, you can do as you prefer. What I usually do is
 import {theme} from 'react-native-design-system';
 
 theme.colors = {
-  default: '#000',
+  primary: '#000',
   heading: '#999',
   subtle: '#333',
-  gray: '#757575',
   disabled: '#78909c',
-  white: '#f8f8f8',
 };
 
 export default theme;
@@ -107,7 +105,7 @@ import theme from './theme.config.js';
 
 function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={theme} colorMode="light">
       <Root />
     </ThemeProvider>
   );
@@ -116,6 +114,24 @@ function App() {
 
 > Please make sure to pass all the keys while reassigning any object inside the theme.
 
+### Using Dark Mode
+
+You can access current mode via `useDarkMode` hook will give you `isDarkMode` and `toggleDarkMode`.
+
+```js
+//inside any file
+import {Button, useDarkMode} from 'react-native-design-system';
+
+function HomeScreen() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  return (
+    <Button color={isDarkMode ? 'red500' : 'blue500'} onPress={toggleDarkMode}>
+      Press Me
+    </Button>
+  );
+}
+
 # Playground
 
 Storybook provide interactive playground to test the component in all possible scenarios. There is a `playground` story at the end of each component. Click on that and switch to `Canvas` to access `Knobs` and `Actions` addons.
+```

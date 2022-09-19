@@ -15,16 +15,16 @@ For example:
 
 - If it's a Button, it receives all the props of Touchable component of React Native.
 - If it's a Modal, it receives all the props of Modal.
-- Each component receives a `size` prop whose value can be one of these: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, & `9xl`. You just have to pass `size` prop with one of these value and you're done.
-- Another example could be `color` prop. You can pass one of the colors defined in `brandColor` of theme to any component.
-- If it's a layout based component like `Box`, `Stack` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xs` and `9xl` ( with an addition of `space="none"`) and provide appropriate spacing between components.
+- Each component receives a `size` prop whose value can be one of these: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. You just have to pass `size` prop with one of these value and you're done.
+- Another example could be `color` prop. You can pass one of the colors defined in `colors` of theme to any component.
+- If it's a layout based component like `Box`, `Stack` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xs` and `9xl` ( with an addition of `space="none"`) and provide consistent spacing between components.
 - Each component receives a `style` and a `textStyle` prop (if there is a text involved). This is for some rare cases when you have to override the default styling. It's preferable to tweak the `theme` instead to maintain consistency and avoid adding that `style` again and again.
 
 These props are common to all the components. Other component-specific props are pretty straight forward too.
 
 # Speed
 
-For most of the cases, default styles like `size={medium}` or `space={medium}` will be enough. In other cases, it's just two to three props max to achieve any desired result. This makes it faster to prototype. The layout components make it easier to achieve the desired screen layout with `space` props. See the playground in `Stack` documentation.
+For most of the cases, default styles like `size="md"` or `space="md"` will be enough. In other cases, it's just two to three props max to achieve any desired result. This makes it faster to prototype. The layout components make it easier to achieve the desired screen layout with `space` props. See the playground in `Stack` documentation.
 
 One of the key aspects of pixel-perfect design is the spacing between components. This design system proposes two things:
 
@@ -48,21 +48,54 @@ Big problems are always more manageable when broken into smaller pieces. The des
 
 ## Color
 
-There are basically two types of colors:
-
-- **brandColor:** "primary", "secondary", "tertiary", "background", "disabled", "semitransparent".
-- **textColor:** "default", "heading", "gray", "subtle", "disabled", and "white"
+You have all the colors available in pallete with shades from '50' to '900'.
+In addition to few of the brand colors which has their dark mode counter part. 'primary', 'seconday', 'success', 'error', 'warning', 'disabled', 'disabledText', 'heading', 'body', 'subtle', 'transparent', 'semitransparent', 'outline', 'white', 'black', 'shadowColor', 'bgInput', 'bgImage', 'bg100', 'bg200', 'bg300'
 
 ## Typography
 
-To keep things simple and consistent. There are two choices for fonts to use:
+To keep things simple and consistent. There are two choices for fonts to use and they will resolve to appropriate font family:
 
 - heading
-- text
+- body
+
+You will pass it as `fontBase` property. Example `fontBase="heading"`
+
+These two the parent font family which has some variants. These variants are:
+
+'light', 'medium', 'regular', 'semibold', 'bold', 'extrabold', 'italic', 'bolditalic'.
+
+You can pass any of the above value as `fontVariant` prop. Example: `fontVariant="semibold"`
+
+It will resolve to the fonts you have set in theme.
+
+```js
+{
+  heading: {
+    light: "",
+    medium: "",
+    regular: "",
+    semibold: "",
+    bold: "",
+    extrabold: "",
+    italic: "",
+    bolditalic: "",
+  },
+  body: {
+    light: "",
+    medium: "",
+    regular: "",
+    semibold: "",
+    bold: "",
+    extrabold: "",
+    italic: "",
+    bolditalic: "",
+  },
+}
+```
 
 ## Size
 
-- The available sizes you can use is `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, & `9xl`. The default is `"md"` and it will be applied if are not passing anything.
+- The available sizes you can use is `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. The default is `"md"` and it will be applied if are not passing anything.
 - Font size is also similar and it ranges from "xs" to "9xl".
 
 ## Space

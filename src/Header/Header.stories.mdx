@@ -6,6 +6,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import Header from './Header';
 import Stack from '../Layout/Stack';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="Header" component={Header} />
 
@@ -50,7 +51,7 @@ You can align Header title position by passing `auto`,`left`, `center`, `right` 
 
 # Font Size
 
-There are 7 font sizes available from `xxsmall` to `xxlarge`. Below Headers are of size `xxsmall`, `medium` and `large`.
+There are 7 font sizes available from `xs` to `9xl`.
 
 <Preview>
   <Story name="fontSize">
@@ -64,7 +65,7 @@ There are 7 font sizes available from `xxsmall` to `xxlarge`. Below Headers are 
 
 # Color
 
-Color takes any string defined in `brandColor` of `theme` file.
+Color takes any string defined in `color` of `theme` file.
 
 <Preview>
   <Story name="color">
@@ -106,11 +107,7 @@ Play with Header in Canvas mode.
 
 <Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Header
-    fontSize={select(
-      'space',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
+    fontSize={select('size', sizeArray, 'md')}
     textAlign={select(
       'center',
       ['auto', 'left', 'center', 'right', 'justify'],

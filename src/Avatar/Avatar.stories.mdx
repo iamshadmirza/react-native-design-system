@@ -4,7 +4,7 @@ import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Avatar from './Avatar';
-import {sizeArray} from '../util/prop-types';
+import {sizeArray, radiusArray, shadowArray} from '../util/prop-types';
 
 <Meta title="Avatar" component={Avatar} />
 
@@ -82,6 +82,32 @@ There are mainly three types og Avatar: `default`, `square` and `rounded`. All p
   </Story>
 </Preview>
 
+# Shadow
+
+`shadow` prop can be used to customize shadow level. Allowed values are `none`, `xs`, `sm`, `md`, `lg`, `xl`.
+
+<Preview>
+  <Story name="shadow">
+    <Avatar
+      shadow="lg"
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# Radius
+
+`radius` prop customises the roundness of Avatar. Allowed values are 'none', `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `full`.
+
+<Preview>
+  <Story name="radius">
+    <Avatar
+      radius="full"
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
 # Editable
 
 `editable` is a boolean value which adds an edit button to the bottom. You just have to pass one `onPress` function and the `Avatar` is clickable.
@@ -106,6 +132,8 @@ Play with Avatar in Canvas mode.
 <Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Avatar
     size={select('size', sizeArray, 'md')}
+    radius={select('radius', radiusArray, 'md')}
+    shadow={select('shadow', shadowArray, 'md')}
     title={text('title', 'MD')}
     editable={boolean('editable', true)}
     onPress={action('pressed')}

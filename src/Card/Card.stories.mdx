@@ -5,6 +5,7 @@ import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Card from './Card';
 import Button from '../Button/Button';
+import {spaceArray, radiusArray, shadowArray} from '../util/prop-types';
 
 <Meta title="Card" component={Card} />
 
@@ -30,7 +31,7 @@ import { Card, Button } from 'react-native-design-system';
 
 # Space
 
-Just like `size` in each component, Card receives 7 available `space` values with an additional `none` value.
+Card receives `space` values from `none`, `xs` upto `9xl`.
 
 <Preview>
   <Story name="space">
@@ -107,6 +108,34 @@ There are 3 types of alignment for children: `left`, `center` and `right`. You j
   </Story>
 </Preview>
 
+# Shadow
+
+`shadow` prop can be used to customize shadow level. Allowed values are `none`, `xs`, `sm`, `md`, `lg`, `xl`.
+
+<Preview>
+  <Story name="shadow">
+    <Card shadow="lg">
+      <Button length="short" onPress={action('pressed')}>
+        Press Me
+      </Button>
+    </Card>
+  </Story>
+</Preview>
+
+# Radius
+
+`radius` prop customises the roundness of Avatar. Allowed values are 'none', `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `full`.
+
+<Preview>
+  <Story name="radius">
+    <Card radius="full">
+      <Button length="short" onPress={action('pressed')}>
+        Press Me
+      </Button>
+    </Card>
+  </Story>
+</Preview>
+
 # Padding
 
 Padding can be applied horizontally and vertically only.
@@ -169,13 +198,10 @@ Play with Card in Canvas mode.
 
 <Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Card
-    space={select(
-      'space',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
+    space={select('space', spaceArray, 'md')}
     row={boolean('row', false)}
-    shadow={boolean('shadow', false)}
+    radius={select('radius', radiusArray, 'md')}
+    shadow={select('shadow', shadowArray, 'md')}
     align={select('center', ['left', 'center', 'right'], 'left')}>
     <Button length="short" onPress={action('pressed')}>
       Press Me

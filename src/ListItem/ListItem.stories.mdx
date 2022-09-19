@@ -43,7 +43,7 @@ There are three types of button mainly: `default`, `round`, and `outline`. You c
 
 # Chevron
 
-Pass `chevro={true}` to show chevron at left. You can pass `chevronColor` to change its color.
+Pass `chevron={true}` to show chevron at left. You can pass `chevronColor` to change its color.
 
 <Preview>
   <Story name="chevron">
@@ -140,14 +140,11 @@ You can align ListItem text position by passing `auto`,`left`, `center`, `right`
 
 # Size
 
-As usual, 7 available sized.
+ListItem has 9 available sizes.
 
 <Preview>
   <Story name="size">
     <Stack>
-      <ListItem chevron size="xs">
-        Hey there!
-      </ListItem>
       <ListItem chevron size="xs">
         Hey there!
       </ListItem>
@@ -166,36 +163,13 @@ As usual, 7 available sized.
       <ListItem chevron size="2xl">
         Hey there!
       </ListItem>
-    </Stack>
-  </Story>
-</Preview>
-
-# Space
-
-You can customize just the padding too by passing `space` props with one of the 7 values (`xxsmall` to `xxlarge`).
-
-<Preview>
-  <Story name="space">
-    <Stack>
-      <ListItem chevron size="xs">
+      <ListItem chevron size="3xl">
         Hey there!
       </ListItem>
-      <ListItem chevron size="xs">
+      <ListItem chevron size="4xl">
         Hey there!
       </ListItem>
-      <ListItem chevron size="sm">
-        Hey there!
-      </ListItem>
-      <ListItem chevron space="md">
-        Hey there!
-      </ListItem>
-      <ListItem chevron size="lg">
-        Hey there!
-      </ListItem>
-      <ListItem chevron size="xl">
-        Hey there!
-      </ListItem>
-      <ListItem chevron size="2xl">
+      <ListItem chevron size="5xl">
         Hey there!
       </ListItem>
     </Stack>
@@ -211,19 +185,14 @@ Play with ListItem in Canvas mode.
     chevron={boolean('chevron', true)}
     disabled={boolean('disabled', false)}
     size={select('size', sizeArray, 'md')}
-    space={select(
-      'space',
-      ['none', 'xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-      'md',
-    )}
     textColor={select(
       'textColor',
-      ['default', 'heading', 'subtle', 'gray'],
+      ['default', 'heading', 'subtle', 'para'],
       'gray',
     )}
     subtitleColor={select(
       'subtitleColor',
-      ['default', 'heading', 'subtle', 'gray'],
+      ['default', 'heading', 'subtle', 'para'],
       'gray',
     )}
     textAlign={select(
@@ -231,6 +200,6 @@ Play with ListItem in Canvas mode.
       ['auto', 'left', 'center', 'right', 'justify'],
       'left',
     )}>
-    {text('children', 'Play around wit ListItem')}
+    {text('children', 'Play around with ListItem')}
   </ListItem>
 </Story>

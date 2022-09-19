@@ -79,6 +79,23 @@ Pass `label` to render a label string above input. You can customise label using
   </Story>
 </Preview>
 
+# Label Hint
+
+Pass `labelhint` to render a label hint string below input. You can customise hint using `labelHintColor` and `labelHintColor` props.
+
+<Preview>
+  <Story name="labelHint">
+    <Input
+      outline
+      label="Username"
+      labelHint="Select unique username"
+      placeholder="Enter Username"
+      value=""
+      onChangeText={text => action('pressed')}
+    />
+  </Story>
+</Preview>
+
 # Error and Error Caption
 
 Pass `error={true}` when you want to show error and pass `errorCaption` string to render the string below input to notify user about the error.
