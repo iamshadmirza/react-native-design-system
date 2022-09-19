@@ -1,38 +1,48 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean, color } from "@storybook/addon-knobs";
-import { View, Text, Button } from "react-native";
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean, color} from '@storybook/addon-knobs';
+import {View, Text, Button} from 'react-native';
 import Overlay from './Overlay';
 
 <Meta title="Overlay" component={Overlay} />
 
 # Overlay
+
 Overlay covers the view and adds a transparent layer on top of it. Any view can be passed as a children. Used generally as a prompt or notify user about something.
 
 # Usage
-```js
-import { Overlay } from 'react-native-design-system';
 
-<Overlay visible={this.state.visible} onRequestClose={() => this.setState({ visible: false })}>
+```js
+import {Overlay} from 'react-native-design-system';
+
+<Overlay
+  visible={this.state.visible}
+  onRequestClose={() => this.setState({visible: false})}>
   <View>
     <Text>Hey there!</Text>
   </View>
-</Overlay>
+</Overlay>;
 ```
 
 # Props
+
 <Props of={Overlay} />
 
 # Modal Props
+
 Accepts all the modal props like `visible={true}` and `onRequestClose`, etc.
 
 # Styles
+
 The container receives an `style` props and overlay can be customized with `overlayStyle` which is the inside content on transparent layer.
 
 # Dimensions
+
 Overlay has a default width and height of `80%` and `70%`. It can be customized by passing `width` and `height` props.
 
 # Border Radius
+
 Overlay curves can be customized with `borderRadius` prop, default is `3`.
 
 # Backgrounds
-Container has a default background of `semitransparent` and overlay is `clearWhite` from `brandColor` of theme. You can pass any brandColor inside `background` and `overlayBackground` props.
+
+Container has a default background of `semitransparent` and overlay is `white` from `colors` of theme. You can pass any color inside `background` and `overlayBackground` props.

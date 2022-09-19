@@ -25,7 +25,8 @@ const getContainerStyle = ({
   const buttonStyle = [styles.container];
   buttonStyle.push({
     backgroundColor: theme.colors[background],
-    paddingVertical: theme.buttonSize[size],
+    paddingVertical: theme.buttonSize.paddingVertical[size],
+    paddingHorizontal: theme.buttonSize.paddingHorizontal[size],
     flexDirection: 'row',
     justifyContent: 'center',
     borderRadius: theme.radius[radius],
