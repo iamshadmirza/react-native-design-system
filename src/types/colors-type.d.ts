@@ -1,308 +1,86 @@
-export interface colorsType {
-  'red': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'pink': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'purple': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'deeppurple': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'indigo': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'blue': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'lightblue': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'cyan': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'teal': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'green': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'lightgreen': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'lime': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'yellow': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'amber': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'orange': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'deeporange': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-    'A100': string,
-    'A200': string,
-    'A400': string,
-    'A700': string,
-  },
-  'brown': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-  },
-  'grey': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-  },
-  'bluegrey': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-  },
-  'black': {
-    '50': string,
-    '100': string,
-    '200': string,
-    '300': string,
-    '400': string,
-    '500': string,
-    '600': string,
-    '700': string,
-    '800': string,
-    '900': string,
-  },
+type colors =
+  | 'stone'
+  | 'slate'
+  | 'zinc'
+  | 'red'
+  | 'pink'
+  | 'purple'
+  | 'deeppurple'
+  | 'indigo'
+  | 'blue'
+  | 'lightblue'
+  | 'cyan'
+  | 'teal'
+  | 'green'
+  | 'lightgreen'
+  | 'lime'
+  | 'yellow'
+  | 'amber'
+  | 'orange'
+  | 'deeporange'
+  | 'brown'
+  | 'green'
+  | 'emerald'
+  | 'sky'
+  | 'voilet'
+  | 'fuchsia'
+  | 'rose'
+  | 'gray'
+  | 'neutral'
+  | 'lightBlue'
+  | 'warmGray'
+  | 'coolGray'
+  | 'blueGray';
+
+type shades =
+  | '50'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900';
+
+type brandColors =
+  | 'primary'
+  | 'seconday'
+  | 'success'
+  | 'error'
+  | 'warning'
+  | 'disabled'
+  | 'disabledText'
+  | 'heading'
+  | 'body'
+  | 'subtle'
+  | 'transparent'
+  | 'semitransparent'
+  | 'outline'
+  | 'white'
+  | 'black'
+  | 'shadowColor'
+  | 'bgInput'
+  | 'bgImage'
+
+type backgroundShade = '100' | '200' | '300';
+type backgroundColors = `bg${backgroundShade}`
+
+type colorShades = `${colors}${shades}`
+
+type genericColorsType = { [K in colorShades]: string };
+
+type lightBrandColorsType =  { [K in brandColors]: string };
+type unknownLightBrandColors = {
+  [color: string]: string;
 };
 
+type darkBrandColorsType = {dark: {[K in brandColors]: string}};
+
+export type colorTypes = genericColorsType &
+  lightBrandColorsType &
+  unknownLightBrandColors &
+  unknownDarkBrandColors &
+  backgroundColors
 

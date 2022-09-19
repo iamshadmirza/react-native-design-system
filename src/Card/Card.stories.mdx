@@ -1,17 +1,20 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Card from './Card';
 import Button from '../Button/Button';
+import {spaceArray, radiusArray, shadowArray} from '../util/prop-types';
 
 <Meta title="Card" component={Card} />
 
 # Card
-Card is a wrapper component with a small padding. It included center, left and right aligned card to auto align childrens. Use `Box`, `Stack` or `Inline` when making a layout.
+
+Card is a wrapper component with a small padding. It included center, left and right aligned card to auto align childrens. Use `Box`, `Stack` when making a layout.
 
 # Usage
+
 ```js
 import { Card, Button } from 'react-native-design-system';
 
@@ -23,60 +26,64 @@ import { Card, Button } from 'react-native-design-system';
 ```
 
 # Props
+
 <Props of={Card} />
 
 # Space
-Just like `size` in each component, Card receives 7 available `space` values with an additional `none` value.
+
+Card receives `space` values from `none`, `xs` upto `9xl`.
 
 <Preview>
   <Story name="space">
     <Stack>
       <Card space="none">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="xxsmall">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="xs">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="xsmall">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="sm">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="small">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="md">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="medium">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="lg">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="large">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="xlarge">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="2xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
-      <Card space="xxlarge">
-        <Button onPress={action('pressed')}>
-          Press Me
-        </Button>
+      <Card space="3xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card space="4xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card space="5xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card space="6xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card space="7xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card space="8xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card space="9xl">
+        <Button onPress={action('pressed')}>Press Me</Button>
       </Card>
     </Stack>
   </Story>
 </Preview>
 
-
 # Type
+
 There are 3 types of alignment for children: `left`, `center` and `right`. You just have to pass `align` prop which accepts a string from three choices.
 
 <Preview>
@@ -101,29 +108,56 @@ There are 3 types of alignment for children: `left`, `center` and `right`. You j
   </Story>
 </Preview>
 
+# Shadow
+
+`shadow` prop can be used to customize shadow level. Allowed values are `none`, `xs`, `sm`, `md`, `lg`, `xl`.
+
+<Preview>
+  <Story name="shadow">
+    <Card shadow="lg">
+      <Button length="short" onPress={action('pressed')}>
+        Press Me
+      </Button>
+    </Card>
+  </Story>
+</Preview>
+
+# Radius
+
+`radius` prop customises the roundness of Avatar. Allowed values are 'none', `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `full`.
+
+<Preview>
+  <Story name="radius">
+    <Card radius="full">
+      <Button length="short" onPress={action('pressed')}>
+        Press Me
+      </Button>
+    </Card>
+  </Story>
+</Preview>
+
 # Padding
+
 Padding can be applied horizontally and vertically only.
-* First button is getting `horizontal` prop which makes vertical padding `0`.
-* Second button is getting `vertical` prop which makes horizontal padding `0`.
+
+- First button is getting `horizontal` prop which makes vertical padding `0`.
+- Second button is getting `vertical` prop which makes horizontal padding `0`.
 
 <Preview>
   <Story name="padding">
     <Stack>
-        <Card horizontal>
-          <Button onPress={action('pressed')}>
-            Press Me
-          </Button>
-        </Card>
-        <Card vertical>
-          <Button onPress={action('pressed')}>
-            Press Me
-          </Button>
-        </Card>
-      </Stack>
+      <Card horizontal>
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+      <Card vertical>
+        <Button onPress={action('pressed')}>Press Me</Button>
+      </Card>
+    </Stack>
   </Story>
 </Preview>
 
 # Row
+
 Default alignment of childrens is `column` which can be changed to `row` by passing `row` prop. It's a boolean value. This is totally a personal use-case and you can always customize the view with `style` prop.
 
 <Preview>
@@ -145,6 +179,7 @@ Default alignment of childrens is `column` which can be changed to `row` by pass
 </Preview>
 
 # Shadow
+
 Pass `shadow` to render a shadow around card. It is `false` by default.
 
 <Preview>
@@ -158,19 +193,18 @@ Pass `shadow` to render a shadow around card. It is `false` by default.
 </Preview>
 
 # Playground
+
 Play with Card in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
-    <Card
-      space={select('space', ['none','xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-      row={boolean('row', false)}
-      shadow={boolean('shadow', false)}
-      align={select('center',['left', 'center', 'right'], 'left')}
-    >
-    <Button
-      length="short"
-      onPress={action('pressed')}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
+  <Card
+    space={select('space', spaceArray, 'md')}
+    row={boolean('row', false)}
+    radius={select('radius', radiusArray, 'md')}
+    shadow={select('shadow', shadowArray, 'md')}
+    align={select('center', ['left', 'center', 'right'], 'left')}>
+    <Button length="short" onPress={action('pressed')}>
       Press Me
     </Button>
-    </Card>
+  </Card>
 </Story>

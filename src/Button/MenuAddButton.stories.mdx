@@ -1,7 +1,7 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs } from "@storybook/addon-knobs";
-import {useState} from 'react'
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs} from '@storybook/addon-knobs';
+import {useState} from 'react';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MenuAddButton from './MenuAddButton';
@@ -10,23 +10,27 @@ import ExampleMenuButton from './MenuAddButton.example.js';
 <Meta title="MenuAddButton" component={MenuAddButton} />
 
 # MenuAddButton
+
 A `MenuAddButton` is a clickable button to carry out actions like adding and removing items from cart.
 
 # Usage
+
 ```js
-import { MenuAddButton } from 'react-native-design-system';
+import {MenuAddButton} from 'react-native-design-system';
 
 <MenuAddButton
   onIncrement={() => handleIncrement()}
   onDecrement={() => handleDecrement()}
   count={this.state.count}
-/>
+/>;
 ```
 
 # Props
+
 <Props of={MenuAddButton} />
 
 # Count
+
 Pass an `Integer` value in `count` prop as number of items.
 
 <Preview>
@@ -57,7 +61,8 @@ Pass an `Integer` value in `count` prop as number of items.
 </Preview>
 
 # Disabled
-`disabled` accepts a boolean value and restricts touch response. 
+
+`disabled` accepts a boolean value and restricts touch response.
 
 <Preview>
   <Story name="disabled">
@@ -65,48 +70,56 @@ Pass an `Integer` value in `count` prop as number of items.
       disabled
       onIncrement={action('pressed')}
       onDecrement={action('pressed')}
-      count={0} 
+      count={0}
     />
   </Story>
 </Preview>
 
 # Size
+
 There are 7 different size available. You may not need all of them but it doesn't hurt to have them just in case. 😅
 
 <Preview>
   <Story name="size">
     <Stack>
-      <MenuAddButton size="xxsmall"
+      <MenuAddButton
+        size="xs"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
         count={0}
       />
-      <MenuAddButton size="xsmall"
+      <MenuAddButton
+        size="xs"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
         count={2}
       />
-      <MenuAddButton size="small"
+      <MenuAddButton
+        size="sm"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
         count={10}
       />
-      <MenuAddButton size="medium"
+      <MenuAddButton
+        size="md"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
         count={50}
       />
-      <MenuAddButton size="large"
+      <MenuAddButton
+        size="lg"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
         count={100}
       />
-      <MenuAddButton size="xlarge"
+      <MenuAddButton
+        size="xl"
         onIncrement={action('pressed')}
-       onDecrement={action('pressed')}
+        onDecrement={action('pressed')}
         count={500}
       />
-      <MenuAddButton size="xxlarge"
+      <MenuAddButton
+        size="2xl"
         onIncrement={action('pressed')}
         onDecrement={action('pressed')}
         count={2020}
@@ -116,6 +129,7 @@ There are 7 different size available. You may not need all of them but it doesn'
 </Preview>
 
 # Custom icons
+
 Pass custom icon as `plusIcon` and `minusIcon` of your choice.
 
 <Preview>
@@ -123,28 +137,17 @@ Pass custom icon as `plusIcon` and `minusIcon` of your choice.
     <MenuAddButton
       onIncrement={action('pressed')}
       onDecrement={action('pressed')}
-      plusIcon={
-        <AntDesign
-          name="like2"
-          size={24}
-          color="black"
-        />
-      }
-      minusIcon={
-        <AntDesign
-          name="dislike2"
-          size={24}
-          color="black"
-        />
-      }
+      plusIcon={<AntDesign name="like2" size={24} color="gray" />}
+      minusIcon={<AntDesign name="dislike2" size={24} color="gray" />}
       count={10}
     />
   </Story>
 </Preview>
 
 # Playground
+
 Play with MenuAddButton in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <ExampleMenuButton />
 </Story>

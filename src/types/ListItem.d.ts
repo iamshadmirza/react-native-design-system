@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {
   AccessibilityProps,
   StyleProp,
@@ -6,9 +6,11 @@ import {
   ViewStyle,
 } from 'react-native';
 import {IconNode} from './icon-type';
-import {SizeType} from './size-type';
+import {RadiusType, ShadowType, SizeType} from './size-type';
 import {ListSpaceType} from './space-type';
 import {TextAlignType} from './text-align-type';
+import {colorTypes} from './colors-type';
+import {fontBaseType, fontVariantType} from './typography-type';
 
 interface ListItemProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -16,10 +18,10 @@ interface ListItemProps extends AccessibilityProps {
   subtitleStyle?: StyleProp<TextStyle>;
   iconStyle?: StyleProp<ViewStyle>;
   textAlign?: TextAlignType;
-  children: string;
-  subtitle?: string;
-  background?: string;
-  textColor?: string;
+  children: string | ReactElement | ReactElement[];
+  subtitle?: string | ReactElement | ReactElement[];
+  background?: keyof colorTypes | string;
+  textColor?: keyof colorTypes | string;
   subtitleColor?: string;
   chevronColor?: string;
   size?: SizeType;
@@ -31,6 +33,13 @@ interface ListItemProps extends AccessibilityProps {
   chevron?: boolean;
   disabled?: boolean;
   activeOpacity?: number;
+  shadow?: ShadowType;
+  radius?: RadiusType;
+  fontBase?: fontBaseType;
+  fontVariant?: fontVariantType;
+  subtitleFontBase?: fontBaseType;
+  subtitleFontVariant?: fontVariantType;
+  subtitleSize?: SizeType;
 }
 
 export const ListItem: React.FC<ListItemProps>;

@@ -1,48 +1,56 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean, color, number } from "@storybook/addon-knobs";
-import { Text } from "react-native";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {
+  withKnobs,
+  select,
+  boolean,
+  color,
+  number,
+} from '@storybook/addon-knobs';
+import {Text} from 'react-native';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import CircularProgressBar from './CircularProgressBar';
 
 <Meta title="CircularProgressBar" component={CircularProgressBar} />
 
 # CircularProgressBar
+
 Animated circular progress bar for cross plateform.
 
 # Usage
+
 ```js
-import { CircularProgressBar } from 'react-native-design-system';
+import {CircularProgressBar} from 'react-native-design-system';
 
 <CircularProgressBar
-    activeColor="darkviolet"
-    passiveColor="darkgrey"
-    baseColor="white"
-    width={50}
-    percent={35}
-    radius={100}
-    duration={1200}
-  >
+  activeColor="darkviolet"
+  passiveColor="darkgray"
+  baseColor="white"
+  width={50}
+  percent={35}
+  radius={100}
+  duration={1200}>
   <Text>Wow!</Text>
-</CircularProgressBar>
+</CircularProgressBar>;
 ```
 
 # Props
+
 <Props of={CircularProgressBar} />
 
 # Playground
+
 This component is fully customizable. Go on, play with CircularProgressBar inside Canvas.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <CircularProgressBar
-    activeColor={color("activeColor","darkviolet")}
-    passiveColor={color("passiveColor","darkgrey")}
-    baseColor={color("baseColor","white")}
+    activeColor={color('activeColor', 'darkviolet')}
+    passiveColor={color('passiveColor', 'darkgray')}
+    baseColor={color('baseColor', 'white')}
     width={number('width', 50)}
     percent={number('percent', 35)}
     radius={number('radius', 100)}
-    duration={number('duration', 1200)}
-  >
+    duration={number('duration', 1200)}>
     <Text>Wow!</Text>
   </CircularProgressBar>
 </Story>

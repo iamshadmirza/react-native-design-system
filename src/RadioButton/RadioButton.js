@@ -1,6 +1,5 @@
 import React, {useContext, createContext} from 'react';
 import {
-  Text,
   View,
   StyleSheet,
   TouchableNativeFeedback,
@@ -11,16 +10,15 @@ import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useThemeContext} from '../util/ThemeProvider';
 import {extractAccessibilityPropsFromProps} from '../util/accessibility';
+import {sizes} from '../util/prop-types';
+import {Text} from '../Text';
 const Context = createContext();
 const {Provider} = Context;
 
-const getTextStyle = ({theme, size, textColor, iconRight}) => {
+const getTextStyle = ({iconRight}) => {
   const textStyle = [
     {
-      fontSize: theme.fontSize[size],
-      color: theme.textColor[textColor],
       marginLeft: 10,
-      marginVertical: 2.5,
     },
   ];
   if (iconRight) {
@@ -39,7 +37,7 @@ const renderIcon = ({theme, size, color, id, activeId, ...props}) => {
         <Ionicons
           name="ios-radio-button-on"
           size={theme.fontSize[size] * 1.2}
-          color={theme.brandColor[color]}
+          color={theme.colors[color]}
         />
       )
     );
@@ -49,7 +47,7 @@ const renderIcon = ({theme, size, color, id, activeId, ...props}) => {
         <Ionicons
           name="ios-radio-button-off"
           size={theme.fontSize[size] * 1.2}
-          color={theme.brandColor[color]}
+          color={theme.colors[color]}
         />
       )
     );
@@ -68,13 +66,23 @@ export const RadioItem = ({children, id, ...otherProps}) => {
       onPress={() => selectItem(id)}>
       <View style={[styles.itemContainer, style]}>
         {!props.iconRight && renderIcon(propsToPass)}
-        <Text
-          style={StyleSheet.flatten([
-            getTextStyle(propsToPass),
-            props.textStyle,
-          ])}>
-          {children}
-        </Text>
+        <View style={{flex: 1}}>
+          {typeof children === 'function' || typeof children === 'object' ? (
+            children
+          ) : (
+            <Text
+              color={otherProps.textColor}
+              size={otherProps.size}
+              fontBase={props.fontBase}
+              fontVariant={props.fontVariant}
+              style={StyleSheet.flatten([
+                getTextStyle(propsToPass),
+                props.textStyle,
+              ])}>
+              {children}
+            </Text>
+          )}
+        </View>
         {props.iconRight && renderIcon(propsToPass)}
       </View>
     </TouchableElement>
@@ -96,30 +104,23 @@ RadioButton.propTypes = {
   iconRight: PropTypes.bool,
   color: PropTypes.string,
   textColor: PropTypes.string,
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   selectItem: PropTypes.func.isRequired,
   checkedIcon: PropTypes.element,
   uncheckedIcon: PropTypes.element,
 };
 
 RadioButton.defaultProps = {
-  size: 'medium',
+  size: 'md',
   color: 'primary',
-  textColor: 'default',
+  textColor: 'para',
 };
 
 const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 

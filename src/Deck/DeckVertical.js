@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {FullScreenLoader} from '../FullScreenLoader';
 import {extractAccessibilityPropsFromProps} from '../util/accessibility';
+import theme from '../util/theme';
 const {height} = Dimensions.get('screen');
 
 class Deck extends Component {
@@ -293,23 +294,7 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
     borderRadius: 3,
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
+    ...theme.shadow.sm,
     borderWidth: 1,
     borderColor: '#FFF',
   },

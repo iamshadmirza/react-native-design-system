@@ -1,13 +1,14 @@
 import React from 'react';
 import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {RadiusType} from './size-type';
 
 interface OverlayProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   overlayStyle?: StyleProp<ViewStyle>;
-  children: React.ReactElement;
+  children: React.ReactNode;
   background?: string;
   overlayBackground?: string;
-  borderRadius?: number;
+  radius?: RadiusType;
   width?: string | number;
   height?: string | number;
   onPressOutside?: () => void;

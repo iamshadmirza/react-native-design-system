@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-    AccessibilityProps, StyleProp, ViewStyle
-} from 'react-native';
-import { DirectionType } from './direction-type';
-
+import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {DirectionType} from './direction-type';
 
 interface DeckProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -17,7 +14,7 @@ interface DeckProps extends AccessibilityProps {
   fade?: boolean;
   loop?: boolean;
   loadInitialData?: boolean;
-  loadingScreen: React.ReactElement;
+  loadingScreen: React.ReactNode;
 }
 
 export const Deck: React.FC<DeckProps>;

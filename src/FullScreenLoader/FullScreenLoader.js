@@ -1,16 +1,23 @@
 import React from 'react';
-import {View, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, ActivityIndicator, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
-import { extractAccessibilityPropsFromProps } from '../util/accessibility';
+import {extractAccessibilityPropsFromProps} from '../util/accessibility';
 
-const FullScreenLoader = (props) => {
+const FullScreenLoader = props => {
   const theme = useThemeContext();
-  const background = {backgroundColor: theme.brandColor[props.background]};
+  const backgroundStyles = {
+    backgroundColor: theme.colors[props.background],
+  };
   if (props.loading) {
     return (
       <View
-        style={StyleSheet.flatten([styles.container, background, props.style])}  {...extractAccessibilityPropsFromProps(this.props)}>
+        {...extractAccessibilityPropsFromProps(props)}
+        style={StyleSheet.flatten([
+          styles.container,
+          backgroundStyles,
+          props.style,
+        ])}>
         <ActivityIndicator
           style={styles.indicator}
           color={props.indicatorColor}
@@ -25,7 +32,7 @@ const FullScreenLoader = (props) => {
 };
 
 FullScreenLoader.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.element,
   indicatorColor: PropTypes.string,
@@ -35,8 +42,9 @@ FullScreenLoader.propTypes = {
 
 FullScreenLoader.defaultProps = {
   size: 'large',
-  background: 'semitransparent',
+  background: 'bg300',
   indicatorColor: '#1e88e5',
+  loading: true,
 };
 
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import Button from './Button';
-// import SlidingButton from './SlidingButton';
 import MenuAddButton from './MenuAddButton';
+import IconButton from './IconButton';
 
-export { Button, MenuAddButton };
+export {Button, MenuAddButton, IconButton};

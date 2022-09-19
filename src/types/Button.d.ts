@@ -1,25 +1,22 @@
-import React from 'react';
-import {
-  ViewStyle,
-  TextStyle,
-  StyleProp,
-  AccessibilityProps,
-} from 'react-native';
+import React, {ReactNode} from 'react';
+import {ViewStyle, TextStyle, StyleProp, ViewProps} from 'react-native';
 
-import {SizeType} from './size-type';
-import {WidthType} from './width-type';
+import {FontSizeType, RadiusType, ShadowType, SizeType} from './size-type';
 import {LengthType} from './length-type';
 import {IconNode} from './icon-type';
+import {colorTypes} from './colors-type';
+import {fontBaseType, fontVariantType} from './typography-type';
 
-interface ButtonProps extends AccessibilityProps {
+interface ButtonProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children?: string | Array<any>;
+  children?: string | number | ReactNode | ReactNode[];
   indicatorColor?: string;
   size?: SizeType;
-  width?: WidthType;
+  textSize?: FontSizeType;
   onPress: () => void;
-  color?: string;
+  color?: keyof colorTypes | string;
+  textColor?: keyof colorTypes | string;
   borderColor?: string;
   round?: boolean;
   outline?: boolean;
@@ -33,6 +30,10 @@ interface ButtonProps extends AccessibilityProps {
   rightIconStyle?: StyleProp<ViewStyle>;
   leftIconStyle?: StyleProp<ViewStyle>;
   length?: LengthType;
+  radius?: RadiusType;
+  shadow?: ShadowType;
+  fontBase?: fontBaseType;
+  fontVariant?: fontVariantType;
 }
 
 export const Button: React.FC<ButtonProps>;

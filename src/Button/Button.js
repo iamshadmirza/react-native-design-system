@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
@@ -10,36 +9,58 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {
+  fontBases,
+  fontSizes,
+  fontVariants,
+  radii,
+  shadows,
+  sizes,
+} from '../util/prop-types';
+import {Text} from '../Text';
 
 const getTextStyle = ({
-  size,
   outline,
   transparent,
   loading,
   disabled,
   theme,
+  textColor,
   color,
+  leftIcon,
+  rightIcon,
+  icon,
+  size,
 }) => {
-  const textStyle = [
-    {
-      fontSize: theme.fontSize[size],
-      margin: theme.buttonSize[size],
-      color: theme.textColor.white,
-    },
-  ];
+  const textStyle = [{color: theme.colors.white}];
   if (outline || transparent) {
     textStyle.push({
-      color: theme.brandColor[color],
+      color: theme.colors[color],
     });
   }
-  if (loading && outline) {
+  if (textColor) {
     textStyle.push({
-      color: theme.brandColor[color] + '50',
+      color: theme.colors[textColor],
+    });
+  }
+  if (loading) {
+    textStyle.push({
+      opacity: 0.6,
+    });
+  }
+  if (icon || leftIcon) {
+    textStyle.push({
+      marginRight: theme.fontSize[size],
+    });
+  }
+  if (rightIcon) {
+    textStyle.push({
+      marginLeft: theme.fontSize[size],
     });
   }
   if (disabled) {
     textStyle.push({
-      color: theme.textColor.disabled,
+      color: theme.colors.disabledText,
     });
   }
   return textStyle;
@@ -48,94 +69,125 @@ const getTextStyle = ({
 const getContainerStyle = props => {
   const {
     outline,
-    width,
     round,
     transparent,
     disabled,
     loading,
     size,
-    length,
     theme,
     color,
     tint,
     borderColor,
+    radius,
+    shadow,
   } = props;
   const buttonStyles = [styles.container];
   buttonStyles.push({
-    backgroundColor: theme.brandColor[color],
+    backgroundColor: theme.colors[color],
     borderWidth: 1,
-    borderColor: theme.brandColor[color],
+    borderColor: theme.colors[color],
+    borderRadius: theme.radius[radius],
+    paddingVertical: theme.buttonSize.paddingVertical[size],
+    paddingHorizontal: theme.buttonSize.paddingHorizontal[size],
+    ...theme.shadow[shadow],
   });
-  if (length === 'short') {
-    buttonStyles.push({
-      width: theme.buttonWidth[width],
-    });
-  }
   if (borderColor) {
     buttonStyles.push({
-      borderColor: theme.brandColor[borderColor],
+      borderColor: theme.colors[borderColor],
     });
   }
   if (round) {
     buttonStyles.push({
-      borderRadius: theme.buttonSize[size] * 2,
+      borderRadius: theme.radius.full,
     });
   }
   if (outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + (tint ? '10' : '00'),
+      backgroundColor: theme.colors[color] + (tint ? '10' : '00'),
     });
   }
   if (loading) {
     buttonStyles.push({
-      borderWidth: 0,
-      backgroundColor: theme.brandColor[color] + '50',
+      backgroundColor: theme.colors[color] + '50',
     });
   }
   if (transparent) {
     buttonStyles.push({
-      borderWidth: 0,
+      borderWidth: 1,
+      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+    });
+  }
+  if (transparent && outline) {
+    buttonStyles.push({
+      borderWidth: 1,
+      borderColor: theme.colors[borderColor],
       backgroundColor: 'transparent',
     });
   }
   if (loading && outline) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor[color] + '20',
-      borderWidth: StyleSheet.hairlineWidth,
-      borderColor: theme.brandColor[borderColor || color] + '30',
+      backgroundColor: theme.colors[color] + '20',
+      borderColor: theme.colors[borderColor || color] + '30',
     });
   }
   if (disabled) {
     buttonStyles.push({
-      backgroundColor: theme.brandColor.disabled,
-      borderColor: theme.textColor.disabled,
+      backgroundColor: theme.colors.disabled,
+      borderColor: theme.colors.disabled,
     });
   }
   return buttonStyles;
 };
 
 const renderChildren = props => {
+  const {
+    loading,
+    disabled,
+    iconStyle,
+    theme,
+    color,
+    indicatorColor,
+    leftIcon,
+    rightIcon,
+    fontBase,
+    fontVariant,
+    textStyle,
+    children,
+    size,
+    textSize,
+    leftIconStyle,
+    icon,
+    rightIconStyle,
+  } = props;
   return (
     <>
-      {props.loading && !props.disabled && (
+      {loading && !disabled && (
         <ActivityIndicator
-          style={[styles.iconStyle, props.iconStyle]}
-          color={props.indicatorColor || props.theme.brandColor[props.color]}
+          style={[styles.iconStyle, iconStyle]}
+          color={indicatorColor || theme.colors[color]}
         />
       )}
-      {props.leftIcon ||
-        (props.icon && (
-          <View
-            style={[styles.iconStyle, props.iconStyle, props.leftIconStyle]}>
-            {props.leftIcon || props.icon}
+      {leftIcon ||
+        (icon && (
+          <View style={[styles.iconStyle, iconStyle, leftIconStyle]}>
+            {leftIcon || icon}
           </View>
         ))}
-      <Text style={StyleSheet.flatten([getTextStyle(props), props.textStyle])}>
-        {props.children}
-      </Text>
-      {props.rightIcon && (
-        <View style={[styles.iconStyle, props.iconStyle, props.rightIconStyle]}>
-          {props.rightIcon}
+      {typeof children === 'function' ? (
+        children
+      ) : (
+        <Text
+          size={textSize || size}
+          fontBase={fontBase}
+          fontVariant={fontVariant}
+          style={[getTextStyle(props), textStyle]}>
+          {children}
+        </Text>
+      )}
+      {rightIcon && (
+        <View style={[styles.iconStyle, iconStyle, rightIconStyle]}>
+          {rightIcon}
         </View>
       )}
     </>
@@ -174,33 +226,26 @@ Button.propTypes = {
   /**  To override default right icon style */
   rightIconStyle: PropTypes.object,
   /**  Pass button text as children as children */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
   /**  Change indicator color */
   indicatorColor: PropTypes.string,
   /**  To change button size */
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
+  /**  To change font size */
+  textSize: fontSizes,
   /**  To change button width */
-  width: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  width: sizes,
   /**  callback function to be called when pressed */
   onPress: PropTypes.func.isRequired,
   /**  Pass the brand color */
   color: PropTypes.string,
+  /**  Pass the text color */
+  textColor: PropTypes.string,
   /**  Pass the brand color */
   borderColor: PropTypes.string,
   /**  Boolean value for round button */
@@ -223,28 +268,37 @@ Button.propTypes = {
   length: PropTypes.oneOf(['long', 'short']),
   /**  To enable outline button tint */
   tint: PropTypes.bool,
+  /**  Customize Radius */
+  radius: radii,
+  /**  Customize Shadow */
+  shadow: shadows,
+  /**  Customize button font */
+  fontBase: fontBases,
+  fontVariant: fontVariants,
 };
 
 Button.defaultProps = {
   children: 'Submit',
-  size: 'medium',
+  size: 'md',
   length: 'long',
-  width: 'medium',
+  width: 'md',
   color: 'primary',
   tint: false,
+  radius: 'sm',
+  shadow: 'none',
+  fontBase: 'body',
+  fontVariant: 'semibold',
 };
 
 const styles = StyleSheet.create({
   container: {
-    left: 0,
-    right: 0,
-    borderRadius: 2,
+    flexGrow: 0,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   iconStyle: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
   },
 });
 

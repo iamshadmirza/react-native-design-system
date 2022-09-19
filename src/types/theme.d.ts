@@ -1,51 +1,51 @@
+import {colorTypes} from './colors-type';
+import {FontSizeType, RadiusType, ShadowType, SizeType} from './size-type';
+import {SpaceType} from './space-type';
+import {FontThemeType} from './typography-type';
 
-type sizes = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
-type textColors = 'default' | 'heading' | 'subtle' | 'grey' | 'disabled' | 'white';
-type brandColors = 'primary' | 'secondary' | 'tertiary' | 'background' | 'disabled' | 'white' | 'semitransparent' | 'grey' | 'clearWhite' | 'outline';
-
-type knownScale = {
-  [k in sizes]: number
-}
+type knownScale<T> = {[k in T]: number};
 
 type unknownScale = {
-  [size: string]: number
-}
-
-type knownBrandColors = {
-  [k in brandColors]: string
-}
-
-type knownTextColors = {
-  [k in textColors]: string
-}
+  [size: string]: number;
+};
 
 type unknownColors = {
-  [color: string]: string
-}
+  [color: string]: string;
+};
 
-type possibleSizes = knownScale & unknownScale;
-type possibleSpaces = knownScale & { none: number } & unknownScale;
-type possibleTextColors = knownTextColors & unknownColors;
-type possibleBrandColors = knownBrandColors & unknownColors;
+type possibleSizes = knownScale<SizeType> & unknownScale;
+type possibleFontSizes = knownScale<FontSizeType> & unknownScale;
+type possibleSpaces = knownScale<SpaceType> & unknownScale;
+type possibleColors = colorTypes & unknownColors;
+
+type ShadowObject = {
+  shadowColor: string;
+  shadowOffset: {
+    width: number;
+    height: number;
+  };
+  shadowOpacity: number;
+  shadowRadius: number;
+  elevation: number;
+};
 
 export interface themeType {
-  fontSize: possibleSizes;
+  fontSize: possibleFontSizes;
+  lineHeight: possibleFontSizes;
   size: possibleSizes;
   actionButtonSize: possibleSizes;
-  buttonSize: possibleSizes;
-  buttonWidth: possibleSizes;
+  buttonSize: {
+    paddingHorizontal: possibleSizes;
+    paddingVertical: possibleSizes;
+  };
   iconSize: possibleSizes;
   avatarSize: possibleSizes;
   badgeSize: possibleSizes;
   miniBadgeSize: possibleSizes;
-  listItemSpace: possibleSizes;
   space: possibleSpaces;
-  layoutSpace: possibleSpaces;
   indicatorSize: possibleSizes;
-  fontFamily: {
-    heading: string;
-    text: string;
-  };
-  textColor: possibleTextColors;
-  brandColor: possibleBrandColors;
+  colors: possibleColors;
+  shadow: {[T in ShadowType]: ShadowObject};
+  radius: {[T in RadiusType]: number};
+  font: FontThemeType;
 }

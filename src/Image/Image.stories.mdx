@@ -1,0 +1,110 @@
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean, color} from '@storybook/addon-knobs';
+import {View, Text, Button} from 'react-native';
+import Image from './Image';
+
+<Meta title="Image" component={Image} />
+
+# Image
+
+It's just a wrapper around RN Image component to give you more customizations like shadow and radius.
+
+# Usage
+
+```js
+import {Image} from 'react-native-design-system';
+
+<Image
+  radius="lg"
+  shadow="sm"
+  source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+/>;
+```
+
+# Props
+
+<Props of={Image} />
+
+# Styles
+
+The container receives an `style` props that overrides default styles.
+
+# Aspect Ratio
+
+<Preview>
+  <Story name="aspectRatio">
+    <Image
+      aspectRatio={800 / 240}
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# Radius
+
+Image curves can be customized with `radius` prop, default is `none`.
+
+<Preview>
+  <Story name="radius">
+    <Image
+      radius="2xl"
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# Shadow
+
+Image shadows can be customized with `shadow` prop, default is `none`.
+
+<Preview>
+  <Story name="shadow">
+    <Image
+      shadow="2xl"
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# Outline
+
+Image outline can be customized with `outline` prop, default is `false`.
+
+<Preview>
+  <Story name="outline">
+    <Image
+      outline
+      borderColor="red400"
+      borderWidth={5}
+      radius="xl"
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# Width and Height
+
+Image size can be updated with width and height
+
+<Preview>
+  <Story name="dimension">
+    <Image
+      width={500}
+      height={300}
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>
+
+# On Press
+
+Image is ofcourse pressable, just pass `onPress`
+
+<Preview>
+  <Story name="onpress">
+    <Image
+      onPress={() => console.log('pressed')}
+      source={{uri: 'https://www.github.com/iamshadmirza.png'}}
+    />
+  </Story>
+</Preview>

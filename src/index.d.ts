@@ -6,10 +6,11 @@
 // Definition updated by Shad on 30 September
 
 import * as React from 'react';
-import { themeType } from './types/theme';
-import { colorsType } from './types/colors-type';
+import {themeType} from './types/theme';
+import {colorsType} from './types/colors-type';
 export * from './types/Button';
 export * from './types/MenuAddButton';
+export * from './types/IconButton';
 export * from './types/ActionButton';
 export * from './types/Avatar';
 export * from './types/Card';
@@ -20,7 +21,6 @@ export * from './types/FullScreenLoader';
 export * from './types/Header';
 export * from './types/Input';
 export * from './types/Box';
-export * from './types/Inline';
 export * from './types/Stack';
 export * from './types/ListItem';
 export * from './types/OverLay';
@@ -30,13 +30,21 @@ export * from './types/RadioItem';
 export * from './types/RadioButton';
 export * from './types/Flex';
 export * from './types/StackList';
+export * from './types/Spacer';
+export * from './types/DismissKeyboard';
+export * from './types/Image';
 
-export let theme:themeType;
-export let colors:colorsType;
-
+export let theme: themeType;
+export let colors: colorsType;
 
 export const ThemeProvider: React.FC<{
-    value:themeType
+  theme: themeType;
+  colorMode?: 'light' | 'dark';
+  children: React.ReactNode | Array<any>;
 }>;
 
 export const useThemeContext: () => typeof theme;
+export const useThemeMode: () => {
+  isDarkMode: boolean;
+  toggleDarkMode: (mode?: 'light' | 'dark') => void;
+};

@@ -1,2 +1,2 @@
 import React from 'react';
-export type LayoutChildrenType = React.ReactElement | Array<any>;
+export type LayoutChildrenType = React.ReactNode | Array<any>;

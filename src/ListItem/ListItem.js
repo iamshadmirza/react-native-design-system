@@ -4,46 +4,38 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-  Text,
   StyleSheet,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {Avatar} from '../Avatar';
+import {Text} from '../Text';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {
+  fontBases,
+  fontVariants,
+  radii,
+  shadows,
+  sizes,
+  spaces,
+} from '../util/prop-types';
 
-const getContainerStyle = ({theme, space, background}) => {
+const getContainerStyle = ({theme, space, background, shadow, radius}) => {
   const itemStyle = [styles.container];
   itemStyle.push({
-    borderColor: theme.brandColor.outline,
-    backgroundColor: theme.brandColor[background],
-    padding: theme.listItemSpace[space],
+    borderColor: theme.colors.outline,
+    borderRadius: theme.radius[radius],
+    backgroundColor: theme.colors[background],
+    paddingVertical: theme.buttonSize.paddingVertical[space],
+    paddingHorizontal: theme.space[space],
+    ...theme.shadow[shadow],
   });
   return itemStyle;
 };
 
-const getTextStyle = ({theme, size, textColor, textAlign}) => {
-  return {
-    fontSize: theme.fontSize[size],
-    fontWeight: '500',
-    color: theme.textColor[textColor],
-    textAlign: textAlign,
-  };
-};
-
-const getSubtitleStyle = ({theme, size, subtitleColor, textAlign}) => {
-  return {
-    fontSize: theme.fontSize[size] * 0.7,
-    fontWeight: '400',
-    color: theme.textColor[subtitleColor],
-    textAlign: textAlign,
-    marginTop: 3,
-  };
-};
-
 const renderLeftChild = ({avatarSource, leftIcon, iconStyle}) => {
   if (avatarSource) {
-    return <Avatar source={avatarSource} size="xxsmall" />;
+    return <Avatar source={avatarSource} size="xs" />;
   }
   if (leftIcon) {
     return (
@@ -75,7 +67,7 @@ const renderRightChild = ({
           <Feather
             name="chevron-right"
             size={theme.iconSize[size]}
-            color={theme.brandColor[chevronColor]}
+            color={theme.colors[chevronColor]}
           />
         </View>
       )}
@@ -83,39 +75,58 @@ const renderRightChild = ({
   );
 };
 
-const ListItem = ({style, textStyle, subtitleStyle, background, ...props}) => {
-  const theme = useThemeContext();
-  const propsWithTheme = {...props, background, theme};
-  const TouchableElement =
-    Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-  return (
-    <TouchableElement {...props}>
-      <View
-        style={StyleSheet.flatten([getContainerStyle(propsWithTheme), style])}>
-        {renderLeftChild(propsWithTheme)}
-        <View style={styles.textView}>
-          <Text
-            style={StyleSheet.flatten([
-              getTextStyle(propsWithTheme),
-              textStyle,
-            ])}>
-            {props.children}
-          </Text>
-          {props.subtitle && (
-            <Text
-              style={StyleSheet.flatten([
-                getSubtitleStyle(propsWithTheme),
-                subtitleStyle,
-              ])}>
-              {props.subtitle}
-            </Text>
-          )}
+const ListItem = React.forwardRef(
+  (
+    {style, textStyle, subtitleStyle, background, subtitleSize, ...props},
+    ref,
+  ) => {
+    const theme = useThemeContext();
+    const propsWithTheme = {...props, background, theme};
+    const TouchableElement =
+      Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+    return (
+      <TouchableElement {...props} ref={ref}>
+        <View
+          style={StyleSheet.flatten([
+            getContainerStyle(propsWithTheme),
+            style,
+          ])}>
+          {renderLeftChild(propsWithTheme)}
+          <View style={styles.textView}>
+            {typeof props.children !== 'function' ? (
+              <Text
+                color={props.textColor}
+                fontBase={props.fontBase}
+                fontVariant={props.fontVariant}
+                size={props.size}
+                textAlign={props.textAlign}
+                style={textStyle || {}}>
+                {props.children}
+              </Text>
+            ) : (
+              props.children
+            )}
+            {props.subtitle &&
+              (typeof props.subtitle !== 'function' ? (
+                <Text
+                  size={subtitleSize}
+                  fontBase={props.subtitleFontBase}
+                  fontVariant={props.subtitleFontVariant}
+                  color={props.subtitleColor}
+                  textAlign={props.textAlign}
+                  style={[{marginTop: 3}, subtitleStyle]}>
+                  {props.subtitle}
+                </Text>
+              ) : (
+                props.subtitle
+              ))}
+          </View>
+          {renderRightChild(propsWithTheme)}
         </View>
-        {renderRightChild(propsWithTheme)}
-      </View>
-    </TouchableElement>
-  );
-};
+      </TouchableElement>
+    );
+  },
+);
 
 ListItem.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -123,30 +134,16 @@ ListItem.propTypes = {
   subtitleStyle: PropTypes.object,
   iconStyle: PropTypes.object,
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   subtitle: PropTypes.string,
   background: PropTypes.string,
   textColor: PropTypes.string,
   subtitleColor: PropTypes.string,
   chevronColor: PropTypes.string,
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
-  space: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
+  subtitleSize: sizes,
+  space: spaces,
   onPress: PropTypes.func.isRequired,
   avatarSource: PropTypes.object,
   leftIcon: PropTypes.element,
@@ -154,42 +151,38 @@ ListItem.propTypes = {
   chevron: PropTypes.bool,
   disabled: PropTypes.bool,
   activeOpacity: PropTypes.number,
+  shadow: shadows,
+  radius: radii,
+  /**  Customize button font */
+  fontBase: fontBases,
+  fontVariant: fontVariants,
+  /**  Customize button font */
+  subtitleFontBase: fontBases,
+  subtitleFontVariant: fontVariants,
 };
 
 ListItem.defaultProps = {
   children: 'Pass children to render',
-  background: 'clearWhite',
-  textColor: 'subtle',
-  subtitleColor: 'grey',
-  chevronColor: 'outline',
+  background: 'bg200',
+  textColor: 'para',
+  subtitleColor: 'subtle',
+  chevronColor: 'body',
   textAlign: 'left',
-  space: 'medium',
-  size: 'medium',
+  space: 'md',
+  size: 'md',
+  subtitleSize: 'md',
+  shadow: 'none',
+  radius: 'sm',
+  fontBase: 'body',
+  fontVariant: 'medium',
+  subtitleFontBase: 'body',
+  subtitleFontVariant: 'light',
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 1,
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
   },
   textView: {
     flex: 1,

@@ -1,13 +1,14 @@
 import React from 'react';
 import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {colorTypes} from './colors-type';
 
 interface FullScreenLoaderProps extends AccessibilityProps {
-  loading: boolean;
+  loading?: boolean;
   style?: StyleProp<ViewStyle>;
-  children?: React.ReactElement;
+  children?: React.ReactNode;
   indicatorColor?: string;
-  background?: string;
-  size?: 'small' | 'large';
+  background?: keyof colorTypes | string;
+  size?: 'sm' | 'lg';
 }
 
 export const FullScreenLoader: React.FC<FullScreenLoaderProps>;

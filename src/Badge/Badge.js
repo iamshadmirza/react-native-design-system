@@ -9,23 +9,31 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {useThemeContext} from '../util/ThemeProvider';
+import {radii, sizes} from '../util/prop-types';
 
-const getContainerStyle = ({theme, size, mini, color, square}) => {
+const getContainerStyle = ({theme, size, mini, color, square, radius}) => {
   const badgeStyle = [styles.container];
   if (color) {
     badgeStyle.push({
-      backgroundColor: theme.brandColor[color],
+      backgroundColor: theme.colors[color],
+      borderRadius: theme.radius.full,
     });
   }
   if (square) {
     badgeStyle.push({
-      borderRadius: 3,
+      borderRadius: theme.radius.none,
+    });
+  }
+  if (radius) {
+    badgeStyle.push({
+      borderRadius: theme.radius[radius],
     });
   }
   if (mini) {
     badgeStyle.push({
       width: theme.miniBadgeSize[size],
       height: theme.miniBadgeSize[size],
+      borderRadius: theme.radius.full,
     });
   }
   return badgeStyle;
@@ -68,50 +76,24 @@ Badge.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  size: PropTypes.oneOf([
-    'xxsmall',
-    'xsmall',
-    'small',
-    'medium',
-    'large',
-    'xlarge',
-    'xxlarge',
-  ]),
+  size: sizes,
   mini: PropTypes.bool,
   onPress: PropTypes.func,
   square: PropTypes.bool,
+  radius: radii,
 };
 
 Badge.defaultProps = {
   children: 0,
   color: 'primary',
-  size: 'small',
+  size: 'sm',
 };
 
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'flex-start',
-    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    ...Platform.select({
-      android: {
-        elevation: 1,
-      },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-      },
-      web: {
-        // boxShadow: `${offsetWidth}px ${offsetHeight}px ${radius}px ${rgba}`
-        boxShadow: '0 3px 5px rgba(0,0,0,0.10), 1px 2px 5px rgba(0,0,0,0.10)',
-      },
-    }),
   },
 });
 

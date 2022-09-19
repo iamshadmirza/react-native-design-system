@@ -8,6 +8,7 @@ import {
 import {IconNode} from './icon-type';
 import {LayoutChildrenType} from './layout-children-type';
 import {SizeType} from './size-type';
+import { colorTypes } from './colors-type';
 
 interface RadioButtonProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
@@ -15,8 +16,8 @@ interface RadioButtonProps extends AccessibilityProps {
   children: LayoutChildrenType;
   activeId: number | string;
   iconRight?: boolean;
-  color?: string;
-  textColor?: string;
+  color?: keyof colorTypes | string,
+  textColor?:  keyof colorTypes | string,
   size?: SizeType;
   selectItem: (id: number | string) => void;
   checkedIcon?: IconNode;
