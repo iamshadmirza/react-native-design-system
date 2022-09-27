@@ -166,6 +166,7 @@ const Input = React.forwardRef((props, ref) => {
           textAlignVertical={multiline ? 'top' : 'center'}
           placeholderTextColor={theme.colors.subtle}
           placeholder={floatingLabel ? label : placeholder}
+          multiline={multiline}
           {...otherProps}
           style={[getInputStyle({...otherProps, theme}), textStyle]}
         />
