@@ -1,18 +1,19 @@
 import React from 'react';
-import { TextStyle, StyleProp, TextProps } from 'react-native';
+import {TextProps as RNTextProps} from 'react-native';
+import {colorTypes} from './colors-type';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
+import {FontSizeType} from './size-type';
+import {fontBaseType, fontVariantType} from './typography-type';
 
-interface TextProps {
-  style?: StyleProp<TextStyle>,
-  children: TextProps,
-  size?: SizeType,
-  color?: string,
-  scale?: boolean,
-  fontWeight?: string,
+interface TextProps extends RNTextProps {
+  size?: FontSizeType | string;
+  color?: keyof colorTypes | string;
+  scale?: boolean;
+  textAlign?: 'left' | 'center' | 'right';
+  fontWeight?: string;
+  fontFamily?: string;
+  fontBase?: fontBaseType;
+  fontVariant?: fontVariantType;
 }
 
 export const Text: React.FC<TextProps>;

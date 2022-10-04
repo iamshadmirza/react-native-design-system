@@ -1,20 +1,17 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {RadiusType} from './size-type';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
-
-interface OverlayProps {
-  style?: StyleProp<ViewStyle>,
-  overlayStyle?: StyleProp<ViewStyle>,
-  children: React.ReactElement,
-  background?: string,
-  overlayBackground?: string,
-  borderRadius?: number,
-  width?: string | number,
-  height?: string | number,
+interface OverlayProps extends AccessibilityProps {
+  style?: StyleProp<ViewStyle>;
+  overlayStyle?: StyleProp<ViewStyle>;
+  children: React.ReactNode;
+  background?: string;
+  overlayBackground?: string;
+  radius?: RadiusType;
+  width?: string | number;
+  height?: string | number;
+  onPressOutside?: () => void;
 }
 
 export const Overlay: React.FC<OverlayProps>;

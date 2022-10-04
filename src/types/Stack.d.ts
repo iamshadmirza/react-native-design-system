@@ -1,22 +1,20 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {DirectionType} from './direction-type';
+import {LayoutChildrenType} from './layout-children-type';
+import {HorizontalSpaceType, SpaceType, VerticalSpaceType} from './space-type';
+import { colorTypes } from './colors-type';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { SpaceType, HorizontalSpaceType, VerticalSpaceType } from './space-type';
-import { IconNode } from './icon-type';
-import { LayoutChildrenType } from './layout-children-type';
-import { DirectionType } from './direction-type';
-
-interface StackProps {
-  style?: StyleProp<ViewStyle>,
-  space?: SpaceType,
-  horizontalSpace?: HorizontalSpaceType,
-  verticalSpace?: VerticalSpaceType,
-  direction?: DirectionType,
-  children: LayoutChildrenType,
-  cropEndSpace?: boolean,
+interface StackProps extends AccessibilityProps {
+  style?: StyleProp<ViewStyle>;
+  space?: SpaceType;
+  horizontalSpace?: HorizontalSpaceType;
+  verticalSpace?: VerticalSpaceType;
+  direction?: DirectionType;
+  children: LayoutChildrenType;
+  cropEndSpace?: boolean;
+  scrollable?: boolean,
+  background?: keyof colorTypes | string
 }
 
 export const Stack: React.FC<StackProps>;

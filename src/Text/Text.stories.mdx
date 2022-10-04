@@ -1,89 +1,77 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select } from "@storybook/addon-knobs";
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select} from '@storybook/addon-knobs';
 import Stack from '../Layout/Stack';
 import Text from './Text';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="Text" component={Text} />
 
 # Text
+
 Simple `Text` element that gives you different sizes and colors.
 
 # Usage
-```js
-import { Text } from 'react-native-design-system';
 
-<Text>
-  Hello Design System
-</Text>
+```js
+import {Text} from 'react-native-design-system';
+
+<Text>Hello Design System</Text>;
 ```
 
 # Props
+
 <Props of={Text} />
 
 # Sizes
-7 available font sizes are `11`, `12.5`, `14`, `16`, `20`, `26` and `32`. You can customize them in `fontSize` property of theme.
+
+We have sizes available from `xs` to `9xl`.
 
 <Preview>
   <Story name="sizes">
     <Stack>
-      <Text size="xxlarge">
-        Hello Design System
-      </Text>
-      <Text size="xlarge">
-        Hello Design System
-      </Text>
-      <Text size="large">
-        Hello Design System
-      </Text>
-      <Text size="medium">
-        Hello Design System
-      </Text>
-      <Text size="small">
-        Hello Design System
-      </Text>
-      <Text size="xsmall">
-        Hello Design System
-      </Text>
-      <Text size="xxsmall">
-        Hello Design System
-      </Text>
+      <Text size="9xl">Hello Design System</Text>
+      <Text size="8xl">Hello Design System</Text>
+      <Text size="7xl">Hello Design System</Text>
+      <Text size="6xl">Hello Design System</Text>
+      <Text size="5xl">Hello Design System</Text>
+      <Text size="4xl">Hello Design System</Text>
+      <Text size="3xl">Hello Design System</Text>
+      <Text size="2xl">Hello Design System</Text>
+      <Text size="xl">Hello Design System</Text>
+      <Text size="lg">Hello Design System</Text>
+      <Text size="md">Hello Design System</Text>
+      <Text size="sm">Hello Design System</Text>
+      <Text size="xs">Hello Design System</Text>
     </Stack>
   </Story>
 </Preview>
 
 # Color
+
 Uses color defined in `textColor` in theme.
 
 <Preview>
   <Story name="color">
-     <Stack>
-      <Text color="default">
-        Hello Design System
-      </Text>
-      <Text color="heading">
-        Hello Design System
-      </Text>
-      <Text color="subtle" >
-        Hello Design System
-      </Text>
-      <Text color="grey">
-        Hello Design System
-      </Text>
+    <Stack>
+      <Text color="heading">Hello Design System</Text>
+      <Text color="body">Hello Design System</Text>
+      <Text color="subtle">Hello Design System</Text>
     </Stack>
   </Story>
 </Preview>
 
 # Scale
+
 Pass `scale={false}` if you don't want text to scale when device default font size changes. Default is `true` and text will scale accrording to default font size.
 
 # Playground
+
 Play with Text in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Text
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-    color={select('color', ['default', 'heading', 'subtle', 'grey'], 'grey')}
-  >
-  Hello World
+    size={select('size', sizeArray, 'md')}
+    color={select('color', ['heading', 'body', 'subtle'], 'heading')}>
+    Hello World
   </Text>
 </Story>

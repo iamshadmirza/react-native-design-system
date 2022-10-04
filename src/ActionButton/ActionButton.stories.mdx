@@ -1,22 +1,23 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
-import Inline from '../Layout/Inline';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
+import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import ActionButton from './ActionButton';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="ActionButton" component={ActionButton} />
 
 # ActionButton
+
 ActionButton is the buttons you use on your landing screen to guide users towards your goal action. It's the part of the landing screen that the user needs to click to take the action you want them to take.
 
 # Usage
-```js
-import { ActionButton } from 'react-native-design-system';
 
-<ActionButton
-  onPress={() => this.handlePress()}  
-/>
+```js
+import {ActionButton} from 'react-native-design-system';
+
+<ActionButton onPress={() => this.handlePress()} />;
 ```
 
 # Props
@@ -27,15 +28,17 @@ import { ActionButton } from 'react-native-design-system';
 
 <Preview>
   <Story name="sizes">
-    <Inline>
-      <ActionButton size="xxlarge" onPress={action('pressed')} />
-      <ActionButton size="xlarge" onPress={action('pressed')} />
-      <ActionButton size="large" onPress={action('pressed')} />
-      <ActionButton size="medium" onPress={action('pressed')} />
-      <ActionButton size="small" onPress={action('pressed')} />
-      <ActionButton size="xsmall" onPress={action('pressed')} />
-      <ActionButton size="xxsmall" onPress={action('pressed')} />
-  </Inline>
+    <Stack direction="horizontal">
+      <ActionButton size="5xl" onPress={action('pressed')} />
+      <ActionButton size="4xl" onPress={action('pressed')} />
+      <ActionButton size="3xl" onPress={action('pressed')} />
+      <ActionButton size="2xl" onPress={action('pressed')} />
+      <ActionButton size="xl" onPress={action('pressed')} />
+      <ActionButton size="lg" onPress={action('pressed')} />
+      <ActionButton size="md" onPress={action('pressed')} />
+      <ActionButton size="sm" onPress={action('pressed')} />
+      <ActionButton size="xs" onPress={action('pressed')} />
+    </Stack>
   </Story>
 </Preview>
 
@@ -43,11 +46,11 @@ import { ActionButton } from 'react-native-design-system';
 
 <Preview>
   <Story name="color">
-    <Inline>
-      <ActionButton color="primary" size="medium" onPress={action('pressed')} />
-      <ActionButton color="secondary" size="medium" onPress={action('pressed')} />
-      <ActionButton color="tertiary" size="medium" onPress={action('pressed')} />
-    </Inline>
+    <Stack direction="horizontal">
+      <ActionButton color="primary" size="md" onPress={action('pressed')} />
+      <ActionButton color="secondary" size="md" onPress={action('pressed')} />
+      <ActionButton color="success" size="md" onPress={action('pressed')} />
+    </Stack>
   </Story>
 </Preview>
 
@@ -56,11 +59,8 @@ import { ActionButton } from 'react-native-design-system';
 <Preview>
   <Story name="icon">
     <ActionButton
-      icon={<Feather
-            name="chevron-up"
-            size={26}
-            color="white" />}
-      size="medium"
+      icon={<Feather name="chevron-up" size={26} color="white" />}
+      size="md"
       onPress={action('pressed')}
     />
   </Story>
@@ -70,9 +70,9 @@ import { ActionButton } from 'react-native-design-system';
 
 Play with ActionButton in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <ActionButton
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    size={select('size', sizeArray, 'md')}
     color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}
     onPress={action('pressed')}
   />

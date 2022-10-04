@@ -1,1 +1,1 @@
-export type WidthType = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+export type WidthType = 'xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';

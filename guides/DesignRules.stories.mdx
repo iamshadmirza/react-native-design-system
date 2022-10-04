@@ -1,59 +1,105 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import {Meta} from '@storybook/addon-docs/blocks';
 
 <Meta title="Guide|Design Rules" />
 
 # Design Rules
+
 These are some design rules that this library follows. It is based on the four key aspects that I considered while creating this.
+
 > Feel free to send a PR for corrections, these are personal opinion and I'm here to learn. 😅
 
 # Low surface area
+
 Most of the props are common across all components or they are the same as their parent component imported from React Native. This makes sure that you do not have to learn a whole set of extra props or just use what you already know.  
 For example:
-* If it's a Button, it receives all the props of Touchable component of React Native.
-* If it's a Modal, it receives all the props of Modal.
-* Each component receives a `size` prop whose value can be one of these: `xxsmall`, `xsmall`, `small`, `medium`, `large`, `xlarge` & `xxlarge`. You just have to pass `size` prop with one of these value and you're done.
-* Another example could be `color` prop. You can pass one of the colors defined in `brandColor` of theme to any component.
-* If it's a layout based component like `Box`, `Stack`, `Inline` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xxsmall` and `xxlarge` ( with an addition of `space="none"`)  and provide appropriate spacing between components.
-* Each component receives a `style` and a `textStyle` prop (if there is a text involved). This is for some rare cases when you have to override the default styling. It's preferable to tweak the `theme` instead to maintain consistency and avoid adding that `style` again and again.
 
-These props are common to all the components. Other component-specific props are pretty straight forward too. 
+- If it's a Button, it receives all the props of Touchable component of React Native.
+- If it's a Modal, it receives all the props of Modal.
+- Each component receives a `size` prop whose value can be one of these: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. You just have to pass `size` prop with one of these value and you're done.
+- Another example could be `color` prop. You can pass one of the colors defined in `colors` of theme to any component.
+- If it's a layout based component like `Box`, `Stack` or our best friend `Card` then it receives a `space` prop. This also takes one of the values between `xs` and `9xl` ( with an addition of `space="none"`) and provide consistent spacing between components.
+- Each component receives a `style` and a `textStyle` prop (if there is a text involved). This is for some rare cases when you have to override the default styling. It's preferable to tweak the `theme` instead to maintain consistency and avoid adding that `style` again and again.
 
-# Speed 
-For most of the cases, default styles like `size={medium}` or `space={medium}` will be enough. In other cases, it's just two to three props max to achieve any desired result. This makes it faster to prototype. The layout components make it easier to achieve the desired screen layout with `space` props. See the playground in `Stack` documentation.
+These props are common to all the components. Other component-specific props are pretty straight forward too.
+
+# Speed
+
+For most of the cases, default styles like `size="md"` or `space="md"` will be enough. In other cases, it's just two to three props max to achieve any desired result. This makes it faster to prototype. The layout components make it easier to achieve the desired screen layout with `space` props. See the playground in `Stack` documentation.
 
 One of the key aspects of pixel-perfect design is the spacing between components. This design system proposes two things:
 
 1. Every UI component has a margin of 0.
 2. The spacing of any component will be determined by its parent Layout component.
 
-The separation of concerns makes the job easier.  Layout component should take care of `space` only and UI component should worry about UI only i.e., `color` or `size`.
+The separation of concerns makes the job easier. Layout component should take care of `space` only and UI component should worry about UI only i.e., `color` or `size`.
 
 # Consistency
-The correct balance of freedom and consistency is hard to achieve.  
 
-1. For freedom, you get straight forward props like `color` and `size`. 
+The correct balance of freedom and consistency is hard to achieve.
+
+1. For freedom, you get straight forward props like `color` and `size`.
 2. For consistency, you need to define these configurations inside theme file i.e **Single source of truth**.
 
 It helps in maintaining uniformity across all the usage. It also allows you to have several choices and use them as needed. Check out the theme section of this guide for the default configuration.
 
 # Connection
+
 Big problems are always more manageable when broken into smaller pieces. The design language of the system is broken down into color, typography, size, and space. These API is followed by each component.
 
 ## Color
-There are basically two types of colors:
-* **brandColor:** "primary", "secondary", "tertiary", "background", "disabled", "semitransparent".
-* **textColor:** "default", "heading", "grey", "subtle", "disabled", and "white"
+
+You have all the colors available in pallete with shades from `50` to `900`.
+In addition to few of the brand colors which has their dark mode counter part. `primary`, `seconday`, `success`, `error`, `warning`, `disabled`, `disabledText`, `heading`, `body`, `subtle`, `transparent`, `semitransparent`, `outline`, `white`, `black`, `shadowColor`, `bgInput`, `bgImage`, `bg100`, `bg200`, `bg300`
 
 ## Typography
-To keep things simple and consistent. There are two choices for fonts to use: 
-* heading 
-* text 
+
+To keep things simple and consistent. There are two choices for fonts to use and they will resolve to appropriate font family:
+
+- heading
+- body
+
+You will pass it as `fontBase` property. Example `fontBase="heading"`
+
+These two the parent font family which has some variants. These variants are:
+
+`light`, `medium`, `regular`, `semibold`, `bold`, `extrabold`, `italic`, `bolditalic`.
+
+You can pass any of the above value as `fontVariant` prop. Example: `fontVariant="semibold"`
+
+It will resolve to the fonts you have set in theme.
+
+```js
+{
+  heading: {
+    light: "",
+    medium: "",
+    regular: "",
+    semibold: "",
+    bold: "",
+    extrabold: "",
+    italic: "",
+    bolditalic: "",
+  },
+  body: {
+    light: "",
+    medium: "",
+    regular: "",
+    semibold: "",
+    bold: "",
+    extrabold: "",
+    italic: "",
+    bolditalic: "",
+  },
+}
+```
 
 ## Size
-* The available sizes you can use is `"xxsmall"`, `"xsmall"`, `"small"`, `"medium"`, `"large"`, `"xlarge"` and `"xxlarge"`. The default is `"medium"` and it will be applied if are not passing anything.
-* Font size is also similar and it ranges from "xxsmall" to "xxlarge".
+
+- The available sizes you can use is `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. The default is `"md"` and it will be applied if are not passing anything.
+- Font size is also similar and it ranges from "xs" to "9xl".
 
 ## Space
-Space also shares similar API as size but with one addition. You can also pass `"none"` with the range of `"xxsmall"` to `"xxlarge"`. Space is a dedicated prop for layout components like `Stack`, `Inline`, `Box` and `Card`.
+
+Space also shares similar API as size but with one addition. You can also pass `"none"` with the range of `"xs"` to `"9xl"`. Space is a dedicated prop for layout components like `Stack`, `Box` and `Card`.
 
 > You can contribute to the theme. Please share what are the common color tokens you use, what are the common font sizes that you use in any app, etc. Let's make the theme config more generic together.

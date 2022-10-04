@@ -1,23 +1,26 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
+import {spaces} from '../util/prop-types';
 
-const getChildrenStyle = ({ theme, space, horizontalSpace, cropEndSpace, data }, index) => {
-  console.log({ index, data })
-  const childStyle = [{
-    marginBottom: theme.layoutSpace[space],
-
-  }];
+const getChildrenStyle = (
+  {theme, space, horizontalSpace, cropEndSpace, data},
+  index,
+) => {
+  const childStyle = [
+    {
+      marginBottom: theme.space[space],
+    },
+  ];
   if (index === 0) {
     childStyle.push({
-      marginTop: theme.layoutSpace[space],
+      marginTop: theme.space[space],
     });
   }
   if (horizontalSpace) {
     childStyle.push({
-      marginHorizontal: theme.layoutSpace[horizontalSpace],
-
+      marginHorizontal: theme.space[horizontalSpace],
     });
   }
   if (cropEndSpace) {
@@ -35,32 +38,39 @@ const getChildrenStyle = ({ theme, space, horizontalSpace, cropEndSpace, data },
   return childStyle;
 };
 
-const StackList = (props) => {
+const StackList = React.forwardRef((props, ref) => {
   const theme = useThemeContext();
   return (
     <FlatList
+      ref={ref}
       {...props}
-      renderItem={(child) => (
-        <View style={getChildrenStyle({ ...props, theme }, child.index)}>
+      style={StyleSheet.flatten([
+        {backgroundColor: theme.colors[props.background]},
+        props.style,
+      ])}
+      renderItem={child => (
+        <View style={getChildrenStyle({...props, theme}, child.index)}>
           {props.renderItem(child)}
         </View>
       )}
     />
   );
-};
+});
 
 StackList.propTypes = {
-  style: PropTypes.object,
-  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  horizontalSpace: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  space: spaces,
+  horizontalSpace: spaces,
+  background: PropTypes.string,
   cropEndSpace: PropTypes.bool,
   ...FlatList.propTypes,
 };
 
 StackList.defaultProps = {
-  space: 'medium',
+  space: 'md',
   horizontalSpace: 'none',
-  cropEndSpace: true
+  cropEndSpace: true,
+  background: 'bg300',
 };
 
 export default StackList;

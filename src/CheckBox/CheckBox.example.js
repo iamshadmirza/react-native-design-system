@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { select, boolean } from '@storybook/addon-knobs';
-import { CheckBox } from './index';
+import React, {useState} from 'react';
+import {select, boolean} from '@storybook/addon-knobs';
+import {CheckBox} from './index';
+import {sizeArray} from '../util/prop-types';
 
 export default function ExampleRadioButton() {
   const [value, setCheckBoxValue] = useState(false);
   return (
     <CheckBox
-      size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+      size={select('size', sizeArray, 'md')}
       checked={value}
       iconRight={boolean('iconRight', false)}
-      color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}
-      textColor={select('textColor', ['heading', 'default', 'subtle', 'grey'], 'default')}
+      color={select('color', ['primary', 'secondary'], 'primary')}
+      textColor={select('textColor', ['heading', 'para', 'subtle'], 'heading')}
       onPress={() => setCheckBoxValue(!value)}>
       Hello CheckBox
-  </CheckBox >
+    </CheckBox>
   );
 }

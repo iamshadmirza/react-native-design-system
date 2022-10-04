@@ -1,18 +1,14 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {colorTypes} from './colors-type';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
-
-interface FullScreenLoaderProps {
-  loading: boolean,
-  style?: StyleProp<ViewStyle>,
-  children?: React.ReactElement,
-  indicatorColor?: string,
-  background?: string,
-  size?: 'small' | 'large',
+interface FullScreenLoaderProps extends AccessibilityProps {
+  loading?: boolean;
+  style?: StyleProp<ViewStyle>;
+  children?: React.ReactNode;
+  indicatorColor?: string;
+  background?: keyof colorTypes | string;
+  size?: 'sm' | 'lg';
 }
 
 export const FullScreenLoader: React.FC<FullScreenLoaderProps>;

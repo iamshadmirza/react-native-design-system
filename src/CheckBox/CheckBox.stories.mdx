@@ -1,6 +1,6 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CheckBox from './CheckBox';
@@ -9,144 +9,117 @@ import ExampleCheckBox from './CheckBox.example.js';
 <Meta title="CheckBox" component={CheckBox} />
 
 # CheckBox
+
 Use `CheckBox` when looking for yes or no answers.
 
 # Usage
-```js
-import { CheckBox } from 'react-native-design-system';
 
-<CheckBox checked={this.state.checked} onPress={() => this.setState({ checked: !this.state.checked })}>
-    Hello CheckBox
-</CheckBox>
+```js
+import {CheckBox} from 'react-native-design-system';
+
+<CheckBox
+  checked={this.state.checked}
+  onPress={() => this.setState({checked: !this.state.checked})}>
+  Hello CheckBox
+</CheckBox>;
 ```
 
 # Props
+
 <Props of={CheckBox} />
 
 # Size
-There are 7 sizes available bases on fontSize.
+
+There are 9 sizes available bases on fontSize.
 
 <Preview>
   <Story name="size">
     <Stack>
-      <CheckBox size="xxsmall">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox size="xsmall">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox size="small">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox size="medium">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox size="large">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox size="xlarge">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox size="xxlarge">
-        Hello CheckBox
-      </CheckBox>
+      <CheckBox size="xs">Hello CheckBox</CheckBox>
+      <CheckBox size="sm">Hello CheckBox</CheckBox>
+      <CheckBox size="md">Hello CheckBox</CheckBox>
+      <CheckBox size="lg">Hello CheckBox</CheckBox>
+      <CheckBox size="xl">Hello CheckBox</CheckBox>
+      <CheckBox size="2xl">Hello CheckBox</CheckBox>
+      <CheckBox size="3xl">Hello CheckBox</CheckBox>
+      <CheckBox size="4xl">Hello CheckBox</CheckBox>
+      <CheckBox size="5xl">Hello CheckBox</CheckBox>
     </Stack>
   </Story>
 </Preview>
 
 # Right align icon
+
 Pass `iconRight={true}` to shift checkbox icon to right.
 
 <Preview>
   <Story name="iconRight">
-    <CheckBox iconRight>
-        Hello CheckBox
-    </CheckBox>
+    <CheckBox iconRight>Hello CheckBox</CheckBox>
   </Story>
 </Preview>
 
 # Checked
+
 Pass `checked={true}` to select checkbox.
 
 <Preview>
   <Story name="checked">
-    <CheckBox checked>
-        Hello CheckBox
-    </CheckBox>
+    <CheckBox checked>Hello CheckBox</CheckBox>
   </Story>
 </Preview>
 
 # Color
+
 Pass `color` to select from three available brand colors.
 
 <Preview>
   <Story name="color">
     <Stack>
-      <CheckBox color="primary">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox color="secondary">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox color="tertiary">
-        Hello CheckBox
-      </CheckBox>
+      <CheckBox color="primary">Hello CheckBox</CheckBox>
+      <CheckBox color="secondary">Hello CheckBox</CheckBox>
     </Stack>
   </Story>
 </Preview>
 
 # Text color
+
 Pass `textColor` to select from available brand text colors.
 
 <Preview>
   <Story name="textColor">
     <Stack>
-      <CheckBox textColor="heading">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox textColor="default">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox textColor="subtle">
-        Hello CheckBox
-      </CheckBox>
-      <CheckBox textColor="grey">
-        Hello CheckBox
-      </CheckBox>
+      <CheckBox textColor="heading">Hello CheckBox</CheckBox>
+      <CheckBox textColor="body">Hello CheckBox</CheckBox>
+      <CheckBox textColor="subtle">Hello CheckBox</CheckBox>
     </Stack>
   </Story>
 </Preview>
 
 # Custom icons
-Pass custom icons via  `checkedIcon` and `uncheckedIcon` prop. Size and color will be manually set by developer.
+
+Pass custom icons via `checkedIcon` and `uncheckedIcon` prop. Size and color will be manually set by developer.
 
 <Preview>
   <Story name="icons">
     <Stack>
       <CheckBox
         checked={false}
-        checkedIcon={<Ionicons
-          name="ios-radio-button-on"
-          size={24}
-          color="#1e88e5" />}
-        uncheckedIcon={<Ionicons
-          name="ios-radio-button-off"
-          size={24}
-          color="#1e88e5" />}
-      >
+        checkedIcon={
+          <Ionicons name="ios-radio-button-on" size={24} color="#1e88e5" />
+        }
+        uncheckedIcon={
+          <Ionicons name="ios-radio-button-off" size={24} color="#1e88e5" />
+        }>
         Hello CheckBox
       </CheckBox>
       <CheckBox
         checked={true}
-        checkedIcon={<Ionicons
-          name="ios-radio-button-on"
-          size={24}
-          color="#1e88e5" />}
-        uncheckedIcon={<Ionicons
-          name="ios-radio-button-off"
-          size={24}
-          color="#1e88e5" />}
-      >
+        checkedIcon={
+          <Ionicons name="ios-radio-button-on" size={24} color="#1e88e5" />
+        }
+        uncheckedIcon={
+          <Ionicons name="ios-radio-button-off" size={24} color="#1e88e5" />
+        }>
         Hello CheckBox
       </CheckBox>
     </Stack>
@@ -157,6 +130,6 @@ Pass custom icons via  `checkedIcon` and `uncheckedIcon` prop. Size and color wi
 
 Play with CheckBox in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <ExampleCheckBox />
 </Story>

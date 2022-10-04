@@ -1,48 +1,43 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean, text } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean, text} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchBar from './SearchBar';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="SearchBar" component={SearchBar} />
 
 # SearchBar
+
 A SearchBar is a wrapper around `TextInput` with commonly used styles and easy to make customization. Receives all the props of `Input` component.
 
 # Usage
+
 ```js
-import { SearchBar } from 'react-native-design-system';
+import {SearchBar} from 'react-native-design-system';
 
 <SearchBar
   round
   value={this.state.text}
   onChangeText={text => handleChange(text)}
-/>
+/>;
 ```
 
 # Props
+
 <Props of={SearchBar} />
 
 # Type
+
 There are three types of button mainly: `default`, `round`, and `outline`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button and nothing for default solid button.
+
 <Preview>
   <Story name="type">
     <Stack>
-      <SearchBar
-        value=""
-        onChangeText={text => action('pressed')}
-      />
-      <SearchBar
-        round
-        value=""
-        onChangeText={text => action('pressed')}
-      />
-      <SearchBar
-        outline
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      <SearchBar value="" onChangeText={text => action('pressed')} />
+      <SearchBar round value="" onChangeText={text => action('pressed')} />
+      <SearchBar outline value="" onChangeText={text => action('pressed')} />
       <SearchBar
         outline
         round
@@ -54,52 +49,57 @@ There are three types of button mainly: `default`, `round`, and `outline`. You c
 </Preview>
 
 # Label
+
 Pass `label` to render a label string above SearchBar. You can customise label using `labelColor` and `labelStyle` props.
 
 <Preview>
   <Story name="label">
     <SearchBar
-        outline
-        label="Username"
-        placeholder="Enter Username"
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      label="Username"
+      placeholder="Enter Username"
+      value=""
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Error and Error Caption
+
 Pass `error={true}` when you want to show error and pass `errorCaption` string to render the string below SearchBar to notify user about the error.
 
 <Preview>
   <Story name="error">
     <SearchBar
-        outline
-        error={true}
-        value=""
-        errorCaption="Please try again"
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      error={true}
+      value=""
+      errorCaption="Please try again"
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Color
-Pass `color` from brandColor to change outline color of SearchBar. Background is managed by `background` property inside theme. You can also directly pass a `background` prop with one of the colors in `brandColor`.
+
+Pass `color` from brand color to change outline color of SearchBar. Background is managed by `background` property inside theme. You can also directly pass a `background` prop with one of the colors in `colors`.
 
 <Preview>
   <Story name="color">
     <SearchBar
-        outline
-        color="secondary"
-        placeholder="Enter username"
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      color="secondary"
+      placeholder="Enter username"
+      value=""
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Disabled
+
 `disabled={true}` property restrict any kind of action on SearchBar.
+
 <Preview>
   <Story name="disabled">
     <SearchBar
@@ -113,6 +113,7 @@ Pass `color` from brandColor to change outline color of SearchBar. Background is
 </Preview>
 
 # onCancel
+
 pass a function to `onCancel` to clear the input or cancel search. It will be triggered on clicking right icon. Cancel icon (right) will appear only when there is some text inside SearchBar. Right can be customised by passing any icon to `rightIcon` prop.
 
 <Preview>
@@ -127,6 +128,7 @@ pass a function to `onCancel` to clear the input or cancel search. It will be tr
 </Preview>
 
 # Loading
+
 Pass `loading={true}` to show a indicator while the search is going on.
 
 <Preview>
@@ -141,7 +143,8 @@ Pass `loading={true}` to show a indicator while the search is going on.
   </Story>
 </Preview>
 
-# Size 
+# Size
+
 As usual, 7 available sized.
 
 <Preview>
@@ -149,7 +152,7 @@ As usual, 7 available sized.
     <Stack>
       <SearchBar
         outline
-        size="xxsmall"
+        size="xs"
         placeholder="Enter username"
         value=""
         loading
@@ -157,7 +160,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="xsmall"
+        size="xs"
         placeholder="Enter username"
         value=""
         loading
@@ -165,7 +168,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="small"
+        size="sm"
         placeholder="Enter username"
         value=""
         loading
@@ -173,7 +176,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="medium"
+        size="md"
         placeholder="Enter username"
         value=""
         loading
@@ -181,7 +184,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="large"
+        size="lg"
         placeholder="Enter username"
         value=""
         loading
@@ -189,7 +192,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="xlarge"
+        size="xl"
         placeholder="Enter username"
         value=""
         loading
@@ -197,7 +200,7 @@ As usual, 7 available sized.
       />
       <SearchBar
         outline
-        size="xxlarge"
+        size="2xl"
         placeholder="Enter username"
         value=""
         loading
@@ -208,33 +211,30 @@ As usual, 7 available sized.
 </Preview>
 
 # Icon
+
 You can pass any icon via `leftIcon` and `rightIcon` props.
+
 > Icon size and color should be defined by developers manually according to button size.
 
 <Preview>
   <Story name="icon">
     <SearchBar
-        outline
-        placeholder="Search for location"
-        leftIcon={
-          <Feather
-            name="crosshair"
-            size={22}
-            color="grey" 
-          />
-        }
-        value=""
-        onChangeText={text => action('pressed')}
-      />
+      outline
+      placeholder="Search for location"
+      leftIcon={<Feather name="crosshair" size={22} color="gray" />}
+      value=""
+      onChangeText={text => action('pressed')}
+    />
   </Story>
 </Preview>
 
 # Playground
+
 Play with SearchBar in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <SearchBar
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    size={select('size', sizeArray, 'md')}
     outline={boolean('outline', false)}
     round={boolean('round', true)}
     loading={boolean('loading', true)}

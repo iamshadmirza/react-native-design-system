@@ -1,31 +1,35 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Input from '../Input/Input';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
 
-const renderIndicator = (props) => {
-  const scale = {
-    transform: [
-      { scale: props.theme.indicatorSize[props.size] },
-    ],
-  };
+const renderIndicator = props => {
   return (
     <View style={styles.rightIcons}>
-      <View style={[styles.indicator, scale]}>
-        <ActivityIndicator animating={props.loading === true} color={props.indicatorColor} />
+      <View style={styles.indicator}>
+        <ActivityIndicator
+          animating={props.loading === true}
+          color={props.indicatorColor}
+        />
       </View>
-      {props.onCancel && props.value.length !== 0 &&
+      {props.onCancel && props.value.length !== 0 && (
         <TouchableOpacity onPress={props.onCancel}>
-          {props.rightIcon ||
+          {props.rightIcon || (
             <Feather
               name="x-circle"
               size={20}
-              color={props.theme.brandColor[props.iconColor]} />
-          }
+              color={props.theme.colors[props.iconColor]}
+            />
+          )}
         </TouchableOpacity>
-      }
+      )}
     </View>
   );
 };
@@ -35,15 +39,17 @@ const SearchBar = React.forwardRef((props, ref) => {
   return (
     <Input
       leftIcon={
-        <Feather
-          name="search"
-          size={20}
-          color={theme.brandColor[props.iconColor]}
-        />
+        props.leftIcon || (
+          <Feather
+            name="search"
+            size={20}
+            color={theme.colors[props.iconColor]}
+          />
+        )
       }
       {...props}
       ref={ref}
-      rightIcon={renderIndicator({ ...props, theme })}
+      rightIcon={renderIndicator({...props, theme})}
     />
   );
 });
@@ -57,7 +63,7 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-  iconColor: 'outline',
+  iconColor: 'heading',
   value: '',
   placeholder: 'Search here',
 };

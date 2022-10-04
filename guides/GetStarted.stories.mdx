@@ -1,34 +1,42 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import {Meta} from '@storybook/addon-docs/blocks';
 
 <Meta title="Guide|Get Started" />
 
 # Get Started
+
 `React Native Design System` is a set of design rules and component library that lets you prototype faster with easy to use cross-platform components. Let's get started!
 
 # Install
+
 Simply go to the command line and run this command.
+
 ```sh
 yarn add react-native-design-system
 ```
+
 You can use `yarn` or `npm` as per your choice.
+
 ```sh
 npm install react-native-design-system
 ```
+
 This library needs `react-native-vector-icons` so go on and install that too to get all the cool icons. Check out [Install guide](https://github.com/oblador/react-native-vector-icons#installation).
 
 # Usage
+
 React Native Design System uses a centralized theme to provide consistency across all the components.
 
 ### Step 1. Import ThemeProvider and theme then wrap your root component.
-This step is important. We are passing `theme` as context value that each component will access.
+
+This step is important. We are passing `theme` as context value that each component will access. `ThemeProvider` also needs a `colorMode` prop to resolve the component UI to either light mode or dark mode.
 
 ```js
 //your root component
-import { ThemeProvider, theme } from 'react-native-design-system';
+import {ThemeProvider, theme} from 'react-native-design-system';
 
-function App(){
+function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={theme} colorMode="light">
       <Root />
     </ThemeProvider>
   );
@@ -39,31 +47,28 @@ function App(){
 
 ```js
 //inside any file
-import { Button } from 'react-native-design-system';
+import {Button} from 'react-native-design-system';
 
-function HomeScreen(){
-  return (
-    <Button>
-      Press Me
-    </Button>
-  );
+function HomeScreen() {
+  return <Button>Press Me</Button>;
 }
 ```
 
 That's pretty much it. `theme` file contains configuration for all the components. Don't worry, you can easily customize it. Let me show how:
 
 # Customize
+
 You just need to import `theme`, reassign the value you want to change and pass it to `ThemeProvider`. Example:  
 Default primary color is blue but you like orange so you can simply do:
 
 ```js
-import { ThemeProvider, theme } from 'react-native-design-system';
+import {ThemeProvider, theme} from 'react-native-design-system';
 
-theme.brandColor.primary = "orange";
+theme.colors.primary = 'orange';
 
-function App(){
+function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={theme} colorMode="light">
       <Root />
     </ThemeProvider>
   );
@@ -71,22 +76,22 @@ function App(){
 ```
 
 And we are done!
+
 > You can see all the configurations available on the theme page.
 
 # If you have a lot of customizations
+
 This is just a personal approach, you can do as you prefer. What I usually do is create a `theme.config.js` file and add all my customizations there.
 
 ```js
 //theme.config.js at root
-import { theme } from 'react-native-design-system';
+import {theme} from 'react-native-design-system';
 
-theme.textColor = {
-    'default': '#000',
-    'heading': '#999',
-    'subtle': '#333',
-    'grey': '#757575',
-    'disabled': '#78909c',
-    'white': '#f8f8f8',
+theme.colors = {
+  primary: '#000',
+  heading: '#999',
+  subtle: '#333',
+  disabled: '#78909c',
 };
 
 export default theme;
@@ -95,12 +100,12 @@ export default theme;
 Now, I will just import `theme` from here and pass it to my `ThemeProvider`.
 
 ```js
-import { ThemeProvider } from 'react-native-design-system';
+import {ThemeProvider} from 'react-native-design-system';
 import theme from './theme.config.js';
 
-function App(){
+function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={theme} colorMode="light">
       <Root />
     </ThemeProvider>
   );
@@ -109,5 +114,24 @@ function App(){
 
 > Please make sure to pass all the keys while reassigning any object inside the theme.
 
+### Using Dark Mode
+
+You can access current mode via `useDarkMode` hook will give you `isDarkMode` and `toggleDarkMode`.
+
+```js
+//inside any file
+import {Button, useDarkMode} from 'react-native-design-system';
+
+function HomeScreen() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  return (
+    <Button color={isDarkMode ? 'red500' : 'blue500'} onPress={toggleDarkMode}>
+      Press Me
+    </Button>
+  );
+}
+
 # Playground
+
 Storybook provide interactive playground to test the component in all possible scenarios. There is a `playground` story at the end of each component. Click on that and switch to `Canvas` to access `Knobs` and `Actions` addons.
+```

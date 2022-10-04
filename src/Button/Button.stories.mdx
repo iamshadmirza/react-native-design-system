@@ -1,16 +1,20 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs, select, boolean} from '@storybook/addon-knobs';
+import {action} from '@storybook/addon-actions';
 import Stack from '../Layout/Stack';
 import Feather from 'react-native-vector-icons/Feather';
 import Button from './Button';
+import IconButton from './IconButton';
+import {sizeArray} from '../util/prop-types';
 
 <Meta title="Button" component={Button} />
 
 # Button
+
 A Button is a clickable view to carry out actions such as clearing user input or submitting the form.
 
 # Usage
+
 ```js
 import { Button } from 'react-native-design-system';
 
@@ -20,23 +24,24 @@ import { Button } from 'react-native-design-system';
 ```
 
 # Props
+
 <Props of={Button} />
 
 # Type
+
 There are four types of button mainly: `default`, `round`, `outline` and `transparent`. You can pass boolean value `round={true}` for round button, `outline={true}` for outline button, `transparent={true}` for transparent button and nothing for default solid button.
+
 <Preview>
   <Story name="type">
     <Stack>
-      <Button onPress={action('pressed')}>
-        Press Me
-      </Button>
+      <Button onPress={action('pressed')}>Press Me</Button>
       <Button round onPress={action('pressed')}>
         Press Me
       </Button>
       <Button outline onPress={action('pressed')}>
         Press Me
       </Button>
-       <Button transparent onPress={action('pressed')}>
+      <Button transparent onPress={action('pressed')}>
         Press Me
       </Button>
     </Stack>
@@ -64,7 +69,9 @@ There are four types of button mainly: `default`, `round`, `outline` and `transp
 </Preview>
 
 # Length
+
 Button `length` can either be `short` or `long`. Default is long so no need to provide that. Length can further be configured by using `width` prop along with `length="short"`.
+
 <Preview>
   <Story name="length">
     <Stack>
@@ -79,7 +86,10 @@ Button `length` can either be `short` or `long`. Default is long so no need to p
 </Preview>
 
 # Color
-There are three different `brandColor` available. `primary`, `secondary` and `tertiary`.
+
+There are three different brand color available along with all the colors available in colors object. `primary`, `secondary` and `tertiary`.
+You can even reassign these brand colors using `theme.colors.primary = 'blue'`
+
 <Preview>
   <Story name="color">
     <Stack>
@@ -89,24 +99,20 @@ There are three different `brandColor` available. `primary`, `secondary` and `te
       <Button color="secondary" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button color="tertiary" onPress={action('pressed')}>
-        Press Me
-      </Button>
     </Stack>
   </Story>
 </Preview>
 
 # Icon
+
 You can directly pass any icon via icon props.
+
 > Icon size and color should be defined by developers manually according to button size.
 
 <Preview>
   <Story name="icon">
-    <Button 
-      icon={<Feather
-          name="user"
-          size={24}
-          color="white" />}
+    <Button
+      icon={<Feather name="user" size={24} color="white" />}
       onPress={action('pressed')}>
       Login
     </Button>
@@ -114,44 +120,31 @@ You can directly pass any icon via icon props.
 </Preview>
 
 # Size
+
 There are 7 different size of buttons.
 
 <Preview>
   <Story name="size">
     <Stack>
-      <Button
-        size="xxsmall"
-        onPress={action('pressed')}>
+      <Button size="xs" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        size="xsmall"
-        onPress={action('pressed')}>
+      <Button size="xs" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        size="small"
-        onPress={action('pressed')}>
+      <Button size="sm" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        size="medium"
-        onPress={action('pressed')}>
+      <Button size="md" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        size="large"
-        onPress={action('pressed')}>
+      <Button size="lg" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        size="xlarge"
-        onPress={action('pressed')}>
+      <Button size="xl" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        size="xxlarge"
-        onPress={action('pressed')}>
+      <Button size="2xl" onPress={action('pressed')}>
         Press Me
       </Button>
     </Stack>
@@ -159,51 +152,31 @@ There are 7 different size of buttons.
 </Preview>
 
 # Width
+
 Must be used with `type="short"`.
 
 <Preview>
   <Story name="width">
     <Stack>
-      <Button
-        length="short"
-        width="xxsmall"
-        onPress={action('pressed')}>
+      <Button length="short" width="xxsmall" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        length="short"
-        width="xsmall"
-        onPress={action('pressed')}>
+      <Button length="short" width="xsmall" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        length="short"
-        width="small"
-        onPress={action('pressed')}>
+      <Button length="short" width="small" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        length="short"
-        width="medium"
-        onPress={action('pressed')}>
+      <Button length="short" width="md" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        length="short"
-        width="large"
-        onPress={action('pressed')}>
+      <Button length="short" width="large" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        length="short"
-        width="xlarge"
-        onPress={action('pressed')}>
+      <Button length="short" width="xlarge" onPress={action('pressed')}>
         Press Me
       </Button>
-      <Button
-        length="short"
-        width="xxlarge"
-        onPress={action('pressed')}>
+      <Button length="short" width="xxlarge" onPress={action('pressed')}>
         Press Me
       </Button>
     </Stack>
@@ -211,26 +184,35 @@ Must be used with `type="short"`.
 </Preview>
 
 # Tint
+
 Tint is a boolean property which allows you to enable or disable transpent tint of outline button. Pass `tint={false}` to make the background of outline button totally transparent.
 
 <Preview>
   <Story name="tint">
-    <Button 
-      outline
-      tint={false}
-      onPress={action('pressed')}>
+    <Button outline tint={false} onPress={action('pressed')}>
       Login
     </Button>
   </Story>
 </Preview>
 
+# IconButton
+
+This is another variant of Button exported as IconButton
+
+<Preview>
+  <Story name="iconbutton">
+    <IconButton icon={<Feather name="plus" size={20} color="blue" />} />
+  </Story>
+</Preview>
+
 # Playground
+
 Play with Button in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <Button
-    size={select('size', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
-    width={select('width', ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge'], 'medium')}
+    size={select('size', sizeArray, 'md')}
+    width={select('width', sizeArray, 'md')}
     color={select('color', ['primary', 'secondary', 'tertiary'], 'primary')}
     length={select('length', ['long', 'short'], 'long')}
     round={boolean('round', false)}
@@ -239,8 +221,7 @@ Play with Button in Canvas mode.
     loading={boolean('loading', false)}
     disabled={boolean('disabled', false)}
     tint={boolean('tint', true)}
-    onPress={action('pressed')}
-  >
-  Press Me
+    onPress={action('pressed')}>
+    Press Me
   </Button>
 </Story>

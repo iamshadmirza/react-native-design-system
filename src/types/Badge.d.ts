@@ -1,19 +1,23 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {
+  AccessibilityProps,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+import {colorsType} from './colors-type';
+import {RadiusType, SizeType} from './size-type';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { IconNode } from './icon-type';
-
-interface BadgeProps {
-  style?: StyleProp<ViewStyle>,
-  textStyle?: StyleProp<TextStyle>,
-  children?: string | number,
-  size?: SizeType,
-  mini?: boolean,
-  onPress?: () => void,
-  square?: boolean,
+interface BadgeProps extends AccessibilityProps {
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  children?: string | number;
+  color?: keyof colorsType | string;
+  size?: SizeType;
+  mini?: boolean;
+  onPress?: () => void;
+  square?: boolean;
+  radius?: RadiusType;
 }
 
 export const Badge: React.FC<BadgeProps>;

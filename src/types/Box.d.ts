@@ -1,18 +1,14 @@
 import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import {AccessibilityProps, StyleProp, ViewStyle} from 'react-native';
+import {LayoutChildrenType} from './layout-children-type';
+import {SpaceType} from './space-type';
 
-import { SizeType } from './size-type';
-import { WidthType } from './width-type';
-import { LengthType } from './length-type';
-import { SpaceType } from './space-type';
-import { IconNode } from './icon-type';
-import { LayoutChildrenType } from './layout-children-type';
-
-interface BoxProps {
-  style?: StyleProp<ViewStyle>,
-  background?: string,
-  space?: SpaceType,
-  children: LayoutChildrenType
+import {colorTypes} from './colors-type';
+interface BoxProps extends AccessibilityProps {
+  style?: StyleProp<ViewStyle>;
+  background?: keyof colorTypes | string;
+  space?: SpaceType;
+  children: LayoutChildrenType;
 }
 
 export const Box: React.FC<BoxProps>;

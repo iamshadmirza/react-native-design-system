@@ -1,145 +1,51 @@
-export interface themeType {
-  fontSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  size: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  actionButtonSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  buttonSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  buttonWidth: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  iconSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  avatarSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  badgeSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  miniBadgeSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  listItemSpace: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  space: {
-    'none': number,
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  layoutSpace: {
-    'none': number,
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  indicatorSize: {
-    'xxsmall': number,
-    'xsmall': number,
-    'small': number,
-    'medium': number,
-    'large': number,
-    'xlarge': number,
-    'xxlarge': number,
-  },
-  fontFamily: {
-    'heading': string,
-    'text': string,
-  },
-  textColor: {
-    'default': string,
-    'heading': string,
-    'subtle': string,
-    'grey': string,
-    'disabled': string,
-    'white': string,
-  },
-  brandColor: {
-    'primary': string,
-    'secondary': string,
-    'tertiary': string,
-    'background': string,
-    'disabled': string,
-    'white': string,
-    'semitransparent': string,
-    'grey': string,
-    'clearWhite': string,
-    'outline': string,
-  },
+import {colorTypes} from './colors-type';
+import {FontSizeType, RadiusType, ShadowType, SizeType} from './size-type';
+import {SpaceType} from './space-type';
+import {FontThemeType} from './typography-type';
+
+type knownScale<T> = {[k in T]: number};
+
+type unknownScale = {
+  [size: string]: number;
 };
+
+type unknownColors = {
+  [color: string]: string;
+};
+
+type possibleSizes = knownScale<SizeType> & unknownScale;
+type possibleFontSizes = knownScale<FontSizeType> & unknownScale;
+type possibleSpaces = knownScale<SpaceType> & unknownScale;
+type possibleColors = colorTypes & unknownColors;
+
+type ShadowObject = {
+  shadowColor: string;
+  shadowOffset: {
+    width: number;
+    height: number;
+  };
+  shadowOpacity: number;
+  shadowRadius: number;
+  elevation: number;
+};
+
+export interface themeType {
+  fontSize: possibleFontSizes;
+  lineHeight: possibleFontSizes;
+  size: possibleSizes;
+  actionButtonSize: possibleSizes;
+  buttonSize: {
+    paddingHorizontal: possibleSizes;
+    paddingVertical: possibleSizes;
+  };
+  iconSize: possibleSizes;
+  avatarSize: possibleSizes;
+  badgeSize: possibleSizes;
+  miniBadgeSize: possibleSizes;
+  space: possibleSpaces;
+  indicatorSize: possibleSizes;
+  colors: possibleColors;
+  shadow: {[T in ShadowType]: ShadowObject};
+  radius: {[T in RadiusType]: number};
+  font: FontThemeType;
+}

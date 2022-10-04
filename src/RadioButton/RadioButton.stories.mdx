@@ -1,242 +1,205 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-import { withKnobs } from "@storybook/addon-knobs";
-import { View } from 'react-native';
-import { action } from '@storybook/addon-actions';
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import {withKnobs} from '@storybook/addon-knobs';
+import {View} from 'react-native';
+import {action} from '@storybook/addon-actions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import RadioButton, { RadioItem } from './RadioButton';
+import RadioButton, {RadioItem} from './RadioButton';
 import Stack from '../Layout/Stack';
 import ExampleRadioButton from './RadioButton.example.js';
 
 <Meta title="RadioButton" component={RadioButton} />
 
 # RadioButton
+
 A RadioButton is a graphical control element that allows the user to choose only one of a predefined set of mutually exclusive options.
 
 # Usage
-```js
-import { RadioButton, RadioItem } from 'react-native-design-system';
 
-<RadioButton activeId={activeId} selectItem={(id) => selectItemHandler(id)}>
-    <RadioItem id="a">
-      Option A
-    </RadioItem>
-    <RadioItem id="b">
-      Option B
-    </RadioItem>
-    <RadioItem id="c">
-      Option C
-    </RadioItem>
-</RadioButton>
+```js
+import {RadioButton, RadioItem} from 'react-native-design-system';
+
+<RadioButton activeId={activeId} selectItem={id => selectItemHandler(id)}>
+  <RadioItem id="a">Option A</RadioItem>
+  <RadioItem id="b">Option B</RadioItem>
+  <RadioItem id="c">Option C</RadioItem>
+</RadioButton>;
 ```
 
 # Props
+
 <Props of={RadioButton} />
 
 # RadioButton and RadioItem
+
 `RadioButton` and `RadioItem` are used together as compound component.
 
 ```jsx
-import RadioButton, { RadioItem } from 'react-native-design-system';
+import RadioButton, {RadioItem} from 'react-native-design-system';
 
-<RadioButton activeId={activeId} selectItem={(id) => selectItemHandler(id)}>
-    <RadioItem id="a">
-      Option A
-    </RadioItem>
-    <RadioItem id="b">
-      Option B
-    </RadioItem>
-    <RadioItem id="c">
-      Option C
-    </RadioItem>
-</RadioButton>
+<RadioButton activeId={activeId} selectItem={id => selectItemHandler(id)}>
+  <RadioItem id="a">Option A</RadioItem>
+  <RadioItem id="b">Option B</RadioItem>
+  <RadioItem id="c">Option C</RadioItem>
+</RadioButton>;
 ```
 
 <Preview>
   <Story name="usage">
     <RadioButton activeId="a">
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
-        <RadioItem id="b">
-          Option B
-        </RadioItem>
-        <RadioItem id="c">
-          Option C
-        </RadioItem>
+      <RadioItem id="a">Option A</RadioItem>
+      <RadioItem id="b">Option B</RadioItem>
+      <RadioItem id="c">Option C</RadioItem>
     </RadioButton>
   </Story>
 </Preview>
 
 # Size
-There are 7 sizes available bases on fontSize. Pass `size` prop to parent `RadioButton` component to size all `RadioItem`s.
+
+There are 9 sizes available bases on fontSize. Pass `size` prop to parent `RadioButton` component to size all `RadioItem`s.
 
 <Preview>
   <Story name="size">
     <Stack>
-      <RadioButton activeId="a" size="xxsmall" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="xs" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" size="xsmall" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="sm" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" size="small" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="md" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" size="medium" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="lg" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" size="large" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="xl" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" size="xlarge" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="2xl" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" size="xxlarge" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" size="3xl" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
+      </RadioButton>
+      <RadioButton activeId="a" size="4xl" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
+      </RadioButton>
+      <RadioButton activeId="a" size="5xl" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
     </Stack>
   </Story>
 </Preview>
 
 # Right align icon
+
 Pass `iconRight={true}` to shift checkbox icon to right.
 
 <Preview>
   <Story name="iconRight">
-    <RadioButton activeId="a" iconRight selectItem={action("pressed")}>
-      <RadioItem id="a">
-        Option A
-      </RadioItem>
+    <RadioButton activeId="a" iconRight selectItem={action('pressed')}>
+      <RadioItem id="a">Option A</RadioItem>
     </RadioButton>
   </Story>
 </Preview>
 
 # activeId
+
 Pass `activeId` which equals to one of the ids passed to children `RadioItem`. `selectItem` function received an `id` which can be used to update `activeId`. Click on **Show code** for info.
 
 <Preview>
   <Story name="activeId">
-    <RadioButton 
-      activeId="b"
-      selectItem={id => this.seState({ activeId: id })}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
-        <RadioItem id="b">
-          Option B
-        </RadioItem>
-        <RadioItem id="c">
-          Option C
-        </RadioItem>
+    <RadioButton activeId="b" selectItem={id => this.seState({activeId: id})}>
+      <RadioItem id="a">Option A</RadioItem>
+      <RadioItem id="b">Option B</RadioItem>
+      <RadioItem id="c">Option C</RadioItem>
     </RadioButton>
   </Story>
 </Preview>
 
 # Color
+
 Pass `color` to select from the available brand colors.
 
 <Preview>
   <Story name="color">
     <Stack>
-      <RadioButton activeId="a" color="primary" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" color="primary" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" color="secondary" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
-      </RadioButton>
-      <RadioButton activeId="a" color="tertiary" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton
+        activeId="a"
+        color="secondary"
+        selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
     </Stack>
   </Story>
 </Preview>
 
 # Text color
+
 Pass `textColor` to select from available brand text colors.
 
 <Preview>
   <Story name="textColor">
     <Stack>
-      <RadioButton activeId="a" textColor="heading" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton
+        activeId="a"
+        textColor="heading"
+        selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" textColor="default" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton activeId="a" textColor="body" selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" textColor="subtle" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton
+        activeId="a"
+        textColor="subtle"
+        selectItem={action('pressed')}>
+        <RadioItem id="a">Option A</RadioItem>
       </RadioButton>
-      <RadioButton activeId="a" textColor="grey" selectItem={action("pressed")}>
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
+      <RadioButton
+        activeId="a"
+        textColor="success"
+        selectItem={action('pressed')}>
+        <RadioItem id="a">Success</RadioItem>
+      </RadioButton>
+      <RadioButton
+        activeId="a"
+        textColor="warning"
+        selectItem={action('pressed')}>
+        <RadioItem id="a">Warning</RadioItem>
       </RadioButton>
     </Stack>
   </Story>
 </Preview>
 
 # Custom icons
-Pass custom icons via  `checkedIcon` and `uncheckedIcon` prop. Size and color will be manually set by developer.
+
+Pass custom icons via `checkedIcon` and `uncheckedIcon` prop. Size and color will be manually set by developer.
 
 <Preview>
   <Story name="icons">
     <Stack>
       <RadioButton
         activeId="a"
-        selectItem={action("pressed")}
-        checkedIcon={
-          <AntDesign
-          name="checkcircle"
-          size={20}
-          color="#1e88e5" />
-        }
+        selectItem={action('pressed')}
+        checkedIcon={<AntDesign name="checkcircle" size={20} color="#1e88e5" />}
         uncheckedIcon={
-          <AntDesign
-          name="checkcircleo"
-          size={20}
-          color="#1e88e5" />
-        }
-      >
-        <RadioItem id="a">
-          Option A
-        </RadioItem>
-        <RadioItem id="b">
-          Option B
-        </RadioItem>
+          <AntDesign name="checkcircleo" size={20} color="#1e88e5" />
+        }>
+        <RadioItem id="a">Option A</RadioItem>
+        <RadioItem id="b">Option B</RadioItem>
       </RadioButton>
     </Stack>
   </Story>
 </Preview>
 
 # Playground
+
 Play with RadioButton in Canvas mode.
 
-<Story name="playground" parameters={{ decorators: [withKnobs] }}>
+<Story name="playground" parameters={{decorators: [withKnobs]}}>
   <ExampleRadioButton />
 </Story>

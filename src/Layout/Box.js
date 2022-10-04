@@ -1,36 +1,43 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../util/ThemeProvider';
+import {useThemeContext} from '../util/ThemeProvider';
+import {spaces} from '../util/prop-types';
 
-const getContainerStyle = ({ theme, space, background }) => {
+const getContainerStyle = ({theme, space, background}) => {
   return {
-    padding: theme.layoutSpace[space],
-    background: theme.brandColor[background],
+    padding: theme.space[space],
+    background: theme.colors[background],
     alignItems: 'center',
     justifyContent: 'center',
   };
 };
 
-const Box = (props) => {
+const Box = props => {
   const theme = useThemeContext();
   return (
-    <View style={StyleSheet.flatten([getContainerStyle({ ...props, theme }), props.style])}>
+    <View
+      {...props}
+      style={StyleSheet.flatten([
+        getContainerStyle({...props, theme}),
+        props.style,
+      ])}>
       {props.children}
     </View>
   );
 };
 
 Box.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   background: PropTypes.string,
-  space: PropTypes.oneOf(['none', 'xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']),
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
+  space: spaces,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
+    .isRequired,
 };
 
 Box.defaultProps = {
-  space: 'medium',
-  background: 'clearWhite',
+  space: 'md',
+  background: 'transparent',
 };
 
 export default Box;
