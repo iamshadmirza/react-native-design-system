@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactNode} from 'react';
 import {
   AccessibilityProps,
   StyleProp,
@@ -18,8 +18,8 @@ interface ListItemProps extends AccessibilityProps {
   subtitleStyle?: StyleProp<TextStyle>;
   iconStyle?: StyleProp<ViewStyle>;
   textAlign?: TextAlignType;
-  children: string | ReactElement | ReactElement[];
-  subtitle?: string | ReactElement | ReactElement[];
+  children: ReactNode;
+  subtitle?: ReactNode;
   background?: keyof colorTypes | string;
   textColor?: keyof colorTypes | string;
   subtitleColor?: string;

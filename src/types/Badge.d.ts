@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {
   AccessibilityProps,
   StyleProp,
   TextStyle,
   ViewStyle,
 } from 'react-native';
-import {colorsType} from './colors-type';
+import {colorTypes} from './colors-type';
 import {RadiusType, SizeType} from './size-type';
 
 interface BadgeProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  children?: string | number;
-  color?: keyof colorsType | string;
+  children?: ReactNode;
+  color?: keyof colorTypes | string;
   size?: SizeType;
   mini?: boolean;
   onPress?: () => void;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 interface RadioItemProps {
   id: number | string;
-  children: string | React.ReactNode;
+  children: ReactNode;
 }
 
 export const RadioItem: React.FC<RadioItemProps>;

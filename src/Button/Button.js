@@ -27,10 +27,6 @@ const getTextStyle = ({
   theme,
   textColor,
   color,
-  leftIcon,
-  rightIcon,
-  icon,
-  size,
 }) => {
   const textStyle = [{color: theme.colors.white}];
   if (outline || transparent) {
@@ -46,16 +42,6 @@ const getTextStyle = ({
   if (loading) {
     textStyle.push({
       opacity: 0.6,
-    });
-  }
-  if (icon || leftIcon) {
-    textStyle.push({
-      marginRight: theme.fontSize[size],
-    });
-  }
-  if (rightIcon) {
-    textStyle.push({
-      marginLeft: theme.fontSize[size],
     });
   }
   if (disabled) {

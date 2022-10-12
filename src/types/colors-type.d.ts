@@ -81,6 +81,6 @@ type darkBrandColorsType = {dark: {[K in brandColors]: string}};
 export type colorTypes = genericColorsType &
   lightBrandColorsType &
   unknownLightBrandColors &
-  unknownDarkBrandColors &
+  darkBrandColorsType &
   backgroundColors
 
