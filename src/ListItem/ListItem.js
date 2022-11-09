@@ -134,8 +134,12 @@ ListItem.propTypes = {
   subtitleStyle: PropTypes.object,
   iconStyle: PropTypes.object,
   textAlign: PropTypes.oneOf(['auto', 'left', 'center', 'right', 'justify']),
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-    .isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array,
+    PropTypes.element,
+  ]).isRequired,
   subtitle: PropTypes.string,
   background: PropTypes.string,
   textColor: PropTypes.string,

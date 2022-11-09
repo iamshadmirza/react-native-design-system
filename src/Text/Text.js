@@ -59,6 +59,7 @@ TextElement.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.array,
+    PropTypes.element,
   ]).isRequired,
   size: fontSizes,
   lineHeight: fontSizes,
