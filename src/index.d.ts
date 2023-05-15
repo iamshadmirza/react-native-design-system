@@ -41,9 +41,11 @@ export const ThemeProvider: React.FC<{
   theme: themeType;
   colorMode?: 'light' | 'dark';
   children: React.ReactNode | Array<any>;
+  components: any
 }>;
 
 export const useThemeContext: () => typeof theme;
+export const useCustomComponent: () => any;
 export const useThemeMode: () => {
   isDarkMode: boolean;
   toggleDarkMode: (mode?: 'light' | 'dark') => void;
