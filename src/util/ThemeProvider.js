@@ -51,7 +51,7 @@ const ThemeProvider = ({theme, colorMode, children, components}) => {
   return (
     <ThemeContext.Provider value={currentTheme}>
       <ColorSchemeContext.Provider value={{isDarkMode, toggleDarkMode}}>
-        <ComponentContext.Provider value={components}>
+        <ComponentContext.Provider value={components || {}}>
           {children}
         </ComponentContext.Provider>
       </ColorSchemeContext.Provider>
