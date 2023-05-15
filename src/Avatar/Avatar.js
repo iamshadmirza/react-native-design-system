@@ -15,7 +15,7 @@ import {
   removeAccessibilityPropsFromProps,
 } from '../util/accessibility';
 import {radii, shadows, sizes} from '../util/prop-types';
-import {useThemeContext} from '../util/ThemeProvider';
+import {useCustomComponent, useThemeContext} from '../util/ThemeProvider';
 import {removeBackgroundProp} from '../util/touchable';
 
 const getContainerStyle = ({
@@ -84,6 +84,8 @@ const getTitleStyle = ({theme, size}) => {
 
 const Avatar = React.forwardRef(({style, ...props}, ref) => {
   const theme = useThemeContext();
+  const customComponent = useCustomComponent();
+  const ImageComponent = customComponent?.Image ?? Image;
   const TouchableElement =
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
   const updateProps = removeBackgroundProp(props);
@@ -104,10 +106,11 @@ const Avatar = React.forwardRef(({style, ...props}, ref) => {
             style,
           ])}>
           {props.source ? (
-            <Image
+            <ImageComponent
               source={props.source}
               resizeMode="cover"
               style={styles.image}
+              {...props.imageProps}
             />
           ) : (
             <Text
@@ -153,6 +156,7 @@ Avatar.propTypes = {
   editIconColor: PropTypes.string,
   shadow: shadows,
   radius: radii,
+  imageProps: PropTypes.object,
 };
 
 Avatar.defaultProps = {

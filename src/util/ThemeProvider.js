@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 export const ThemeContext = React.createContext();
 export const ColorSchemeContext = React.createContext();
+export const ComponentContext = React.createContext();
 
 export const useThemeContext = () => {
   const theme = React.useContext(ThemeContext);
@@ -18,7 +19,15 @@ export const useThemeMode = () => {
   return themeInfo;
 };
 
-const ThemeProvider = ({theme, colorMode, children}) => {
+export const useCustomComponent = () => {
+  const components = React.useContext(ComponentContext);
+  if (components === undefined) {
+    throw new Error('useCustomComponent must be used within a ThemeProvider');
+  }
+  return components;
+};
+
+const ThemeProvider = ({theme, colorMode, children, components}) => {
   if (theme === undefined) {
     throw new Error('theme value must be provided within a ThemeProvider');
   }
@@ -42,7 +51,9 @@ const ThemeProvider = ({theme, colorMode, children}) => {
   return (
     <ThemeContext.Provider value={currentTheme}>
       <ColorSchemeContext.Provider value={{isDarkMode, toggleDarkMode}}>
-        {children}
+        <ComponentContext.Provider value={components}>
+          {children}
+        </ComponentContext.Provider>
       </ColorSchemeContext.Provider>
     </ThemeContext.Provider>
   );
